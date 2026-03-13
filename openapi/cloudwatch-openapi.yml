@@ -1,0 +1,2804 @@
+openapi: 3.1.0
+info:
+  title: Amazon CloudWatch API
+  description: >-
+    Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the
+    applications you run on AWS in real time. You can use CloudWatch to collect
+    and track metrics, which are variables you can measure for your resources
+    and applications. CloudWatch alarms watch metrics and automatically send
+    notifications or make changes to the resources you are monitoring when a
+    threshold is breached. CloudWatch dashboards provide a unified view of your
+    AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/
+
+servers:
+  - url: https://monitoring.{region}.amazonaws.com
+    description: CloudWatch regional endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: The AWS region
+        enum:
+          - us-east-1
+          - us-east-2
+          - us-west-1
+          - us-west-2
+          - eu-west-1
+          - eu-west-2
+          - eu-west-3
+          - eu-central-1
+          - eu-north-1
+          - ap-east-1
+          - ap-south-1
+          - ap-southeast-1
+          - ap-southeast-2
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-northeast-3
+          - sa-east-1
+          - ca-central-1
+          - me-south-1
+          - af-south-1
+
+security:
+  - aws_sigv4: []
+
+tags:
+  - name: Metrics
+    description: Operations for working with CloudWatch metrics and metric data
+  - name: Alarms
+    description: Operations for creating, managing, and querying CloudWatch alarms
+  - name: Dashboards
+    description: Operations for creating and managing CloudWatch dashboards
+  - name: Anomaly Detection
+    description: Operations for CloudWatch anomaly detection models
+  - name: Metric Streams
+    description: Operations for managing metric streams
+  - name: Composite Alarms
+    description: Operations for composite alarms that aggregate multiple alarm states
+
+paths:
+  /:
+    post:
+      operationId: PutMetricData
+      summary: Publish metric data points to CloudWatch
+      description: >-
+        Publishes metric data points to Amazon CloudWatch. CloudWatch associates
+        the data points with the specified metric. If the specified metric does
+        not exist, CloudWatch creates the metric. When CloudWatch creates a
+        metric, it can take up to fifteen minutes for the metric to appear in
+        calls to ListMetrics. Each PutMetricData request is limited to 1 MB in
+        size for HTTP POST requests and is limited to 40 KB for HTTP GET
+        requests. The maximum number of metric datum items per PutMetricData
+        request is 1,000.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_PutMetricData'
+        - $ref: '#/components/parameters/Version'
+        - $ref: '#/components/parameters/ContentType'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutMetricDataInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal failure
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#GetMetricData:
+    post:
+      operationId: GetMetricData
+      summary: Retrieve metric data from CloudWatch
+      description: >-
+        Retrieves CloudWatch metric values. You can use GetMetricData to
+        retrieve as many as 500 different metrics in a single request, with a
+        total of as many as 100,800 data points per request. You can also
+        optionally perform metric math expressions on the values of the
+        returned statistics. CloudWatch returns aggregated data points based on
+        the statistical values requested.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_GetMetricData'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetMetricDataInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GetMetricDataOutput'
+        '400':
+          description: Invalid parameter value or combination
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#GetMetricStatistics:
+    post:
+      operationId: GetMetricStatistics
+      summary: Retrieve statistics for a specified metric
+      description: >-
+        Gets statistics for the specified metric. The maximum number of data
+        points returned from a single call is 1,440. If you request more than
+        1,440 data points, CloudWatch returns an error. CloudWatch retains
+        metric data as follows - data points with a period of less than 60
+        seconds are available for 3 hours, data points with a period of 60
+        seconds are available for 15 days, data points with a period of 300
+        seconds are available for 63 days, and data points with a period of
+        3600 seconds are available for 455 days.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_GetMetricStatistics'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetMetricStatisticsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GetMetricStatisticsOutput'
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#ListMetrics:
+    post:
+      operationId: ListMetrics
+      summary: List the specified metrics
+      description: >-
+        List the specified metrics. You can use the returned metrics with
+        GetMetricData or GetMetricStatistics to get statistical data. Up to 500
+        results are returned for any one call. To retrieve additional results,
+        use the returned token with subsequent calls. CloudWatch retains metric
+        data for 15 months.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_ListMetrics'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListMetricsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListMetricsOutput'
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#PutMetricAlarm:
+    post:
+      operationId: PutMetricAlarm
+      summary: Create or update a CloudWatch alarm
+      description: >-
+        Creates or updates an alarm and associates it with the specified metric,
+        metric math expression, anomaly detection model, or Metrics Insights
+        query. When the alarm state changes, the alarm invokes the specified
+        actions. An alarm can watch only one metric at a time, but it can take
+        actions based on other alarms. If you are using a composite alarm, the
+        alarm watches the states of other alarms.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_PutMetricAlarm'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutMetricAlarmInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request - limit exceeded
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#PutCompositeAlarm:
+    post:
+      operationId: PutCompositeAlarm
+      summary: Create or update a composite alarm
+      description: >-
+        Creates or updates a composite alarm. When you create a composite alarm,
+        you specify a rule expression for the alarm that takes into account the
+        alarm states of other alarms that you have created. The composite alarm
+        goes into ALARM state only if all conditions of the rule are met.
+      tags:
+        - Composite Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_PutCompositeAlarm'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutCompositeAlarmInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request - limit exceeded
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#DescribeAlarms:
+    post:
+      operationId: DescribeAlarms
+      summary: Retrieve information about specified alarms
+      description: >-
+        Retrieves the specified alarms. You can filter the results by specifying
+        a prefix for the alarm name, the alarm state, or a prefix for any
+        action. To use this operation and return information about composite
+        alarms, you must be signed on with the
+        cloudwatch:DescribeAlarms permission.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_DescribeAlarms'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmsOutput'
+        '400':
+          description: Invalid next token
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#DescribeAlarmsForMetric:
+    post:
+      operationId: DescribeAlarmsForMetric
+      summary: Retrieve alarms for a specified metric
+      description: >-
+        Retrieves the alarms for the specified metric. To filter the results,
+        specify a statistic, period, or unit. This operation retrieves only
+        standard alarms that are based on the specified metric.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_DescribeAlarmsForMetric'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmsForMetricInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmsForMetricOutput'
+
+  /#DescribeAlarmHistory:
+    post:
+      operationId: DescribeAlarmHistory
+      summary: Retrieve the history for a specified alarm
+      description: >-
+        Retrieves the history for the specified alarm. You can filter the
+        results by date range or item type. If an alarm name is not specified,
+        the histories for either all metric alarms or all composite alarms are
+        returned. CloudWatch retains the history of an alarm even if you delete
+        the alarm.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_DescribeAlarmHistory'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmHistoryInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmHistoryOutput'
+        '400':
+          description: Invalid next token
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#DeleteAlarms:
+    post:
+      operationId: DeleteAlarms
+      summary: Delete specified alarms
+      description: >-
+        Deletes the specified alarms. You can delete up to 100 alarms in one
+        operation. In the event of an error, no alarms are deleted. To get
+        information about your current alarms, use DescribeAlarms. If a
+        specified alarm does not exist, no error is returned.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_DeleteAlarms'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteAlarmsInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Resource not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#SetAlarmState:
+    post:
+      operationId: SetAlarmState
+      summary: Temporarily set the state of an alarm
+      description: >-
+        Temporarily sets the state of an alarm for testing purposes. When the
+        updated state differs from the previous value, the action configured
+        for the appropriate state is invoked. For example, if your alarm is
+        configured to send an Amazon SNS message when an alarm is triggered,
+        temporarily changing the alarm state to ALARM sends an SNS message.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_SetAlarmState'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetAlarmStateInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Invalid format or resource not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#EnableAlarmActions:
+    post:
+      operationId: EnableAlarmActions
+      summary: Enable actions for specified alarms
+      description: >-
+        Enables the actions for the specified alarms.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_EnableAlarmActions'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EnableAlarmActionsInput'
+      responses:
+        '200':
+          description: Successful response
+
+  /#DisableAlarmActions:
+    post:
+      operationId: DisableAlarmActions
+      summary: Disable actions for specified alarms
+      description: >-
+        Disables the actions for the specified alarms. When an alarm's actions
+        are disabled, the alarm actions do not execute when the alarm state
+        changes.
+      tags:
+        - Alarms
+      parameters:
+        - $ref: '#/components/parameters/Action_DisableAlarmActions'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DisableAlarmActionsInput'
+      responses:
+        '200':
+          description: Successful response
+
+  /#PutDashboard:
+    post:
+      operationId: PutDashboard
+      summary: Create or update a CloudWatch dashboard
+      description: >-
+        Creates a dashboard if it does not already exist, or updates an
+        existing dashboard. If you update a dashboard, the entire contents are
+        replaced with what you specify here. There is no limit to the number
+        of dashboards in your account.
+      tags:
+        - Dashboards
+      parameters:
+        - $ref: '#/components/parameters/Action_PutDashboard'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutDashboardInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PutDashboardOutput'
+        '400':
+          description: Dashboard invalid input error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#GetDashboard:
+    post:
+      operationId: GetDashboard
+      summary: Retrieve details for a specified dashboard
+      description: >-
+        Displays the details of the dashboard that you specify. To copy an
+        existing dashboard, use GetDashboard, and then use the data returned
+        within DashboardBody as the template for the new dashboard when you
+        call PutDashboard to create the copy.
+      tags:
+        - Dashboards
+      parameters:
+        - $ref: '#/components/parameters/Action_GetDashboard'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetDashboardInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GetDashboardOutput'
+        '400':
+          description: Dashboard not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#ListDashboards:
+    post:
+      operationId: ListDashboards
+      summary: List the dashboards in your account
+      description: >-
+        Returns a list of the dashboards for your account. If you include
+        DashboardNamePrefix, only those dashboards with names starting with
+        the prefix are listed. Otherwise, all dashboards in your account are
+        listed. ListDashboards returns up to 1000 results on one page.
+      tags:
+        - Dashboards
+      parameters:
+        - $ref: '#/components/parameters/Action_ListDashboards'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListDashboardsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListDashboardsOutput'
+        '400':
+          description: Invalid parameter value
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#DeleteDashboards:
+    post:
+      operationId: DeleteDashboards
+      summary: Delete specified dashboards
+      description: >-
+        Deletes all dashboards that you specify. You can specify up to 100
+        dashboards to delete. If there is an error during this call, no
+        dashboards are deleted.
+      tags:
+        - Dashboards
+      parameters:
+        - $ref: '#/components/parameters/Action_DeleteDashboards'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteDashboardsInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Dashboard not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#PutAnomalyDetector:
+    post:
+      operationId: PutAnomalyDetector
+      summary: Create an anomaly detection model for a metric
+      description: >-
+        Creates an anomaly detection model for a CloudWatch metric. You can use
+        the model to display a band of expected normal values when the metric
+        is graphed. If you have enabled unified cross-account observability,
+        and this account is a monitoring account, the metric can be in the
+        same account or a source account.
+      tags:
+        - Anomaly Detection
+      parameters:
+        - $ref: '#/components/parameters/Action_PutAnomalyDetector'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutAnomalyDetectorInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#DescribeAnomalyDetectors:
+    post:
+      operationId: DescribeAnomalyDetectors
+      summary: List anomaly detection models
+      description: >-
+        Lists the anomaly detection models that you have created in your
+        account. For each model, the response includes configuration
+        information for the model. If you filter the response, only the
+        models matching the filter are returned.
+      tags:
+        - Anomaly Detection
+      parameters:
+        - $ref: '#/components/parameters/Action_DescribeAnomalyDetectors'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAnomalyDetectorsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAnomalyDetectorsOutput'
+
+  /#DeleteAnomalyDetector:
+    post:
+      operationId: DeleteAnomalyDetector
+      summary: Delete an anomaly detection model
+      description: >-
+        Deletes the specified anomaly detection model from your account. For
+        more information about how to delete an anomaly detection model, see
+        Deleting an Anomaly Detection Model in the CloudWatch User Guide.
+      tags:
+        - Anomaly Detection
+      parameters:
+        - $ref: '#/components/parameters/Action_DeleteAnomalyDetector'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteAnomalyDetectorInput'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Resource not found or missing required fields
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#PutMetricStream:
+    post:
+      operationId: PutMetricStream
+      summary: Create or update a metric stream
+      description: >-
+        Creates or updates a metric stream. Metric streams can automatically
+        stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery
+        stream, or to Amazon S3 via a Kinesis Data Firehose delivery stream.
+        The output includes metric data in one of two formats, JSON or the
+        OpenTelemetry 0.7.0 protobuf format.
+      tags:
+        - Metric Streams
+      parameters:
+        - $ref: '#/components/parameters/Action_PutMetricStream'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutMetricStreamInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PutMetricStreamOutput'
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /#ListMetricStreams:
+    post:
+      operationId: ListMetricStreams
+      summary: List the metric streams in your account
+      description: >-
+        Returns a list of metric streams in this account.
+      tags:
+        - Metric Streams
+      parameters:
+        - $ref: '#/components/parameters/Action_ListMetricStreams'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListMetricStreamsInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListMetricStreamsOutput'
+
+  /#TagResource:
+    post:
+      operationId: TagResource
+      summary: Assign tags to a CloudWatch resource
+      description: >-
+        Assigns one or more tags (key-value pairs) to the specified CloudWatch
+        resource. Currently, the only CloudWatch resources that can be tagged
+        are alarms and Contributor Insights rules. Tags can help you organize
+        and categorize your resources.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_TagResource'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TagResourceInput'
+      responses:
+        '200':
+          description: Successful response
+
+  /#UntagResource:
+    post:
+      operationId: UntagResource
+      summary: Remove tags from a CloudWatch resource
+      description: >-
+        Removes one or more tags from the specified resource.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_UntagResource'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UntagResourceInput'
+      responses:
+        '200':
+          description: Successful response
+
+  /#ListTagsForResource:
+    post:
+      operationId: ListTagsForResource
+      summary: List tags for a CloudWatch resource
+      description: >-
+        Displays the tags associated with a CloudWatch resource. Currently,
+        alarms and Contributor Insights rules support tagging.
+      tags:
+        - Metrics
+      parameters:
+        - $ref: '#/components/parameters/Action_ListTagsForResource'
+        - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListTagsForResourceInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceOutput'
+
+components:
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+
+  parameters:
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - '2010-08-01'
+      description: The API version (2010-08-01)
+
+    ContentType:
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+        default: application/x-www-form-urlencoded
+
+    Action_PutMetricData:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutMetricData
+
+    Action_GetMetricData:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - GetMetricData
+
+    Action_GetMetricStatistics:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - GetMetricStatistics
+
+    Action_ListMetrics:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - ListMetrics
+
+    Action_PutMetricAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutMetricAlarm
+
+    Action_PutCompositeAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutCompositeAlarm
+
+    Action_DescribeAlarms:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DescribeAlarms
+
+    Action_DescribeAlarmsForMetric:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DescribeAlarmsForMetric
+
+    Action_DescribeAlarmHistory:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DescribeAlarmHistory
+
+    Action_DeleteAlarms:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DeleteAlarms
+
+    Action_SetAlarmState:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - SetAlarmState
+
+    Action_EnableAlarmActions:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - EnableAlarmActions
+
+    Action_DisableAlarmActions:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DisableAlarmActions
+
+    Action_PutDashboard:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutDashboard
+
+    Action_GetDashboard:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - GetDashboard
+
+    Action_ListDashboards:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - ListDashboards
+
+    Action_DeleteDashboards:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DeleteDashboards
+
+    Action_PutAnomalyDetector:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutAnomalyDetector
+
+    Action_DescribeAnomalyDetectors:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DescribeAnomalyDetectors
+
+    Action_DeleteAnomalyDetector:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - DeleteAnomalyDetector
+
+    Action_PutMetricStream:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - PutMetricStream
+
+    Action_ListMetricStreams:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - ListMetricStreams
+
+    Action_TagResource:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - TagResource
+
+    Action_UntagResource:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - UntagResource
+
+    Action_ListTagsForResource:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - ListTagsForResource
+
+  schemas:
+    Dimension:
+      type: object
+      description: A dimension is a name/value pair that is part of the identity of a metric.
+      required:
+        - Name
+        - Value
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+        Value:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
+
+    DimensionFilter:
+      type: object
+      description: Represents filters for a dimension.
+      required:
+        - Name
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The dimension name to be matched.
+        Value:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The value of the dimension to be matched.
+
+    Metric:
+      type: object
+      description: Represents a specific metric.
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[^:].*'
+          description: The namespace of the metric.
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric.
+
+    MetricDatum:
+      type: object
+      description: >-
+        Encapsulates the information sent to either create a metric or add
+        new values to be aggregated into an existing metric.
+      required:
+        - MetricName
+      properties:
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions associated with the metric.
+        Timestamp:
+          type: string
+          format: date-time
+          description: The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+        Value:
+          type: number
+          format: double
+          description: The value for the metric. Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too large.
+        StatisticValues:
+          $ref: '#/components/schemas/StatisticSet'
+        Values:
+          type: array
+          items:
+            type: number
+            format: double
+          description: Array of numbers representing the values for the metric during the period.
+        Counts:
+          type: array
+          items:
+            type: number
+            format: double
+          description: Array of numbers that is used along with the Values array.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        StorageResolution:
+          type: integer
+          minimum: 1
+          description: Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric.
+
+    StatisticSet:
+      type: object
+      description: Represents a set of statistics that describes a specific metric.
+      required:
+        - SampleCount
+        - Sum
+        - Minimum
+        - Maximum
+      properties:
+        SampleCount:
+          type: number
+          format: double
+          description: The number of samples used for the statistic set.
+        Sum:
+          type: number
+          format: double
+          description: The sum of values for the sample set.
+        Minimum:
+          type: number
+          format: double
+          description: The minimum value of the sample set.
+        Maximum:
+          type: number
+          format: double
+          description: The maximum value of the sample set.
+
+    StandardUnit:
+      type: string
+      description: The unit of the metric.
+      enum:
+        - Seconds
+        - Microseconds
+        - Milliseconds
+        - Bytes
+        - Kilobytes
+        - Megabytes
+        - Gigabytes
+        - Terabytes
+        - Bits
+        - Kilobits
+        - Megabits
+        - Gigabits
+        - Terabits
+        - Percent
+        - Count
+        - Bytes/Second
+        - Kilobytes/Second
+        - Megabytes/Second
+        - Gigabytes/Second
+        - Terabytes/Second
+        - Bits/Second
+        - Kilobits/Second
+        - Megabits/Second
+        - Gigabits/Second
+        - Terabits/Second
+        - Count/Second
+        - None
+
+    Datapoint:
+      type: object
+      description: Encapsulates the statistical data that CloudWatch computes from metric data.
+      properties:
+        Timestamp:
+          type: string
+          format: date-time
+          description: The time stamp used for the data point.
+        SampleCount:
+          type: number
+          format: double
+          description: The number of metric values that contributed to the aggregate value of this data point.
+        Average:
+          type: number
+          format: double
+          description: The average of the metric values that correspond to the data point.
+        Sum:
+          type: number
+          format: double
+          description: The sum of the metric values for the data point.
+        Minimum:
+          type: number
+          format: double
+          description: The minimum metric value for the data point.
+        Maximum:
+          type: number
+          format: double
+          description: The maximum metric value for the data point.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        ExtendedStatistics:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: The percentile statistic for the data point.
+
+    MetricDataQuery:
+      type: object
+      description: >-
+        This structure is used in both GetMetricData and PutMetricAlarm. The
+        supported use of this structure is different for those two operations.
+      required:
+        - Id
+      properties:
+        Id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[a-z][a-zA-Z0-9_]*'
+          description: A short name used to tie this object to the results in the response.
+        MetricStat:
+          $ref: '#/components/schemas/MetricStat'
+        Expression:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          description: This field can contain a Metrics Insights query, or a metric math expression.
+        Label:
+          type: string
+          description: A human-readable label for this metric or expression.
+        ReturnData:
+          type: boolean
+          description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+        AccountId:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The ID of the account where the metrics are located.
+
+    MetricStat:
+      type: object
+      description: >-
+        This structure defines the metric to be returned, along with the
+        statistics, period, and units.
+      required:
+        - Metric
+        - Period
+        - Stat
+      properties:
+        Metric:
+          $ref: '#/components/schemas/Metric'
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+        Stat:
+          type: string
+          description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+
+    MetricDataResult:
+      type: object
+      description: A GetMetricData call returns an array of MetricDataResult structures.
+      properties:
+        Id:
+          type: string
+          description: The short name you specified to represent this metric.
+        Label:
+          type: string
+          description: The human-readable label associated with the data.
+        Timestamps:
+          type: array
+          items:
+            type: string
+            format: date-time
+          description: The timestamps for the data points, formatted in Unix epoch time.
+        Values:
+          type: array
+          items:
+            type: number
+            format: double
+          description: The data points for the metric corresponding to Timestamps.
+        StatusCode:
+          type: string
+          enum:
+            - Complete
+            - InternalError
+            - Forbidden
+            - PartialData
+          description: The status of the returned data.
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageData'
+          description: A list of messages with additional information about the data returned.
+
+    MessageData:
+      type: object
+      description: A message returned by the GetMetricData API.
+      properties:
+        Code:
+          type: string
+          description: The error code or status code associated with the message.
+        Value:
+          type: string
+          description: The message text.
+
+    MetricAlarm:
+      type: object
+      description: The details about a metric alarm.
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+        AlarmArn:
+          type: string
+          minLength: 1
+          maxLength: 1600
+          description: The Amazon Resource Name (ARN) of the alarm.
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description of the alarm.
+        AlarmConfigurationUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the alarm configuration.
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateReason:
+          type: string
+          maxLength: 1023
+          description: An explanation for the alarm state, in text format.
+        StateReasonData:
+          type: string
+          maxLength: 4000
+          description: An explanation for the alarm state, in JSON format.
+        StateUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the value of either the StateValue or StateReasonData.
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric associated with the alarm.
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric associated with the alarm.
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric associated with the alarm.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric associated with the alarm.
+        Period:
+          type: integer
+          minimum: 1
+          description: The period, in seconds, over which the statistic is applied.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        EvaluationPeriods:
+          type: integer
+          minimum: 1
+          description: The number of periods over which data is compared to the specified threshold.
+        DatapointsToAlarm:
+          type: integer
+          minimum: 1
+          description: The number of data points that must be breaching to trigger the alarm.
+        Threshold:
+          type: number
+          format: double
+          description: The value to compare with the specified statistic.
+        ComparisonOperator:
+          $ref: '#/components/schemas/ComparisonOperator'
+        TreatMissingData:
+          type: string
+          enum:
+            - breaching
+            - notBreaching
+            - ignore
+            - missing
+          description: Sets how this alarm is to handle missing data points.
+        EvaluateLowSampleCountPercentile:
+          type: string
+          description: Used only for alarms based on percentiles.
+        Metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of MetricDataQuery structures for metric math expressions.
+        ThresholdMetricId:
+          type: string
+          description: If the value of this field is set to an alarm metric ID, the alarm is based on an anomaly detection model.
+        StateTransitionedTimestamp:
+          type: string
+          format: date-time
+          description: The date and time that the alarm's StateValue most recently changed.
+
+    CompositeAlarm:
+      type: object
+      description: The details about a composite alarm.
+      properties:
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during changes to the alarm state.
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+        AlarmArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the alarm.
+        AlarmConfigurationUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the alarm configuration.
+        AlarmDescription:
+          type: string
+          description: The description of the alarm.
+        AlarmName:
+          type: string
+          description: The name of the alarm.
+        AlarmRule:
+          type: string
+          minLength: 1
+          maxLength: 10240
+          description: The rule that this alarm uses to evaluate its alarm state.
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+        StateReason:
+          type: string
+          description: An explanation for the alarm state, in text format.
+        StateReasonData:
+          type: string
+          description: An explanation for the alarm state, in JSON format.
+        StateUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the last change to the alarm's StateValue.
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateTransitionedTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the last state transition.
+        ActionsSuppressedBy:
+          type: string
+          enum:
+            - WaitPeriod
+            - ExtensionPeriod
+            - Alarm
+          description: When the value is ALARM, it means that the actions are suppressed.
+        ActionsSuppressedReason:
+          type: string
+          description: Describes why the actions are suppressed.
+        ActionsSuppressor:
+          type: string
+          description: The ARN of the alarm used as the actions suppressor.
+        ActionsSuppressorWaitPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes into ALARM state.
+        ActionsSuppressorExtensionPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of ALARM state.
+
+    StateValue:
+      type: string
+      description: The state value for the alarm.
+      enum:
+        - OK
+        - ALARM
+        - INSUFFICIENT_DATA
+
+    Statistic:
+      type: string
+      description: The statistic for the metric.
+      enum:
+        - SampleCount
+        - Average
+        - Sum
+        - Minimum
+        - Maximum
+
+    ComparisonOperator:
+      type: string
+      description: The arithmetic operation to use when comparing the specified statistic and threshold.
+      enum:
+        - GreaterThanOrEqualToThreshold
+        - GreaterThanThreshold
+        - LessThanThreshold
+        - LessThanOrEqualToThreshold
+        - LessThanLowerOrGreaterThanUpperThreshold
+        - LessThanLowerThreshold
+        - GreaterThanUpperThreshold
+
+    AlarmHistoryItem:
+      type: object
+      description: Represents the history of a specific alarm.
+      properties:
+        AlarmName:
+          type: string
+          description: The descriptive name for the alarm.
+        AlarmType:
+          type: string
+          enum:
+            - CompositeAlarm
+            - MetricAlarm
+          description: The type of alarm, either metric alarm or composite alarm.
+        Timestamp:
+          type: string
+          format: date-time
+          description: The time stamp for the alarm history item.
+        HistoryItemType:
+          type: string
+          enum:
+            - ConfigurationUpdate
+            - StateUpdate
+            - Action
+          description: The type of alarm history item.
+        HistorySummary:
+          type: string
+          description: A summary of the alarm history, in text format.
+        HistoryData:
+          type: string
+          description: Data about the alarm, in JSON format.
+
+    DashboardEntry:
+      type: object
+      description: Represents a specific dashboard.
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard.
+        DashboardArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the dashboard.
+        LastModified:
+          type: string
+          format: date-time
+          description: The time stamp of when the dashboard was last modified.
+        Size:
+          type: integer
+          description: The size of the dashboard, in bytes.
+
+    DashboardBody:
+      type: object
+      description: The JSON body structure for a CloudWatch dashboard.
+      properties:
+        widgets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardWidget'
+          description: An array of dashboard widget objects.
+
+    DashboardWidget:
+      type: object
+      description: A widget in a CloudWatch dashboard.
+      required:
+        - type
+        - properties
+      properties:
+        type:
+          type: string
+          enum:
+            - metric
+            - text
+            - log
+            - alarm
+            - explorer
+          description: The type of the widget.
+        x:
+          type: integer
+          minimum: 0
+          description: The horizontal position of the widget on the dashboard grid.
+        'y':
+          type: integer
+          minimum: 0
+          description: The vertical position of the widget on the dashboard grid.
+        width:
+          type: integer
+          minimum: 1
+          maximum: 24
+          description: The width of the widget in grid units.
+        height:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          description: The height of the widget in grid units.
+        properties:
+          type: object
+          description: The properties for the widget, which vary depending on the widget type.
+
+    DashboardValidationMessage:
+      type: object
+      description: An error or warning for the PutDashboard operation.
+      properties:
+        DataPath:
+          type: string
+          description: The data path related to the message.
+        Message:
+          type: string
+          description: A message describing the error or warning.
+
+    AnomalyDetector:
+      type: object
+      description: An anomaly detection model associated with a particular CloudWatch metric.
+      properties:
+        Namespace:
+          type: string
+          description: The namespace of the metric associated with the anomaly detection model.
+        MetricName:
+          type: string
+          description: The name of the metric associated with the anomaly detection model.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions associated with the anomaly detection model.
+        Stat:
+          type: string
+          description: The statistic associated with the anomaly detection model.
+        Configuration:
+          $ref: '#/components/schemas/AnomalyDetectorConfiguration'
+        StateValue:
+          type: string
+          enum:
+            - PENDING_TRAINING
+            - TRAINED_INSUFFICIENT_DATA
+            - TRAINED
+          description: The current status of the anomaly detector model.
+        MetricCharacteristics:
+          $ref: '#/components/schemas/MetricCharacteristics'
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+
+    AnomalyDetectorConfiguration:
+      type: object
+      description: The configuration specifies details about how the anomaly detection model is to be trained.
+      properties:
+        ExcludedTimeRanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Range'
+          description: An array of time ranges to exclude from use when the anomaly detection model is trained.
+        MetricTimezone:
+          type: string
+          maxLength: 50
+          description: The time zone to use for the metric.
+
+    Range:
+      type: object
+      description: Specifies one range of days or times to exclude from use for training an anomaly detection model.
+      required:
+        - StartTime
+        - EndTime
+      properties:
+        StartTime:
+          type: string
+          format: date-time
+          description: The start time of the range to exclude.
+        EndTime:
+          type: string
+          format: date-time
+          description: The end time of the range to exclude.
+
+    MetricCharacteristics:
+      type: object
+      description: This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.
+      properties:
+        PeriodicSpikes:
+          type: boolean
+          description: Set this parameter to true if values for this metric consistently include spikes that should not be considered to be anomalies.
+
+    SingleMetricAnomalyDetector:
+      type: object
+      description: Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.
+      properties:
+        AccountId:
+          type: string
+          description: If the CloudWatch metric that provides the time series is in another account, use this to specify that account ID.
+        Namespace:
+          type: string
+          description: The namespace of the metric to create the anomaly detection model for.
+        MetricName:
+          type: string
+          description: The name of the metric to create the anomaly detection model for.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions to create the anomaly detection model for.
+        Stat:
+          type: string
+          description: The statistic to use for the metric and anomaly detection model.
+
+    MetricMathAnomalyDetector:
+      type: object
+      description: Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.
+      properties:
+        MetricDataQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of metric data query structures that enables you to create an anomaly detector based on the result of a metric math expression.
+
+    MetricStreamEntry:
+      type: object
+      description: Contains information about a metric stream.
+      properties:
+        Arn:
+          type: string
+          description: The ARN of the metric stream.
+        CreationDate:
+          type: string
+          format: date-time
+          description: The date when the metric stream was created.
+        LastUpdateDate:
+          type: string
+          format: date-time
+          description: The date when the metric stream was last updated.
+        Name:
+          type: string
+          description: The name of the metric stream.
+        FirehoseArn:
+          type: string
+          description: The ARN of the Kinesis Data Firehose delivery stream used by this metric stream.
+        State:
+          type: string
+          description: The current state of the metric stream.
+        OutputFormat:
+          type: string
+          enum:
+            - json
+            - opentelemetry0.7
+            - opentelemetry1.0
+          description: The output format of the metric stream.
+
+    MetricStreamFilter:
+      type: object
+      description: Contains the configuration for a metric stream filter.
+      properties:
+        Namespace:
+          type: string
+          description: The name of the metric namespace in the filter.
+        MetricNames:
+          type: array
+          items:
+            type: string
+          description: The names of the metrics to either include or exclude from the metric stream.
+
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+        - Key
+        - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+        RequestId:
+          type: string
+          description: The unique request ID.
+
+    # Input/Output schemas for operations
+
+    PutMetricDataInput:
+      type: object
+      required:
+        - Namespace
+        - MetricData
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[^:].*'
+          description: The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.
+        MetricData:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDatum'
+          description: The data for the metric. The array can include no more than 1000 metrics per call.
+
+    GetMetricDataInput:
+      type: object
+      required:
+        - MetricDataQueries
+        - StartTime
+        - EndTime
+      properties:
+        MetricDataQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.
+        StartTime:
+          type: string
+          format: date-time
+          description: The time stamp indicating the earliest data to be returned.
+        EndTime:
+          type: string
+          format: date-time
+          description: The time stamp indicating the latest data to be returned.
+        NextToken:
+          type: string
+          description: Include this value if it was returned by the previous GetMetricData operation.
+        ScanBy:
+          type: string
+          enum:
+            - TimestampDescending
+            - TimestampAscending
+          description: The order in which data points should be returned.
+        MaxDatapoints:
+          type: integer
+          description: The maximum number of data points the request should return before paginating.
+        LabelOptions:
+          type: object
+          properties:
+            Timezone:
+              type: string
+              description: The time zone to use for metric data return.
+
+    GetMetricDataOutput:
+      type: object
+      properties:
+        MetricDataResults:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataResult'
+          description: The metrics that are returned, including the metric name, namespace, and dimensions.
+        NextToken:
+          type: string
+          description: A token that marks the next batch of returned results.
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageData'
+          description: Contains a message about the operation or the results.
+
+    GetMetricStatisticsInput:
+      type: object
+      required:
+        - Namespace
+        - MetricName
+        - StartTime
+        - EndTime
+        - Period
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric.
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions to filter the metric.
+        StartTime:
+          type: string
+          format: date-time
+          description: The time stamp that determines the first data point to return.
+        EndTime:
+          type: string
+          format: date-time
+          description: The time stamp that determines the last data point to return.
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+        Statistics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Statistic'
+          minItems: 1
+          maxItems: 5
+          description: The metric statistics.
+        ExtendedStatistics:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          maxItems: 10
+          description: The percentile statistics.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+
+    GetMetricStatisticsOutput:
+      type: object
+      properties:
+        Label:
+          type: string
+          description: A label for the specified metric.
+        Datapoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datapoint'
+          description: The data points for the specified metric.
+
+    ListMetricsInput:
+      type: object
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Filters the results to only those metrics in the specified namespace.
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Filters the results to only the specified metric name.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionFilter'
+          maxItems: 30
+          description: Filters the results to only those metrics that match the specified dimensions.
+        NextToken:
+          type: string
+          description: The token returned by a previous call to indicate there is more data available.
+        RecentlyActive:
+          type: string
+          enum:
+            - PT3H
+          description: To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.
+        IncludeLinkedAccounts:
+          type: boolean
+          description: If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.
+        OwningAccount:
+          type: string
+          description: When you use this operation in a monitoring account, use this field to return metrics only from one source account.
+
+    ListMetricsOutput:
+      type: object
+      properties:
+        Metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metric'
+          description: The metrics that match your request.
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+        OwningAccounts:
+          type: array
+          items:
+            type: string
+          description: If you are using this operation in a monitoring account, this array contains the account IDs of the source accounts.
+
+    PutMetricAlarmInput:
+      type: object
+      required:
+        - AlarmName
+        - EvaluationPeriods
+        - ComparisonOperator
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the alarm.
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description for the alarm.
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to an OK state.
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the metric associated with the alarm.
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace for the metric associated with the alarm.
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric specified in MetricName.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric specified in MetricName.
+        Period:
+          type: integer
+          minimum: 1
+          description: The length, in seconds, used each time the metric specified in MetricName is evaluated.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        EvaluationPeriods:
+          type: integer
+          minimum: 1
+          description: The number of periods over which data is compared to the specified threshold.
+        DatapointsToAlarm:
+          type: integer
+          minimum: 1
+          description: The number of data points that must be breaching to trigger the alarm.
+        Threshold:
+          type: number
+          format: double
+          description: The value against which the specified statistic is compared.
+        ComparisonOperator:
+          $ref: '#/components/schemas/ComparisonOperator'
+        TreatMissingData:
+          type: string
+          description: Sets how this alarm is to handle missing data points.
+        EvaluateLowSampleCountPercentile:
+          type: string
+          description: Used only for alarms based on percentiles.
+        Metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of MetricDataQuery structures for metric math expression alarms.
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the alarm.
+        ThresholdMetricId:
+          type: string
+          description: If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
+
+    PutCompositeAlarmInput:
+      type: object
+      required:
+        - AlarmName
+        - AlarmRule
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the composite alarm.
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description for the composite alarm.
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+        AlarmRule:
+          type: string
+          minLength: 1
+          maxLength: 10240
+          description: An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the composite alarm.
+        ActionsSuppressor:
+          type: string
+          description: Actions will be suppressed if the suppressor alarm is in the ALARM state.
+        ActionsSuppressorWaitPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.
+        ActionsSuppressorExtensionPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.
+
+    DescribeAlarmsInput:
+      type: object
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms to retrieve information about.
+        AlarmNamePrefix:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.
+        AlarmTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - CompositeAlarm
+              - MetricAlarm
+          description: Specify this parameter to receive information only about alarms of the specified types.
+        ChildrenOfAlarmName:
+          type: string
+          description: If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.
+        ParentsOfAlarmName:
+          type: string
+          description: If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        ActionPrefix:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: Use this parameter to filter the results to only those alarms that use a certain alarm action.
+        MaxRecords:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: The maximum number of alarm descriptions to retrieve.
+        NextToken:
+          type: string
+          description: The token returned by a previous call to indicate there is more data available.
+
+    DescribeAlarmsOutput:
+      type: object
+      properties:
+        MetricAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricAlarm'
+          description: The information about any metric alarms returned by the operation.
+        CompositeAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompositeAlarm'
+          description: The information about any composite alarms returned by the operation.
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+
+    DescribeAlarmsForMetricInput:
+      type: object
+      required:
+        - MetricName
+        - Namespace
+      properties:
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric.
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions associated with the metric.
+        Period:
+          type: integer
+          minimum: 1
+          description: The period, in seconds, over which the statistic is applied.
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+
+    DescribeAlarmsForMetricOutput:
+      type: object
+      properties:
+        MetricAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricAlarm'
+          description: The information for each alarm with the specified metric.
+
+    DescribeAlarmHistoryInput:
+      type: object
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+        AlarmTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - CompositeAlarm
+              - MetricAlarm
+          description: Specify this parameter to receive information only about alarms of the specified types.
+        HistoryItemType:
+          type: string
+          enum:
+            - ConfigurationUpdate
+            - StateUpdate
+            - Action
+          description: The type of alarm histories to retrieve.
+        StartDate:
+          type: string
+          format: date-time
+          description: The starting date to retrieve alarm history.
+        EndDate:
+          type: string
+          format: date-time
+          description: The ending date to retrieve alarm history.
+        MaxRecords:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: The maximum number of alarm history records to retrieve.
+        NextToken:
+          type: string
+          description: The token returned by a previous call.
+        ScanBy:
+          type: string
+          enum:
+            - TimestampDescending
+            - TimestampAscending
+          description: Specified whether to return the newest or oldest alarm history first.
+
+    DescribeAlarmHistoryOutput:
+      type: object
+      properties:
+        AlarmHistoryItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlarmHistoryItem'
+          description: The alarm histories, in JSON format.
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+
+    DeleteAlarmsInput:
+      type: object
+      required:
+        - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The alarms to be deleted. You can delete up to 100 alarms in one operation.
+
+    SetAlarmStateInput:
+      type: object
+      required:
+        - AlarmName
+        - StateValue
+        - StateReason
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateReason:
+          type: string
+          maxLength: 1023
+          description: The reason that this alarm is set to this specific state, in text format.
+        StateReasonData:
+          type: string
+          maxLength: 4000
+          description: The reason that this alarm is set to this specific state, in JSON format.
+
+    EnableAlarmActionsInput:
+      type: object
+      required:
+        - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
+
+    DisableAlarmActionsInput:
+      type: object
+      required:
+        - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
+
+    PutDashboardInput:
+      type: object
+      required:
+        - DashboardName
+        - DashboardBody
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.
+        DashboardBody:
+          type: string
+          description: >-
+            The detailed information about the dashboard in JSON format,
+            including the widgets to include and their location on the
+            dashboard. For more information about the syntax, see Dashboard
+            Body Structure and Syntax.
+
+    PutDashboardOutput:
+      type: object
+      properties:
+        DashboardValidationMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardValidationMessage'
+          description: If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array.
+
+    GetDashboardInput:
+      type: object
+      required:
+        - DashboardName
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard to be described.
+
+    GetDashboardOutput:
+      type: object
+      properties:
+        DashboardArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the dashboard.
+        DashboardBody:
+          type: string
+          description: The detailed information about the dashboard, including what widgets are included and their location.
+        DashboardName:
+          type: string
+          description: The name of the dashboard.
+
+    ListDashboardsInput:
+      type: object
+      properties:
+        DashboardNamePrefix:
+          type: string
+          description: If you specify this parameter, only the dashboards with names starting with the specified string are listed.
+        NextToken:
+          type: string
+          description: The token returned by a previous call to indicate there is more data available.
+
+    ListDashboardsOutput:
+      type: object
+      properties:
+        DashboardEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardEntry'
+          description: The list of matching dashboards.
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+
+    DeleteDashboardsInput:
+      type: object
+      required:
+        - DashboardNames
+      properties:
+        DashboardNames:
+          type: array
+          items:
+            type: string
+          description: The dashboards to be deleted. This parameter is required.
+
+    PutAnomalyDetectorInput:
+      type: object
+      properties:
+        Namespace:
+          type: string
+          description: The namespace of the metric to create the anomaly detection model for.
+        MetricName:
+          type: string
+          description: The name of the metric to create the anomaly detection model for.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions to create the anomaly detection model for.
+        Stat:
+          type: string
+          description: The statistic to use for the metric and the anomaly detection model.
+        Configuration:
+          $ref: '#/components/schemas/AnomalyDetectorConfiguration'
+        MetricCharacteristics:
+          $ref: '#/components/schemas/MetricCharacteristics'
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+
+    DescribeAnomalyDetectorsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Use the token returned by the previous operation to request the next page of results.
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+        Namespace:
+          type: string
+          description: Limits the results to only the anomaly detection models that are associated with the specified namespace.
+        MetricName:
+          type: string
+          description: Limits the results to only the anomaly detection models that are associated with the specified metric name.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.
+        AnomalyDetectorTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - SINGLE_METRIC
+              - METRIC_MATH
+          description: The anomaly detector types to request when using DescribeAnomalyDetectors.
+
+    DescribeAnomalyDetectorsOutput:
+      type: object
+      properties:
+        AnomalyDetectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnomalyDetector'
+          description: The list of anomaly detection models returned by the operation.
+        NextToken:
+          type: string
+          description: A token that you can use in a subsequent operation to retrieve the next set of results.
+
+    DeleteAnomalyDetectorInput:
+      type: object
+      properties:
+        Namespace:
+          type: string
+          description: The namespace associated with the anomaly detection model to delete.
+        MetricName:
+          type: string
+          description: The metric name associated with the anomaly detection model to delete.
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions associated with the anomaly detection model to delete.
+        Stat:
+          type: string
+          description: The statistic associated with the anomaly detection model to delete.
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+
+    PutMetricStreamInput:
+      type: object
+      required:
+        - Name
+        - FirehoseArn
+        - RoleArn
+        - OutputFormat
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric stream.
+        IncludeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamFilter'
+          description: If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.
+        ExcludeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamFilter'
+          description: If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.
+        FirehoseArn:
+          type: string
+          description: The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.
+        RoleArn:
+          type: string
+          description: The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.
+        OutputFormat:
+          type: string
+          enum:
+            - json
+            - opentelemetry0.7
+            - opentelemetry1.0
+          description: The output format for the stream.
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the metric stream.
+        IncludeLinkedAccountsMetrics:
+          type: boolean
+          description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.
+
+    PutMetricStreamOutput:
+      type: object
+      properties:
+        Arn:
+          type: string
+          description: The ARN of the metric stream.
+
+    ListMetricStreamsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Include this value to get the next set of metric streams.
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+
+    ListMetricStreamsOutput:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamEntry'
+          description: The array of metric stream information.
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+
+    TagResourceInput:
+      type: object
+      required:
+        - ResourceARN
+        - Tags
+      properties:
+        ResourceARN:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The ARN of the CloudWatch resource that you're adding tags to.
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: The list of key-value pairs to associate with the alarm.
+
+    UntagResourceInput:
+      type: object
+      required:
+        - ResourceARN
+        - TagKeys
+      properties:
+        ResourceARN:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The ARN of the CloudWatch resource that you're removing tags from.
+        TagKeys:
+          type: array
+          items:
+            type: string
+          description: The list of tag keys to remove from the resource.
+
+    ListTagsForResourceInput:
+      type: object
+      required:
+        - ResourceARN
+      properties:
+        ResourceARN:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The ARN of the CloudWatch resource that you want to view tags for.
+
+    ListTagsForResourceOutput:
+      type: object
+      properties:
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: The list of tag keys and values associated with the resource you specified.

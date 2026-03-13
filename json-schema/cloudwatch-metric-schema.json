@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.apis.io/cloudwatch/cloudwatch-metric-schema.json",
+  "title": "Amazon CloudWatch Metric",
+  "description": "Schema for an Amazon CloudWatch metric resource, representing a time-ordered set of data points that are published to CloudWatch. Metrics are the fundamental concept in CloudWatch - you publish data points into a metric and retrieve statistics about those data points as an ordered set of time-series data.",
+  "type": "object",
+  "required": [
+    "MetricName",
+    "Namespace"
+  ],
+  "properties": {
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the metric. Metric names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:). The maximum length is 255 characters."
+    },
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "pattern": "[^:].*",
+      "description": "The namespace for the metric. Namespaces that begin with AWS/ are reserved for AWS services. Custom metric namespaces must not start with AWS/. The maximum length is 255 characters."
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Dimension"
+      },
+      "maxItems": 30,
+      "description": "The dimensions associated with the metric. Dimensions further clarify what the metric is. A metric can have up to 30 dimensions. Each dimension is defined by a Name and Value pair."
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp associated with the data point, in ISO 8601 UTC format (e.g. 2024-01-15T12:00:00Z). If you do not specify a time stamp, CloudWatch uses the time at which the data point was received."
+    },
+    "Value": {
+      "type": "number",
+      "description": "The value for the metric. Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too large. Values must fall within the range of 8.515920e-109 to 1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2)."
+    },
+    "StatisticValues": {
+      "$ref": "#/$defs/StatisticSet",
+      "description": "The statistical values for the metric. When providing StatisticValues, you cannot also provide a Value. Use StatisticValues when you are publishing an aggregation of pre-computed values."
+    },
+    "Values": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Array of numbers representing the values for the metric during the period. Each unique value is listed just once and the corresponding Counts value specifies the number of times that value occurred during the period."
+    },
+    "Counts": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "description": "Array of numbers that is used along with the Values array. Each number in the Counts array is the number of times the corresponding value in the Values array occurred during the period."
+    },
+    "Unit": {
+      "type": "string",
+      "enum": [
+        "Seconds",
+        "Microseconds",
+        "Milliseconds",
+        "Bytes",
+        "Kilobytes",
+        "Megabytes",
+        "Gigabytes",
+        "Terabytes",
+        "Bits",
+        "Kilobits",
+        "Megabits",
+        "Gigabits",
+        "Terabits",
+        "Percent",
+        "Count",
+        "Bytes/Second",
+        "Kilobytes/Second",
+        "Megabytes/Second",
+        "Gigabytes/Second",
+        "Terabytes/Second",
+        "Bits/Second",
+        "Kilobits/Second",
+        "Megabits/Second",
+        "Gigabits/Second",
+        "Terabits/Second",
+        "Count/Second",
+        "None"
+      ],
+      "description": "The unit of measure for the metric. When you publish data without specifying a unit, CloudWatch associates it with the None unit. If you later specify a different unit with GetMetricStatistics or PutMetricAlarm, data published with None is not returned."
+    },
+    "StorageResolution": {
+      "type": "integer",
+      "enum": [
+        1,
+        60
+      ],
+      "default": 60,
+      "description": "Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric, so that CloudWatch stores the metric with sub-minute resolution down to one second. Setting this to 60 specifies this metric as a regular-resolution metric, which CloudWatch stores at 1-minute resolution. The default is 60."
+    },
+    "Statistics": {
+      "$ref": "#/$defs/MetricStatistics",
+      "description": "Retrieved statistics for the metric. This property is populated when metric data is retrieved via GetMetricStatistics."
+    },
+    "MetricData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Datapoint"
+      },
+      "description": "The retrieved data points for the metric. This property is populated when metric data is retrieved via GetMetricData or GetMetricStatistics."
+    }
+  },
+  "$defs": {
+    "Dimension": {
+      "type": "object",
+      "required": [
+        "Name",
+        "Value"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:). A maximum of 255 characters."
+        },
+        "Value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024,
+          "description": "The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character. A maximum of 1024 characters."
+        }
+      },
+      "description": "A dimension is a name/value pair that is part of the identity of a metric. Because dimensions are part of the unique identifier for a metric, whenever you add a unique name/value pair to one of your metrics, you are creating a new variation of that metric. You can assign up to 30 dimensions to a metric."
+    },
+    "StatisticSet": {
+      "type": "object",
+      "required": [
+        "SampleCount",
+        "Sum",
+        "Minimum",
+        "Maximum"
+      ],
+      "properties": {
+        "SampleCount": {
+          "type": "number",
+          "minimum": 0,
+          "description": "The number of samples used for the statistic set."
+        },
+        "Sum": {
+          "type": "number",
+          "description": "The sum of values for the sample set."
+        },
+        "Minimum": {
+          "type": "number",
+          "description": "The minimum value of the sample set."
+        },
+        "Maximum": {
+          "type": "number",
+          "description": "The maximum value of the sample set."
+        }
+      },
+      "description": "Represents a set of statistics that describes a specific metric. Use StatisticValues when you are publishing an aggregation of pre-computed values rather than raw data points."
+    },
+    "Datapoint": {
+      "type": "object",
+      "properties": {
+        "Timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time stamp used for the data point, in ISO 8601 format."
+        },
+        "SampleCount": {
+          "type": "number",
+          "description": "The number of metric values that contributed to the aggregate value of this data point."
+        },
+        "Average": {
+          "type": "number",
+          "description": "The average of the metric values that correspond to the data point."
+        },
+        "Sum": {
+          "type": "number",
+          "description": "The sum of the metric values for the data point."
+        },
+        "Minimum": {
+          "type": "number",
+          "description": "The minimum metric value for the data point."
+        },
+        "Maximum": {
+          "type": "number",
+          "description": "The maximum metric value for the data point."
+        },
+        "Unit": {
+          "type": "string",
+          "description": "The standard unit for the data point."
+        },
+        "ExtendedStatistics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          },
+          "description": "The percentile statistic for the data point."
+        }
+      },
+      "description": "Encapsulates the statistical data that CloudWatch computes from metric data."
+    },
+    "MetricStatistics": {
+      "type": "object",
+      "properties": {
+        "Label": {
+          "type": "string",
+          "description": "A label for the specified metric."
+        },
+        "Datapoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Datapoint"
+          },
+          "description": "The data points for the specified metric."
+        }
+      },
+      "description": "Represents retrieved metric statistics from GetMetricStatistics."
+    }
+  },
+  "examples": [
+    {
+      "MetricName": "CPUUtilization",
+      "Namespace": "AWS/EC2",
+      "Dimensions": [
+        {
+          "Name": "InstanceId",
+          "Value": "i-0123456789abcdef0"
+        }
+      ],
+      "Timestamp": "2024-01-15T12:00:00Z",
+      "Value": 72.5,
+      "Unit": "Percent",
+      "StorageResolution": 60
+    },
+    {
+      "MetricName": "RequestCount",
+      "Namespace": "MyApplication",
+      "Dimensions": [
+        {
+          "Name": "Environment",
+          "Value": "Production"
+        },
+        {
+          "Name": "Service",
+          "Value": "OrderAPI"
+        }
+      ],
+      "StatisticValues": {
+        "SampleCount": 100,
+        "Sum": 5000,
+        "Minimum": 10,
+        "Maximum": 200
+      },
+      "Unit": "Count",
+      "StorageResolution": 1
+    },
+    {
+      "MetricName": "Latency",
+      "Namespace": "AWS/ApiGateway",
+      "Dimensions": [
+        {
+          "Name": "ApiName",
+          "Value": "MyRestAPI"
+        }
+      ],
+      "Values": [
+        10.5,
+        25.3,
+        50.1,
+        100.7
+      ],
+      "Counts": [
+        50,
+        30,
+        15,
+        5
+      ],
+      "Unit": "Milliseconds"
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "@context": {
+    "@version": 1.1,
+
+    "cw": "https://aws.amazon.com/cloudwatch/ns#",
+    "aws": "https://aws.amazon.com/ns#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "qudt": "http://qudt.org/schema/qudt/",
+
+    "CloudWatchAlarm": {
+      "@id": "cw:Alarm",
+      "@context": {
+        "AlarmName": {
+          "@id": "cw:alarmName",
+          "@type": "xsd:string"
+        },
+        "AlarmArn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "AlarmDescription": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "AlarmConfigurationUpdatedTimestamp": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "ActionsEnabled": {
+          "@id": "cw:actionsEnabled",
+          "@type": "xsd:boolean"
+        },
+        "OKActions": {
+          "@id": "cw:okActions",
+          "@container": "@list"
+        },
+        "AlarmActions": {
+          "@id": "cw:alarmActions",
+          "@container": "@list"
+        },
+        "InsufficientDataActions": {
+          "@id": "cw:insufficientDataActions",
+          "@container": "@list"
+        },
+        "StateValue": {
+          "@id": "cw:stateValue",
+          "@type": "xsd:string"
+        },
+        "StateReason": {
+          "@id": "cw:stateReason",
+          "@type": "xsd:string"
+        },
+        "StateReasonData": {
+          "@id": "cw:stateReasonData",
+          "@type": "xsd:string"
+        },
+        "StateUpdatedTimestamp": {
+          "@id": "cw:stateUpdatedTimestamp",
+          "@type": "xsd:dateTime"
+        },
+        "StateTransitionedTimestamp": {
+          "@id": "cw:stateTransitionedTimestamp",
+          "@type": "xsd:dateTime"
+        },
+        "ComparisonOperator": {
+          "@id": "cw:comparisonOperator",
+          "@type": "xsd:string"
+        },
+        "Threshold": {
+          "@id": "cw:threshold",
+          "@type": "xsd:double"
+        },
+        "EvaluationPeriods": {
+          "@id": "cw:evaluationPeriods",
+          "@type": "xsd:integer"
+        },
+        "DatapointsToAlarm": {
+          "@id": "cw:datapointsToAlarm",
+          "@type": "xsd:integer"
+        },
+        "TreatMissingData": {
+          "@id": "cw:treatMissingData",
+          "@type": "xsd:string"
+        },
+        "ThresholdMetricId": {
+          "@id": "cw:thresholdMetricId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CloudWatchMetric": {
+      "@id": "cw:Metric",
+      "@context": {
+        "MetricName": {
+          "@id": "cw:metricName",
+          "@type": "xsd:string"
+        },
+        "Namespace": {
+          "@id": "cw:namespace",
+          "@type": "xsd:string"
+        },
+        "Value": {
+          "@id": "sosa:hasSimpleResult",
+          "@type": "xsd:double"
+        },
+        "Timestamp": {
+          "@id": "sosa:resultTime",
+          "@type": "xsd:dateTime"
+        },
+        "Unit": {
+          "@id": "qudt:unit",
+          "@type": "xsd:string"
+        },
+        "StorageResolution": {
+          "@id": "cw:storageResolution",
+          "@type": "xsd:integer"
+        },
+        "Values": {
+          "@id": "cw:values",
+          "@container": "@list"
+        },
+        "Counts": {
+          "@id": "cw:counts",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "CloudWatchDimension": {
+      "@id": "cw:Dimension",
+      "@context": {
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "Value": {
+          "@id": "schema:value",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CloudWatchDashboard": {
+      "@id": "cw:Dashboard",
+      "@context": {
+        "DashboardName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "DashboardArn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "DashboardBody": {
+          "@id": "cw:dashboardBody",
+          "@type": "xsd:string"
+        },
+        "LastModified": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "Size": {
+          "@id": "schema:contentSize",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "CloudWatchStatisticSet": {
+      "@id": "cw:StatisticSet",
+      "@context": {
+        "SampleCount": {
+          "@id": "cw:sampleCount",
+          "@type": "xsd:double"
+        },
+        "Sum": {
+          "@id": "cw:sum",
+          "@type": "xsd:double"
+        },
+        "Minimum": {
+          "@id": "cw:minimum",
+          "@type": "xsd:double"
+        },
+        "Maximum": {
+          "@id": "cw:maximum",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "CloudWatchDatapoint": {
+      "@id": "cw:Datapoint",
+      "@context": {
+        "Timestamp": {
+          "@id": "sosa:resultTime",
+          "@type": "xsd:dateTime"
+        },
+        "SampleCount": {
+          "@id": "cw:sampleCount",
+          "@type": "xsd:double"
+        },
+        "Average": {
+          "@id": "cw:average",
+          "@type": "xsd:double"
+        },
+        "Sum": {
+          "@id": "cw:sum",
+          "@type": "xsd:double"
+        },
+        "Minimum": {
+          "@id": "cw:minimum",
+          "@type": "xsd:double"
+        },
+        "Maximum": {
+          "@id": "cw:maximum",
+          "@type": "xsd:double"
+        },
+        "Unit": {
+          "@id": "qudt:unit",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CloudWatchMetricStream": {
+      "@id": "cw:MetricStream",
+      "@context": {
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "Arn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "FirehoseArn": {
+          "@id": "cw:firehoseArn",
+          "@type": "@id"
+        },
+        "RoleArn": {
+          "@id": "cw:roleArn",
+          "@type": "@id"
+        },
+        "State": {
+          "@id": "cw:streamState",
+          "@type": "xsd:string"
+        },
+        "OutputFormat": {
+          "@id": "cw:outputFormat",
+          "@type": "xsd:string"
+        },
+        "CreationDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "LastUpdateDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "CloudWatchAnomalyDetector": {
+      "@id": "cw:AnomalyDetector",
+      "@context": {
+        "Stat": {
+          "@id": "cw:statistic",
+          "@type": "xsd:string"
+        },
+        "StateValue": {
+          "@id": "cw:anomalyDetectorState",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "CloudWatchCompositeAlarm": {
+      "@id": "cw:CompositeAlarm",
+      "@context": {
+        "AlarmName": {
+          "@id": "cw:alarmName",
+          "@type": "xsd:string"
+        },
+        "AlarmArn": {
+          "@id": "aws:arn",
+          "@type": "@id"
+        },
+        "AlarmDescription": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "AlarmRule": {
+          "@id": "cw:alarmRule",
+          "@type": "xsd:string"
+        },
+        "StateValue": {
+          "@id": "cw:stateValue",
+          "@type": "xsd:string"
+        },
+        "ActionsSuppressor": {
+          "@id": "cw:actionsSuppressor",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Dimensions": {
+      "@id": "cw:dimensions",
+      "@container": "@list"
+    },
+    "MetricName": {
+      "@id": "cw:metricName",
+      "@type": "xsd:string"
+    },
+    "Namespace": {
+      "@id": "cw:namespace",
+      "@type": "xsd:string"
+    },
+    "Period": {
+      "@id": "cw:period",
+      "@type": "xsd:integer"
+    },
+    "Statistic": {
+      "@id": "cw:statistic",
+      "@type": "xsd:string"
+    },
+    "Tags": {
+      "@id": "aws:tags",
+      "@container": "@list"
+    },
+
+    "Tag": {
+      "@id": "aws:Tag",
+      "@context": {
+        "Key": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "Value": {
+          "@id": "schema:value",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}

@@ -2,8 +2,8 @@ name: AWS CloudWatch
 description: Amazon CloudWatch is a monitoring and observability service that provides data and actionable insights for AWS, hybrid, and on-premises applications and infrastructure resources.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 created: '2024-01-15'
-modified: '2026-03-03'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 url: https://aws.amazon.com/cloudwatch/
 tags:
 - monitoring
@@ -248,7 +248,5 @@ common:
 - type: Documentation
   url: https://docs.aws.amazon.com/cloudwatch/
 maintainers:
-- name: Kin Lane
-  email: kin@apievangelist.com
-  url: https://apievangelist.com
-include: []
+  - FN: Kin Lane
+    email: kin@apievangelist.com

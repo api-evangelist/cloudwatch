@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Amazon CloudWatch API
+  title: AWS CloudWatch Amazon CloudWatch API
   description: >-
     Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the
     applications you run on AWS in real time. You can use CloudWatch to collect
@@ -73,7 +73,7 @@ paths:
   /:
     post:
       operationId: PutMetricData
-      summary: Publish metric data points to CloudWatch
+      summary: AWS CloudWatch Publish metric data points to CloudWatch
       description: >-
         Publishes metric data points to Amazon CloudWatch. CloudWatch associates
         the data points with the specified metric. If the specified metric does
@@ -114,7 +114,7 @@ paths:
   /#GetMetricData:
     post:
       operationId: GetMetricData
-      summary: Retrieve metric data from CloudWatch
+      summary: AWS CloudWatch Retrieve metric data from CloudWatch
       description: >-
         Retrieves CloudWatch metric values. You can use GetMetricData to
         retrieve as many as 500 different metrics in a single request, with a
@@ -150,7 +150,7 @@ paths:
   /#GetMetricStatistics:
     post:
       operationId: GetMetricStatistics
-      summary: Retrieve statistics for a specified metric
+      summary: AWS CloudWatch Retrieve statistics for a specified metric
       description: >-
         Gets statistics for the specified metric. The maximum number of data
         points returned from a single call is 1,440. If you request more than
@@ -188,7 +188,7 @@ paths:
   /#ListMetrics:
     post:
       operationId: ListMetrics
-      summary: List the specified metrics
+      summary: AWS CloudWatch List the specified metrics
       description: >-
         List the specified metrics. You can use the returned metrics with
         GetMetricData or GetMetricStatistics to get statistical data. Up to 500
@@ -222,7 +222,7 @@ paths:
   /#PutMetricAlarm:
     post:
       operationId: PutMetricAlarm
-      summary: Create or update a CloudWatch alarm
+      summary: AWS CloudWatch Create or update a CloudWatch alarm
       description: >-
         Creates or updates an alarm and associates it with the specified metric,
         metric math expression, anomaly detection model, or Metrics Insights
@@ -254,7 +254,7 @@ paths:
   /#PutCompositeAlarm:
     post:
       operationId: PutCompositeAlarm
-      summary: Create or update a composite alarm
+      summary: AWS CloudWatch Create or update a composite alarm
       description: >-
         Creates or updates a composite alarm. When you create a composite alarm,
         you specify a rule expression for the alarm that takes into account the
@@ -284,7 +284,7 @@ paths:
   /#DescribeAlarms:
     post:
       operationId: DescribeAlarms
-      summary: Retrieve information about specified alarms
+      summary: AWS CloudWatch Retrieve information about specified alarms
       description: >-
         Retrieves the specified alarms. You can filter the results by specifying
         a prefix for the alarm name, the alarm state, or a prefix for any
@@ -318,7 +318,7 @@ paths:
   /#DescribeAlarmsForMetric:
     post:
       operationId: DescribeAlarmsForMetric
-      summary: Retrieve alarms for a specified metric
+      summary: AWS CloudWatch Retrieve alarms for a specified metric
       description: >-
         Retrieves the alarms for the specified metric. To filter the results,
         specify a statistic, period, or unit. This operation retrieves only
@@ -345,7 +345,7 @@ paths:
   /#DescribeAlarmHistory:
     post:
       operationId: DescribeAlarmHistory
-      summary: Retrieve the history for a specified alarm
+      summary: AWS CloudWatch Retrieve the history for a specified alarm
       description: >-
         Retrieves the history for the specified alarm. You can filter the
         results by date range or item type. If an alarm name is not specified,
@@ -379,7 +379,7 @@ paths:
   /#DeleteAlarms:
     post:
       operationId: DeleteAlarms
-      summary: Delete specified alarms
+      summary: AWS CloudWatch Delete specified alarms
       description: >-
         Deletes the specified alarms. You can delete up to 100 alarms in one
         operation. In the event of an error, no alarms are deleted. To get
@@ -409,7 +409,7 @@ paths:
   /#SetAlarmState:
     post:
       operationId: SetAlarmState
-      summary: Temporarily set the state of an alarm
+      summary: AWS CloudWatch Temporarily set the state of an alarm
       description: >-
         Temporarily sets the state of an alarm for testing purposes. When the
         updated state differs from the previous value, the action configured
@@ -440,7 +440,7 @@ paths:
   /#EnableAlarmActions:
     post:
       operationId: EnableAlarmActions
-      summary: Enable actions for specified alarms
+      summary: AWS CloudWatch Enable actions for specified alarms
       description: >-
         Enables the actions for the specified alarms.
       tags:
@@ -461,7 +461,7 @@ paths:
   /#DisableAlarmActions:
     post:
       operationId: DisableAlarmActions
-      summary: Disable actions for specified alarms
+      summary: AWS CloudWatch Disable actions for specified alarms
       description: >-
         Disables the actions for the specified alarms. When an alarm's actions
         are disabled, the alarm actions do not execute when the alarm state
@@ -484,7 +484,7 @@ paths:
   /#PutDashboard:
     post:
       operationId: PutDashboard
-      summary: Create or update a CloudWatch dashboard
+      summary: AWS CloudWatch Create or update a CloudWatch dashboard
       description: >-
         Creates a dashboard if it does not already exist, or updates an
         existing dashboard. If you update a dashboard, the entire contents are
@@ -524,7 +524,7 @@ paths:
   /#GetDashboard:
     post:
       operationId: GetDashboard
-      summary: Retrieve details for a specified dashboard
+      summary: AWS CloudWatch Retrieve details for a specified dashboard
       description: >-
         Displays the details of the dashboard that you specify. To copy an
         existing dashboard, use GetDashboard, and then use the data returned
@@ -564,7 +564,7 @@ paths:
   /#ListDashboards:
     post:
       operationId: ListDashboards
-      summary: List the dashboards in your account
+      summary: AWS CloudWatch List the dashboards in your account
       description: >-
         Returns a list of the dashboards for your account. If you include
         DashboardNamePrefix, only those dashboards with names starting with
@@ -603,7 +603,7 @@ paths:
   /#DeleteDashboards:
     post:
       operationId: DeleteDashboards
-      summary: Delete specified dashboards
+      summary: AWS CloudWatch Delete specified dashboards
       description: >-
         Deletes all dashboards that you specify. You can specify up to 100
         dashboards to delete. If there is an error during this call, no
@@ -638,7 +638,7 @@ paths:
   /#PutAnomalyDetector:
     post:
       operationId: PutAnomalyDetector
-      summary: Create an anomaly detection model for a metric
+      summary: AWS CloudWatch Create an anomaly detection model for a metric
       description: >-
         Creates an anomaly detection model for a CloudWatch metric. You can use
         the model to display a band of expected normal values when the metric
@@ -669,7 +669,7 @@ paths:
   /#DescribeAnomalyDetectors:
     post:
       operationId: DescribeAnomalyDetectors
-      summary: List anomaly detection models
+      summary: AWS CloudWatch List anomaly detection models
       description: >-
         Lists the anomaly detection models that you have created in your
         account. For each model, the response includes configuration
@@ -696,7 +696,7 @@ paths:
   /#DeleteAnomalyDetector:
     post:
       operationId: DeleteAnomalyDetector
-      summary: Delete an anomaly detection model
+      summary: AWS CloudWatch Delete an anomaly detection model
       description: >-
         Deletes the specified anomaly detection model from your account. For
         more information about how to delete an anomaly detection model, see
@@ -725,7 +725,7 @@ paths:
   /#PutMetricStream:
     post:
       operationId: PutMetricStream
-      summary: Create or update a metric stream
+      summary: AWS CloudWatch Create or update a metric stream
       description: >-
         Creates or updates a metric stream. Metric streams can automatically
         stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery
@@ -760,7 +760,7 @@ paths:
   /#ListMetricStreams:
     post:
       operationId: ListMetricStreams
-      summary: List the metric streams in your account
+      summary: AWS CloudWatch List the metric streams in your account
       description: >-
         Returns a list of metric streams in this account.
       tags:
@@ -784,7 +784,7 @@ paths:
   /#TagResource:
     post:
       operationId: TagResource
-      summary: Assign tags to a CloudWatch resource
+      summary: AWS CloudWatch Assign tags to a CloudWatch resource
       description: >-
         Assigns one or more tags (key-value pairs) to the specified CloudWatch
         resource. Currently, the only CloudWatch resources that can be tagged
@@ -808,7 +808,7 @@ paths:
   /#UntagResource:
     post:
       operationId: UntagResource
-      summary: Remove tags from a CloudWatch resource
+      summary: AWS CloudWatch Remove tags from a CloudWatch resource
       description: >-
         Removes one or more tags from the specified resource.
       tags:
@@ -829,7 +829,7 @@ paths:
   /#ListTagsForResource:
     post:
       operationId: ListTagsForResource
-      summary: List tags for a CloudWatch resource
+      summary: AWS CloudWatch List tags for a CloudWatch resource
       description: >-
         Displays the tags associated with a CloudWatch resource. Currently,
         alarms and Contributor Insights rules support tagging.

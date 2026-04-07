@@ -56,19 +56,19 @@ security:
   - aws_sigv4: []
 
 tags:
-  - name: Metrics
-    description: Operations for working with CloudWatch metrics and metric data
   - name: Alarms
     description: Operations for creating, managing, and querying CloudWatch alarms
-  - name: Dashboards
-    description: Operations for creating and managing CloudWatch dashboards
   - name: Anomaly Detection
     description: Operations for CloudWatch anomaly detection models
-  - name: Metric Streams
-    description: Operations for managing metric streams
   - name: Composite Alarms
     description: Operations for composite alarms that aggregate multiple alarm states
 
+  - name: Dashboards
+    description: Operations for creating and managing CloudWatch dashboards
+  - name: Metric Streams
+    description: Operations for managing metric streams
+  - name: Metrics
+    description: Operations for working with CloudWatch metrics and metric data
 paths:
   /:
     post:

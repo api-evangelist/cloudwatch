@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetMetricDataInput",
+  "type": "object",
+  "properties": {
+    "MetricDataQueries": {
+      "type": "array",
+      "description": "The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures."
+    },
+    "StartTime": {
+      "type": "string",
+      "description": "The time stamp indicating the earliest data to be returned."
+    },
+    "EndTime": {
+      "type": "string",
+      "description": "The time stamp indicating the latest data to be returned."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "Include this value if it was returned by the previous GetMetricData operation."
+    },
+    "ScanBy": {
+      "type": "string",
+      "description": "The order in which data points should be returned."
+    },
+    "MaxDatapoints": {
+      "type": "integer",
+      "description": "The maximum number of data points the request should return before paginating."
+    },
+    "LabelOptions": {
+      "type": "object"
+    }
+  }
+}

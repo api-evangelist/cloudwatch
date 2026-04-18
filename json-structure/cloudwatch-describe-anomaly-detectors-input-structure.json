@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DescribeAnomalyDetectorsInput",
+  "type": "object",
+  "properties": {
+    "NextToken": {
+      "type": "string"
+    },
+    "MaxResults": {
+      "type": "integer"
+    },
+    "Namespace": {
+      "type": "string"
+    },
+    "MetricName": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "AnomalyDetectorTypes": {
+      "type": "array"
+    }
+  }
+}

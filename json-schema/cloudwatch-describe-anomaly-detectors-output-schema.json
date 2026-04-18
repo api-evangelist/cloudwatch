@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAnomalyDetectorsOutput",
+  "type": "object",
+  "properties": {
+    "AnomalyDetectors": {
+      "type": "array",
+      "description": "The list of anomaly detection models returned by the operation."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "A token that you can use in a subsequent operation to retrieve the next set of results."
+    }
+  }
+}

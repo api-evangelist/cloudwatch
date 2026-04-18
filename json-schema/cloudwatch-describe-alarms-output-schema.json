@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAlarmsOutput",
+  "type": "object",
+  "properties": {
+    "MetricAlarms": {
+      "type": "array",
+      "description": "The information about any metric alarms returned by the operation."
+    },
+    "CompositeAlarms": {
+      "type": "array",
+      "description": "The information about any composite alarms returned by the operation."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results."
+    }
+  }
+}

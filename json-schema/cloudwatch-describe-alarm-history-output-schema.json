@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAlarmHistoryOutput",
+  "type": "object",
+  "properties": {
+    "AlarmHistoryItems": {
+      "type": "array",
+      "description": "The alarm histories, in JSON format."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results."
+    }
+  }
+}

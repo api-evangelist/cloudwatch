@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AnomalyDetector",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string"
+    },
+    "MetricName": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "Stat": {
+      "type": "string"
+    },
+    "StateValue": {
+      "type": "string"
+    }
+  }
+}

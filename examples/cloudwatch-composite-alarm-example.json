@@ -1,0 +1,20 @@
+{
+  "ActionsEnabled": true,
+  "AlarmActions": [],
+  "AlarmArn": "example_value",
+  "AlarmConfigurationUpdatedTimestamp": "example_value",
+  "AlarmDescription": "example_value",
+  "AlarmName": "example_value",
+  "AlarmRule": "example_value",
+  "InsufficientDataActions": [],
+  "OKActions": [],
+  "StateReason": "example_value",
+  "StateReasonData": "example_value",
+  "StateUpdatedTimestamp": "example_value",
+  "StateTransitionedTimestamp": "example_value",
+  "ActionsSuppressedBy": "example_value",
+  "ActionsSuppressedReason": "example_value",
+  "ActionsSuppressor": "example_value",
+  "ActionsSuppressorWaitPeriod": 10,
+  "ActionsSuppressorExtensionPeriod": 10
+}

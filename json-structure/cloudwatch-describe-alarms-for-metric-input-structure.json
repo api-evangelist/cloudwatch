@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DescribeAlarmsForMetricInput",
+  "type": "object",
+  "properties": {
+    "MetricName": {
+      "type": "string"
+    },
+    "Namespace": {
+      "type": "string"
+    },
+    "ExtendedStatistic": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "Period": {
+      "type": "integer"
+    }
+  }
+}

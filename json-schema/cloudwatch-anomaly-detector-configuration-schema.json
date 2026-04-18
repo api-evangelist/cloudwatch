@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnomalyDetectorConfiguration",
+  "type": "object",
+  "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+  "properties": {
+    "ExcludedTimeRanges": {
+      "type": "array",
+      "description": "An array of time ranges to exclude from use when the anomaly detection model is trained."
+    },
+    "MetricTimezone": {
+      "type": "string",
+      "description": "The time zone to use for the metric."
+    }
+  }
+}

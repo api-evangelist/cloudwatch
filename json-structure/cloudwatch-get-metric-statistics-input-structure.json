@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GetMetricStatisticsInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string"
+    },
+    "MetricName": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "StartTime": {
+      "type": "string"
+    },
+    "EndTime": {
+      "type": "string"
+    },
+    "Period": {
+      "type": "integer"
+    },
+    "Statistics": {
+      "type": "array"
+    },
+    "ExtendedStatistics": {
+      "type": "array"
+    }
+  }
+}

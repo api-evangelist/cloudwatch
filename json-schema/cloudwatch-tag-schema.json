@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tag",
+  "type": "object",
+  "description": "A key-value pair associated with a CloudWatch resource.",
+  "properties": {
+    "Key": {
+      "type": "string",
+      "description": "A string that you can use to assign a value."
+    },
+    "Value": {
+      "type": "string",
+      "description": "The value for the specified tag key."
+    }
+  }
+}

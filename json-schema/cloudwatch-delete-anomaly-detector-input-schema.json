@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteAnomalyDetectorInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "description": "The namespace associated with the anomaly detection model to delete."
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "The metric name associated with the anomaly detection model to delete."
+    },
+    "Dimensions": {
+      "type": "array",
+      "description": "The metric dimensions associated with the anomaly detection model to delete."
+    },
+    "Stat": {
+      "type": "string",
+      "description": "The statistic associated with the anomaly detection model to delete."
+    }
+  }
+}

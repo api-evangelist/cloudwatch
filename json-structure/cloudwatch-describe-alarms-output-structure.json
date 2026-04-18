@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DescribeAlarmsOutput",
+  "type": "object",
+  "properties": {
+    "MetricAlarms": {
+      "type": "array"
+    },
+    "CompositeAlarms": {
+      "type": "array"
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SingleMetricAnomalyDetector",
+  "type": "object",
+  "properties": {
+    "AccountId": {
+      "type": "string"
+    },
+    "Namespace": {
+      "type": "string"
+    },
+    "MetricName": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "Stat": {
+      "type": "string"
+    }
+  }
+}

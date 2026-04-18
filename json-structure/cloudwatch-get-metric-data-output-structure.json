@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GetMetricDataOutput",
+  "type": "object",
+  "properties": {
+    "MetricDataResults": {
+      "type": "array"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "Messages": {
+      "type": "array"
+    }
+  }
+}

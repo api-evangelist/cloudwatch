@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAlarmsForMetricOutput",
+  "type": "object",
+  "properties": {
+    "MetricAlarms": {
+      "type": "array",
+      "description": "The information for each alarm with the specified metric."
+    }
+  }
+}

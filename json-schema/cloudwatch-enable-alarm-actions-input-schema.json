@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EnableAlarmActionsInput",
+  "type": "object",
+  "properties": {
+    "AlarmNames": {
+      "type": "array",
+      "description": "The names of the alarms."
+    }
+  }
+}

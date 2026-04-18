@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListMetricStreamsInput",
+  "type": "object",
+  "properties": {
+    "NextToken": {
+      "type": "string",
+      "description": "Include this value to get the next set of metric streams."
+    },
+    "MaxResults": {
+      "type": "integer",
+      "description": "The maximum number of results to return in one operation."
+    }
+  }
+}

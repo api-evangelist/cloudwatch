@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MetricDatum",
+  "type": "object",
+  "properties": {
+    "MetricName": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "Timestamp": {
+      "type": "string"
+    },
+    "Value": {
+      "type": "number"
+    },
+    "Values": {
+      "type": "array"
+    },
+    "Counts": {
+      "type": "array"
+    },
+    "StorageResolution": {
+      "type": "integer"
+    }
+  }
+}

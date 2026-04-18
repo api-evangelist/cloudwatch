@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DescribeAlarmHistoryInput",
+  "type": "object",
+  "properties": {
+    "AlarmName": {
+      "type": "string"
+    },
+    "AlarmTypes": {
+      "type": "array"
+    },
+    "HistoryItemType": {
+      "type": "string"
+    },
+    "StartDate": {
+      "type": "string"
+    },
+    "EndDate": {
+      "type": "string"
+    },
+    "MaxRecords": {
+      "type": "integer"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "ScanBy": {
+      "type": "string"
+    }
+  }
+}

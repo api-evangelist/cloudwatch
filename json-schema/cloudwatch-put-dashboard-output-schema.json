@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PutDashboardOutput",
+  "type": "object",
+  "properties": {
+    "DashboardValidationMessages": {
+      "type": "array",
+      "description": "If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array."
+    }
+  }
+}

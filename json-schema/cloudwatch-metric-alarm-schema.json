@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricAlarm",
+  "type": "object",
+  "description": "The details about a metric alarm.",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "description": "The name of the alarm."
+    },
+    "AlarmArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the alarm."
+    },
+    "AlarmDescription": {
+      "type": "string",
+      "description": "The description of the alarm."
+    },
+    "AlarmConfigurationUpdatedTimestamp": {
+      "type": "string",
+      "description": "The time stamp of the last update to the alarm configuration."
+    },
+    "ActionsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether actions should be executed during any changes to the alarm state."
+    },
+    "OKActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the OK state."
+    },
+    "AlarmActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the ALARM state."
+    },
+    "InsufficientDataActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state."
+    },
+    "StateReason": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in text format."
+    },
+    "StateReasonData": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in JSON format."
+    },
+    "StateUpdatedTimestamp": {
+      "type": "string",
+      "description": "The time stamp of the last update to the value of either the StateValue or StateReasonData."
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "The name of the metric associated with the alarm."
+    },
+    "Namespace": {
+      "type": "string",
+      "description": "The namespace of the metric associated with the alarm."
+    },
+    "ExtendedStatistic": {
+      "type": "string",
+      "description": "The percentile statistic for the metric associated with the alarm."
+    },
+    "Dimensions": {
+      "type": "array",
+      "description": "The dimensions for the metric associated with the alarm."
+    },
+    "Period": {
+      "type": "integer",
+      "description": "The period, in seconds, over which the statistic is applied."
+    },
+    "EvaluationPeriods": {
+      "type": "integer",
+      "description": "The number of periods over which data is compared to the specified threshold."
+    },
+    "DatapointsToAlarm": {
+      "type": "integer",
+      "description": "The number of data points that must be breaching to trigger the alarm."
+    },
+    "Threshold": {
+      "type": "number",
+      "description": "The value to compare with the specified statistic."
+    },
+    "TreatMissingData": {
+      "type": "string",
+      "description": "Sets how this alarm is to handle missing data points."
+    },
+    "EvaluateLowSampleCountPercentile": {
+      "type": "string",
+      "description": "Used only for alarms based on percentiles."
+    },
+    "Metrics": {
+      "type": "array",
+      "description": "An array of MetricDataQuery structures for metric math expressions."
+    },
+    "ThresholdMetricId": {
+      "type": "string",
+      "description": "If the value of this field is set to an alarm metric ID, the alarm is based on an anomaly detection model."
+    },
+    "StateTransitionedTimestamp": {
+      "type": "string",
+      "description": "The date and time that the alarm's StateValue most recently changed."
+    }
+  }
+}

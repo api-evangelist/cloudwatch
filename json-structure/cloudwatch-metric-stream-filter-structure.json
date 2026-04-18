@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MetricStreamFilter",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string"
+    },
+    "MetricNames": {
+      "type": "array"
+    }
+  }
+}

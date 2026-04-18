@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricCharacteristics",
+  "type": "object",
+  "description": "This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.",
+  "properties": {
+    "PeriodicSpikes": {
+      "type": "boolean",
+      "description": "Set this parameter to true if values for this metric consistently include spikes that should not be considered to be anomalies."
+    }
+  }
+}

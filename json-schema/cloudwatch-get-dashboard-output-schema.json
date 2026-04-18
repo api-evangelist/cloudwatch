@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetDashboardOutput",
+  "type": "object",
+  "properties": {
+    "DashboardArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the dashboard."
+    },
+    "DashboardBody": {
+      "type": "string",
+      "description": "The detailed information about the dashboard, including what widgets are included and their location."
+    },
+    "DashboardName": {
+      "type": "string",
+      "description": "The name of the dashboard."
+    }
+  }
+}

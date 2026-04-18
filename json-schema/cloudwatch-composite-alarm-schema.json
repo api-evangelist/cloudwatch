@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CompositeAlarm",
+  "type": "object",
+  "description": "The details about a composite alarm.",
+  "properties": {
+    "ActionsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether actions should be executed during changes to the alarm state."
+    },
+    "AlarmActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the ALARM state."
+    },
+    "AlarmArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the alarm."
+    },
+    "AlarmConfigurationUpdatedTimestamp": {
+      "type": "string",
+      "description": "The time stamp of the last update to the alarm configuration."
+    },
+    "AlarmDescription": {
+      "type": "string",
+      "description": "The description of the alarm."
+    },
+    "AlarmName": {
+      "type": "string",
+      "description": "The name of the alarm."
+    },
+    "AlarmRule": {
+      "type": "string",
+      "description": "The rule that this alarm uses to evaluate its alarm state."
+    },
+    "InsufficientDataActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state."
+    },
+    "OKActions": {
+      "type": "array",
+      "description": "The actions to execute when this alarm transitions to the OK state."
+    },
+    "StateReason": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in text format."
+    },
+    "StateReasonData": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in JSON format."
+    },
+    "StateUpdatedTimestamp": {
+      "type": "string",
+      "description": "The timestamp of the last change to the alarm's StateValue."
+    },
+    "StateTransitionedTimestamp": {
+      "type": "string",
+      "description": "The timestamp of the last state transition."
+    },
+    "ActionsSuppressedBy": {
+      "type": "string",
+      "description": "When the value is ALARM, it means that the actions are suppressed."
+    },
+    "ActionsSuppressedReason": {
+      "type": "string",
+      "description": "Describes why the actions are suppressed."
+    },
+    "ActionsSuppressor": {
+      "type": "string",
+      "description": "The ARN of the alarm used as the actions suppressor."
+    },
+    "ActionsSuppressorWaitPeriod": {
+      "type": "integer",
+      "description": "The maximum time in seconds that the composite alarm waits after suppressor alarm goes into ALARM state."
+    },
+    "ActionsSuppressorExtensionPeriod": {
+      "type": "integer",
+      "description": "The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of ALARM state."
+    }
+  }
+}

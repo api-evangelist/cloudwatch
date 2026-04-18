@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListMetricsInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "description": "Filters the results to only those metrics in the specified namespace."
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "Filters the results to only the specified metric name."
+    },
+    "Dimensions": {
+      "type": "array",
+      "description": "Filters the results to only those metrics that match the specified dimensions."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call to indicate there is more data available."
+    },
+    "RecentlyActive": {
+      "type": "string",
+      "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H."
+    },
+    "IncludeLinkedAccounts": {
+      "type": "boolean",
+      "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data."
+    },
+    "OwningAccount": {
+      "type": "string",
+      "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account."
+    }
+  }
+}

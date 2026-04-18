@@ -1,0 +1,21 @@
+{
+  "AlarmName": "example_value",
+  "AlarmDescription": "example_value",
+  "ActionsEnabled": true,
+  "OKActions": [],
+  "AlarmActions": [],
+  "InsufficientDataActions": [],
+  "MetricName": "example_value",
+  "Namespace": "example_value",
+  "ExtendedStatistic": "example_value",
+  "Dimensions": [],
+  "Period": 10,
+  "EvaluationPeriods": 10,
+  "DatapointsToAlarm": 10,
+  "Threshold": 42.5,
+  "TreatMissingData": "example_value",
+  "EvaluateLowSampleCountPercentile": "example_value",
+  "Metrics": [],
+  "Tags": [],
+  "ThresholdMetricId": "500123"
+}

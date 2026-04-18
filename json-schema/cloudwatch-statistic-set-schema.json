@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "StatisticSet",
+  "type": "object",
+  "description": "Represents a set of statistics that describes a specific metric.",
+  "properties": {
+    "SampleCount": {
+      "type": "number",
+      "description": "The number of samples used for the statistic set."
+    },
+    "Sum": {
+      "type": "number",
+      "description": "The sum of values for the sample set."
+    },
+    "Minimum": {
+      "type": "number",
+      "description": "The minimum value of the sample set."
+    },
+    "Maximum": {
+      "type": "number",
+      "description": "The maximum value of the sample set."
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricDataResult",
+  "type": "object",
+  "description": "A GetMetricData call returns an array of MetricDataResult structures.",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The short name you specified to represent this metric."
+    },
+    "Label": {
+      "type": "string",
+      "description": "The human-readable label associated with the data."
+    },
+    "Timestamps": {
+      "type": "array",
+      "description": "The timestamps for the data points, formatted in Unix epoch time."
+    },
+    "Values": {
+      "type": "array",
+      "description": "The data points for the metric corresponding to Timestamps."
+    },
+    "StatusCode": {
+      "type": "string",
+      "description": "The status of the returned data."
+    },
+    "Messages": {
+      "type": "array",
+      "description": "A list of messages with additional information about the data returned."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetMetricDataOutput",
+  "type": "object",
+  "properties": {
+    "MetricDataResults": {
+      "type": "array",
+      "description": "The metrics that are returned, including the metric name, namespace, and dimensions."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "A token that marks the next batch of returned results."
+    },
+    "Messages": {
+      "type": "array",
+      "description": "Contains a message about the operation or the results."
+    }
+  }
+}

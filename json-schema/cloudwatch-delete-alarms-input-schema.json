@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeleteAlarmsInput",
+  "type": "object",
+  "properties": {
+    "AlarmNames": {
+      "type": "array",
+      "description": "The alarms to be deleted. You can delete up to 100 alarms in one operation."
+    }
+  }
+}

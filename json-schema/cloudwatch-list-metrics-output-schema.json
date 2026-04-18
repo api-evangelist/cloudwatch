@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListMetricsOutput",
+  "type": "object",
+  "properties": {
+    "Metrics": {
+      "type": "array",
+      "description": "The metrics that match your request."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results."
+    },
+    "OwningAccounts": {
+      "type": "array",
+      "description": "If you are using this operation in a monitoring account, this array contains the account IDs of the source accounts."
+    }
+  }
+}

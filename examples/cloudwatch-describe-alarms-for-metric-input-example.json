@@ -1,0 +1,7 @@
+{
+  "MetricName": "example_value",
+  "Namespace": "example_value",
+  "ExtendedStatistic": "example_value",
+  "Dimensions": [],
+  "Period": 10
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MetricDataResult",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Label": {
+      "type": "string"
+    },
+    "Timestamps": {
+      "type": "array"
+    },
+    "Values": {
+      "type": "array"
+    },
+    "StatusCode": {
+      "type": "string"
+    },
+    "Messages": {
+      "type": "array"
+    }
+  }
+}

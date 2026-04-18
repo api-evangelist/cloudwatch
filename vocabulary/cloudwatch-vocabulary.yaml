@@ -1,0 +1,13 @@
+name: cloudwatch API Vocabulary
+provider: cloudwatch
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 25
+schemas: 69
+tags:
+- Alarms
+- Anomaly Detection
+- Composite Alarms
+- Dashboards
+- Metric Streams
+- Metrics

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AlarmHistoryItem",
+  "type": "object",
+  "description": "Represents the history of a specific alarm.",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "description": "The descriptive name for the alarm."
+    },
+    "AlarmType": {
+      "type": "string",
+      "description": "The type of alarm, either metric alarm or composite alarm."
+    },
+    "Timestamp": {
+      "type": "string",
+      "description": "The time stamp for the alarm history item."
+    },
+    "HistoryItemType": {
+      "type": "string",
+      "description": "The type of alarm history item."
+    },
+    "HistorySummary": {
+      "type": "string",
+      "description": "A summary of the alarm history, in text format."
+    },
+    "HistoryData": {
+      "type": "string",
+      "description": "Data about the alarm, in JSON format."
+    }
+  }
+}

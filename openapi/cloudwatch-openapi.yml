@@ -24,56 +24,56 @@ externalDocs:
   url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/
 
 servers:
-  - url: https://monitoring.{region}.amazonaws.com
-    description: CloudWatch regional endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: The AWS region
-        enum:
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - eu-west-1
-          - eu-west-2
-          - eu-west-3
-          - eu-central-1
-          - eu-north-1
-          - ap-east-1
-          - ap-south-1
-          - ap-southeast-1
-          - ap-southeast-2
-          - ap-northeast-1
-          - ap-northeast-2
-          - ap-northeast-3
-          - sa-east-1
-          - ca-central-1
-          - me-south-1
-          - af-south-1
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
 
 security:
-  - aws_sigv4: []
+- aws_sigv4: []
 
 tags:
-  - name: Alarms
-    description: Operations for creating, managing, and querying CloudWatch alarms
-  - name: Anomaly Detection
-    description: Operations for CloudWatch anomaly detection models
-  - name: Composite Alarms
-    description: Operations for composite alarms that aggregate multiple alarm states
+- name: Alarms
+  description: Operations for creating, managing, and querying CloudWatch alarms
+- name: Anomaly Detection
+  description: Operations for CloudWatch anomaly detection models
+- name: Composite Alarms
+  description: Operations for composite alarms that aggregate multiple alarm states
 
-  - name: Dashboards
-    description: Operations for creating and managing CloudWatch dashboards
-  - name: Metric Streams
-    description: Operations for managing metric streams
-  - name: Metrics
-    description: Operations for working with CloudWatch metrics and metric data
+- name: Dashboards
+  description: Operations for creating and managing CloudWatch dashboards
+- name: Metric Streams
+  description: Operations for managing metric streams
+- name: Metrics
+  description: Operations for working with CloudWatch metrics and metric data
 paths:
   /:
     post:
       operationId: PutMetricData
-      summary: AWS CloudWatch Publish metric data points to CloudWatch
+      summary: Aws Cloudwatch Publish Metric Data Points to Cloudwatch
       description: >-
         Publishes metric data points to Amazon CloudWatch. CloudWatch associates
         the data points with the specified metric. If the specified metric does
@@ -84,17 +84,31 @@ paths:
         requests. The maximum number of metric datum items per PutMetricData
         request is 1,000.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_PutMetricData'
-        - $ref: '#/components/parameters/Version'
-        - $ref: '#/components/parameters/ContentType'
+      - $ref: '#/components/parameters/Action_PutMetricData'
+      - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/ContentType'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutMetricDataInput'
+            examples:
+              PutmetricdataRequestExample:
+                summary: Default PutMetricData request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricData:
+                  - MetricName: example_value
+                    Dimensions: {}
+                    Timestamp: '2026-01-15T10:30:00Z'
+                    Value: 42.5
+                    Values: {}
+                    Counts: {}
+                    StorageResolution: 10
       responses:
         '200':
           description: Successful response
@@ -104,6 +118,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putmetricdata400Example:
+                  summary: Default PutMetricData 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
         '500':
           description: Internal failure
           content:
@@ -111,10 +135,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putmetricdata500Example:
+                  summary: Default PutMetricData 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#GetMetricData:
     post:
       operationId: GetMetricData
-      summary: AWS CloudWatch Retrieve metric data from CloudWatch
+      summary: Aws Cloudwatch Retrieve Metric Data From Cloudwatch
       description: >-
         Retrieves CloudWatch metric values. You can use GetMetricData to
         retrieve as many as 500 different metrics in a single request, with a
@@ -123,16 +160,35 @@ paths:
         returned statistics. CloudWatch returns aggregated data points based on
         the statistical values requested.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_GetMetricData'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_GetMetricData'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/GetMetricDataInput'
+            examples:
+              GetmetricdataRequestExample:
+                summary: Default GetMetricData request
+                x-microcks-default: true
+                value:
+                  MetricDataQueries:
+                  - Id: abc123
+                    Expression: example_value
+                    Label: Example Title
+                    ReturnData: true
+                    Period: 10
+                    AccountId: '500123'
+                  StartTime: '2026-01-15T10:30:00Z'
+                  EndTime: '2026-01-15T10:30:00Z'
+                  NextToken: example_value
+                  ScanBy: TimestampDescending
+                  MaxDatapoints: 10
+                  LabelOptions:
+                    Timezone: example_value
       responses:
         '200':
           description: Successful response
@@ -140,6 +196,22 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/GetMetricDataOutput'
+              examples:
+                Getmetricdata200Example:
+                  summary: Default GetMetricData 200 response
+                  x-microcks-default: true
+                  value:
+                    MetricDataResults:
+                    - Id: abc123
+                      Label: Example Title
+                      Timestamps: {}
+                      Values: {}
+                      StatusCode: Complete
+                      Messages: {}
+                    NextToken: example_value
+                    Messages:
+                    - Code: example_value
+                      Value: example_value
         '400':
           description: Invalid parameter value or combination
           content:
@@ -147,10 +219,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Getmetricdata400Example:
+                  summary: Default GetMetricData 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#GetMetricStatistics:
     post:
       operationId: GetMetricStatistics
-      summary: AWS CloudWatch Retrieve statistics for a specified metric
+      summary: Aws Cloudwatch Retrieve Statistics for a Specified Metric
       description: >-
         Gets statistics for the specified metric. The maximum number of data
         points returned from a single call is 1,440. If you request more than
@@ -161,16 +246,34 @@ paths:
         seconds are available for 63 days, and data points with a period of
         3600 seconds are available for 455 days.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_GetMetricStatistics'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_GetMetricStatistics'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/GetMetricStatisticsInput'
+            examples:
+              GetmetricstatisticsRequestExample:
+                summary: Default GetMetricStatistics request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  StartTime: '2026-01-15T10:30:00Z'
+                  EndTime: '2026-01-15T10:30:00Z'
+                  Period: 10
+                  Statistics:
+                  - SampleCount
+                  ExtendedStatistics:
+                  - example_value
+                  Unit: Seconds
       responses:
         '200':
           description: Successful response
@@ -178,6 +281,20 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/GetMetricStatisticsOutput'
+              examples:
+                Getmetricstatistics200Example:
+                  summary: Default GetMetricStatistics 200 response
+                  x-microcks-default: true
+                  value:
+                    Label: Example Title
+                    Datapoints:
+                    - Timestamp: '2026-01-15T10:30:00Z'
+                      SampleCount: 42.5
+                      Average: 42.5
+                      Sum: 42.5
+                      Minimum: 42.5
+                      Maximum: 42.5
+                      ExtendedStatistics: example_value
         '400':
           description: Bad request
           content:
@@ -185,10 +302,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Getmetricstatistics400Example:
+                  summary: Default GetMetricStatistics 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListMetrics:
     post:
       operationId: ListMetrics
-      summary: AWS CloudWatch List the specified metrics
+      summary: Aws Cloudwatch List the Specified Metrics
       description: >-
         List the specified metrics. You can use the returned metrics with
         GetMetricData or GetMetricStatistics to get statistical data. Up to 500
@@ -196,15 +326,29 @@ paths:
         use the returned token with subsequent calls. CloudWatch retains metric
         data for 15 months.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_ListMetrics'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_ListMetrics'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ListMetricsInput'
+            examples:
+              ListmetricsRequestExample:
+                summary: Default ListMetrics request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  NextToken: example_value
+                  RecentlyActive: PT3H
+                  IncludeLinkedAccounts: true
+                  OwningAccount: example_value
       responses:
         '200':
           description: Successful response
@@ -212,6 +356,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ListMetricsOutput'
+              examples:
+                Listmetrics200Example:
+                  summary: Default ListMetrics 200 response
+                  x-microcks-default: true
+                  value:
+                    Metrics:
+                    - Namespace: example_value
+                      MetricName: example_value
+                      Dimensions: {}
+                    NextToken: example_value
+                    OwningAccounts:
+                    - example_value
         '400':
           description: Bad request
           content:
@@ -219,10 +375,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Listmetrics400Example:
+                  summary: Default ListMetrics 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutMetricAlarm:
     post:
       operationId: PutMetricAlarm
-      summary: AWS CloudWatch Create or update a CloudWatch alarm
+      summary: Aws Cloudwatch Create or Update a Cloudwatch Alarm
       description: >-
         Creates or updates an alarm and associates it with the specified metric,
         metric math expression, anomaly detection model, or Metrics Insights
@@ -231,16 +400,56 @@ paths:
         actions based on other alarms. If you are using a composite alarm, the
         alarm watches the states of other alarms.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_PutMetricAlarm'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_PutMetricAlarm'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutMetricAlarmInput'
+            examples:
+              PutmetricalarmRequestExample:
+                summary: Default PutMetricAlarm request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmDescription: example_value
+                  ActionsEnabled: true
+                  OKActions:
+                  - example_value
+                  AlarmActions:
+                  - example_value
+                  InsufficientDataActions:
+                  - example_value
+                  MetricName: example_value
+                  Namespace: example_value
+                  Statistic: SampleCount
+                  ExtendedStatistic: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Period: 10
+                  Unit: Seconds
+                  EvaluationPeriods: 10
+                  DatapointsToAlarm: 10
+                  Threshold: 42.5
+                  ComparisonOperator: GreaterThanOrEqualToThreshold
+                  TreatMissingData: example_value
+                  EvaluateLowSampleCountPercentile: example_value
+                  Metrics:
+                  - Id: abc123
+                    Expression: example_value
+                    Label: Example Title
+                    ReturnData: true
+                    Period: 10
+                    AccountId: '500123'
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  ThresholdMetricId: '500123'
       responses:
         '200':
           description: Successful response
@@ -251,26 +460,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putmetricalarm400Example:
+                  summary: Default PutMetricAlarm 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutCompositeAlarm:
     post:
       operationId: PutCompositeAlarm
-      summary: AWS CloudWatch Create or update a composite alarm
+      summary: Aws Cloudwatch Create or Update a Composite Alarm
       description: >-
         Creates or updates a composite alarm. When you create a composite alarm,
         you specify a rule expression for the alarm that takes into account the
         alarm states of other alarms that you have created. The composite alarm
         goes into ALARM state only if all conditions of the rule are met.
       tags:
-        - Composite Alarms
+      - Composite Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_PutCompositeAlarm'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_PutCompositeAlarm'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutCompositeAlarmInput'
+            examples:
+              PutcompositealarmRequestExample:
+                summary: Default PutCompositeAlarm request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmDescription: example_value
+                  ActionsEnabled: true
+                  AlarmActions:
+                  - example_value
+                  AlarmRule: example_value
+                  InsufficientDataActions:
+                  - example_value
+                  OKActions:
+                  - example_value
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  ActionsSuppressor: example_value
+                  ActionsSuppressorWaitPeriod: 10
+                  ActionsSuppressorExtensionPeriod: 10
       responses:
         '200':
           description: Successful response
@@ -281,10 +524,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putcompositealarm400Example:
+                  summary: Default PutCompositeAlarm 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeAlarms:
     post:
       operationId: DescribeAlarms
-      summary: AWS CloudWatch Retrieve information about specified alarms
+      summary: Aws Cloudwatch Retrieve Information About Specified Alarms
       description: >-
         Retrieves the specified alarms. You can filter the results by specifying
         a prefix for the alarm name, the alarm state, or a prefix for any
@@ -292,15 +548,31 @@ paths:
         alarms, you must be signed on with the
         cloudwatch:DescribeAlarms permission.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_DescribeAlarms'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DescribeAlarms'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DescribeAlarmsInput'
+            examples:
+              DescribealarmsRequestExample:
+                summary: Default DescribeAlarms request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
+                  AlarmNamePrefix: example_value
+                  AlarmTypes:
+                  - CompositeAlarm
+                  ChildrenOfAlarmName: example_value
+                  ParentsOfAlarmName: example_value
+                  StateValue: OK
+                  ActionPrefix: example_value
+                  MaxRecords: 10
+                  NextToken: example_value
       responses:
         '200':
           description: Successful response
@@ -308,6 +580,56 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/DescribeAlarmsOutput'
+              examples:
+                Describealarms200Example:
+                  summary: Default DescribeAlarms 200 response
+                  x-microcks-default: true
+                  value:
+                    MetricAlarms:
+                    - AlarmName: example_value
+                      AlarmArn: example_value
+                      AlarmDescription: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsEnabled: true
+                      OKActions: {}
+                      AlarmActions: {}
+                      InsufficientDataActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      MetricName: example_value
+                      Namespace: example_value
+                      ExtendedStatistic: example_value
+                      Dimensions: {}
+                      Period: 10
+                      EvaluationPeriods: 10
+                      DatapointsToAlarm: 10
+                      Threshold: 42.5
+                      TreatMissingData: breaching
+                      EvaluateLowSampleCountPercentile: example_value
+                      Metrics: {}
+                      ThresholdMetricId: '500123'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+                    CompositeAlarms:
+                    - ActionsEnabled: true
+                      AlarmActions: {}
+                      AlarmArn: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      AlarmDescription: example_value
+                      AlarmName: example_value
+                      AlarmRule: example_value
+                      InsufficientDataActions: {}
+                      OKActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsSuppressedBy: WaitPeriod
+                      ActionsSuppressedReason: example_value
+                      ActionsSuppressor: example_value
+                      ActionsSuppressorWaitPeriod: 10
+                      ActionsSuppressorExtensionPeriod: 10
+                    NextToken: example_value
         '400':
           description: Invalid next token
           content:
@@ -315,25 +637,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Describealarms400Example:
+                  summary: Default DescribeAlarms 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeAlarmsForMetric:
     post:
       operationId: DescribeAlarmsForMetric
-      summary: AWS CloudWatch Retrieve alarms for a specified metric
+      summary: Aws Cloudwatch Retrieve Alarms for a Specified Metric
       description: >-
         Retrieves the alarms for the specified metric. To filter the results,
         specify a statistic, period, or unit. This operation retrieves only
         standard alarms that are based on the specified metric.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_DescribeAlarmsForMetric'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DescribeAlarmsForMetric'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DescribeAlarmsForMetricInput'
+            examples:
+              DescribealarmsformetricRequestExample:
+                summary: Default DescribeAlarmsForMetric request
+                x-microcks-default: true
+                value:
+                  MetricName: example_value
+                  Namespace: example_value
+                  Statistic: SampleCount
+                  ExtendedStatistic: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Period: 10
+                  Unit: Seconds
       responses:
         '200':
           description: Successful response
@@ -342,10 +691,43 @@ paths:
               schema:
                 $ref: '#/components/schemas/DescribeAlarmsForMetricOutput'
 
+              examples:
+                Describealarmsformetric200Example:
+                  summary: Default DescribeAlarmsForMetric 200 response
+                  x-microcks-default: true
+                  value:
+                    MetricAlarms:
+                    - AlarmName: example_value
+                      AlarmArn: example_value
+                      AlarmDescription: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsEnabled: true
+                      OKActions: {}
+                      AlarmActions: {}
+                      InsufficientDataActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      MetricName: example_value
+                      Namespace: example_value
+                      ExtendedStatistic: example_value
+                      Dimensions: {}
+                      Period: 10
+                      EvaluationPeriods: 10
+                      DatapointsToAlarm: 10
+                      Threshold: 42.5
+                      TreatMissingData: breaching
+                      EvaluateLowSampleCountPercentile: example_value
+                      Metrics: {}
+                      ThresholdMetricId: '500123'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeAlarmHistory:
     post:
       operationId: DescribeAlarmHistory
-      summary: AWS CloudWatch Retrieve the history for a specified alarm
+      summary: Aws Cloudwatch Retrieve the History for a Specified Alarm
       description: >-
         Retrieves the history for the specified alarm. You can filter the
         results by date range or item type. If an alarm name is not specified,
@@ -353,15 +735,29 @@ paths:
         returned. CloudWatch retains the history of an alarm even if you delete
         the alarm.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_DescribeAlarmHistory'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DescribeAlarmHistory'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DescribeAlarmHistoryInput'
+            examples:
+              DescribealarmhistoryRequestExample:
+                summary: Default DescribeAlarmHistory request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmTypes:
+                  - CompositeAlarm
+                  HistoryItemType: ConfigurationUpdate
+                  StartDate: '2026-01-15T10:30:00Z'
+                  EndDate: '2026-01-15T10:30:00Z'
+                  MaxRecords: 10
+                  NextToken: example_value
+                  ScanBy: TimestampDescending
       responses:
         '200':
           description: Successful response
@@ -369,6 +765,19 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/DescribeAlarmHistoryOutput'
+              examples:
+                Describealarmhistory200Example:
+                  summary: Default DescribeAlarmHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    AlarmHistoryItems:
+                    - AlarmName: example_value
+                      AlarmType: CompositeAlarm
+                      Timestamp: '2026-01-15T10:30:00Z'
+                      HistoryItemType: ConfigurationUpdate
+                      HistorySummary: example_value
+                      HistoryData: example_value
+                    NextToken: example_value
         '400':
           description: Invalid next token
           content:
@@ -376,26 +785,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Describealarmhistory400Example:
+                  summary: Default DescribeAlarmHistory 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteAlarms:
     post:
       operationId: DeleteAlarms
-      summary: AWS CloudWatch Delete specified alarms
+      summary: Aws Cloudwatch Delete Specified Alarms
       description: >-
         Deletes the specified alarms. You can delete up to 100 alarms in one
         operation. In the event of an error, no alarms are deleted. To get
         information about your current alarms, use DescribeAlarms. If a
         specified alarm does not exist, no error is returned.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_DeleteAlarms'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DeleteAlarms'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DeleteAlarmsInput'
+            examples:
+              DeletealarmsRequestExample:
+                summary: Default DeleteAlarms request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
       responses:
         '200':
           description: Successful response
@@ -406,10 +835,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Deletealarms400Example:
+                  summary: Default DeleteAlarms 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#SetAlarmState:
     post:
       operationId: SetAlarmState
-      summary: AWS CloudWatch Temporarily set the state of an alarm
+      summary: Aws Cloudwatch Temporarily Set the State of an Alarm
       description: >-
         Temporarily sets the state of an alarm for testing purposes. When the
         updated state differs from the previous value, the action configured
@@ -417,16 +859,25 @@ paths:
         configured to send an Amazon SNS message when an alarm is triggered,
         temporarily changing the alarm state to ALARM sends an SNS message.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_SetAlarmState'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_SetAlarmState'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/SetAlarmStateInput'
+            examples:
+              SetalarmstateRequestExample:
+                summary: Default SetAlarmState request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  StateValue: OK
+                  StateReason: example_value
+                  StateReasonData: example_value
       responses:
         '200':
           description: Successful response
@@ -437,70 +888,110 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Setalarmstate400Example:
+                  summary: Default SetAlarmState 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#EnableAlarmActions:
     post:
       operationId: EnableAlarmActions
-      summary: AWS CloudWatch Enable actions for specified alarms
+      summary: Aws Cloudwatch Enable Actions for Specified Alarms
       description: >-
         Enables the actions for the specified alarms.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_EnableAlarmActions'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_EnableAlarmActions'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/EnableAlarmActionsInput'
+            examples:
+              EnablealarmactionsRequestExample:
+                summary: Default EnableAlarmActions request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
       responses:
         '200':
           description: Successful response
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DisableAlarmActions:
     post:
       operationId: DisableAlarmActions
-      summary: AWS CloudWatch Disable actions for specified alarms
+      summary: Aws Cloudwatch Disable Actions for Specified Alarms
       description: >-
         Disables the actions for the specified alarms. When an alarm's actions
         are disabled, the alarm actions do not execute when the alarm state
         changes.
       tags:
-        - Alarms
+      - Alarms
       parameters:
-        - $ref: '#/components/parameters/Action_DisableAlarmActions'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DisableAlarmActions'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DisableAlarmActionsInput'
+            examples:
+              DisablealarmactionsRequestExample:
+                summary: Default DisableAlarmActions request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
       responses:
         '200':
           description: Successful response
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutDashboard:
     post:
       operationId: PutDashboard
-      summary: AWS CloudWatch Create or update a CloudWatch dashboard
+      summary: Aws Cloudwatch Create or Update a Cloudwatch Dashboard
       description: >-
         Creates a dashboard if it does not already exist, or updates an
         existing dashboard. If you update a dashboard, the entire contents are
         replaced with what you specify here. There is no limit to the number
         of dashboards in your account.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/Action_PutDashboard'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_PutDashboard'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutDashboardInput'
+            examples:
+              PutdashboardRequestExample:
+                summary: Default PutDashboard request
+                x-microcks-default: true
+                value:
+                  DashboardName: example_value
+                  DashboardBody: example_value
       responses:
         '200':
           description: Successful response
@@ -508,12 +999,30 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/PutDashboardOutput'
+              examples:
+                Putdashboard200Example:
+                  summary: Default PutDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardValidationMessages:
+                    - DataPath: example_value
+                      Message: example_value
         '400':
           description: Dashboard invalid input error
           content:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putdashboard400Example:
+                  summary: Default PutDashboard 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
         '500':
           description: Internal service error
           content:
@@ -521,26 +1030,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putdashboard500Example:
+                  summary: Default PutDashboard 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#GetDashboard:
     post:
       operationId: GetDashboard
-      summary: AWS CloudWatch Retrieve details for a specified dashboard
+      summary: Aws Cloudwatch Retrieve Details for a Specified Dashboard
       description: >-
         Displays the details of the dashboard that you specify. To copy an
         existing dashboard, use GetDashboard, and then use the data returned
         within DashboardBody as the template for the new dashboard when you
         call PutDashboard to create the copy.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/Action_GetDashboard'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_GetDashboard'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/GetDashboardInput'
+            examples:
+              GetdashboardRequestExample:
+                summary: Default GetDashboard request
+                x-microcks-default: true
+                value:
+                  DashboardName: example_value
       responses:
         '200':
           description: Successful response
@@ -548,12 +1076,30 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/GetDashboardOutput'
+              examples:
+                Getdashboard200Example:
+                  summary: Default GetDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardArn: example_value
+                    DashboardBody: example_value
+                    DashboardName: example_value
         '400':
           description: Dashboard not found
           content:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard400Example:
+                  summary: Default GetDashboard 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
         '500':
           description: Internal service error
           content:
@@ -561,25 +1107,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Getdashboard500Example:
+                  summary: Default GetDashboard 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListDashboards:
     post:
       operationId: ListDashboards
-      summary: AWS CloudWatch List the dashboards in your account
+      summary: Aws Cloudwatch List the Dashboards in Your Account
       description: >-
         Returns a list of the dashboards for your account. If you include
         DashboardNamePrefix, only those dashboards with names starting with
         the prefix are listed. Otherwise, all dashboards in your account are
         listed. ListDashboards returns up to 1000 results on one page.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/Action_ListDashboards'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_ListDashboards'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ListDashboardsInput'
+            examples:
+              ListdashboardsRequestExample:
+                summary: Default ListDashboards request
+                x-microcks-default: true
+                value:
+                  DashboardNamePrefix: example_value
+                  NextToken: example_value
       responses:
         '200':
           description: Successful response
@@ -587,12 +1153,33 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ListDashboardsOutput'
+              examples:
+                Listdashboards200Example:
+                  summary: Default ListDashboards 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardEntries:
+                    - DashboardName: example_value
+                      DashboardArn: example_value
+                      LastModified: '2026-01-15T10:30:00Z'
+                      Size: 10
+                    NextToken: example_value
         '400':
           description: Invalid parameter value
           content:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Listdashboards400Example:
+                  summary: Default ListDashboards 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
         '500':
           description: Internal service error
           content:
@@ -600,25 +1187,45 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Listdashboards500Example:
+                  summary: Default ListDashboards 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteDashboards:
     post:
       operationId: DeleteDashboards
-      summary: AWS CloudWatch Delete specified dashboards
+      summary: Aws Cloudwatch Delete Specified Dashboards
       description: >-
         Deletes all dashboards that you specify. You can specify up to 100
         dashboards to delete. If there is an error during this call, no
         dashboards are deleted.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/Action_DeleteDashboards'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DeleteDashboards'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DeleteDashboardsInput'
+            examples:
+              DeletedashboardsRequestExample:
+                summary: Default DeleteDashboards request
+                x-microcks-default: true
+                value:
+                  DashboardNames:
+                  - example_value
       responses:
         '200':
           description: Successful response
@@ -628,6 +1235,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletedashboards400Example:
+                  summary: Default DeleteDashboards 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
         '500':
           description: Internal service error
           content:
@@ -635,10 +1252,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Deletedashboards500Example:
+                  summary: Default DeleteDashboards 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutAnomalyDetector:
     post:
       operationId: PutAnomalyDetector
-      summary: AWS CloudWatch Create an anomaly detection model for a metric
+      summary: Aws Cloudwatch Create an Anomaly Detection Model for a Metric
       description: >-
         Creates an anomaly detection model for a CloudWatch metric. You can use
         the model to display a band of expected normal values when the metric
@@ -646,16 +1276,43 @@ paths:
         and this account is a monitoring account, the metric can be in the
         same account or a source account.
       tags:
-        - Anomaly Detection
+      - Anomaly Detection
       parameters:
-        - $ref: '#/components/parameters/Action_PutAnomalyDetector'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_PutAnomalyDetector'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutAnomalyDetectorInput'
+            examples:
+              PutanomalydetectorRequestExample:
+                summary: Default PutAnomalyDetector request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Stat: example_value
+                  Configuration:
+                    ExcludedTimeRanges:
+                    - {}
+                    MetricTimezone: example_value
+                  MetricCharacteristics:
+                    PeriodicSpikes: true
+                  SingleMetricAnomalyDetector:
+                    AccountId: '500123'
+                    Namespace: example_value
+                    MetricName: example_value
+                    Dimensions:
+                    - {}
+                    Stat: example_value
+                  MetricMathAnomalyDetector:
+                    MetricDataQueries:
+                    - {}
       responses:
         '200':
           description: Successful response
@@ -666,25 +1323,52 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putanomalydetector400Example:
+                  summary: Default PutAnomalyDetector 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DescribeAnomalyDetectors:
     post:
       operationId: DescribeAnomalyDetectors
-      summary: AWS CloudWatch List anomaly detection models
+      summary: Aws Cloudwatch List Anomaly Detection Models
       description: >-
         Lists the anomaly detection models that you have created in your
         account. For each model, the response includes configuration
         information for the model. If you filter the response, only the
         models matching the filter are returned.
       tags:
-        - Anomaly Detection
+      - Anomaly Detection
       parameters:
-        - $ref: '#/components/parameters/Action_DescribeAnomalyDetectors'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DescribeAnomalyDetectors'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DescribeAnomalyDetectorsInput'
+            examples:
+              DescribeanomalydetectorsRequestExample:
+                summary: Default DescribeAnomalyDetectors request
+                x-microcks-default: true
+                value:
+                  NextToken: example_value
+                  MaxResults: 10
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  AnomalyDetectorTypes:
+                  - SINGLE_METRIC
       responses:
         '200':
           description: Successful response
@@ -693,25 +1377,61 @@ paths:
               schema:
                 $ref: '#/components/schemas/DescribeAnomalyDetectorsOutput'
 
+              examples:
+                Describeanomalydetectors200Example:
+                  summary: Default DescribeAnomalyDetectors 200 response
+                  x-microcks-default: true
+                  value:
+                    AnomalyDetectors:
+                    - Namespace: example_value
+                      MetricName: example_value
+                      Dimensions: {}
+                      Stat: example_value
+                      StateValue: PENDING_TRAINING
+                    NextToken: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#DeleteAnomalyDetector:
     post:
       operationId: DeleteAnomalyDetector
-      summary: AWS CloudWatch Delete an anomaly detection model
+      summary: Aws Cloudwatch Delete an Anomaly Detection Model
       description: >-
         Deletes the specified anomaly detection model from your account. For
         more information about how to delete an anomaly detection model, see
         Deleting an Anomaly Detection Model in the CloudWatch User Guide.
       tags:
-        - Anomaly Detection
+      - Anomaly Detection
       parameters:
-        - $ref: '#/components/parameters/Action_DeleteAnomalyDetector'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_DeleteAnomalyDetector'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/DeleteAnomalyDetectorInput'
+            examples:
+              DeleteanomalydetectorRequestExample:
+                summary: Default DeleteAnomalyDetector request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Stat: example_value
+                  SingleMetricAnomalyDetector:
+                    AccountId: '500123'
+                    Namespace: example_value
+                    MetricName: example_value
+                    Dimensions:
+                    - {}
+                    Stat: example_value
+                  MetricMathAnomalyDetector:
+                    MetricDataQueries:
+                    - {}
       responses:
         '200':
           description: Successful response
@@ -722,10 +1442,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Deleteanomalydetector400Example:
+                  summary: Default DeleteAnomalyDetector 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#PutMetricStream:
     post:
       operationId: PutMetricStream
-      summary: AWS CloudWatch Create or update a metric stream
+      summary: Aws Cloudwatch Create or Update a Metric Stream
       description: >-
         Creates or updates a metric stream. Metric streams can automatically
         stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery
@@ -733,16 +1466,35 @@ paths:
         The output includes metric data in one of two formats, JSON or the
         OpenTelemetry 0.7.0 protobuf format.
       tags:
-        - Metric Streams
+      - Metric Streams
       parameters:
-        - $ref: '#/components/parameters/Action_PutMetricStream'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_PutMetricStream'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PutMetricStreamInput'
+            examples:
+              PutmetricstreamRequestExample:
+                summary: Default PutMetricStream request
+                x-microcks-default: true
+                value:
+                  Name: Example Title
+                  IncludeFilters:
+                  - Namespace: example_value
+                    MetricNames: {}
+                  ExcludeFilters:
+                  - Namespace: example_value
+                    MetricNames: {}
+                  FirehoseArn: example_value
+                  RoleArn: example_value
+                  OutputFormat: json
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  IncludeLinkedAccountsMetrics: true
       responses:
         '200':
           description: Successful response
@@ -750,6 +1502,12 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/PutMetricStreamOutput'
+              examples:
+                Putmetricstream200Example:
+                  summary: Default PutMetricStream 200 response
+                  x-microcks-default: true
+                  value:
+                    Arn: example_value
         '400':
           description: Bad request
           content:
@@ -757,22 +1515,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+              examples:
+                Putmetricstream400Example:
+                  summary: Default PutMetricStream 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListMetricStreams:
     post:
       operationId: ListMetricStreams
-      summary: AWS CloudWatch List the metric streams in your account
+      summary: Aws Cloudwatch List the Metric Streams in Your Account
       description: >-
         Returns a list of metric streams in this account.
       tags:
-        - Metric Streams
+      - Metric Streams
       parameters:
-        - $ref: '#/components/parameters/Action_ListMetricStreams'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_ListMetricStreams'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ListMetricStreamsInput'
+            examples:
+              ListmetricstreamsRequestExample:
+                summary: Default ListMetricStreams request
+                x-microcks-default: true
+                value:
+                  NextToken: example_value
+                  MaxResults: 10
       responses:
         '200':
           description: Successful response
@@ -781,69 +1559,115 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListMetricStreamsOutput'
 
+              examples:
+                Listmetricstreams200Example:
+                  summary: Default ListMetricStreams 200 response
+                  x-microcks-default: true
+                  value:
+                    Entries:
+                    - Arn: example_value
+                      CreationDate: '2026-01-15T10:30:00Z'
+                      LastUpdateDate: '2026-01-15T10:30:00Z'
+                      Name: Example Title
+                      FirehoseArn: example_value
+                      State: example_value
+                      OutputFormat: json
+                    NextToken: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#TagResource:
     post:
       operationId: TagResource
-      summary: AWS CloudWatch Assign tags to a CloudWatch resource
+      summary: Aws Cloudwatch Assign Tags to a Cloudwatch Resource
       description: >-
         Assigns one or more tags (key-value pairs) to the specified CloudWatch
         resource. Currently, the only CloudWatch resources that can be tagged
         are alarms and Contributor Insights rules. Tags can help you organize
         and categorize your resources.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_TagResource'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_TagResource'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/TagResourceInput'
+            examples:
+              TagresourceRequestExample:
+                summary: Default TagResource request
+                x-microcks-default: true
+                value:
+                  ResourceARN: example_value
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
       responses:
         '200':
           description: Successful response
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#UntagResource:
     post:
       operationId: UntagResource
-      summary: AWS CloudWatch Remove tags from a CloudWatch resource
+      summary: Aws Cloudwatch Remove Tags From a Cloudwatch Resource
       description: >-
         Removes one or more tags from the specified resource.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_UntagResource'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_UntagResource'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/UntagResourceInput'
+            examples:
+              UntagresourceRequestExample:
+                summary: Default UntagResource request
+                x-microcks-default: true
+                value:
+                  ResourceARN: example_value
+                  TagKeys:
+                  - example_value
       responses:
         '200':
           description: Successful response
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /#ListTagsForResource:
     post:
       operationId: ListTagsForResource
-      summary: AWS CloudWatch List tags for a CloudWatch resource
+      summary: Aws Cloudwatch List Tags for a Cloudwatch Resource
       description: >-
         Displays the tags associated with a CloudWatch resource. Currently,
         alarms and Contributor Insights rules support tagging.
       tags:
-        - Metrics
+      - Metrics
       parameters:
-        - $ref: '#/components/parameters/Action_ListTagsForResource'
-        - $ref: '#/components/parameters/Version'
+      - $ref: '#/components/parameters/Action_ListTagsForResource'
+      - $ref: '#/components/parameters/Version'
       requestBody:
         required: true
         content:
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/ListTagsForResourceInput'
+            examples:
+              ListtagsforresourceRequestExample:
+                summary: Default ListTagsForResource request
+                x-microcks-default: true
+                value:
+                  ResourceARN: example_value
       responses:
         '200':
           description: Successful response
@@ -852,6 +1676,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
 
+              examples:
+                Listtagsforresource200Example:
+                  summary: Default ListTagsForResource 200 response
+                  x-microcks-default: true
+                  value:
+                    Tags:
+                    - Key: example_value
+                      Value: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     aws_sigv4:
@@ -869,7 +1704,7 @@ components:
       schema:
         type: string
         enum:
-          - '2010-08-01'
+        - '2010-08-01'
       description: The API version (2010-08-01)
 
     ContentType:
@@ -886,7 +1721,7 @@ components:
       schema:
         type: string
         enum:
-          - PutMetricData
+        - PutMetricData
 
     Action_GetMetricData:
       name: Action
@@ -895,7 +1730,7 @@ components:
       schema:
         type: string
         enum:
-          - GetMetricData
+        - GetMetricData
 
     Action_GetMetricStatistics:
       name: Action
@@ -904,7 +1739,7 @@ components:
       schema:
         type: string
         enum:
-          - GetMetricStatistics
+        - GetMetricStatistics
 
     Action_ListMetrics:
       name: Action
@@ -913,7 +1748,7 @@ components:
       schema:
         type: string
         enum:
-          - ListMetrics
+        - ListMetrics
 
     Action_PutMetricAlarm:
       name: Action
@@ -922,7 +1757,7 @@ components:
       schema:
         type: string
         enum:
-          - PutMetricAlarm
+        - PutMetricAlarm
 
     Action_PutCompositeAlarm:
       name: Action
@@ -931,7 +1766,7 @@ components:
       schema:
         type: string
         enum:
-          - PutCompositeAlarm
+        - PutCompositeAlarm
 
     Action_DescribeAlarms:
       name: Action
@@ -940,7 +1775,7 @@ components:
       schema:
         type: string
         enum:
-          - DescribeAlarms
+        - DescribeAlarms
 
     Action_DescribeAlarmsForMetric:
       name: Action
@@ -949,7 +1784,7 @@ components:
       schema:
         type: string
         enum:
-          - DescribeAlarmsForMetric
+        - DescribeAlarmsForMetric
 
     Action_DescribeAlarmHistory:
       name: Action
@@ -958,7 +1793,7 @@ components:
       schema:
         type: string
         enum:
-          - DescribeAlarmHistory
+        - DescribeAlarmHistory
 
     Action_DeleteAlarms:
       name: Action
@@ -967,7 +1802,7 @@ components:
       schema:
         type: string
         enum:
-          - DeleteAlarms
+        - DeleteAlarms
 
     Action_SetAlarmState:
       name: Action
@@ -976,7 +1811,7 @@ components:
       schema:
         type: string
         enum:
-          - SetAlarmState
+        - SetAlarmState
 
     Action_EnableAlarmActions:
       name: Action
@@ -985,7 +1820,7 @@ components:
       schema:
         type: string
         enum:
-          - EnableAlarmActions
+        - EnableAlarmActions
 
     Action_DisableAlarmActions:
       name: Action
@@ -994,7 +1829,7 @@ components:
       schema:
         type: string
         enum:
-          - DisableAlarmActions
+        - DisableAlarmActions
 
     Action_PutDashboard:
       name: Action
@@ -1003,7 +1838,7 @@ components:
       schema:
         type: string
         enum:
-          - PutDashboard
+        - PutDashboard
 
     Action_GetDashboard:
       name: Action
@@ -1012,7 +1847,7 @@ components:
       schema:
         type: string
         enum:
-          - GetDashboard
+        - GetDashboard
 
     Action_ListDashboards:
       name: Action
@@ -1021,7 +1856,7 @@ components:
       schema:
         type: string
         enum:
-          - ListDashboards
+        - ListDashboards
 
     Action_DeleteDashboards:
       name: Action
@@ -1030,7 +1865,7 @@ components:
       schema:
         type: string
         enum:
-          - DeleteDashboards
+        - DeleteDashboards
 
     Action_PutAnomalyDetector:
       name: Action
@@ -1039,7 +1874,7 @@ components:
       schema:
         type: string
         enum:
-          - PutAnomalyDetector
+        - PutAnomalyDetector
 
     Action_DescribeAnomalyDetectors:
       name: Action
@@ -1048,7 +1883,7 @@ components:
       schema:
         type: string
         enum:
-          - DescribeAnomalyDetectors
+        - DescribeAnomalyDetectors
 
     Action_DeleteAnomalyDetector:
       name: Action
@@ -1057,7 +1892,7 @@ components:
       schema:
         type: string
         enum:
-          - DeleteAnomalyDetector
+        - DeleteAnomalyDetector
 
     Action_PutMetricStream:
       name: Action
@@ -1066,7 +1901,7 @@ components:
       schema:
         type: string
         enum:
-          - PutMetricStream
+        - PutMetricStream
 
     Action_ListMetricStreams:
       name: Action
@@ -1075,7 +1910,7 @@ components:
       schema:
         type: string
         enum:
-          - ListMetricStreams
+        - ListMetricStreams
 
     Action_TagResource:
       name: Action
@@ -1084,7 +1919,7 @@ components:
       schema:
         type: string
         enum:
-          - TagResource
+        - TagResource
 
     Action_UntagResource:
       name: Action
@@ -1093,7 +1928,7 @@ components:
       schema:
         type: string
         enum:
-          - UntagResource
+        - UntagResource
 
     Action_ListTagsForResource:
       name: Action
@@ -1102,44 +1937,48 @@ components:
       schema:
         type: string
         enum:
-          - ListTagsForResource
+        - ListTagsForResource
 
   schemas:
     Dimension:
       type: object
       description: A dimension is a name/value pair that is part of the identity of a metric.
       required:
-        - Name
-        - Value
+      - Name
+      - Value
       properties:
         Name:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+          example: Example Title
         Value:
           type: string
           minLength: 1
           maxLength: 1024
           description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
 
+          example: example_value
     DimensionFilter:
       type: object
       description: Represents filters for a dimension.
       required:
-        - Name
+      - Name
       properties:
         Name:
           type: string
           minLength: 1
           maxLength: 255
           description: The dimension name to be matched.
+          example: Example Title
         Value:
           type: string
           minLength: 1
           maxLength: 1024
           description: The value of the dimension to be matched.
 
+          example: example_value
     Metric:
       type: object
       description: Represents a specific metric.
@@ -1150,11 +1989,13 @@ components:
           maxLength: 255
           pattern: '[^:].*'
           description: The namespace of the metric.
+          example: example_value
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric.
+          example: example_value
         Dimensions:
           type: array
           items:
@@ -1162,33 +2003,38 @@ components:
           maxItems: 30
           description: The dimensions for the metric.
 
+          example: []
     MetricDatum:
       type: object
       description: >-
         Encapsulates the information sent to either create a metric or add
         new values to be aggregated into an existing metric.
       required:
-        - MetricName
+      - MetricName
       properties:
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           maxItems: 30
           description: The dimensions associated with the metric.
+          example: []
         Timestamp:
           type: string
           format: date-time
           description: The time the metric data was received, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.
+          example: '2026-01-15T10:30:00Z'
         Value:
           type: number
           format: double
           description: The value for the metric. Although the parameter accepts numbers of type Double, CloudWatch rejects values that are either too small or too large.
+          example: 42.5
         StatisticValues:
           $ref: '#/components/schemas/StatisticSet'
         Values:
@@ -1197,12 +2043,14 @@ components:
             type: number
             format: double
           description: Array of numbers representing the values for the metric during the period.
+          example: []
         Counts:
           type: array
           items:
             type: number
             format: double
           description: Array of numbers that is used along with the Values array.
+          example: []
         Unit:
           $ref: '#/components/schemas/StandardUnit'
         StorageResolution:
@@ -1210,63 +2058,68 @@ components:
           minimum: 1
           description: Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution metric.
 
+          example: 10
     StatisticSet:
       type: object
       description: Represents a set of statistics that describes a specific metric.
       required:
-        - SampleCount
-        - Sum
-        - Minimum
-        - Maximum
+      - SampleCount
+      - Sum
+      - Minimum
+      - Maximum
       properties:
         SampleCount:
           type: number
           format: double
           description: The number of samples used for the statistic set.
+          example: 42.5
         Sum:
           type: number
           format: double
           description: The sum of values for the sample set.
+          example: 42.5
         Minimum:
           type: number
           format: double
           description: The minimum value of the sample set.
+          example: 42.5
         Maximum:
           type: number
           format: double
           description: The maximum value of the sample set.
 
+          example: 42.5
     StandardUnit:
       type: string
       description: The unit of the metric.
       enum:
-        - Seconds
-        - Microseconds
-        - Milliseconds
-        - Bytes
-        - Kilobytes
-        - Megabytes
-        - Gigabytes
-        - Terabytes
-        - Bits
-        - Kilobits
-        - Megabits
-        - Gigabits
-        - Terabits
-        - Percent
-        - Count
-        - Bytes/Second
-        - Kilobytes/Second
-        - Megabytes/Second
-        - Gigabytes/Second
-        - Terabytes/Second
-        - Bits/Second
-        - Kilobits/Second
-        - Megabits/Second
-        - Gigabits/Second
-        - Terabits/Second
-        - Count/Second
-        - None
+      - Seconds
+      - Microseconds
+      - Milliseconds
+      - Bytes
+      - Kilobytes
+      - Megabytes
+      - Gigabytes
+      - Terabytes
+      - Bits
+      - Kilobits
+      - Megabits
+      - Gigabits
+      - Terabits
+      - Percent
+      - Count
+      - Bytes/Second
+      - Kilobytes/Second
+      - Megabytes/Second
+      - Gigabytes/Second
+      - Terabytes/Second
+      - Bits/Second
+      - Kilobits/Second
+      - Megabits/Second
+      - Gigabits/Second
+      - Terabits/Second
+      - Count/Second
+      - None
 
     Datapoint:
       type: object
@@ -1276,26 +2129,32 @@ components:
           type: string
           format: date-time
           description: The time stamp used for the data point.
+          example: '2026-01-15T10:30:00Z'
         SampleCount:
           type: number
           format: double
           description: The number of metric values that contributed to the aggregate value of this data point.
+          example: 42.5
         Average:
           type: number
           format: double
           description: The average of the metric values that correspond to the data point.
+          example: 42.5
         Sum:
           type: number
           format: double
           description: The sum of the metric values for the data point.
+          example: 42.5
         Minimum:
           type: number
           format: double
           description: The minimum metric value for the data point.
+          example: 42.5
         Maximum:
           type: number
           format: double
           description: The maximum metric value for the data point.
+          example: 42.5
         Unit:
           $ref: '#/components/schemas/StandardUnit'
         ExtendedStatistics:
@@ -1305,13 +2164,14 @@ components:
             format: double
           description: The percentile statistic for the data point.
 
+          example: example_value
     MetricDataQuery:
       type: object
       description: >-
         This structure is used in both GetMetricData and PutMetricAlarm. The
         supported use of this structure is different for those two operations.
       required:
-        - Id
+      - Id
       properties:
         Id:
           type: string
@@ -1319,6 +2179,7 @@ components:
           maxLength: 255
           pattern: '[a-z][a-zA-Z0-9_]*'
           description: A short name used to tie this object to the results in the response.
+          example: abc123
         MetricStat:
           $ref: '#/components/schemas/MetricStat'
         Expression:
@@ -1326,31 +2187,36 @@ components:
           minLength: 1
           maxLength: 2048
           description: This field can contain a Metrics Insights query, or a metric math expression.
+          example: example_value
         Label:
           type: string
           description: A human-readable label for this metric or expression.
+          example: Example Title
         ReturnData:
           type: boolean
           description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
+          example: true
         Period:
           type: integer
           minimum: 1
           description: The granularity, in seconds, of the returned data points.
+          example: 10
         AccountId:
           type: string
           minLength: 1
           maxLength: 255
           description: The ID of the account where the metrics are located.
 
+          example: '500123'
     MetricStat:
       type: object
       description: >-
         This structure defines the metric to be returned, along with the
         statistics, period, and units.
       required:
-        - Metric
-        - Period
-        - Stat
+      - Metric
+      - Period
+      - Stat
       properties:
         Metric:
           $ref: '#/components/schemas/Metric'
@@ -1358,9 +2224,11 @@ components:
           type: integer
           minimum: 1
           description: The granularity, in seconds, of the returned data points.
+          example: 10
         Stat:
           type: string
           description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+          example: example_value
         Unit:
           $ref: '#/components/schemas/StandardUnit'
 
@@ -1371,35 +2239,41 @@ components:
         Id:
           type: string
           description: The short name you specified to represent this metric.
+          example: abc123
         Label:
           type: string
           description: The human-readable label associated with the data.
+          example: Example Title
         Timestamps:
           type: array
           items:
             type: string
             format: date-time
           description: The timestamps for the data points, formatted in Unix epoch time.
+          example: []
         Values:
           type: array
           items:
             type: number
             format: double
           description: The data points for the metric corresponding to Timestamps.
+          example: []
         StatusCode:
           type: string
           enum:
-            - Complete
-            - InternalError
-            - Forbidden
-            - PartialData
+          - Complete
+          - InternalError
+          - Forbidden
+          - PartialData
           description: The status of the returned data.
+          example: Complete
         Messages:
           type: array
           items:
             $ref: '#/components/schemas/MessageData'
           description: A list of messages with additional information about the data returned.
 
+          example: []
     MessageData:
       type: object
       description: A message returned by the GetMetricData API.
@@ -1407,10 +2281,12 @@ components:
         Code:
           type: string
           description: The error code or status code associated with the message.
+          example: example_value
         Value:
           type: string
           description: The message text.
 
+          example: example_value
     MetricAlarm:
       type: object
       description: The details about a metric alarm.
@@ -1420,119 +2296,143 @@ components:
           minLength: 1
           maxLength: 255
           description: The name of the alarm.
+          example: example_value
         AlarmArn:
           type: string
           minLength: 1
           maxLength: 1600
           description: The Amazon Resource Name (ARN) of the alarm.
+          example: example_value
         AlarmDescription:
           type: string
           maxLength: 1024
           description: The description of the alarm.
+          example: example_value
         AlarmConfigurationUpdatedTimestamp:
           type: string
           format: date-time
           description: The time stamp of the last update to the alarm configuration.
+          example: '2026-01-15T10:30:00Z'
         ActionsEnabled:
           type: boolean
           description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
         OKActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the OK state.
+          example: []
         AlarmActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
         InsufficientDataActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
         StateValue:
           $ref: '#/components/schemas/StateValue'
         StateReason:
           type: string
           maxLength: 1023
           description: An explanation for the alarm state, in text format.
+          example: example_value
         StateReasonData:
           type: string
           maxLength: 4000
           description: An explanation for the alarm state, in JSON format.
+          example: example_value
         StateUpdatedTimestamp:
           type: string
           format: date-time
           description: The time stamp of the last update to the value of either the StateValue or StateReasonData.
+          example: '2026-01-15T10:30:00Z'
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric associated with the alarm.
+          example: example_value
         Namespace:
           type: string
           minLength: 1
           maxLength: 255
           description: The namespace of the metric associated with the alarm.
+          example: example_value
         Statistic:
           $ref: '#/components/schemas/Statistic'
         ExtendedStatistic:
           type: string
           description: The percentile statistic for the metric associated with the alarm.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           maxItems: 30
           description: The dimensions for the metric associated with the alarm.
+          example: []
         Period:
           type: integer
           minimum: 1
           description: The period, in seconds, over which the statistic is applied.
+          example: 10
         Unit:
           $ref: '#/components/schemas/StandardUnit'
         EvaluationPeriods:
           type: integer
           minimum: 1
           description: The number of periods over which data is compared to the specified threshold.
+          example: 10
         DatapointsToAlarm:
           type: integer
           minimum: 1
           description: The number of data points that must be breaching to trigger the alarm.
+          example: 10
         Threshold:
           type: number
           format: double
           description: The value to compare with the specified statistic.
+          example: 42.5
         ComparisonOperator:
           $ref: '#/components/schemas/ComparisonOperator'
         TreatMissingData:
           type: string
           enum:
-            - breaching
-            - notBreaching
-            - ignore
-            - missing
+          - breaching
+          - notBreaching
+          - ignore
+          - missing
           description: Sets how this alarm is to handle missing data points.
+          example: breaching
         EvaluateLowSampleCountPercentile:
           type: string
           description: Used only for alarms based on percentiles.
+          example: example_value
         Metrics:
           type: array
           items:
             $ref: '#/components/schemas/MetricDataQuery'
           description: An array of MetricDataQuery structures for metric math expressions.
+          example: []
         ThresholdMetricId:
           type: string
           description: If the value of this field is set to an alarm metric ID, the alarm is based on an anomaly detection model.
+          example: '500123'
         StateTransitionedTimestamp:
           type: string
           format: date-time
           description: The date and time that the alarm's StateValue most recently changed.
 
+          example: '2026-01-15T10:30:00Z'
     CompositeAlarm:
       type: object
       description: The details about a composite alarm.
@@ -1540,107 +2440,125 @@ components:
         ActionsEnabled:
           type: boolean
           description: Indicates whether actions should be executed during changes to the alarm state.
+          example: true
         AlarmActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
         AlarmArn:
           type: string
           description: The Amazon Resource Name (ARN) of the alarm.
+          example: example_value
         AlarmConfigurationUpdatedTimestamp:
           type: string
           format: date-time
           description: The time stamp of the last update to the alarm configuration.
+          example: '2026-01-15T10:30:00Z'
         AlarmDescription:
           type: string
           description: The description of the alarm.
+          example: example_value
         AlarmName:
           type: string
           description: The name of the alarm.
+          example: example_value
         AlarmRule:
           type: string
           minLength: 1
           maxLength: 10240
           description: The rule that this alarm uses to evaluate its alarm state.
+          example: example_value
         InsufficientDataActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
         OKActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the OK state.
+          example: []
         StateReason:
           type: string
           description: An explanation for the alarm state, in text format.
+          example: example_value
         StateReasonData:
           type: string
           description: An explanation for the alarm state, in JSON format.
+          example: example_value
         StateUpdatedTimestamp:
           type: string
           format: date-time
           description: The timestamp of the last change to the alarm's StateValue.
+          example: '2026-01-15T10:30:00Z'
         StateValue:
           $ref: '#/components/schemas/StateValue'
         StateTransitionedTimestamp:
           type: string
           format: date-time
           description: The timestamp of the last state transition.
+          example: '2026-01-15T10:30:00Z'
         ActionsSuppressedBy:
           type: string
           enum:
-            - WaitPeriod
-            - ExtensionPeriod
-            - Alarm
+          - WaitPeriod
+          - ExtensionPeriod
+          - Alarm
           description: When the value is ALARM, it means that the actions are suppressed.
+          example: WaitPeriod
         ActionsSuppressedReason:
           type: string
           description: Describes why the actions are suppressed.
+          example: example_value
         ActionsSuppressor:
           type: string
           description: The ARN of the alarm used as the actions suppressor.
+          example: example_value
         ActionsSuppressorWaitPeriod:
           type: integer
           description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes into ALARM state.
+          example: 10
         ActionsSuppressorExtensionPeriod:
           type: integer
           description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of ALARM state.
 
+          example: 10
     StateValue:
       type: string
       description: The state value for the alarm.
       enum:
-        - OK
-        - ALARM
-        - INSUFFICIENT_DATA
+      - OK
+      - ALARM
+      - INSUFFICIENT_DATA
 
     Statistic:
       type: string
       description: The statistic for the metric.
       enum:
-        - SampleCount
-        - Average
-        - Sum
-        - Minimum
-        - Maximum
+      - SampleCount
+      - Average
+      - Sum
+      - Minimum
+      - Maximum
 
     ComparisonOperator:
       type: string
       description: The arithmetic operation to use when comparing the specified statistic and threshold.
       enum:
-        - GreaterThanOrEqualToThreshold
-        - GreaterThanThreshold
-        - LessThanThreshold
-        - LessThanOrEqualToThreshold
-        - LessThanLowerOrGreaterThanUpperThreshold
-        - LessThanLowerThreshold
-        - GreaterThanUpperThreshold
+      - GreaterThanOrEqualToThreshold
+      - GreaterThanThreshold
+      - LessThanThreshold
+      - LessThanOrEqualToThreshold
+      - LessThanLowerOrGreaterThanUpperThreshold
+      - LessThanLowerThreshold
+      - GreaterThanUpperThreshold
 
     AlarmHistoryItem:
       type: object
@@ -1649,30 +2567,36 @@ components:
         AlarmName:
           type: string
           description: The descriptive name for the alarm.
+          example: example_value
         AlarmType:
           type: string
           enum:
-            - CompositeAlarm
-            - MetricAlarm
+          - CompositeAlarm
+          - MetricAlarm
           description: The type of alarm, either metric alarm or composite alarm.
+          example: CompositeAlarm
         Timestamp:
           type: string
           format: date-time
           description: The time stamp for the alarm history item.
+          example: '2026-01-15T10:30:00Z'
         HistoryItemType:
           type: string
           enum:
-            - ConfigurationUpdate
-            - StateUpdate
-            - Action
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
           description: The type of alarm history item.
+          example: ConfigurationUpdate
         HistorySummary:
           type: string
           description: A summary of the alarm history, in text format.
+          example: example_value
         HistoryData:
           type: string
           description: Data about the alarm, in JSON format.
 
+          example: example_value
     DashboardEntry:
       type: object
       description: Represents a specific dashboard.
@@ -1680,17 +2604,21 @@ components:
         DashboardName:
           type: string
           description: The name of the dashboard.
+          example: example_value
         DashboardArn:
           type: string
           description: The Amazon Resource Name (ARN) of the dashboard.
+          example: example_value
         LastModified:
           type: string
           format: date-time
           description: The time stamp of when the dashboard was last modified.
+          example: '2026-01-15T10:30:00Z'
         Size:
           type: integer
           description: The size of the dashboard, in bytes.
 
+          example: 10
     DashboardBody:
       type: object
       description: The JSON body structure for a CloudWatch dashboard.
@@ -1701,44 +2629,51 @@ components:
             $ref: '#/components/schemas/DashboardWidget'
           description: An array of dashboard widget objects.
 
+          example: []
     DashboardWidget:
       type: object
       description: A widget in a CloudWatch dashboard.
       required:
-        - type
-        - properties
+      - type
+      - properties
       properties:
         type:
           type: string
           enum:
-            - metric
-            - text
-            - log
-            - alarm
-            - explorer
+          - metric
+          - text
+          - log
+          - alarm
+          - explorer
           description: The type of the widget.
+          example: metric
         x:
           type: integer
           minimum: 0
           description: The horizontal position of the widget on the dashboard grid.
+          example: 10
         'y':
           type: integer
           minimum: 0
           description: The vertical position of the widget on the dashboard grid.
+          example: 10
         width:
           type: integer
           minimum: 1
           maximum: 24
           description: The width of the widget in grid units.
+          example: 10
         height:
           type: integer
           minimum: 1
           maximum: 1000
           description: The height of the widget in grid units.
+          example: 10
         properties:
           type: object
           description: The properties for the widget, which vary depending on the widget type.
 
+          example: example_value
     DashboardValidationMessage:
       type: object
       description: An error or warning for the PutDashboard operation.
@@ -1746,10 +2681,12 @@ components:
         DataPath:
           type: string
           description: The data path related to the message.
+          example: example_value
         Message:
           type: string
           description: A message describing the error or warning.
 
+          example: example_value
     AnomalyDetector:
       type: object
       description: An anomaly detection model associated with a particular CloudWatch metric.
@@ -1757,26 +2694,31 @@ components:
         Namespace:
           type: string
           description: The namespace of the metric associated with the anomaly detection model.
+          example: example_value
         MetricName:
           type: string
           description: The name of the metric associated with the anomaly detection model.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           description: The metric dimensions associated with the anomaly detection model.
+          example: []
         Stat:
           type: string
           description: The statistic associated with the anomaly detection model.
+          example: example_value
         Configuration:
           $ref: '#/components/schemas/AnomalyDetectorConfiguration'
         StateValue:
           type: string
           enum:
-            - PENDING_TRAINING
-            - TRAINED_INSUFFICIENT_DATA
-            - TRAINED
+          - PENDING_TRAINING
+          - TRAINED_INSUFFICIENT_DATA
+          - TRAINED
           description: The current status of the anomaly detector model.
+          example: PENDING_TRAINING
         MetricCharacteristics:
           $ref: '#/components/schemas/MetricCharacteristics'
         SingleMetricAnomalyDetector:
@@ -1793,27 +2735,31 @@ components:
           items:
             $ref: '#/components/schemas/Range'
           description: An array of time ranges to exclude from use when the anomaly detection model is trained.
+          example: []
         MetricTimezone:
           type: string
           maxLength: 50
           description: The time zone to use for the metric.
 
+          example: example_value
     Range:
       type: object
       description: Specifies one range of days or times to exclude from use for training an anomaly detection model.
       required:
-        - StartTime
-        - EndTime
+      - StartTime
+      - EndTime
       properties:
         StartTime:
           type: string
           format: date-time
           description: The start time of the range to exclude.
+          example: '2026-01-15T10:30:00Z'
         EndTime:
           type: string
           format: date-time
           description: The end time of the range to exclude.
 
+          example: '2026-01-15T10:30:00Z'
     MetricCharacteristics:
       type: object
       description: This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.
@@ -1822,6 +2768,7 @@ components:
           type: boolean
           description: Set this parameter to true if values for this metric consistently include spikes that should not be considered to be anomalies.
 
+          example: true
     SingleMetricAnomalyDetector:
       type: object
       description: Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.
@@ -1829,21 +2776,26 @@ components:
         AccountId:
           type: string
           description: If the CloudWatch metric that provides the time series is in another account, use this to specify that account ID.
+          example: '500123'
         Namespace:
           type: string
           description: The namespace of the metric to create the anomaly detection model for.
+          example: example_value
         MetricName:
           type: string
           description: The name of the metric to create the anomaly detection model for.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           description: The metric dimensions to create the anomaly detection model for.
+          example: []
         Stat:
           type: string
           description: The statistic to use for the metric and anomaly detection model.
 
+          example: example_value
     MetricMathAnomalyDetector:
       type: object
       description: Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.
@@ -1854,6 +2806,7 @@ components:
             $ref: '#/components/schemas/MetricDataQuery'
           description: An array of metric data query structures that enables you to create an anomaly detector based on the result of a metric math expression.
 
+          example: []
     MetricStreamEntry:
       type: object
       description: Contains information about a metric stream.
@@ -1861,31 +2814,38 @@ components:
         Arn:
           type: string
           description: The ARN of the metric stream.
+          example: example_value
         CreationDate:
           type: string
           format: date-time
           description: The date when the metric stream was created.
+          example: '2026-01-15T10:30:00Z'
         LastUpdateDate:
           type: string
           format: date-time
           description: The date when the metric stream was last updated.
+          example: '2026-01-15T10:30:00Z'
         Name:
           type: string
           description: The name of the metric stream.
+          example: Example Title
         FirehoseArn:
           type: string
           description: The ARN of the Kinesis Data Firehose delivery stream used by this metric stream.
+          example: example_value
         State:
           type: string
           description: The current state of the metric stream.
+          example: example_value
         OutputFormat:
           type: string
           enum:
-            - json
-            - opentelemetry0.7
-            - opentelemetry1.0
+          - json
+          - opentelemetry0.7
+          - opentelemetry1.0
           description: The output format of the metric stream.
 
+          example: json
     MetricStreamFilter:
       type: object
       description: Contains the configuration for a metric stream filter.
@@ -1893,30 +2853,34 @@ components:
         Namespace:
           type: string
           description: The name of the metric namespace in the filter.
+          example: example_value
         MetricNames:
           type: array
           items:
             type: string
           description: The names of the metrics to either include or exclude from the metric stream.
 
+          example: []
     Tag:
       type: object
       description: A key-value pair associated with a CloudWatch resource.
       required:
-        - Key
-        - Value
+      - Key
+      - Value
       properties:
         Key:
           type: string
           minLength: 1
           maxLength: 128
           description: A string that you can use to assign a value.
+          example: example_value
         Value:
           type: string
           minLength: 0
           maxLength: 256
           description: The value for the specified tag key.
 
+          example: example_value
     ErrorResponse:
       type: object
       description: Standard error response from CloudWatch API.
@@ -1933,17 +2897,19 @@ components:
             Message:
               type: string
               description: A description of the error.
+          example: example_value
         RequestId:
           type: string
           description: The unique request ID.
 
     # Input/Output schemas for operations
 
+          example: '500123'
     PutMetricDataInput:
       type: object
       required:
-        - Namespace
-        - MetricData
+      - Namespace
+      - MetricData
       properties:
         Namespace:
           type: string
@@ -1951,44 +2917,52 @@ components:
           maxLength: 255
           pattern: '[^:].*'
           description: The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.
+          example: example_value
         MetricData:
           type: array
           items:
             $ref: '#/components/schemas/MetricDatum'
           description: The data for the metric. The array can include no more than 1000 metrics per call.
 
+          example: []
     GetMetricDataInput:
       type: object
       required:
-        - MetricDataQueries
-        - StartTime
-        - EndTime
+      - MetricDataQueries
+      - StartTime
+      - EndTime
       properties:
         MetricDataQueries:
           type: array
           items:
             $ref: '#/components/schemas/MetricDataQuery'
           description: The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.
+          example: []
         StartTime:
           type: string
           format: date-time
           description: The time stamp indicating the earliest data to be returned.
+          example: '2026-01-15T10:30:00Z'
         EndTime:
           type: string
           format: date-time
           description: The time stamp indicating the latest data to be returned.
+          example: '2026-01-15T10:30:00Z'
         NextToken:
           type: string
           description: Include this value if it was returned by the previous GetMetricData operation.
+          example: example_value
         ScanBy:
           type: string
           enum:
-            - TimestampDescending
-            - TimestampAscending
+          - TimestampDescending
+          - TimestampAscending
           description: The order in which data points should be returned.
+          example: TimestampDescending
         MaxDatapoints:
           type: integer
           description: The maximum number of data points the request should return before paginating.
+          example: 10
         LabelOptions:
           type: object
           properties:
@@ -1996,6 +2970,7 @@ components:
               type: string
               description: The time zone to use for metric data return.
 
+          example: example_value
     GetMetricDataOutput:
       type: object
       properties:
@@ -2004,52 +2979,61 @@ components:
           items:
             $ref: '#/components/schemas/MetricDataResult'
           description: The metrics that are returned, including the metric name, namespace, and dimensions.
+          example: []
         NextToken:
           type: string
           description: A token that marks the next batch of returned results.
+          example: example_value
         Messages:
           type: array
           items:
             $ref: '#/components/schemas/MessageData'
           description: Contains a message about the operation or the results.
 
+          example: []
     GetMetricStatisticsInput:
       type: object
       required:
-        - Namespace
-        - MetricName
-        - StartTime
-        - EndTime
-        - Period
+      - Namespace
+      - MetricName
+      - StartTime
+      - EndTime
+      - Period
       properties:
         Namespace:
           type: string
           minLength: 1
           maxLength: 255
           description: The namespace of the metric.
+          example: example_value
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           maxItems: 30
           description: The dimensions to filter the metric.
+          example: []
         StartTime:
           type: string
           format: date-time
           description: The time stamp that determines the first data point to return.
+          example: '2026-01-15T10:30:00Z'
         EndTime:
           type: string
           format: date-time
           description: The time stamp that determines the last data point to return.
+          example: '2026-01-15T10:30:00Z'
         Period:
           type: integer
           minimum: 1
           description: The granularity, in seconds, of the returned data points.
+          example: 10
         Statistics:
           type: array
           items:
@@ -2057,6 +3041,7 @@ components:
           minItems: 1
           maxItems: 5
           description: The metric statistics.
+          example: []
         ExtendedStatistics:
           type: array
           items:
@@ -2064,6 +3049,7 @@ components:
           minItems: 1
           maxItems: 10
           description: The percentile statistics.
+          example: []
         Unit:
           $ref: '#/components/schemas/StandardUnit'
 
@@ -2073,12 +3059,14 @@ components:
         Label:
           type: string
           description: A label for the specified metric.
+          example: Example Title
         Datapoints:
           type: array
           items:
             $ref: '#/components/schemas/Datapoint'
           description: The data points for the specified metric.
 
+          example: []
     ListMetricsInput:
       type: object
       properties:
@@ -2087,32 +3075,39 @@ components:
           minLength: 1
           maxLength: 255
           description: Filters the results to only those metrics in the specified namespace.
+          example: example_value
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: Filters the results to only the specified metric name.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/DimensionFilter'
           maxItems: 30
           description: Filters the results to only those metrics that match the specified dimensions.
+          example: []
         NextToken:
           type: string
           description: The token returned by a previous call to indicate there is more data available.
+          example: example_value
         RecentlyActive:
           type: string
           enum:
-            - PT3H
+          - PT3H
           description: To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.
+          example: PT3H
         IncludeLinkedAccounts:
           type: boolean
           description: If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.
+          example: true
         OwningAccount:
           type: string
           description: When you use this operation in a monitoring account, use this field to return metrics only from one source account.
 
+          example: example_value
     ListMetricsOutput:
       type: object
       properties:
@@ -2121,169 +3116,202 @@ components:
           items:
             $ref: '#/components/schemas/Metric'
           description: The metrics that match your request.
+          example: []
         NextToken:
           type: string
           description: The token that marks the start of the next batch of returned results.
+          example: example_value
         OwningAccounts:
           type: array
           items:
             type: string
           description: If you are using this operation in a monitoring account, this array contains the account IDs of the source accounts.
 
+          example: []
     PutMetricAlarmInput:
       type: object
       required:
-        - AlarmName
-        - EvaluationPeriods
-        - ComparisonOperator
+      - AlarmName
+      - EvaluationPeriods
+      - ComparisonOperator
       properties:
         AlarmName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name for the alarm.
+          example: example_value
         AlarmDescription:
           type: string
           maxLength: 1024
           description: The description for the alarm.
+          example: example_value
         ActionsEnabled:
           type: boolean
           description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
         OKActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to an OK state.
+          example: []
         AlarmActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
         InsufficientDataActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name for the metric associated with the alarm.
+          example: example_value
         Namespace:
           type: string
           minLength: 1
           maxLength: 255
           description: The namespace for the metric associated with the alarm.
+          example: example_value
         Statistic:
           $ref: '#/components/schemas/Statistic'
         ExtendedStatistic:
           type: string
           description: The percentile statistic for the metric specified in MetricName.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           maxItems: 30
           description: The dimensions for the metric specified in MetricName.
+          example: []
         Period:
           type: integer
           minimum: 1
           description: The length, in seconds, used each time the metric specified in MetricName is evaluated.
+          example: 10
         Unit:
           $ref: '#/components/schemas/StandardUnit'
         EvaluationPeriods:
           type: integer
           minimum: 1
           description: The number of periods over which data is compared to the specified threshold.
+          example: 10
         DatapointsToAlarm:
           type: integer
           minimum: 1
           description: The number of data points that must be breaching to trigger the alarm.
+          example: 10
         Threshold:
           type: number
           format: double
           description: The value against which the specified statistic is compared.
+          example: 42.5
         ComparisonOperator:
           $ref: '#/components/schemas/ComparisonOperator'
         TreatMissingData:
           type: string
           description: Sets how this alarm is to handle missing data points.
+          example: example_value
         EvaluateLowSampleCountPercentile:
           type: string
           description: Used only for alarms based on percentiles.
+          example: example_value
         Metrics:
           type: array
           items:
             $ref: '#/components/schemas/MetricDataQuery'
           description: An array of MetricDataQuery structures for metric math expression alarms.
+          example: []
         Tags:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
           description: A list of key-value pairs to associate with the alarm.
+          example: []
         ThresholdMetricId:
           type: string
           description: If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
 
+          example: '500123'
     PutCompositeAlarmInput:
       type: object
       required:
-        - AlarmName
-        - AlarmRule
+      - AlarmName
+      - AlarmRule
       properties:
         AlarmName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name for the composite alarm.
+          example: example_value
         AlarmDescription:
           type: string
           maxLength: 1024
           description: The description for the composite alarm.
+          example: example_value
         ActionsEnabled:
           type: boolean
           description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
         AlarmActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
         AlarmRule:
           type: string
           minLength: 1
           maxLength: 10240
           description: An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.
+          example: example_value
         InsufficientDataActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
         OKActions:
           type: array
           items:
             type: string
           maxItems: 5
           description: The actions to execute when this alarm transitions to the OK state.
+          example: []
         Tags:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
           description: A list of key-value pairs to associate with the composite alarm.
+          example: []
         ActionsSuppressor:
           type: string
           description: Actions will be suppressed if the suppressor alarm is in the ALARM state.
+          example: example_value
         ActionsSuppressorWaitPeriod:
           type: integer
           description: The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.
+          example: 10
         ActionsSuppressorExtensionPeriod:
           type: integer
           description: The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.
 
+          example: 10
     DescribeAlarmsInput:
       type: object
       properties:
@@ -2293,25 +3321,30 @@ components:
             type: string
           maxItems: 100
           description: The names of the alarms to retrieve information about.
+          example: []
         AlarmNamePrefix:
           type: string
           minLength: 1
           maxLength: 255
           description: An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.
+          example: example_value
         AlarmTypes:
           type: array
           items:
             type: string
             enum:
-              - CompositeAlarm
-              - MetricAlarm
+            - CompositeAlarm
+            - MetricAlarm
           description: Specify this parameter to receive information only about alarms of the specified types.
+          example: []
         ChildrenOfAlarmName:
           type: string
           description: If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.
+          example: example_value
         ParentsOfAlarmName:
           type: string
           description: If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.
+          example: example_value
         StateValue:
           $ref: '#/components/schemas/StateValue'
         ActionPrefix:
@@ -2319,15 +3352,18 @@ components:
           minLength: 1
           maxLength: 1024
           description: Use this parameter to filter the results to only those alarms that use a certain alarm action.
+          example: example_value
         MaxRecords:
           type: integer
           minimum: 1
           maximum: 100
           description: The maximum number of alarm descriptions to retrieve.
+          example: 10
         NextToken:
           type: string
           description: The token returned by a previous call to indicate there is more data available.
 
+          example: example_value
     DescribeAlarmsOutput:
       type: object
       properties:
@@ -2336,46 +3372,54 @@ components:
           items:
             $ref: '#/components/schemas/MetricAlarm'
           description: The information about any metric alarms returned by the operation.
+          example: []
         CompositeAlarms:
           type: array
           items:
             $ref: '#/components/schemas/CompositeAlarm'
           description: The information about any composite alarms returned by the operation.
+          example: []
         NextToken:
           type: string
           description: The token that marks the start of the next batch of returned results.
 
+          example: example_value
     DescribeAlarmsForMetricInput:
       type: object
       required:
-        - MetricName
-        - Namespace
+      - MetricName
+      - Namespace
       properties:
         MetricName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric.
+          example: example_value
         Namespace:
           type: string
           minLength: 1
           maxLength: 255
           description: The namespace of the metric.
+          example: example_value
         Statistic:
           $ref: '#/components/schemas/Statistic'
         ExtendedStatistic:
           type: string
           description: The percentile statistic for the metric.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           maxItems: 30
           description: The dimensions associated with the metric.
+          example: []
         Period:
           type: integer
           minimum: 1
           description: The period, in seconds, over which the statistic is applied.
+          example: 10
         Unit:
           $ref: '#/components/schemas/StandardUnit'
 
@@ -2388,6 +3432,7 @@ components:
             $ref: '#/components/schemas/MetricAlarm'
           description: The information for each alarm with the specified metric.
 
+          example: []
     DescribeAlarmHistoryInput:
       type: object
       properties:
@@ -2396,44 +3441,52 @@ components:
           minLength: 1
           maxLength: 255
           description: The name of the alarm.
+          example: example_value
         AlarmTypes:
           type: array
           items:
             type: string
             enum:
-              - CompositeAlarm
-              - MetricAlarm
+            - CompositeAlarm
+            - MetricAlarm
           description: Specify this parameter to receive information only about alarms of the specified types.
+          example: []
         HistoryItemType:
           type: string
           enum:
-            - ConfigurationUpdate
-            - StateUpdate
-            - Action
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
           description: The type of alarm histories to retrieve.
+          example: ConfigurationUpdate
         StartDate:
           type: string
           format: date-time
           description: The starting date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
         EndDate:
           type: string
           format: date-time
           description: The ending date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
         MaxRecords:
           type: integer
           minimum: 1
           maximum: 100
           description: The maximum number of alarm history records to retrieve.
+          example: 10
         NextToken:
           type: string
           description: The token returned by a previous call.
+          example: example_value
         ScanBy:
           type: string
           enum:
-            - TimestampDescending
-            - TimestampAscending
+          - TimestampDescending
+          - TimestampAscending
           description: Specified whether to return the newest or oldest alarm history first.
 
+          example: TimestampDescending
     DescribeAlarmHistoryOutput:
       type: object
       properties:
@@ -2442,14 +3495,16 @@ components:
           items:
             $ref: '#/components/schemas/AlarmHistoryItem'
           description: The alarm histories, in JSON format.
+          example: []
         NextToken:
           type: string
           description: The token that marks the start of the next batch of returned results.
 
+          example: example_value
     DeleteAlarmsInput:
       type: object
       required:
-        - AlarmNames
+      - AlarmNames
       properties:
         AlarmNames:
           type: array
@@ -2458,33 +3513,37 @@ components:
           maxItems: 100
           description: The alarms to be deleted. You can delete up to 100 alarms in one operation.
 
+          example: []
     SetAlarmStateInput:
       type: object
       required:
-        - AlarmName
-        - StateValue
-        - StateReason
+      - AlarmName
+      - StateValue
+      - StateReason
       properties:
         AlarmName:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the alarm.
+          example: example_value
         StateValue:
           $ref: '#/components/schemas/StateValue'
         StateReason:
           type: string
           maxLength: 1023
           description: The reason that this alarm is set to this specific state, in text format.
+          example: example_value
         StateReasonData:
           type: string
           maxLength: 4000
           description: The reason that this alarm is set to this specific state, in JSON format.
 
+          example: example_value
     EnableAlarmActionsInput:
       type: object
       required:
-        - AlarmNames
+      - AlarmNames
       properties:
         AlarmNames:
           type: array
@@ -2493,10 +3552,11 @@ components:
           maxItems: 100
           description: The names of the alarms.
 
+          example: []
     DisableAlarmActionsInput:
       type: object
       required:
-        - AlarmNames
+      - AlarmNames
       properties:
         AlarmNames:
           type: array
@@ -2505,15 +3565,17 @@ components:
           maxItems: 100
           description: The names of the alarms.
 
+          example: []
     PutDashboardInput:
       type: object
       required:
-        - DashboardName
-        - DashboardBody
+      - DashboardName
+      - DashboardBody
       properties:
         DashboardName:
           type: string
           description: The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.
+          example: example_value
         DashboardBody:
           type: string
           description: >-
@@ -2522,6 +3584,7 @@ components:
             dashboard. For more information about the syntax, see Dashboard
             Body Structure and Syntax.
 
+          example: example_value
     PutDashboardOutput:
       type: object
       properties:
@@ -2531,38 +3594,45 @@ components:
             $ref: '#/components/schemas/DashboardValidationMessage'
           description: If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array.
 
+          example: []
     GetDashboardInput:
       type: object
       required:
-        - DashboardName
+      - DashboardName
       properties:
         DashboardName:
           type: string
           description: The name of the dashboard to be described.
 
+          example: example_value
     GetDashboardOutput:
       type: object
       properties:
         DashboardArn:
           type: string
           description: The Amazon Resource Name (ARN) of the dashboard.
+          example: example_value
         DashboardBody:
           type: string
           description: The detailed information about the dashboard, including what widgets are included and their location.
+          example: example_value
         DashboardName:
           type: string
           description: The name of the dashboard.
 
+          example: example_value
     ListDashboardsInput:
       type: object
       properties:
         DashboardNamePrefix:
           type: string
           description: If you specify this parameter, only the dashboards with names starting with the specified string are listed.
+          example: example_value
         NextToken:
           type: string
           description: The token returned by a previous call to indicate there is more data available.
 
+          example: example_value
     ListDashboardsOutput:
       type: object
       properties:
@@ -2571,14 +3641,16 @@ components:
           items:
             $ref: '#/components/schemas/DashboardEntry'
           description: The list of matching dashboards.
+          example: []
         NextToken:
           type: string
           description: The token that marks the start of the next batch of returned results.
 
+          example: example_value
     DeleteDashboardsInput:
       type: object
       required:
-        - DashboardNames
+      - DashboardNames
       properties:
         DashboardNames:
           type: array
@@ -2586,23 +3658,28 @@ components:
             type: string
           description: The dashboards to be deleted. This parameter is required.
 
+          example: []
     PutAnomalyDetectorInput:
       type: object
       properties:
         Namespace:
           type: string
           description: The namespace of the metric to create the anomaly detection model for.
+          example: example_value
         MetricName:
           type: string
           description: The name of the metric to create the anomaly detection model for.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           description: The metric dimensions to create the anomaly detection model for.
+          example: []
         Stat:
           type: string
           description: The statistic to use for the metric and the anomaly detection model.
+          example: example_value
         Configuration:
           $ref: '#/components/schemas/AnomalyDetectorConfiguration'
         MetricCharacteristics:
@@ -2618,29 +3695,35 @@ components:
         NextToken:
           type: string
           description: Use the token returned by the previous operation to request the next page of results.
+          example: example_value
         MaxResults:
           type: integer
           description: The maximum number of results to return in one operation.
+          example: 10
         Namespace:
           type: string
           description: Limits the results to only the anomaly detection models that are associated with the specified namespace.
+          example: example_value
         MetricName:
           type: string
           description: Limits the results to only the anomaly detection models that are associated with the specified metric name.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           description: Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.
+          example: []
         AnomalyDetectorTypes:
           type: array
           items:
             type: string
             enum:
-              - SINGLE_METRIC
-              - METRIC_MATH
+            - SINGLE_METRIC
+            - METRIC_MATH
           description: The anomaly detector types to request when using DescribeAnomalyDetectors.
 
+          example: []
     DescribeAnomalyDetectorsOutput:
       type: object
       properties:
@@ -2649,27 +3732,33 @@ components:
           items:
             $ref: '#/components/schemas/AnomalyDetector'
           description: The list of anomaly detection models returned by the operation.
+          example: []
         NextToken:
           type: string
           description: A token that you can use in a subsequent operation to retrieve the next set of results.
 
+          example: example_value
     DeleteAnomalyDetectorInput:
       type: object
       properties:
         Namespace:
           type: string
           description: The namespace associated with the anomaly detection model to delete.
+          example: example_value
         MetricName:
           type: string
           description: The metric name associated with the anomaly detection model to delete.
+          example: example_value
         Dimensions:
           type: array
           items:
             $ref: '#/components/schemas/Dimension'
           description: The metric dimensions associated with the anomaly detection model to delete.
+          example: []
         Stat:
           type: string
           description: The statistic associated with the anomaly detection model to delete.
+          example: example_value
         SingleMetricAnomalyDetector:
           $ref: '#/components/schemas/SingleMetricAnomalyDetector'
         MetricMathAnomalyDetector:
@@ -2678,48 +3767,56 @@ components:
     PutMetricStreamInput:
       type: object
       required:
-        - Name
-        - FirehoseArn
-        - RoleArn
-        - OutputFormat
+      - Name
+      - FirehoseArn
+      - RoleArn
+      - OutputFormat
       properties:
         Name:
           type: string
           minLength: 1
           maxLength: 255
           description: The name of the metric stream.
+          example: Example Title
         IncludeFilters:
           type: array
           items:
             $ref: '#/components/schemas/MetricStreamFilter'
           description: If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.
+          example: []
         ExcludeFilters:
           type: array
           items:
             $ref: '#/components/schemas/MetricStreamFilter'
           description: If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.
+          example: []
         FirehoseArn:
           type: string
           description: The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.
+          example: example_value
         RoleArn:
           type: string
           description: The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.
+          example: example_value
         OutputFormat:
           type: string
           enum:
-            - json
-            - opentelemetry0.7
-            - opentelemetry1.0
+          - json
+          - opentelemetry0.7
+          - opentelemetry1.0
           description: The output format for the stream.
+          example: json
         Tags:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
           description: A list of key-value pairs to associate with the metric stream.
+          example: []
         IncludeLinkedAccountsMetrics:
           type: boolean
           description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.
 
+          example: true
     PutMetricStreamOutput:
       type: object
       properties:
@@ -2727,16 +3824,19 @@ components:
           type: string
           description: The ARN of the metric stream.
 
+          example: example_value
     ListMetricStreamsInput:
       type: object
       properties:
         NextToken:
           type: string
           description: Include this value to get the next set of metric streams.
+          example: example_value
         MaxResults:
           type: integer
           description: The maximum number of results to return in one operation.
 
+          example: 10
     ListMetricStreamsOutput:
       type: object
       properties:
@@ -2745,48 +3845,54 @@ components:
           items:
             $ref: '#/components/schemas/MetricStreamEntry'
           description: The array of metric stream information.
+          example: []
         NextToken:
           type: string
           description: The token that marks the start of the next batch of returned results.
 
+          example: example_value
     TagResourceInput:
       type: object
       required:
-        - ResourceARN
-        - Tags
+      - ResourceARN
+      - Tags
       properties:
         ResourceARN:
           type: string
           minLength: 1
           maxLength: 1024
           description: The ARN of the CloudWatch resource that you're adding tags to.
+          example: example_value
         Tags:
           type: array
           items:
             $ref: '#/components/schemas/Tag'
           description: The list of key-value pairs to associate with the alarm.
 
+          example: []
     UntagResourceInput:
       type: object
       required:
-        - ResourceARN
-        - TagKeys
+      - ResourceARN
+      - TagKeys
       properties:
         ResourceARN:
           type: string
           minLength: 1
           maxLength: 1024
           description: The ARN of the CloudWatch resource that you're removing tags from.
+          example: example_value
         TagKeys:
           type: array
           items:
             type: string
           description: The list of tag keys to remove from the resource.
 
+          example: []
     ListTagsForResourceInput:
       type: object
       required:
-        - ResourceARN
+      - ResourceARN
       properties:
         ResourceARN:
           type: string
@@ -2794,6 +3900,7 @@ components:
           maxLength: 1024
           description: The ARN of the CloudWatch resource that you want to view tags for.
 
+          example: example_value
     ListTagsForResourceOutput:
       type: object
       properties:
@@ -2802,3 +3909,4 @@ components:
           items:
             $ref: '#/components/schemas/Tag'
           description: The list of tag keys and values associated with the resource you specified.
+          example: []

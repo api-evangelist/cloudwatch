@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListDashboardsInput",
+  "type": "object",
+  "properties": {
+    "DashboardNamePrefix": {
+      "type": "string",
+      "description": "If you specify this parameter, only the dashboards with names starting with the specified string are listed."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call to indicate there is more data available."
+    }
+  }
+}

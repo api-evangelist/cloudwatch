@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListTagsForResourceInput",
+  "type": "object",
+  "properties": {
+    "ResourceARN": {
+      "type": "string",
+      "description": "The ARN of the CloudWatch resource that you want to view tags for."
+    }
+  }
+}

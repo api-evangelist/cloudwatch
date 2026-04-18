@@ -1,10 +1,13 @@
 name: AWS CloudWatch
-description: Amazon CloudWatch is a monitoring and observability service that provides data and actionable insights for AWS, hybrid, and on-premises applications and infrastructure resources.
+description: >-
+  Amazon CloudWatch is a monitoring and observability service that provides data
+  and actionable insights for AWS, hybrid, and on-premises applications and
+  infrastructure resources.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 created: '2024-01-15'
-modified: '2026-03-16'
+modified: '2026-04-18'
 specificationVersion: '0.19'
-url: https://aws.amazon.com/cloudwatch/
+url: https://raw.githubusercontent.com/api-evangelist/cloudwatch/refs/heads/main/apis.yml
 tags:
   - Alarms
   - Aws
@@ -27,19 +30,19 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/monitoring/2010-08-01/openapi.yaml
       - type: OpenAPI
         url: openapi/cloudwatch-openapi.yml
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/cloudwatch-alarm-schema.json
-      - type: JSON Schema
+      - type: JSONSchema
         url: json-schema/cloudwatch-metric-schema.json
-      - type: JSON-LD Context
+      - type: JSONLD
         url: json-ld/cloudwatch-context.jsonld
       - type: Pricing
         url: https://aws.amazon.com/cloudwatch/pricing/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingStarted.html
       - type: SDK
         url: https://aws.amazon.com/tools/
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/
       - type: Console
         url: https://console.aws.amazon.com/cloudwatch/
@@ -62,12 +65,8 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/logs/2014-03-28/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/
-      - type: Query Syntax
-        url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
-      - type: Logs Insights
-        url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html
       - type: SDK
         url: https://aws.amazon.com/tools/
     tags:
@@ -87,7 +86,7 @@ apis:
         url: https://docs.aws.amazon.com/eventbridge/
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/events/2015-10-07/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -108,7 +107,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-application-insights.html
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/application-insights/2018-11-25/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/cloudwatch/latest/APIReference/
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -128,7 +127,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/synthetics/2017-10-11/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -149,7 +148,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/internetmonitor/2021-06-03/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/internet-monitor/latest/api/Welcome.html
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -170,7 +169,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/rum/2018-05-10/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/Welcome.html
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -191,7 +190,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html
       - type: OpenAPI
         url: https://api.apis.guru/v2/specs/amazonaws.com/oam/2022-06-10/openapi.yaml
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/OAM/latest/APIReference/Welcome.html
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -210,7 +209,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/applicationsignals/latest/APIReference/Welcome.html
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -229,7 +228,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/what-is-network-monitor.html
-      - type: API Reference
+      - type: APIReference
         url: https://docs.aws.amazon.com/networkmonitor/latest/APIReference/Welcome.html
       - type: SDK
         url: https://aws.amazon.com/tools/
@@ -245,13 +244,11 @@ common:
     url: https://aws.amazon.com/cloudwatch/faqs/
   - type: Support
     url: https://aws.amazon.com/premiumsupport/
-  - type: Service Level Agreement
-    url: https://aws.amazon.com/cloudwatch/sla/
-  - type: Status
+  - type: StatusPage
     url: https://status.aws.amazon.com/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://aws.amazon.com/service-terms/
-  - type: Change Log
+  - type: ChangeLog
     url: https://aws.amazon.com/releasenotes/
   - type: Pricing
     url: https://aws.amazon.com/cloudwatch/pricing/
@@ -263,6 +260,50 @@ common:
     url: https://aws.amazon.com/tools/
   - type: Documentation
     url: https://docs.aws.amazon.com/cloudwatch/
+  - type: OpenAPI
+    url: openapi/cloudwatch-openapi.yml
+  - type: JSONSchema
+    url: json-schema/cloudwatch-alarm-schema.json
+  - type: JSONLD
+    url: json-ld/cloudwatch-context.jsonld
+  - type: SpectralRules
+    url: rules/cloudwatch-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/cloudwatch-vocabulary.yaml
+  - type: NaftikoCapability
+    url: capabilities/monitoring-and-observability.yaml
+  - type: Features
+    data:
+      - Unified monitoring across AWS resources with automatic dashboards
+      - Metric collection and custom metrics publishing
+      - CloudWatch Alarms with composite alarm support and anomaly detection
+      - CloudWatch Logs Insights for interactive log analytics
+      - Synthetics canaries for endpoint and API monitoring
+      - Real User Monitoring (RUM) for client-side performance
+      - Internet Monitor for availability and latency tracking
+      - Application Signals for automatic service instrumentation and SLOs
+      - Cross-account observability with Observability Access Manager
+      - Network Monitor for hybrid connectivity health
+  - type: UseCases
+    data:
+      - Monitoring application health and setting automated alarms
+      - Centralized log aggregation and analysis across AWS services
+      - Tracking end-user experience with real user monitoring
+      - Proactively detecting API and endpoint issues with synthetic monitoring
+      - Managing SLOs across microservices architectures
+      - Monitoring network performance for Direct Connect and VPN
+      - Cross-account observability for multi-account AWS organizations
+      - Anomaly detection on metrics to identify unexpected behavior
+  - type: Integrations
+    data:
+      - Amazon SNS for alarm notifications
+      - AWS Lambda for automated remediation
+      - Amazon EventBridge for event-driven architectures
+      - AWS X-Ray for distributed tracing
+      - Amazon Managed Grafana for visualization
+      - AWS Systems Manager for operational automation
+      - PagerDuty and Slack via SNS topic subscriptions
+      - Terraform and CloudFormation for infrastructure as code
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CompositeAlarm",
+  "type": "object",
+  "properties": {
+    "ActionsEnabled": {
+      "type": "boolean"
+    },
+    "AlarmActions": {
+      "type": "array"
+    },
+    "AlarmArn": {
+      "type": "string"
+    },
+    "AlarmConfigurationUpdatedTimestamp": {
+      "type": "string"
+    },
+    "AlarmDescription": {
+      "type": "string"
+    },
+    "AlarmName": {
+      "type": "string"
+    },
+    "AlarmRule": {
+      "type": "string"
+    },
+    "InsufficientDataActions": {
+      "type": "array"
+    },
+    "OKActions": {
+      "type": "array"
+    },
+    "StateReason": {
+      "type": "string"
+    },
+    "StateReasonData": {
+      "type": "string"
+    },
+    "StateUpdatedTimestamp": {
+      "type": "string"
+    },
+    "StateTransitionedTimestamp": {
+      "type": "string"
+    },
+    "ActionsSuppressedBy": {
+      "type": "string"
+    },
+    "ActionsSuppressedReason": {
+      "type": "string"
+    },
+    "ActionsSuppressor": {
+      "type": "string"
+    },
+    "ActionsSuppressorWaitPeriod": {
+      "type": "integer"
+    },
+    "ActionsSuppressorExtensionPeriod": {
+      "type": "integer"
+    }
+  }
+}

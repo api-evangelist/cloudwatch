@@ -1,0 +1,10 @@
+{
+  "AlarmName": "example_value",
+  "AlarmTypes": [],
+  "HistoryItemType": "example_value",
+  "StartDate": "example_value",
+  "EndDate": "example_value",
+  "MaxRecords": 10,
+  "NextToken": "example_value",
+  "ScanBy": "example_value"
+}

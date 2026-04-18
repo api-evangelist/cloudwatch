@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AnomalyDetectorConfiguration",
+  "type": "object",
+  "properties": {
+    "ExcludedTimeRanges": {
+      "type": "array"
+    },
+    "MetricTimezone": {
+      "type": "string"
+    }
+  }
+}

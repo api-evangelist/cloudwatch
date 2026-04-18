@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PutCompositeAlarmInput",
+  "type": "object",
+  "properties": {
+    "AlarmName": {
+      "type": "string"
+    },
+    "AlarmDescription": {
+      "type": "string"
+    },
+    "ActionsEnabled": {
+      "type": "boolean"
+    },
+    "AlarmActions": {
+      "type": "array"
+    },
+    "AlarmRule": {
+      "type": "string"
+    },
+    "InsufficientDataActions": {
+      "type": "array"
+    },
+    "OKActions": {
+      "type": "array"
+    },
+    "Tags": {
+      "type": "array"
+    },
+    "ActionsSuppressor": {
+      "type": "string"
+    },
+    "ActionsSuppressorWaitPeriod": {
+      "type": "integer"
+    },
+    "ActionsSuppressorExtensionPeriod": {
+      "type": "integer"
+    }
+  }
+}

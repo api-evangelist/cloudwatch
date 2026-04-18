@@ -1,0 +1,13 @@
+{
+  "AlarmName": "example_value",
+  "AlarmDescription": "example_value",
+  "ActionsEnabled": true,
+  "AlarmActions": [],
+  "AlarmRule": "example_value",
+  "InsufficientDataActions": [],
+  "OKActions": [],
+  "Tags": [],
+  "ActionsSuppressor": "example_value",
+  "ActionsSuppressorWaitPeriod": 10,
+  "ActionsSuppressorExtensionPeriod": 10
+}

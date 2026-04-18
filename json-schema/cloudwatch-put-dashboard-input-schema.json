@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PutDashboardInput",
+  "type": "object",
+  "properties": {
+    "DashboardName": {
+      "type": "string",
+      "description": "The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard."
+    },
+    "DashboardBody": {
+      "type": "string",
+      "description": "The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax."
+    }
+  }
+}

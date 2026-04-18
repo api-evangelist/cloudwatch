@@ -1,0 +1,9 @@
+{
+  "Arn": "example_value",
+  "CreationDate": "example_value",
+  "LastUpdateDate": "example_value",
+  "Name": "Example Title",
+  "FirehoseArn": "example_value",
+  "State": "example_value",
+  "OutputFormat": "example_value"
+}

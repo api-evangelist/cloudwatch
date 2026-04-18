@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAlarmsInput",
+  "type": "object",
+  "properties": {
+    "AlarmNames": {
+      "type": "array",
+      "description": "The names of the alarms to retrieve information about."
+    },
+    "AlarmNamePrefix": {
+      "type": "string",
+      "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned."
+    },
+    "AlarmTypes": {
+      "type": "array",
+      "description": "Specify this parameter to receive information only about alarms of the specified types."
+    },
+    "ChildrenOfAlarmName": {
+      "type": "string",
+      "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms."
+    },
+    "ParentsOfAlarmName": {
+      "type": "string",
+      "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it."
+    },
+    "ActionPrefix": {
+      "type": "string",
+      "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action."
+    },
+    "MaxRecords": {
+      "type": "integer",
+      "description": "The maximum number of alarm descriptions to retrieve."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call to indicate there is more data available."
+    }
+  }
+}

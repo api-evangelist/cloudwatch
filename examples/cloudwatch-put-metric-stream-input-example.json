@@ -1,0 +1,10 @@
+{
+  "Name": "Example Title",
+  "IncludeFilters": [],
+  "ExcludeFilters": [],
+  "FirehoseArn": "example_value",
+  "RoleArn": "example_value",
+  "OutputFormat": "example_value",
+  "Tags": [],
+  "IncludeLinkedAccountsMetrics": true
+}

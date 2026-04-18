@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DashboardWidget",
+  "type": "object",
+  "description": "A widget in a CloudWatch dashboard.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of the widget."
+    },
+    "x": {
+      "type": "integer",
+      "description": "The horizontal position of the widget on the dashboard grid."
+    },
+    "y": {
+      "type": "integer",
+      "description": "The vertical position of the widget on the dashboard grid."
+    },
+    "width": {
+      "type": "integer",
+      "description": "The width of the widget in grid units."
+    },
+    "height": {
+      "type": "integer",
+      "description": "The height of the widget in grid units."
+    },
+    "properties": {
+      "type": "object",
+      "description": "The properties for the widget, which vary depending on the widget type."
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PutMetricStreamInput",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string"
+    },
+    "IncludeFilters": {
+      "type": "array"
+    },
+    "ExcludeFilters": {
+      "type": "array"
+    },
+    "FirehoseArn": {
+      "type": "string"
+    },
+    "RoleArn": {
+      "type": "string"
+    },
+    "OutputFormat": {
+      "type": "string"
+    },
+    "Tags": {
+      "type": "array"
+    },
+    "IncludeLinkedAccountsMetrics": {
+      "type": "boolean"
+    }
+  }
+}

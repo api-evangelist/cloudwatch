@@ -1,0 +1,418 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon CloudWatch"
+  description: "Amazon CloudWatch API for metrics, alarms, dashboards, anomaly detection, and metric streams."
+  tags:
+    - AWS
+    - CloudWatch
+    - Monitoring
+    - Observability
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: cloudwatch
+      baseUri: https://monitoring.{region}.amazonaws.com
+      description: "Amazon CloudWatch monitoring API"
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: metrics
+          path: /
+          description: "Manage CloudWatch metrics"
+          operations:
+            - name: put-metric-data
+              method: POST
+              description: "Publish metric data points to CloudWatch"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutMetricData)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-metric-data
+              method: POST
+              description: "Retrieve metric data using metric math expressions"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (GetMetricData)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-metric-statistics
+              method: POST
+              description: "Get statistics for a specific metric"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (GetMetricStatistics)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-metrics
+              method: POST
+              description: "List available metrics"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (ListMetrics)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: alarms
+          path: /
+          description: "Manage CloudWatch alarms"
+          operations:
+            - name: put-metric-alarm
+              method: POST
+              description: "Create or update a metric alarm"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutMetricAlarm)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: put-composite-alarm
+              method: POST
+              description: "Create or update a composite alarm"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutCompositeAlarm)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: describe-alarms
+              method: POST
+              description: "Describe CloudWatch alarms"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DescribeAlarms)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: describe-alarms-for-metric
+              method: POST
+              description: "Describe alarms for a specific metric"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DescribeAlarmsForMetric)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: describe-alarm-history
+              method: POST
+              description: "Retrieve alarm history"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DescribeAlarmHistory)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-alarms
+              method: POST
+              description: "Delete one or more alarms"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DeleteAlarms)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: set-alarm-state
+              method: POST
+              description: "Set the state of an alarm"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (SetAlarmState)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: enable-alarm-actions
+              method: POST
+              description: "Enable actions for alarms"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (EnableAlarmActions)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: disable-alarm-actions
+              method: POST
+              description: "Disable actions for alarms"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DisableAlarmActions)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: dashboards
+          path: /
+          description: "Manage CloudWatch dashboards"
+          operations:
+            - name: put-dashboard
+              method: POST
+              description: "Create or update a dashboard"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutDashboard)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-dashboard
+              method: POST
+              description: "Get a dashboard"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (GetDashboard)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-dashboards
+              method: POST
+              description: "List dashboards"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (ListDashboards)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-dashboards
+              method: POST
+              description: "Delete dashboards"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DeleteDashboards)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: anomaly-detectors
+          path: /
+          description: "Manage anomaly detectors"
+          operations:
+            - name: put-anomaly-detector
+              method: POST
+              description: "Create or update an anomaly detector"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutAnomalyDetector)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: describe-anomaly-detectors
+              method: POST
+              description: "Describe anomaly detectors"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DescribeAnomalyDetectors)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-anomaly-detector
+              method: POST
+              description: "Delete an anomaly detector"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (DeleteAnomalyDetector)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: metric-streams
+          path: /
+          description: "Manage metric streams"
+          operations:
+            - name: put-metric-stream
+              method: POST
+              description: "Create or update a metric stream"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (PutMetricStream)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-metric-streams
+              method: POST
+              description: "List metric streams"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (ListMetricStreams)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: tags
+          path: /
+          description: "Manage resource tags"
+          operations:
+            - name: tag-resource
+              method: POST
+              description: "Add tags to a resource"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (TagResource)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: untag-resource
+              method: POST
+              description: "Remove tags from a resource"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (UntagResource)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: list-tags-for-resource
+              method: POST
+              description: "List tags for a resource"
+              inputParameters:
+                - name: Action
+                  in: query
+                  type: string
+                  required: true
+                  description: "API action (ListTagsForResource)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: cloudwatch-api
+      resources: []
+
+    - type: mcp
+      port: 9100
+      namespace: cloudwatch-mcp
+      transport: http
+      tools: []

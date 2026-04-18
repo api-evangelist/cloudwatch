@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricMathAnomalyDetector",
+  "type": "object",
+  "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+  "properties": {
+    "MetricDataQueries": {
+      "type": "array",
+      "description": "An array of metric data query structures that enables you to create an anomaly detector based on the result of a metric math expression."
+    }
+  }
+}

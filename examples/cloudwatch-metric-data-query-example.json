@@ -1,0 +1,8 @@
+{
+  "Id": "abc123",
+  "Expression": "example_value",
+  "Label": "Example Title",
+  "ReturnData": true,
+  "Period": 10,
+  "AccountId": "500123"
+}

@@ -1,0 +1,9 @@
+{
+  "MetricName": "example_value",
+  "Dimensions": [],
+  "Timestamp": "example_value",
+  "Value": 42.5,
+  "Values": [],
+  "Counts": [],
+  "StorageResolution": 10
+}

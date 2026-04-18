@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ListDashboardsInput",
+  "type": "object",
+  "properties": {
+    "DashboardNamePrefix": {
+      "type": "string"
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

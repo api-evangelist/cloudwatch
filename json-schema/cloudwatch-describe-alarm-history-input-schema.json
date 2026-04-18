@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DescribeAlarmHistoryInput",
+  "type": "object",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "description": "The name of the alarm."
+    },
+    "AlarmTypes": {
+      "type": "array",
+      "description": "Specify this parameter to receive information only about alarms of the specified types."
+    },
+    "HistoryItemType": {
+      "type": "string",
+      "description": "The type of alarm histories to retrieve."
+    },
+    "StartDate": {
+      "type": "string",
+      "description": "The starting date to retrieve alarm history."
+    },
+    "EndDate": {
+      "type": "string",
+      "description": "The ending date to retrieve alarm history."
+    },
+    "MaxRecords": {
+      "type": "integer",
+      "description": "The maximum number of alarm history records to retrieve."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call."
+    },
+    "ScanBy": {
+      "type": "string",
+      "description": "Specified whether to return the newest or oldest alarm history first."
+    }
+  }
+}

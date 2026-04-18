@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MetricDataQuery",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string"
+    },
+    "Expression": {
+      "type": "string"
+    },
+    "Label": {
+      "type": "string"
+    },
+    "ReturnData": {
+      "type": "boolean"
+    },
+    "Period": {
+      "type": "integer"
+    },
+    "AccountId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Namespace": "example_value",
+  "MetricName": "example_value",
+  "Dimensions": [],
+  "NextToken": "example_value",
+  "RecentlyActive": "example_value",
+  "IncludeLinkedAccounts": true,
+  "OwningAccount": "example_value"
+}

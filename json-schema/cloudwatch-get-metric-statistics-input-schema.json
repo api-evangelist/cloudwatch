@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GetMetricStatisticsInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "description": "The namespace of the metric."
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "The name of the metric."
+    },
+    "Dimensions": {
+      "type": "array",
+      "description": "The dimensions to filter the metric."
+    },
+    "StartTime": {
+      "type": "string",
+      "description": "The time stamp that determines the first data point to return."
+    },
+    "EndTime": {
+      "type": "string",
+      "description": "The time stamp that determines the last data point to return."
+    },
+    "Period": {
+      "type": "integer",
+      "description": "The granularity, in seconds, of the returned data points."
+    },
+    "Statistics": {
+      "type": "array",
+      "description": "The metric statistics."
+    },
+    "ExtendedStatistics": {
+      "type": "array",
+      "description": "The percentile statistics."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "AlarmNames": [],
+  "AlarmNamePrefix": "example_value",
+  "AlarmTypes": [],
+  "ChildrenOfAlarmName": "example_value",
+  "ParentsOfAlarmName": "example_value",
+  "ActionPrefix": "example_value",
+  "MaxRecords": 10,
+  "NextToken": "example_value"
+}

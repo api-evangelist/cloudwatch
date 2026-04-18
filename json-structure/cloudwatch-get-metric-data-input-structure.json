@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GetMetricDataInput",
+  "type": "object",
+  "properties": {
+    "MetricDataQueries": {
+      "type": "array"
+    },
+    "StartTime": {
+      "type": "string"
+    },
+    "EndTime": {
+      "type": "string"
+    },
+    "NextToken": {
+      "type": "string"
+    },
+    "ScanBy": {
+      "type": "string"
+    },
+    "MaxDatapoints": {
+      "type": "integer"
+    },
+    "LabelOptions": {
+      "type": "object"
+    }
+  }
+}

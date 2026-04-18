@@ -1,0 +1,8 @@
+{
+  "NextToken": "example_value",
+  "MaxResults": 10,
+  "Namespace": "example_value",
+  "MetricName": "example_value",
+  "Dimensions": [],
+  "AnomalyDetectorTypes": []
+}

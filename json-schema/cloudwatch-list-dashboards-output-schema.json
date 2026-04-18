@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListDashboardsOutput",
+  "type": "object",
+  "properties": {
+    "DashboardEntries": {
+      "type": "array",
+      "description": "The list of matching dashboards."
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results."
+    }
+  }
+}

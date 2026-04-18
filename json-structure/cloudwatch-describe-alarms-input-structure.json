@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DescribeAlarmsInput",
+  "type": "object",
+  "properties": {
+    "AlarmNames": {
+      "type": "array"
+    },
+    "AlarmNamePrefix": {
+      "type": "string"
+    },
+    "AlarmTypes": {
+      "type": "array"
+    },
+    "ChildrenOfAlarmName": {
+      "type": "string"
+    },
+    "ParentsOfAlarmName": {
+      "type": "string"
+    },
+    "ActionPrefix": {
+      "type": "string"
+    },
+    "MaxRecords": {
+      "type": "integer"
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

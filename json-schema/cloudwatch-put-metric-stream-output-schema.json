@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PutMetricStreamOutput",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "type": "string",
+      "description": "The ARN of the metric stream."
+    }
+  }
+}

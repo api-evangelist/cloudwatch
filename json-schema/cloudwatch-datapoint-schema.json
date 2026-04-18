@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Datapoint",
+  "type": "object",
+  "description": "Encapsulates the statistical data that CloudWatch computes from metric data.",
+  "properties": {
+    "Timestamp": {
+      "type": "string",
+      "description": "The time stamp used for the data point."
+    },
+    "SampleCount": {
+      "type": "number",
+      "description": "The number of metric values that contributed to the aggregate value of this data point."
+    },
+    "Average": {
+      "type": "number",
+      "description": "The average of the metric values that correspond to the data point."
+    },
+    "Sum": {
+      "type": "number",
+      "description": "The sum of the metric values for the data point."
+    },
+    "Minimum": {
+      "type": "number",
+      "description": "The minimum metric value for the data point."
+    },
+    "Maximum": {
+      "type": "number",
+      "description": "The maximum metric value for the data point."
+    },
+    "ExtendedStatistics": {
+      "type": "object",
+      "description": "The percentile statistic for the data point."
+    }
+  }
+}

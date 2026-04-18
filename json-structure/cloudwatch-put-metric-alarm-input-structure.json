@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PutMetricAlarmInput",
+  "type": "object",
+  "properties": {
+    "AlarmName": {
+      "type": "string"
+    },
+    "AlarmDescription": {
+      "type": "string"
+    },
+    "ActionsEnabled": {
+      "type": "boolean"
+    },
+    "OKActions": {
+      "type": "array"
+    },
+    "AlarmActions": {
+      "type": "array"
+    },
+    "InsufficientDataActions": {
+      "type": "array"
+    },
+    "MetricName": {
+      "type": "string"
+    },
+    "Namespace": {
+      "type": "string"
+    },
+    "ExtendedStatistic": {
+      "type": "string"
+    },
+    "Dimensions": {
+      "type": "array"
+    },
+    "Period": {
+      "type": "integer"
+    },
+    "EvaluationPeriods": {
+      "type": "integer"
+    },
+    "DatapointsToAlarm": {
+      "type": "integer"
+    },
+    "Threshold": {
+      "type": "number"
+    },
+    "TreatMissingData": {
+      "type": "string"
+    },
+    "EvaluateLowSampleCountPercentile": {
+      "type": "string"
+    },
+    "Metrics": {
+      "type": "array"
+    },
+    "Tags": {
+      "type": "array"
+    },
+    "ThresholdMetricId": {
+      "type": "string"
+    }
+  }
+}

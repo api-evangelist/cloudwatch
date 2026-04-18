@@ -1,0 +1,9 @@
+{
+  "MetricDataQueries": [],
+  "StartTime": "example_value",
+  "EndTime": "example_value",
+  "NextToken": "example_value",
+  "ScanBy": "example_value",
+  "MaxDatapoints": 10,
+  "LabelOptions": "example_value"
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Datapoint",
+  "type": "object",
+  "properties": {
+    "Timestamp": {
+      "type": "string"
+    },
+    "SampleCount": {
+      "type": "number"
+    },
+    "Average": {
+      "type": "number"
+    },
+    "Sum": {
+      "type": "number"
+    },
+    "Minimum": {
+      "type": "number"
+    },
+    "Maximum": {
+      "type": "number"
+    },
+    "ExtendedStatistics": {
+      "type": "object"
+    }
+  }
+}

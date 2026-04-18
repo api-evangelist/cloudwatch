@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "MetricStreamEntry",
+  "type": "object",
+  "properties": {
+    "Arn": {
+      "type": "string"
+    },
+    "CreationDate": {
+      "type": "string"
+    },
+    "LastUpdateDate": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "FirehoseArn": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "OutputFormat": {
+      "type": "string"
+    }
+  }
+}

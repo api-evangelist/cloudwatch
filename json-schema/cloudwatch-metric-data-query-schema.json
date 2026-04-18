@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricDataQuery",
+  "type": "object",
+  "description": "This structure is used in both GetMetricData and PutMetricAlarm. The supported use of this structure is different for those two operations.",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "A short name used to tie this object to the results in the response."
+    },
+    "Expression": {
+      "type": "string",
+      "description": "This field can contain a Metrics Insights query, or a metric math expression."
+    },
+    "Label": {
+      "type": "string",
+      "description": "A human-readable label for this metric or expression."
+    },
+    "ReturnData": {
+      "type": "boolean",
+      "description": "When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric."
+    },
+    "Period": {
+      "type": "integer",
+      "description": "The granularity, in seconds, of the returned data points."
+    },
+    "AccountId": {
+      "type": "string",
+      "description": "The ID of the account where the metrics are located."
+    }
+  }
+}

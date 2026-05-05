@@ -1,0 +1,13 @@
+{
+  "repo": "cloudwatch",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/aws/category/management-tools/amazon-cloudwatch/",
+      "feed_url": "https://aws.amazon.com/blogs/aws/category/management-tools/amazon-cloudwatch/feed/",
+      "saved": 10,
+      "title": "Amazon CloudWatch \u2013 AWS News Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:25:19Z"
+}

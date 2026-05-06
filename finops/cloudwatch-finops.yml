@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,211 +9,139 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: AWS CloudWatch
 providerId: cloudwatch
-publisherName: AWS CloudWatch
-serviceCategory: API
+publisherName: Amazon Web Services, Inc.
+serviceCategory: Observability
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Alarms
-  - Aws
-  - Dashboards
-  - Logs
-  - Metrics
-  - Monitoring
-  - Observability
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the AWS CloudWatch API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+  - Aws
+  - Observability
+  - Cost Management
+description: 'FOCUS-aligned FinOps for Amazon CloudWatch: pure pay-as-you-go metering across metrics, API
+  requests, alarms, logs (ingest / storage / query / Live Tail), dashboards, Contributor Insights, Synthetics,
+  RUM, Application Signals, Internet Monitor and Network Flow Monitor. Costs land in AWS Cost and Usage
+  Reports (CUR / CUR 2.0) under service code `AmazonCloudWatch` with usage-type granularity, and CloudWatch
+  itself emits service-quota usage metrics that can be alarmed.'
+sources:
+  - https://aws.amazon.com/cloudwatch/pricing/
+  - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_billing.html
+  - https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Pay-As-You-Go + Committed Use
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
-    - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Refund
+    - Credit
 focusColumns:
-  ServiceName: AWS CloudWatch
-  ServiceCategory: Developer Tools / API
-  ProviderName: AWS CloudWatch
-  PublisherName: AWS CloudWatch
-  InvoiceIssuerName: AWS CloudWatch
+  ServiceName: AmazonCloudWatch
+  ServiceCategory: Observability
+  ProviderName: Amazon Web Services
+  PublisherName: Amazon Web Services, Inc.
+  InvoiceIssuerName: Amazon Web Services, Inc.
   PricingCategory: Usage-Based
-  PricingUnit: request
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
+  - name: custom_metrics
+    description: Custom and detailed-monitoring metrics, billed monthly with volume-tiered pricing.
+    unit: metric-month
+    aggregation: max
+    dimensions:
+      - region
+      - namespace
+      - resolution
   - name: api_requests
-    description: Count of billable API requests
+    description: CloudWatch API requests (PutMetricData, GetMetricData, GetMetricStatistics, ListMetrics,
+      etc.).
     unit: request
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
+      - api_action
+  - name: alarm_metrics
+    description: Standard- and high-resolution alarm metrics.
+    unit: alarm-month
+    aggregation: max
+    dimensions:
+      - region
+      - resolution
+  - name: logs_ingested
+    description: Volume of log data ingested into CloudWatch Logs.
     unit: GB
     aggregation: sum
     dimensions:
-      - api
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - log_group
+      - log_class
+  - name: logs_storage
+    description: Archived log data retained beyond ingest.
+    unit: GB-month
+    aggregation: avg
+    dimensions:
+      - region
+      - log_group
+      - log_class
+  - name: logs_insights_scanned
+    description: Bytes scanned by Logs Insights queries.
+    unit: GB
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Amazon CloudWatch API
-    baseURL: https://monitoring.amazonaws.com
-    tags:
-      - Alarms
-      - Dashboards
-      - Metric-Streams
-      - Metrics
-      - Statistics
-    serviceName: Amazon CloudWatch API
-    serviceCategory: API
-  - name: Amazon CloudWatch Logs API
-    baseURL: https://logs.amazonaws.com
-    tags:
-      - Insights
-      - Log-Analytics
-      - Log-Groups
-      - Log-Streams
-      - Logs
-    serviceName: Amazon CloudWatch Logs API
-    serviceCategory: API
-  - name: Amazon CloudWatch Events API
-    baseURL: https://events.amazonaws.com
-    tags:
-      - Event-Bus
-      - Eventbridge
-      - Events
-      - Rules
-      - Targets
-    serviceName: Amazon CloudWatch Events API
-    serviceCategory: API
-  - name: Amazon CloudWatch Application Insights API
-    baseURL: https://applicationinsights.amazonaws.com
-    tags:
-      - Anomaly-Detection
-      - Application-Insights
-      - Observability
-    serviceName: Amazon CloudWatch Application Insights API
-    serviceCategory: API
-  - name: Amazon CloudWatch Synthetics API
-    baseURL: https://synthetics.amazonaws.com
-    tags:
-      - Canaries
-      - Endpoint-Monitoring
-      - Monitoring
-      - Synthetics
-    serviceName: Amazon CloudWatch Synthetics API
-    serviceCategory: API
-  - name: Amazon CloudWatch Internet Monitor API
-    baseURL: https://internetmonitor.amazonaws.com
-    tags:
-      - Availability
-      - Internet-Monitor
-      - Latency
-      - Network-Performance
-    serviceName: Amazon CloudWatch Internet Monitor API
-    serviceCategory: API
-  - name: Amazon CloudWatch RUM API
-    baseURL: https://rum.amazonaws.com
-    tags:
-      - Client-Side
-      - Real-User-Monitoring
-      - Rum
-      - Web-Performance
-    serviceName: Amazon CloudWatch RUM API
-    serviceCategory: API
-  - name: Amazon CloudWatch Observability Access Manager API
-    baseURL: https://oam.amazonaws.com
-    tags:
-      - Cross-Account
-      - Monitoring-Account
-      - Oam
-      - Observability
-    serviceName: Amazon CloudWatch Observability Access Manager API
-    serviceCategory: API
-  - name: Amazon CloudWatch Application Signals API
-    baseURL: https://application-signals.amazonaws.com
-    tags:
-      - Apm
-      - Application-Signals
-      - Service-Level-Objectives
-      - Slo
-    serviceName: Amazon CloudWatch Application Signals API
-    serviceCategory: API
-  - name: Amazon CloudWatch Network Monitor API
-    baseURL: https://networkmonitor.amazonaws.com
-    tags:
-      - Direct-Connect
-      - Hybrid-Connectivity
-      - Network-Monitor
-      - Network-Performance
-    serviceName: Amazon CloudWatch Network Monitor API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - region
+      - log_group
+  - name: live_tail_minutes
+    description: Live Tail streaming session minutes.
+    unit: minute
+    aggregation: sum
+    dimensions:
+      - region
+  - name: contributor_insights_rules
+    description: Contributor Insights rules and matched events.
+    unit: rule-month
+    aggregation: max
+    dimensions:
+      - region
+  - name: synthetics_canary_runs
+    description: Synthetics canary runs.
+    unit: run
+    aggregation: sum
+    dimensions:
+      - region
+      - canary
+  - name: rum_events
+    description: CloudWatch RUM events recorded from end-user browsers.
+    unit: event
+    aggregation: sum
+    dimensions:
+      - region
+      - app_monitor
+  - name: application_signals_data
+    description: Application Signals telemetry ingestion volume.
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - region
+principles:
+  - name: Visibility
+    description: Use AWS Cost Explorer and the Cost and Usage Report (CUR / CUR 2.0) filtered to service
+      `AmazonCloudWatch` for line-item visibility. CloudWatch also exposes its own usage metrics under the
+      `AWS/Usage` namespace so engineers can alarm on quota burn-down.
+  - name: Allocation
+    description: Tag log groups, alarms, dashboards and synthetics canaries; AWS-generated and user-defined
+      tags flow through to CUR for chargeback. Use Account/OU and Region as natural allocation dimensions.
+  - name: Optimization
+    description: Drop noisy log groups, set retention policies on archived logs, batch PutMetricData (up
+      to 1,000 data points per call), favor metric math over additional custom metrics, use CloudWatch Logs
+      Infrequent Access log class for cold logs, and consolidate alarms via composite alarms.
+  - name: Accountability
+    description: Assign per-team budget alerts in AWS Budgets keyed on the CloudWatch service filter; review
+      the top usage-types (DataProcessing-Bytes, Requests, AlarmMonitorUsage, MetricMonitorUsage) monthly.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

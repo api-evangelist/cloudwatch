@@ -4,133 +4,98 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AWS CloudWatch
 providerId: cloudwatch
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Alarms
   - Aws
-  - Dashboards
-  - Logs
-  - Metrics
   - Monitoring
   - Observability
+  - Logs
+  - Metrics
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the AWS CloudWatch API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: AWS CloudWatch enforces per-account, per-region transactions-per-second (TPS) throttling on
+  every API action. Default quotas are integrated with AWS Service Quotas; most are adjustable via a quota-increase
+  request. Throttled requests return HTTP 400 with a Throttling or ThrottlingException error code. Limits
+  vary per service (CloudWatch core, Logs, Application Insights, Application Signals, RUM, Internet Monitor,
+  Network Flow Monitor, Synthetics, OAM). Consult Service Quotas (`--service-code monitoring` etc.) for
+  the live values for your account.
+sources:
+  - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
+  - https://docs.aws.amazon.com/general/latest/gr/cw_region.html
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
+  throttled: 400
+  quotaExceeded: 400
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Amazon CloudWatch API
-      - Amazon CloudWatch Logs API
-      - Amazon CloudWatch Events API
-      - Amazon CloudWatch Application Insights API
-      - Amazon CloudWatch Synthetics API
-      - Amazon CloudWatch Internet Monitor API
-      - Amazon CloudWatch RUM API
-      - Amazon CloudWatch Observability Access Manager API
-      - Amazon CloudWatch Application Signals API
-      - Amazon CloudWatch Network Monitor API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Amazon CloudWatch API
-      - Amazon CloudWatch Logs API
-      - Amazon CloudWatch Events API
-      - Amazon CloudWatch Application Insights API
-      - Amazon CloudWatch Synthetics API
-      - Amazon CloudWatch Internet Monitor API
-      - Amazon CloudWatch RUM API
-      - Amazon CloudWatch Observability Access Manager API
-      - Amazon CloudWatch Application Signals API
-      - Amazon CloudWatch Network Monitor API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Amazon CloudWatch API
-      - Amazon CloudWatch Logs API
-      - Amazon CloudWatch Events API
-      - Amazon CloudWatch Application Insights API
-      - Amazon CloudWatch Synthetics API
-      - Amazon CloudWatch Internet Monitor API
-      - Amazon CloudWatch RUM API
-      - Amazon CloudWatch Observability Access Manager API
-      - Amazon CloudWatch Application Signals API
-      - Amazon CloudWatch Network Monitor API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Amazon CloudWatch API
-      - Amazon CloudWatch Logs API
-      - Amazon CloudWatch Events API
-      - Amazon CloudWatch Application Insights API
-      - Amazon CloudWatch Synthetics API
-      - Amazon CloudWatch Internet Monitor API
-      - Amazon CloudWatch RUM API
-      - Amazon CloudWatch Observability Access Manager API
-      - Amazon CloudWatch Application Signals API
-      - Amazon CloudWatch Network Monitor API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Amazon CloudWatch API
-      - Amazon CloudWatch Logs API
-      - Amazon CloudWatch Events API
-      - Amazon CloudWatch Application Insights API
-      - Amazon CloudWatch Synthetics API
-      - Amazon CloudWatch Internet Monitor API
-      - Amazon CloudWatch RUM API
-      - Amazon CloudWatch Observability Access Manager API
-      - Amazon CloudWatch Application Signals API
-      - Amazon CloudWatch Network Monitor API
+  - name: CloudWatch core API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Default TPS varies by API action (PutMetricData, GetMetricData, ListMetrics, PutMetricAlarm,
+      etc.). Look up live values via `aws service-quotas list-service-quotas --service-code monitoring`.
+  - name: CloudWatch Application Insights API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    notes: All Application Insights API actions are throttled to 5 TPS; this quota is not adjustable.
+  - name: CloudWatch Logs API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `aws service-quotas list-service-quotas --service-code logs` for the live values.
+  - name: CloudWatch Application Signals API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code application-signals`.
+  - name: CloudWatch RUM API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code rum`.
+  - name: CloudWatch Internet Monitor API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code internetmonitor`.
+  - name: CloudWatch Network Monitor API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code networkmonitor`.
+  - name: CloudWatch Observability Access Manager API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code oam`.
+  - name: AI Operations API throttling
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: Use `--service-code aiops`.
+  - name: PutMetricData payload size
+    scope: account/region
+    metric: requests_per_second
+    limit: see service-specific quotas page
+    notes: PutMetricData accepts up to 1,000 metric data points per request and is rate-limited per account.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: AWS SigV4 throttling
+    description: All CloudWatch API requests are AWS SigV4 signed and throttled at the account/region level.
+      A 400 response with code Throttling or ThrottlingException indicates the request was rate-limited.
+  - name: Exponential backoff
+    description: AWS SDKs implement exponential backoff with jitter by default. Custom clients should match
+      this behavior on Throttling errors.
+  - name: Service Quotas integration
+    description: All CloudWatch quotas are visible in the AWS Service Quotas console (`monitoring`, `logs`,
+      `application-signals`, `internetmonitor`, `networkmonitor`, `oam`, `rum`, `aiops` service codes) and
+      most can be raised via a quota-increase request.
+  - name: Per-region scoping
+    description: Quotas are per AWS account per region; running in multiple regions effectively multiplies
+      the available TPS budget.
+  - name: PutMetricData batching
+    description: Batch up to 1,000 metric data points per PutMetricData call to maximize throughput against
+      the per-account TPS quota.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

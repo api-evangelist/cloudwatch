@@ -4,235 +4,289 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: AWS CloudWatch
 providerId: cloudwatch
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Alarms
   - Aws
-  - Dashboards
-  - Logs
-  - Metrics
   - Monitoring
   - Observability
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Logs
+  - Metrics
+  - Alarms
+description: 'AWS CloudWatch is pure pay-as-you-go: each feature (custom metrics, API requests, alarms,
+  logs ingestion / storage / analysis, dashboards, contributor insights, live tail) has its own per-unit
+  rate. The AWS Free Tier provides perpetual monthly allowances for evaluation. Volume tiers apply to custom
+  metrics and log ingestion. All prices below are us-east-1 list prices and may vary by region; see the
+  pricing calculator for committed-use, savings plan, or enterprise discount terms.'
+sources:
+  - https://aws.amazon.com/cloudwatch/pricing/
 plans:
-  - id: cloudwatch-free
-    name: Free
+  - id: cloudwatch-free-tier
+    name: AWS Free Tier
     type: freemium
-    description: Free entry tier for the AWS CloudWatch API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Perpetual free monthly allowance bundled with every AWS account.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Custom and detailed-monitoring metrics
+        name: free_metrics
         type: quota
-        metric: requests
-        limit: 1000
+        metric: metric
+        limit: 10
         timeFrame: month
         geo: global
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
+      - label: API requests (excluding GetMetricData, GetInsightRuleReport, GetMetricWidgetImage)
+        name: free_api_requests
+        type: quota
+        metric: requests
+        limit: 1000000
+        timeFrame: month
         geo: global
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Logs ingestion, archive storage, and Logs Insights queries
+        name: free_logs
+        type: quota
+        metric: gb
+        limit: 5
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Live Tail
+        name: free_live_tail
+        type: quota
+        metric: minute
+        limit: 1800
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Custom dashboards
+        name: free_dashboards
+        type: quota
+        metric: dashboard
+        limit: 3
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Standard-resolution alarm metrics
+        name: free_alarms
+        type: quota
+        metric: alarm
+        limit: 10
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Contributor Insights rule
+        name: free_contributor_insights_rule
+        type: quota
+        metric: rule
+        limit: 1
+        timeFrame: month
+        geo: global
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Amazon CloudWatch API
-      - name: Amazon CloudWatch Logs API
-      - name: Amazon CloudWatch Events API
-      - name: Amazon CloudWatch Application Insights API
-      - name: Amazon CloudWatch Synthetics API
-      - name: Amazon CloudWatch Internet Monitor API
-      - name: Amazon CloudWatch RUM API
-      - name: Amazon CloudWatch Observability Access Manager API
-  - id: cloudwatch-pro
-    name: Professional
-    type: paid
-    description: Production tier for AWS CloudWatch. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+      - name: Basic monitoring metrics from AWS services (no charge)
+      - name: Application Signals 3-month trial (100 GB cap)
+      - name: First 100,000 X-Ray traces recorded per month
+      - name: First 1,000,000 X-Ray traces retrieved per month
+  - id: cloudwatch-metrics
+    name: CloudWatch Metrics
+    type: usage-based
+    description: Custom metrics and detailed-monitoring metrics, priced per metric per month with volume
+      tiers.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Custom metrics — first 10,000
+        name: metrics_tier1
+        type: tiered
+        metric: metric
+        limit: 10000
         timeFrame: month
         geo: global
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
         unit: 1
-        price: TBD
+        price: '$0.30'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
+      - label: Custom metrics — next 240,000
+        name: metrics_tier2
+        type: tiered
+        metric: metric
+        limit: 240000
+        timeFrame: month
         geo: global
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
         unit: 1
-        price: '0.00'
+        price: '$0.10'
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Custom metrics — over 250,000
+        name: metrics_tier3
+        type: tiered
+        metric: metric
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.05'
+        userMultiplied: false
+    elements:
+      - name: Standard-resolution metrics
+      - name: High-resolution metrics
+      - name: GetMetricData / PutMetricData APIs
+  - id: cloudwatch-api-requests
+    name: CloudWatch API Requests
+    type: usage-based
+    description: Per-request charge for CloudWatch API calls beyond the free tier (e.g. GetMetricData,
+      GetMetricStatistics, ListMetrics).
+    entries:
+      - label: API requests
+        name: api_requests
         type: metered
         metric: requests
         limit: -1
-        timeFrame: month
+        timeFrame: usage
         geo: global
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
         unit: 1000
-        price: TBD
+        price: '$0.01'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Amazon CloudWatch API
-      - name: Amazon CloudWatch Logs API
-      - name: Amazon CloudWatch Events API
-      - name: Amazon CloudWatch Application Insights API
-      - name: Amazon CloudWatch Synthetics API
-      - name: Amazon CloudWatch Internet Monitor API
-      - name: Amazon CloudWatch RUM API
-      - name: Amazon CloudWatch Observability Access Manager API
-      - name: Amazon CloudWatch Application Signals API
-      - name: Amazon CloudWatch Network Monitor API
-  - id: cloudwatch-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for AWS CloudWatch. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+      - name: Applies to PutMetricData, GetMetricData, GetMetricStatistics, ListMetrics, etc.
+  - id: cloudwatch-alarms
+    name: CloudWatch Alarms
+    type: usage-based
+    description: Standard-resolution alarm metrics billed monthly per alarm metric beyond the 10 included
+      in the free tier.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Standard-resolution alarm metric
+        name: alarm_metric
+        type: metered
+        metric: alarm
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://monitoring.amazonaws.com
-          - https://logs.amazonaws.com
-          - https://events.amazonaws.com
-          - https://applicationinsights.amazonaws.com
-          - https://synthetics.amazonaws.com
-          - https://internetmonitor.amazonaws.com
-          - https://rum.amazonaws.com
-          - https://oam.amazonaws.com
-          - https://application-signals.amazonaws.com
-          - https://networkmonitor.amazonaws.com
-        unit: 1
-        price: custom
+        price: '$0.10'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Amazon CloudWatch API
-      - name: Amazon CloudWatch Logs API
-      - name: Amazon CloudWatch Events API
-      - name: Amazon CloudWatch Application Insights API
-      - name: Amazon CloudWatch Synthetics API
-      - name: Amazon CloudWatch Internet Monitor API
-      - name: Amazon CloudWatch RUM API
-      - name: Amazon CloudWatch Observability Access Manager API
-      - name: Amazon CloudWatch Application Signals API
-      - name: Amazon CloudWatch Network Monitor API
+      - name: Standard-resolution alarms
+  - id: cloudwatch-logs
+    name: CloudWatch Logs
+    type: usage-based
+    description: Tiered pricing for log ingestion, archived storage, and Live Tail streaming.
+    entries:
+      - label: Log ingestion — 5 GB to 30 GB
+        name: logs_ingest_tier1
+        type: tiered
+        metric: gb
+        limit: 30
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.50'
+        userMultiplied: false
+      - label: Log ingestion — 30 GB to 50 GB
+        name: logs_ingest_tier2
+        type: tiered
+        metric: gb
+        limit: 50
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.10'
+        userMultiplied: false
+      - label: Log ingestion — high-volume tier
+        name: logs_ingest_tier3
+        type: tiered
+        metric: gb
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.05'
+        userMultiplied: false
+      - label: Log archive storage
+        name: logs_storage
+        type: metered
+        metric: gb
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.03'
+        userMultiplied: false
+      - label: Live Tail
+        name: live_tail
+        type: metered
+        metric: minute
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '$0.01'
+        userMultiplied: false
+    elements:
+      - name: Logs Insights queries
+      - name: Subscription filters
+      - name: Log groups
+  - id: cloudwatch-contributor-insights
+    name: Contributor Insights
+    type: usage-based
+    description: Per-rule monthly fee plus matched-event charge for Contributor Insights.
+    entries:
+      - label: Rule — first is free, additional rules
+        name: ci_rule
+        type: metered
+        metric: rule
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$0.50'
+        userMultiplied: false
+      - label: Matched log events (after 1M free)
+        name: ci_matched_events
+        type: metered
+        metric: events
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '$0.02'
+        userMultiplied: false
+    elements:
+      - name: Contributor Insights rules
+  - id: cloudwatch-platform-overview
+    name: CloudWatch Platform — see pricing calculator
+    type: usage-based
+    description: Other CloudWatch features (Application Signals, Internet Monitor, Network Flow Monitor,
+      Synthetics canaries, RUM, Database Insights) carry feature-specific rates documented on the pricing
+      page. Use the AWS Pricing Calculator to model end-to-end cost.
+    entries:
+      - label: Feature pricing
+        name: platform_features
+        type: metered
+        metric: varies
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: see https://aws.amazon.com/cloudwatch/pricing/
+        userMultiplied: false
+    elements:
+      - name: Application Signals
+      - name: Internet Monitor
+      - name: Network Flow Monitor
+      - name: Synthetics canaries
+      - name: RUM
+      - name: Database Insights
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

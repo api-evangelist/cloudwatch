@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AWS CloudWatch Amazon CloudWatch API — Dashboards
+  description: 'AWS CloudWatch Amazon CloudWatch API — Dashboards. 4 operations. Lead operation: Aws Cloudwatch Delete Specified
+    Dashboards. Self-contained Naftiko capability covering one Cloudwatch business surface.'
+  tags:
+  - Cloudwatch
+  - Dashboards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDWATCH_API_KEY: CLOUDWATCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudwatch-dashboards
+    baseUri: https://monitoring.{region}.amazonaws.com
+    description: AWS CloudWatch Amazon CloudWatch API — Dashboards business capability. Self-contained, no shared references.
+    resources:
+    - name: '#DeleteDashboards'
+      path: /#DeleteDashboards
+      operations:
+      - name: deletedashboards
+        method: POST
+        description: Aws Cloudwatch Delete Specified Dashboards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#GetDashboard'
+      path: /#GetDashboard
+      operations:
+      - name: getdashboard
+        method: POST
+        description: Aws Cloudwatch Retrieve Details for a Specified Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#ListDashboards'
+      path: /#ListDashboards
+      operations:
+      - name: listdashboards
+        method: POST
+        description: Aws Cloudwatch List the Dashboards in Your Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#PutDashboard'
+      path: /#PutDashboard
+      operations:
+      - name: putdashboard
+        method: POST
+        description: Aws Cloudwatch Create or Update a Cloudwatch Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.CLOUDWATCH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cloudwatch-dashboards-rest
+    port: 8080
+    description: REST adapter for AWS CloudWatch Amazon CloudWatch API — Dashboards. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/deletedashboards
+      name: deletedashboards
+      description: 'REST surface for #DeleteDashboards.'
+      operations:
+      - method: POST
+        name: deletedashboards
+        description: Aws Cloudwatch Delete Specified Dashboards
+        call: cloudwatch-dashboards.deletedashboards
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/getdashboard
+      name: getdashboard
+      description: 'REST surface for #GetDashboard.'
+      operations:
+      - method: POST
+        name: getdashboard
+        description: Aws Cloudwatch Retrieve Details for a Specified Dashboard
+        call: cloudwatch-dashboards.getdashboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/listdashboards
+      name: listdashboards
+      description: 'REST surface for #ListDashboards.'
+      operations:
+      - method: POST
+        name: listdashboards
+        description: Aws Cloudwatch List the Dashboards in Your Account
+        call: cloudwatch-dashboards.listdashboards
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/putdashboard
+      name: putdashboard
+      description: 'REST surface for #PutDashboard.'
+      operations:
+      - method: POST
+        name: putdashboard
+        description: Aws Cloudwatch Create or Update a Cloudwatch Dashboard
+        call: cloudwatch-dashboards.putdashboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudwatch-dashboards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AWS CloudWatch Amazon CloudWatch API — Dashboards. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: aws-cloudwatch-delete-specified-dashboards
+      description: Aws Cloudwatch Delete Specified Dashboards
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-dashboards.deletedashboards
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-retrieve-details-specified
+      description: Aws Cloudwatch Retrieve Details for a Specified Dashboard
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudwatch-dashboards.getdashboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-list-dashboards-your
+      description: Aws Cloudwatch List the Dashboards in Your Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudwatch-dashboards.listdashboards
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-create-update-cloudwatch
+      description: Aws Cloudwatch Create or Update a Cloudwatch Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-dashboards.putdashboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

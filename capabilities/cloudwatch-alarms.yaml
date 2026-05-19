@@ -1,0 +1,376 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AWS CloudWatch Amazon CloudWatch API — Alarms
+  description: 'AWS CloudWatch Amazon CloudWatch API — Alarms. 8 operations. Lead operation: Aws Cloudwatch Delete Specified
+    Alarms. Self-contained Naftiko capability covering one Cloudwatch business surface.'
+  tags:
+  - Cloudwatch
+  - Alarms
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOUDWATCH_API_KEY: CLOUDWATCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloudwatch-alarms
+    baseUri: https://monitoring.{region}.amazonaws.com
+    description: AWS CloudWatch Amazon CloudWatch API — Alarms business capability. Self-contained, no shared references.
+    resources:
+    - name: '#DeleteAlarms'
+      path: /#DeleteAlarms
+      operations:
+      - name: deletealarms
+        method: POST
+        description: Aws Cloudwatch Delete Specified Alarms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DescribeAlarmHistory'
+      path: /#DescribeAlarmHistory
+      operations:
+      - name: describealarmhistory
+        method: POST
+        description: Aws Cloudwatch Retrieve the History for a Specified Alarm
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#DescribeAlarms'
+      path: /#DescribeAlarms
+      operations:
+      - name: describealarms
+        method: POST
+        description: Aws Cloudwatch Retrieve Information About Specified Alarms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: '#DescribeAlarmsForMetric'
+      path: /#DescribeAlarmsForMetric
+      operations:
+      - name: describealarmsformetric
+        method: POST
+        description: Aws Cloudwatch Retrieve Alarms for a Specified Metric
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#DisableAlarmActions'
+      path: /#DisableAlarmActions
+      operations:
+      - name: disablealarmactions
+        method: POST
+        description: Aws Cloudwatch Disable Actions for Specified Alarms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#EnableAlarmActions'
+      path: /#EnableAlarmActions
+      operations:
+      - name: enablealarmactions
+        method: POST
+        description: Aws Cloudwatch Enable Actions for Specified Alarms
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#PutMetricAlarm'
+      path: /#PutMetricAlarm
+      operations:
+      - name: putmetricalarm
+        method: POST
+        description: Aws Cloudwatch Create or Update a Cloudwatch Alarm
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: '#SetAlarmState'
+      path: /#SetAlarmState
+      operations:
+      - name: setalarmstate
+        method: POST
+        description: Aws Cloudwatch Temporarily Set the State of an Alarm
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.CLOUDWATCH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: cloudwatch-alarms-rest
+    port: 8080
+    description: REST adapter for AWS CloudWatch Amazon CloudWatch API — Alarms. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/deletealarms
+      name: deletealarms
+      description: 'REST surface for #DeleteAlarms.'
+      operations:
+      - method: POST
+        name: deletealarms
+        description: Aws Cloudwatch Delete Specified Alarms
+        call: cloudwatch-alarms.deletealarms
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describealarmhistory
+      name: describealarmhistory
+      description: 'REST surface for #DescribeAlarmHistory.'
+      operations:
+      - method: POST
+        name: describealarmhistory
+        description: Aws Cloudwatch Retrieve the History for a Specified Alarm
+        call: cloudwatch-alarms.describealarmhistory
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describealarms
+      name: describealarms
+      description: 'REST surface for #DescribeAlarms.'
+      operations:
+      - method: POST
+        name: describealarms
+        description: Aws Cloudwatch Retrieve Information About Specified Alarms
+        call: cloudwatch-alarms.describealarms
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/describealarmsformetric
+      name: describealarmsformetric
+      description: 'REST surface for #DescribeAlarmsForMetric.'
+      operations:
+      - method: POST
+        name: describealarmsformetric
+        description: Aws Cloudwatch Retrieve Alarms for a Specified Metric
+        call: cloudwatch-alarms.describealarmsformetric
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/disablealarmactions
+      name: disablealarmactions
+      description: 'REST surface for #DisableAlarmActions.'
+      operations:
+      - method: POST
+        name: disablealarmactions
+        description: Aws Cloudwatch Disable Actions for Specified Alarms
+        call: cloudwatch-alarms.disablealarmactions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/enablealarmactions
+      name: enablealarmactions
+      description: 'REST surface for #EnableAlarmActions.'
+      operations:
+      - method: POST
+        name: enablealarmactions
+        description: Aws Cloudwatch Enable Actions for Specified Alarms
+        call: cloudwatch-alarms.enablealarmactions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/putmetricalarm
+      name: putmetricalarm
+      description: 'REST surface for #PutMetricAlarm.'
+      operations:
+      - method: POST
+        name: putmetricalarm
+        description: Aws Cloudwatch Create or Update a Cloudwatch Alarm
+        call: cloudwatch-alarms.putmetricalarm
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/setalarmstate
+      name: setalarmstate
+      description: 'REST surface for #SetAlarmState.'
+      operations:
+      - method: POST
+        name: setalarmstate
+        description: Aws Cloudwatch Temporarily Set the State of an Alarm
+        call: cloudwatch-alarms.setalarmstate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloudwatch-alarms-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AWS CloudWatch Amazon CloudWatch API — Alarms. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: aws-cloudwatch-delete-specified-alarms
+      description: Aws Cloudwatch Delete Specified Alarms
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.deletealarms
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-retrieve-history-specified
+      description: Aws Cloudwatch Retrieve the History for a Specified Alarm
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.describealarmhistory
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-retrieve-information-about
+      description: Aws Cloudwatch Retrieve Information About Specified Alarms
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.describealarms
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-retrieve-alarms-specified
+      description: Aws Cloudwatch Retrieve Alarms for a Specified Metric
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.describealarmsformetric
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-disable-actions-specified
+      description: Aws Cloudwatch Disable Actions for Specified Alarms
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.disablealarmactions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-enable-actions-specified
+      description: Aws Cloudwatch Enable Actions for Specified Alarms
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.enablealarmactions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-create-update-cloudwatch
+      description: Aws Cloudwatch Create or Update a Cloudwatch Alarm
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.putmetricalarm
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aws-cloudwatch-temporarily-set-state
+      description: Aws Cloudwatch Temporarily Set the State of an Alarm
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloudwatch-alarms.setalarmstate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeAlarmsInput",
+  "title": "DescribeAlarmsInput",
+  "type": "object",
+  "properties": {
+    "AlarmNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 100,
+      "description": "The names of the alarms to retrieve information about.",
+      "example": []
+    },
+    "AlarmNamePrefix": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+      "example": "example_value"
+    },
+    "AlarmTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CompositeAlarm",
+          "MetricAlarm"
+        ]
+      },
+      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+      "example": []
+    },
+    "ChildrenOfAlarmName": {
+      "type": "string",
+      "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+      "example": "example_value"
+    },
+    "ParentsOfAlarmName": {
+      "type": "string",
+      "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+      "example": "example_value"
+    },
+    "StateValue": {
+      "$ref": "#/components/schemas/StateValue"
+    },
+    "ActionPrefix": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+      "example": "example_value"
+    },
+    "MaxRecords": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "The maximum number of alarm descriptions to retrieve.",
+      "example": 10
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call to indicate there is more data available.",
+      "example": "example_value"
+    }
+  }
+}

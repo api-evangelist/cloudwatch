@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AlarmHistoryItem",
+  "title": "AlarmHistoryItem",
+  "type": "object",
+  "description": "Represents the history of a specific alarm.",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "description": "The descriptive name for the alarm.",
+      "example": "example_value"
+    },
+    "AlarmType": {
+      "type": "string",
+      "enum": [
+        "CompositeAlarm",
+        "MetricAlarm"
+      ],
+      "description": "The type of alarm, either metric alarm or composite alarm.",
+      "example": "CompositeAlarm"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp for the alarm history item.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "HistoryItemType": {
+      "type": "string",
+      "enum": [
+        "ConfigurationUpdate",
+        "StateUpdate",
+        "Action"
+      ],
+      "description": "The type of alarm history item.",
+      "example": "ConfigurationUpdate"
+    },
+    "HistorySummary": {
+      "type": "string",
+      "description": "A summary of the alarm history, in text format.",
+      "example": "example_value"
+    },
+    "HistoryData": {
+      "type": "string",
+      "description": "Data about the alarm, in JSON format.",
+      "example": "example_value"
+    }
+  }
+}

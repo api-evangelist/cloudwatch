@@ -1,0 +1,51 @@
+{
+  "operationId": "PutCompositeAlarm",
+  "method": "POST",
+  "path": "/#PutCompositeAlarm",
+  "summary": "Aws Cloudwatch Create or Update a Composite Alarm",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "PutcompositealarmRequestExample",
+      "example": {
+        "AlarmName": "example_value",
+        "AlarmDescription": "example_value",
+        "ActionsEnabled": true,
+        "AlarmActions": [
+          "example_value"
+        ],
+        "AlarmRule": "example_value",
+        "InsufficientDataActions": [
+          "example_value"
+        ],
+        "OKActions": [
+          "example_value"
+        ],
+        "Tags": [
+          {
+            "Key": "example_value",
+            "Value": "example_value"
+          }
+        ],
+        "ActionsSuppressor": "example_value",
+        "ActionsSuppressorWaitPeriod": 10,
+        "ActionsSuppressorExtensionPeriod": 10
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Putcompositealarm400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

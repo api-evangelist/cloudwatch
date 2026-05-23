@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DashboardEntry",
+  "title": "DashboardEntry",
+  "type": "object",
+  "description": "Represents a specific dashboard.",
+  "properties": {
+    "DashboardName": {
+      "type": "string",
+      "description": "The name of the dashboard.",
+      "example": "example_value"
+    },
+    "DashboardArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the dashboard.",
+      "example": "example_value"
+    },
+    "LastModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp of when the dashboard was last modified.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "Size": {
+      "type": "integer",
+      "description": "The size of the dashboard, in bytes.",
+      "example": 10
+    }
+  }
+}

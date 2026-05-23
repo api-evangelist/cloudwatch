@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositeAlarm",
+  "title": "CompositeAlarm",
+  "type": "object",
+  "description": "The details about a composite alarm.",
+  "properties": {
+    "ActionsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether actions should be executed during changes to the alarm state.",
+      "example": true
+    },
+    "AlarmActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+      "example": []
+    },
+    "AlarmArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmConfigurationUpdatedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp of the last update to the alarm configuration.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "AlarmDescription": {
+      "type": "string",
+      "description": "The description of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmName": {
+      "type": "string",
+      "description": "The name of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmRule": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10240,
+      "description": "The rule that this alarm uses to evaluate its alarm state.",
+      "example": "example_value"
+    },
+    "InsufficientDataActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+      "example": []
+    },
+    "OKActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the OK state.",
+      "example": []
+    },
+    "StateReason": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in text format.",
+      "example": "example_value"
+    },
+    "StateReasonData": {
+      "type": "string",
+      "description": "An explanation for the alarm state, in JSON format.",
+      "example": "example_value"
+    },
+    "StateUpdatedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp of the last change to the alarm's StateValue.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "StateValue": {
+      "$ref": "#/components/schemas/StateValue"
+    },
+    "StateTransitionedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp of the last state transition.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "ActionsSuppressedBy": {
+      "type": "string",
+      "enum": [
+        "WaitPeriod",
+        "ExtensionPeriod",
+        "Alarm"
+      ],
+      "description": "When the value is ALARM, it means that the actions are suppressed.",
+      "example": "WaitPeriod"
+    },
+    "ActionsSuppressedReason": {
+      "type": "string",
+      "description": "Describes why the actions are suppressed.",
+      "example": "example_value"
+    },
+    "ActionsSuppressor": {
+      "type": "string",
+      "description": "The ARN of the alarm used as the actions suppressor.",
+      "example": "example_value"
+    },
+    "ActionsSuppressorWaitPeriod": {
+      "type": "integer",
+      "description": "The maximum time in seconds that the composite alarm waits after suppressor alarm goes into ALARM state.",
+      "example": 10
+    },
+    "ActionsSuppressorExtensionPeriod": {
+      "type": "integer",
+      "description": "The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of ALARM state.",
+      "example": 10
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetMetricStatisticsOutput",
+  "title": "GetMetricStatisticsOutput",
+  "type": "object",
+  "properties": {
+    "Label": {
+      "type": "string",
+      "description": "A label for the specified metric.",
+      "example": "Example Title"
+    },
+    "Datapoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Datapoint"
+      },
+      "description": "The data points for the specified metric.",
+      "example": []
+    }
+  }
+}

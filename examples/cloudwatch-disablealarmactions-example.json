@@ -1,0 +1,18 @@
+{
+  "operationId": "DisableAlarmActions",
+  "method": "POST",
+  "path": "/#DisableAlarmActions",
+  "summary": "Aws Cloudwatch Disable Actions for Specified Alarms",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DisablealarmactionsRequestExample",
+      "example": {
+        "AlarmNames": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": []
+}

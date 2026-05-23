@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UntagResourceInput",
+  "title": "UntagResourceInput",
+  "type": "object",
+  "required": [
+    "ResourceARN",
+    "TagKeys"
+  ],
+  "properties": {
+    "ResourceARN": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "The ARN of the CloudWatch resource that you're removing tags from.",
+      "example": "example_value"
+    },
+    "TagKeys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The list of tag keys to remove from the resource.",
+      "example": []
+    }
+  }
+}

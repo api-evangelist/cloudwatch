@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetMetricStatisticsInput",
+  "title": "GetMetricStatisticsInput",
+  "type": "object",
+  "required": [
+    "Namespace",
+    "MetricName",
+    "StartTime",
+    "EndTime",
+    "Period"
+  ],
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The namespace of the metric.",
+      "example": "example_value"
+    },
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the metric.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "maxItems": 30,
+      "description": "The dimensions to filter the metric.",
+      "example": []
+    },
+    "StartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp that determines the first data point to return.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "EndTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp that determines the last data point to return.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "Period": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The granularity, in seconds, of the returned data points.",
+      "example": 10
+    },
+    "Statistics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Statistic"
+      },
+      "minItems": 1,
+      "maxItems": 5,
+      "description": "The metric statistics.",
+      "example": []
+    },
+    "ExtendedStatistics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "description": "The percentile statistics.",
+      "example": []
+    },
+    "Unit": {
+      "$ref": "#/components/schemas/StandardUnit"
+    }
+  }
+}

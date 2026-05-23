@@ -1,0 +1,57 @@
+{
+  "operationId": "DescribeAlarmHistory",
+  "method": "POST",
+  "path": "/#DescribeAlarmHistory",
+  "summary": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DescribealarmhistoryRequestExample",
+      "example": {
+        "AlarmName": "example_value",
+        "AlarmTypes": [
+          "CompositeAlarm"
+        ],
+        "HistoryItemType": "ConfigurationUpdate",
+        "StartDate": "2026-01-15T10:30:00Z",
+        "EndDate": "2026-01-15T10:30:00Z",
+        "MaxRecords": 10,
+        "NextToken": "example_value",
+        "ScanBy": "TimestampDescending"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Describealarmhistory200Example",
+      "example": {
+        "AlarmHistoryItems": [
+          {
+            "AlarmName": "example_value",
+            "AlarmType": "CompositeAlarm",
+            "Timestamp": "2026-01-15T10:30:00Z",
+            "HistoryItemType": "ConfigurationUpdate",
+            "HistorySummary": "example_value",
+            "HistoryData": "example_value"
+          }
+        ],
+        "NextToken": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Describealarmhistory400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

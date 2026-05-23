@@ -1,0 +1,63 @@
+{
+  "operationId": "DescribeAlarmsForMetric",
+  "method": "POST",
+  "path": "/#DescribeAlarmsForMetric",
+  "summary": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DescribealarmsformetricRequestExample",
+      "example": {
+        "MetricName": "example_value",
+        "Namespace": "example_value",
+        "Statistic": "SampleCount",
+        "ExtendedStatistic": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "Period": 10,
+        "Unit": "Seconds"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Describealarmsformetric200Example",
+      "example": {
+        "MetricAlarms": [
+          {
+            "AlarmName": "example_value",
+            "AlarmArn": "example_value",
+            "AlarmDescription": "example_value",
+            "AlarmConfigurationUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "ActionsEnabled": true,
+            "OKActions": {},
+            "AlarmActions": {},
+            "InsufficientDataActions": {},
+            "StateReason": "example_value",
+            "StateReasonData": "example_value",
+            "StateUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "MetricName": "example_value",
+            "Namespace": "example_value",
+            "ExtendedStatistic": "example_value",
+            "Dimensions": {},
+            "Period": 10,
+            "EvaluationPeriods": 10,
+            "DatapointsToAlarm": 10,
+            "Threshold": 42.5,
+            "TreatMissingData": "breaching",
+            "EvaluateLowSampleCountPercentile": "example_value",
+            "Metrics": {},
+            "ThresholdMetricId": "500123",
+            "StateTransitionedTimestamp": "2026-01-15T10:30:00Z"
+          }
+        ]
+      }
+    }
+  ]
+}

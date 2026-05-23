@@ -1,0 +1,22 @@
+{
+  "operationId": "TagResource",
+  "method": "POST",
+  "path": "/#TagResource",
+  "summary": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "TagresourceRequestExample",
+      "example": {
+        "ResourceARN": "example_value",
+        "Tags": [
+          {
+            "Key": "example_value",
+            "Value": "example_value"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": []
+}

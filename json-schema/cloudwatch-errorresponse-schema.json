@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorResponse",
+  "title": "ErrorResponse",
+  "type": "object",
+  "description": "Standard error response from CloudWatch API.",
+  "properties": {
+    "Error": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "description": "The error type (Sender or Receiver)."
+        },
+        "Code": {
+          "type": "string",
+          "description": "The error code."
+        },
+        "Message": {
+          "type": "string",
+          "description": "A description of the error."
+        }
+      },
+      "example": "example_value"
+    },
+    "RequestId": {
+      "type": "string",
+      "description": "The unique request ID.",
+      "example": "500123"
+    }
+  }
+}

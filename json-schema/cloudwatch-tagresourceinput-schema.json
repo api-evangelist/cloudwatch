@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TagResourceInput",
+  "title": "TagResourceInput",
+  "type": "object",
+  "required": [
+    "ResourceARN",
+    "Tags"
+  ],
+  "properties": {
+    "ResourceARN": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "The ARN of the CloudWatch resource that you're adding tags to.",
+      "example": "example_value"
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Tag"
+      },
+      "description": "The list of key-value pairs to associate with the alarm.",
+      "example": []
+    }
+  }
+}

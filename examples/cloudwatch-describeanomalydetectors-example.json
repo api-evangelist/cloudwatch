@@ -1,0 +1,46 @@
+{
+  "operationId": "DescribeAnomalyDetectors",
+  "method": "POST",
+  "path": "/#DescribeAnomalyDetectors",
+  "summary": "Aws Cloudwatch List Anomaly Detection Models",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DescribeanomalydetectorsRequestExample",
+      "example": {
+        "NextToken": "example_value",
+        "MaxResults": 10,
+        "Namespace": "example_value",
+        "MetricName": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "AnomalyDetectorTypes": [
+          "SINGLE_METRIC"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Describeanomalydetectors200Example",
+      "example": {
+        "AnomalyDetectors": [
+          {
+            "Namespace": "example_value",
+            "MetricName": "example_value",
+            "Dimensions": {},
+            "Stat": "example_value",
+            "StateValue": "PENDING_TRAINING"
+          }
+        ],
+        "NextToken": "example_value"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeAlarmsForMetricInput",
+  "title": "DescribeAlarmsForMetricInput",
+  "type": "object",
+  "required": [
+    "MetricName",
+    "Namespace"
+  ],
+  "properties": {
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the metric.",
+      "example": "example_value"
+    },
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The namespace of the metric.",
+      "example": "example_value"
+    },
+    "Statistic": {
+      "$ref": "#/components/schemas/Statistic"
+    },
+    "ExtendedStatistic": {
+      "type": "string",
+      "description": "The percentile statistic for the metric.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "maxItems": 30,
+      "description": "The dimensions associated with the metric.",
+      "example": []
+    },
+    "Period": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The period, in seconds, over which the statistic is applied.",
+      "example": 10
+    },
+    "Unit": {
+      "$ref": "#/components/schemas/StandardUnit"
+    }
+  }
+}

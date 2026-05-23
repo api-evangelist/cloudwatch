@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DashboardValidationMessage",
+  "title": "DashboardValidationMessage",
+  "type": "object",
+  "description": "An error or warning for the PutDashboard operation.",
+  "properties": {
+    "DataPath": {
+      "type": "string",
+      "description": "The data path related to the message.",
+      "example": "example_value"
+    },
+    "Message": {
+      "type": "string",
+      "description": "A message describing the error or warning.",
+      "example": "example_value"
+    }
+  }
+}

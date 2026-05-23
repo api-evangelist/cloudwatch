@@ -1,0 +1,54 @@
+{
+  "operationId": "PutMetricData",
+  "method": "POST",
+  "path": "/",
+  "summary": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "PutmetricdataRequestExample",
+      "example": {
+        "Namespace": "example_value",
+        "MetricData": [
+          {
+            "MetricName": "example_value",
+            "Dimensions": {},
+            "Timestamp": "2026-01-15T10:30:00Z",
+            "Value": 42.5,
+            "Values": {},
+            "Counts": {},
+            "StorageResolution": 10
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Putmetricdata400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/xml",
+      "name": "Putmetricdata500Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

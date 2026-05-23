@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ComparisonOperator",
+  "title": "ComparisonOperator",
+  "type": "string",
+  "description": "The arithmetic operation to use when comparing the specified statistic and threshold.",
+  "enum": [
+    "GreaterThanOrEqualToThreshold",
+    "GreaterThanThreshold",
+    "LessThanThreshold",
+    "LessThanOrEqualToThreshold",
+    "LessThanLowerOrGreaterThanUpperThreshold",
+    "LessThanLowerThreshold",
+    "GreaterThanUpperThreshold"
+  ]
+}

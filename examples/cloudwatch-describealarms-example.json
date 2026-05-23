@@ -1,0 +1,100 @@
+{
+  "operationId": "DescribeAlarms",
+  "method": "POST",
+  "path": "/#DescribeAlarms",
+  "summary": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DescribealarmsRequestExample",
+      "example": {
+        "AlarmNames": [
+          "example_value"
+        ],
+        "AlarmNamePrefix": "example_value",
+        "AlarmTypes": [
+          "CompositeAlarm"
+        ],
+        "ChildrenOfAlarmName": "example_value",
+        "ParentsOfAlarmName": "example_value",
+        "StateValue": "OK",
+        "ActionPrefix": "example_value",
+        "MaxRecords": 10,
+        "NextToken": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Describealarms200Example",
+      "example": {
+        "MetricAlarms": [
+          {
+            "AlarmName": "example_value",
+            "AlarmArn": "example_value",
+            "AlarmDescription": "example_value",
+            "AlarmConfigurationUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "ActionsEnabled": true,
+            "OKActions": {},
+            "AlarmActions": {},
+            "InsufficientDataActions": {},
+            "StateReason": "example_value",
+            "StateReasonData": "example_value",
+            "StateUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "MetricName": "example_value",
+            "Namespace": "example_value",
+            "ExtendedStatistic": "example_value",
+            "Dimensions": {},
+            "Period": 10,
+            "EvaluationPeriods": 10,
+            "DatapointsToAlarm": 10,
+            "Threshold": 42.5,
+            "TreatMissingData": "breaching",
+            "EvaluateLowSampleCountPercentile": "example_value",
+            "Metrics": {},
+            "ThresholdMetricId": "500123",
+            "StateTransitionedTimestamp": "2026-01-15T10:30:00Z"
+          }
+        ],
+        "CompositeAlarms": [
+          {
+            "ActionsEnabled": true,
+            "AlarmActions": {},
+            "AlarmArn": "example_value",
+            "AlarmConfigurationUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "AlarmDescription": "example_value",
+            "AlarmName": "example_value",
+            "AlarmRule": "example_value",
+            "InsufficientDataActions": {},
+            "OKActions": {},
+            "StateReason": "example_value",
+            "StateReasonData": "example_value",
+            "StateUpdatedTimestamp": "2026-01-15T10:30:00Z",
+            "StateTransitionedTimestamp": "2026-01-15T10:30:00Z",
+            "ActionsSuppressedBy": "WaitPeriod",
+            "ActionsSuppressedReason": "example_value",
+            "ActionsSuppressor": "example_value",
+            "ActionsSuppressorWaitPeriod": 10,
+            "ActionsSuppressorExtensionPeriod": 10
+          }
+        ],
+        "NextToken": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Describealarms400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricAlarm",
+  "title": "MetricAlarm",
+  "type": "object",
+  "description": "The details about a metric alarm.",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmArn": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1600,
+      "description": "The Amazon Resource Name (ARN) of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmDescription": {
+      "type": "string",
+      "maxLength": 1024,
+      "description": "The description of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmConfigurationUpdatedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp of the last update to the alarm configuration.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "ActionsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+      "example": true
+    },
+    "OKActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the OK state.",
+      "example": []
+    },
+    "AlarmActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+      "example": []
+    },
+    "InsufficientDataActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+      "example": []
+    },
+    "StateValue": {
+      "$ref": "#/components/schemas/StateValue"
+    },
+    "StateReason": {
+      "type": "string",
+      "maxLength": 1023,
+      "description": "An explanation for the alarm state, in text format.",
+      "example": "example_value"
+    },
+    "StateReasonData": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "An explanation for the alarm state, in JSON format.",
+      "example": "example_value"
+    },
+    "StateUpdatedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp of the last update to the value of either the StateValue or StateReasonData.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the metric associated with the alarm.",
+      "example": "example_value"
+    },
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The namespace of the metric associated with the alarm.",
+      "example": "example_value"
+    },
+    "Statistic": {
+      "$ref": "#/components/schemas/Statistic"
+    },
+    "ExtendedStatistic": {
+      "type": "string",
+      "description": "The percentile statistic for the metric associated with the alarm.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "maxItems": 30,
+      "description": "The dimensions for the metric associated with the alarm.",
+      "example": []
+    },
+    "Period": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The period, in seconds, over which the statistic is applied.",
+      "example": 10
+    },
+    "Unit": {
+      "$ref": "#/components/schemas/StandardUnit"
+    },
+    "EvaluationPeriods": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The number of periods over which data is compared to the specified threshold.",
+      "example": 10
+    },
+    "DatapointsToAlarm": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The number of data points that must be breaching to trigger the alarm.",
+      "example": 10
+    },
+    "Threshold": {
+      "type": "number",
+      "format": "double",
+      "description": "The value to compare with the specified statistic.",
+      "example": 42.5
+    },
+    "ComparisonOperator": {
+      "$ref": "#/components/schemas/ComparisonOperator"
+    },
+    "TreatMissingData": {
+      "type": "string",
+      "enum": [
+        "breaching",
+        "notBreaching",
+        "ignore",
+        "missing"
+      ],
+      "description": "Sets how this alarm is to handle missing data points.",
+      "example": "breaching"
+    },
+    "EvaluateLowSampleCountPercentile": {
+      "type": "string",
+      "description": "Used only for alarms based on percentiles.",
+      "example": "example_value"
+    },
+    "Metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricDataQuery"
+      },
+      "description": "An array of MetricDataQuery structures for metric math expressions.",
+      "example": []
+    },
+    "ThresholdMetricId": {
+      "type": "string",
+      "description": "If the value of this field is set to an alarm metric ID, the alarm is based on an anomaly detection model.",
+      "example": "500123"
+    },
+    "StateTransitionedTimestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time that the alarm's StateValue most recently changed.",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

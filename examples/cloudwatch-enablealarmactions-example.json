@@ -1,0 +1,18 @@
+{
+  "operationId": "EnableAlarmActions",
+  "method": "POST",
+  "path": "/#EnableAlarmActions",
+  "summary": "Aws Cloudwatch Enable Actions for Specified Alarms",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "EnablealarmactionsRequestExample",
+      "example": {
+        "AlarmNames": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": []
+}

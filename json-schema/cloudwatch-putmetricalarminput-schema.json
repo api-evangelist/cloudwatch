@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PutMetricAlarmInput",
+  "title": "PutMetricAlarmInput",
+  "type": "object",
+  "required": [
+    "AlarmName",
+    "EvaluationPeriods",
+    "ComparisonOperator"
+  ],
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name for the alarm.",
+      "example": "example_value"
+    },
+    "AlarmDescription": {
+      "type": "string",
+      "maxLength": 1024,
+      "description": "The description for the alarm.",
+      "example": "example_value"
+    },
+    "ActionsEnabled": {
+      "type": "boolean",
+      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+      "example": true
+    },
+    "OKActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to an OK state.",
+      "example": []
+    },
+    "AlarmActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+      "example": []
+    },
+    "InsufficientDataActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 5,
+      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+      "example": []
+    },
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name for the metric associated with the alarm.",
+      "example": "example_value"
+    },
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The namespace for the metric associated with the alarm.",
+      "example": "example_value"
+    },
+    "Statistic": {
+      "$ref": "#/components/schemas/Statistic"
+    },
+    "ExtendedStatistic": {
+      "type": "string",
+      "description": "The percentile statistic for the metric specified in MetricName.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "maxItems": 30,
+      "description": "The dimensions for the metric specified in MetricName.",
+      "example": []
+    },
+    "Period": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+      "example": 10
+    },
+    "Unit": {
+      "$ref": "#/components/schemas/StandardUnit"
+    },
+    "EvaluationPeriods": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The number of periods over which data is compared to the specified threshold.",
+      "example": 10
+    },
+    "DatapointsToAlarm": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The number of data points that must be breaching to trigger the alarm.",
+      "example": 10
+    },
+    "Threshold": {
+      "type": "number",
+      "format": "double",
+      "description": "The value against which the specified statistic is compared.",
+      "example": 42.5
+    },
+    "ComparisonOperator": {
+      "$ref": "#/components/schemas/ComparisonOperator"
+    },
+    "TreatMissingData": {
+      "type": "string",
+      "description": "Sets how this alarm is to handle missing data points.",
+      "example": "example_value"
+    },
+    "EvaluateLowSampleCountPercentile": {
+      "type": "string",
+      "description": "Used only for alarms based on percentiles.",
+      "example": "example_value"
+    },
+    "Metrics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricDataQuery"
+      },
+      "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+      "example": []
+    },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Tag"
+      },
+      "description": "A list of key-value pairs to associate with the alarm.",
+      "example": []
+    },
+    "ThresholdMetricId": {
+      "type": "string",
+      "description": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+      "example": "500123"
+    }
+  }
+}

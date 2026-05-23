@@ -1,0 +1,32 @@
+{
+  "operationId": "DeleteAlarms",
+  "method": "POST",
+  "path": "/#DeleteAlarms",
+  "summary": "Aws Cloudwatch Delete Specified Alarms",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DeletealarmsRequestExample",
+      "example": {
+        "AlarmNames": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Deletealarms400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

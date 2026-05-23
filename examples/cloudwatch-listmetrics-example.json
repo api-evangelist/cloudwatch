@@ -1,0 +1,59 @@
+{
+  "operationId": "ListMetrics",
+  "method": "POST",
+  "path": "/#ListMetrics",
+  "summary": "Aws Cloudwatch List the Specified Metrics",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "ListmetricsRequestExample",
+      "example": {
+        "Namespace": "example_value",
+        "MetricName": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "NextToken": "example_value",
+        "RecentlyActive": "PT3H",
+        "IncludeLinkedAccounts": true,
+        "OwningAccount": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Listmetrics200Example",
+      "example": {
+        "Metrics": [
+          {
+            "Namespace": "example_value",
+            "MetricName": "example_value",
+            "Dimensions": {}
+          }
+        ],
+        "NextToken": "example_value",
+        "OwningAccounts": [
+          "example_value"
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Listmetrics400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

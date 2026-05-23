@@ -1,0 +1,731 @@
+{
+  "provider": "AWS CloudWatch",
+  "providerId": "cloudwatch",
+  "kind": "json-structure",
+  "description": "Structural overview of the AWS CloudWatch API surface; extracted from openapi/.",
+  "schemaCount": 69,
+  "operationCount": 25,
+  "schemas": [
+    {
+      "name": "Dimension",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "Name",
+        "Value"
+      ]
+    },
+    {
+      "name": "DimensionFilter",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "Name"
+      ]
+    },
+    {
+      "name": "Metric",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "MetricDatum",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "MetricName"
+      ]
+    },
+    {
+      "name": "StatisticSet",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "SampleCount",
+        "Sum",
+        "Minimum",
+        "Maximum"
+      ]
+    },
+    {
+      "name": "StandardUnit",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Datapoint",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "MetricDataQuery",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "Id"
+      ]
+    },
+    {
+      "name": "MetricStat",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "Metric",
+        "Period",
+        "Stat"
+      ]
+    },
+    {
+      "name": "MetricDataResult",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "MessageData",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "MetricAlarm",
+      "type": "object",
+      "propertyCount": 28,
+      "required": []
+    },
+    {
+      "name": "CompositeAlarm",
+      "type": "object",
+      "propertyCount": 19,
+      "required": []
+    },
+    {
+      "name": "StateValue",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "Statistic",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "ComparisonOperator",
+      "type": "string",
+      "propertyCount": 0,
+      "required": []
+    },
+    {
+      "name": "AlarmHistoryItem",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DashboardEntry",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DashboardBody",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DashboardWidget",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "type",
+        "properties"
+      ]
+    },
+    {
+      "name": "DashboardValidationMessage",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "AnomalyDetector",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "AnomalyDetectorConfiguration",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Range",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "StartTime",
+        "EndTime"
+      ]
+    },
+    {
+      "name": "MetricCharacteristics",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SingleMetricAnomalyDetector",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "MetricMathAnomalyDetector",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "MetricStreamEntry",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "MetricStreamFilter",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Tag",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "Key",
+        "Value"
+      ]
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "PutMetricDataInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "Namespace",
+        "MetricData"
+      ]
+    },
+    {
+      "name": "GetMetricDataInput",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "MetricDataQueries",
+        "StartTime",
+        "EndTime"
+      ]
+    },
+    {
+      "name": "GetMetricDataOutput",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "GetMetricStatisticsInput",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "Namespace",
+        "MetricName",
+        "StartTime",
+        "EndTime",
+        "Period"
+      ]
+    },
+    {
+      "name": "GetMetricStatisticsOutput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListMetricsInput",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ListMetricsOutput",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PutMetricAlarmInput",
+      "type": "object",
+      "propertyCount": 22,
+      "required": [
+        "AlarmName",
+        "EvaluationPeriods",
+        "ComparisonOperator"
+      ]
+    },
+    {
+      "name": "PutCompositeAlarmInput",
+      "type": "object",
+      "propertyCount": 11,
+      "required": [
+        "AlarmName",
+        "AlarmRule"
+      ]
+    },
+    {
+      "name": "DescribeAlarmsInput",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "DescribeAlarmsOutput",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "DescribeAlarmsForMetricInput",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "MetricName",
+        "Namespace"
+      ]
+    },
+    {
+      "name": "DescribeAlarmsForMetricOutput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "DescribeAlarmHistoryInput",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "DescribeAlarmHistoryOutput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DeleteAlarmsInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "AlarmNames"
+      ]
+    },
+    {
+      "name": "SetAlarmStateInput",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "AlarmName",
+        "StateValue",
+        "StateReason"
+      ]
+    },
+    {
+      "name": "EnableAlarmActionsInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "AlarmNames"
+      ]
+    },
+    {
+      "name": "DisableAlarmActionsInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "AlarmNames"
+      ]
+    },
+    {
+      "name": "PutDashboardInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "DashboardName",
+        "DashboardBody"
+      ]
+    },
+    {
+      "name": "PutDashboardOutput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "GetDashboardInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "DashboardName"
+      ]
+    },
+    {
+      "name": "GetDashboardOutput",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ListDashboardsInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListDashboardsOutput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DeleteDashboardsInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "DashboardNames"
+      ]
+    },
+    {
+      "name": "PutAnomalyDetectorInput",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "DescribeAnomalyDetectorsInput",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DescribeAnomalyDetectorsOutput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DeleteAnomalyDetectorInput",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "PutMetricStreamInput",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "Name",
+        "FirehoseArn",
+        "RoleArn",
+        "OutputFormat"
+      ]
+    },
+    {
+      "name": "PutMetricStreamOutput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ListMetricStreamsInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ListMetricStreamsOutput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "TagResourceInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "ResourceARN",
+        "Tags"
+      ]
+    },
+    {
+      "name": "UntagResourceInput",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "ResourceARN",
+        "TagKeys"
+      ]
+    },
+    {
+      "name": "ListTagsForResourceInput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "ResourceARN"
+      ]
+    },
+    {
+      "name": "ListTagsForResourceOutput",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "POST",
+      "path": "/",
+      "operationId": "PutMetricData",
+      "summary": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#GetMetricData",
+      "operationId": "GetMetricData",
+      "summary": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#GetMetricStatistics",
+      "operationId": "GetMetricStatistics",
+      "summary": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#ListMetrics",
+      "operationId": "ListMetrics",
+      "summary": "Aws Cloudwatch List the Specified Metrics",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#PutMetricAlarm",
+      "operationId": "PutMetricAlarm",
+      "summary": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#PutCompositeAlarm",
+      "operationId": "PutCompositeAlarm",
+      "summary": "Aws Cloudwatch Create or Update a Composite Alarm",
+      "tags": [
+        "Composite Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DescribeAlarms",
+      "operationId": "DescribeAlarms",
+      "summary": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DescribeAlarmsForMetric",
+      "operationId": "DescribeAlarmsForMetric",
+      "summary": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DescribeAlarmHistory",
+      "operationId": "DescribeAlarmHistory",
+      "summary": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DeleteAlarms",
+      "operationId": "DeleteAlarms",
+      "summary": "Aws Cloudwatch Delete Specified Alarms",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#SetAlarmState",
+      "operationId": "SetAlarmState",
+      "summary": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#EnableAlarmActions",
+      "operationId": "EnableAlarmActions",
+      "summary": "Aws Cloudwatch Enable Actions for Specified Alarms",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DisableAlarmActions",
+      "operationId": "DisableAlarmActions",
+      "summary": "Aws Cloudwatch Disable Actions for Specified Alarms",
+      "tags": [
+        "Alarms"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#PutDashboard",
+      "operationId": "PutDashboard",
+      "summary": "Aws Cloudwatch Create or Update a Cloudwatch Dashboard",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#GetDashboard",
+      "operationId": "GetDashboard",
+      "summary": "Aws Cloudwatch Retrieve Details for a Specified Dashboard",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#ListDashboards",
+      "operationId": "ListDashboards",
+      "summary": "Aws Cloudwatch List the Dashboards in Your Account",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DeleteDashboards",
+      "operationId": "DeleteDashboards",
+      "summary": "Aws Cloudwatch Delete Specified Dashboards",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#PutAnomalyDetector",
+      "operationId": "PutAnomalyDetector",
+      "summary": "Aws Cloudwatch Create an Anomaly Detection Model for a Metric",
+      "tags": [
+        "Anomaly Detection"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DescribeAnomalyDetectors",
+      "operationId": "DescribeAnomalyDetectors",
+      "summary": "Aws Cloudwatch List Anomaly Detection Models",
+      "tags": [
+        "Anomaly Detection"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#DeleteAnomalyDetector",
+      "operationId": "DeleteAnomalyDetector",
+      "summary": "Aws Cloudwatch Delete an Anomaly Detection Model",
+      "tags": [
+        "Anomaly Detection"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#PutMetricStream",
+      "operationId": "PutMetricStream",
+      "summary": "Aws Cloudwatch Create or Update a Metric Stream",
+      "tags": [
+        "Metric Streams"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#ListMetricStreams",
+      "operationId": "ListMetricStreams",
+      "summary": "Aws Cloudwatch List the Metric Streams in Your Account",
+      "tags": [
+        "Metric Streams"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#TagResource",
+      "operationId": "TagResource",
+      "summary": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#UntagResource",
+      "operationId": "UntagResource",
+      "summary": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+      "tags": [
+        "Metrics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/#ListTagsForResource",
+      "operationId": "ListTagsForResource",
+      "summary": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+      "tags": [
+        "Metrics"
+      ]
+    }
+  ]
+}

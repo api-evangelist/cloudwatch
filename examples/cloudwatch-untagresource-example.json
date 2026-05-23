@@ -1,0 +1,19 @@
+{
+  "operationId": "UntagResource",
+  "method": "POST",
+  "path": "/#UntagResource",
+  "summary": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "UntagresourceRequestExample",
+      "example": {
+        "ResourceARN": "example_value",
+        "TagKeys": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": []
+}

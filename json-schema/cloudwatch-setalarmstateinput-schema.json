@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SetAlarmStateInput",
+  "title": "SetAlarmStateInput",
+  "type": "object",
+  "required": [
+    "AlarmName",
+    "StateValue",
+    "StateReason"
+  ],
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the alarm.",
+      "example": "example_value"
+    },
+    "StateValue": {
+      "$ref": "#/components/schemas/StateValue"
+    },
+    "StateReason": {
+      "type": "string",
+      "maxLength": 1023,
+      "description": "The reason that this alarm is set to this specific state, in text format.",
+      "example": "example_value"
+    },
+    "StateReasonData": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "The reason that this alarm is set to this specific state, in JSON format.",
+      "example": "example_value"
+    }
+  }
+}

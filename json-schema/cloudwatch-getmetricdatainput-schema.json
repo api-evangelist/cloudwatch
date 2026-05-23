@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GetMetricDataInput",
+  "title": "GetMetricDataInput",
+  "type": "object",
+  "required": [
+    "MetricDataQueries",
+    "StartTime",
+    "EndTime"
+  ],
+  "properties": {
+    "MetricDataQueries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricDataQuery"
+      },
+      "description": "The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+      "example": []
+    },
+    "StartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp indicating the earliest data to be returned.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "EndTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time stamp indicating the latest data to be returned.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "Include this value if it was returned by the previous GetMetricData operation.",
+      "example": "example_value"
+    },
+    "ScanBy": {
+      "type": "string",
+      "enum": [
+        "TimestampDescending",
+        "TimestampAscending"
+      ],
+      "description": "The order in which data points should be returned.",
+      "example": "TimestampDescending"
+    },
+    "MaxDatapoints": {
+      "type": "integer",
+      "description": "The maximum number of data points the request should return before paginating.",
+      "example": 10
+    },
+    "LabelOptions": {
+      "type": "object",
+      "properties": {
+        "Timezone": {
+          "type": "string",
+          "description": "The time zone to use for metric data return."
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

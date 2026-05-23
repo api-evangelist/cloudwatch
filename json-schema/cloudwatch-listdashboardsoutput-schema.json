@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListDashboardsOutput",
+  "title": "ListDashboardsOutput",
+  "type": "object",
+  "properties": {
+    "DashboardEntries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DashboardEntry"
+      },
+      "description": "The list of matching dashboards.",
+      "example": []
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results.",
+      "example": "example_value"
+    }
+  }
+}

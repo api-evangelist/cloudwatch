@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AnomalyDetector",
+  "title": "AnomalyDetector",
+  "type": "object",
+  "description": "An anomaly detection model associated with a particular CloudWatch metric.",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "description": "The namespace of the metric associated with the anomaly detection model.",
+      "example": "example_value"
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "The name of the metric associated with the anomaly detection model.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "description": "The metric dimensions associated with the anomaly detection model.",
+      "example": []
+    },
+    "Stat": {
+      "type": "string",
+      "description": "The statistic associated with the anomaly detection model.",
+      "example": "example_value"
+    },
+    "Configuration": {
+      "$ref": "#/components/schemas/AnomalyDetectorConfiguration"
+    },
+    "StateValue": {
+      "type": "string",
+      "enum": [
+        "PENDING_TRAINING",
+        "TRAINED_INSUFFICIENT_DATA",
+        "TRAINED"
+      ],
+      "description": "The current status of the anomaly detector model.",
+      "example": "PENDING_TRAINING"
+    },
+    "MetricCharacteristics": {
+      "$ref": "#/components/schemas/MetricCharacteristics"
+    },
+    "SingleMetricAnomalyDetector": {
+      "$ref": "#/components/schemas/SingleMetricAnomalyDetector"
+    },
+    "MetricMathAnomalyDetector": {
+      "$ref": "#/components/schemas/MetricMathAnomalyDetector"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeleteDashboardsInput",
+  "title": "DeleteDashboardsInput",
+  "type": "object",
+  "required": [
+    "DashboardNames"
+  ],
+  "properties": {
+    "DashboardNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The dashboards to be deleted. This parameter is required.",
+      "example": []
+    }
+  }
+}

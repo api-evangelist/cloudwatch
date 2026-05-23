@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListMetricStreamsOutput",
+  "title": "ListMetricStreamsOutput",
+  "type": "object",
+  "properties": {
+    "Entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricStreamEntry"
+      },
+      "description": "The array of metric stream information.",
+      "example": []
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token that marks the start of the next batch of returned results.",
+      "example": "example_value"
+    }
+  }
+}

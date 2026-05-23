@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StateValue",
+  "title": "StateValue",
+  "type": "string",
+  "description": "The state value for the alarm.",
+  "enum": [
+    "OK",
+    "ALARM",
+    "INSUFFICIENT_DATA"
+  ]
+}

@@ -1,0 +1,17 @@
+name: AWS CloudWatch Domain Vocabulary
+provider: AWS CloudWatch
+providerId: cloudwatch
+description: Tag-derived vocabulary for the AWS CloudWatch API surface; sourced from openapi/ tags.
+terms:
+- term: Alarms
+  description: Operations for creating, managing, and querying CloudWatch alarms
+- term: Anomaly Detection
+  description: Operations for CloudWatch anomaly detection models
+- term: Composite Alarms
+  description: Operations for composite alarms that aggregate multiple alarm states
+- term: Dashboards
+  description: Operations for creating and managing CloudWatch dashboards
+- term: Metric Streams
+  description: Operations for managing metric streams
+- term: Metrics
+  description: Operations for working with CloudWatch metrics and metric data

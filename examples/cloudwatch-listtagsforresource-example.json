@@ -1,0 +1,30 @@
+{
+  "operationId": "ListTagsForResource",
+  "method": "POST",
+  "path": "/#ListTagsForResource",
+  "summary": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "ListtagsforresourceRequestExample",
+      "example": {
+        "ResourceARN": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Listtagsforresource200Example",
+      "example": {
+        "Tags": [
+          {
+            "Key": "example_value",
+            "Value": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

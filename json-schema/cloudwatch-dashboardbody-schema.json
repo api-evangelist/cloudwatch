@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DashboardBody",
+  "title": "DashboardBody",
+  "type": "object",
+  "description": "The JSON body structure for a CloudWatch dashboard.",
+  "properties": {
+    "widgets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DashboardWidget"
+      },
+      "description": "An array of dashboard widget objects.",
+      "example": []
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "operationId": "GetMetricData",
+  "method": "POST",
+  "path": "/#GetMetricData",
+  "summary": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "GetmetricdataRequestExample",
+      "example": {
+        "MetricDataQueries": [
+          {
+            "Id": "abc123",
+            "Expression": "example_value",
+            "Label": "Example Title",
+            "ReturnData": true,
+            "Period": 10,
+            "AccountId": "500123"
+          }
+        ],
+        "StartTime": "2026-01-15T10:30:00Z",
+        "EndTime": "2026-01-15T10:30:00Z",
+        "NextToken": "example_value",
+        "ScanBy": "TimestampDescending",
+        "MaxDatapoints": 10,
+        "LabelOptions": {
+          "Timezone": "example_value"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Getmetricdata200Example",
+      "example": {
+        "MetricDataResults": [
+          {
+            "Id": "abc123",
+            "Label": "Example Title",
+            "Timestamps": {},
+            "Values": {},
+            "StatusCode": "Complete",
+            "Messages": {}
+          }
+        ],
+        "NextToken": "example_value",
+        "Messages": [
+          {
+            "Code": "example_value",
+            "Value": "example_value"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Getmetricdata400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

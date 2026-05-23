@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PutMetricDataInput",
+  "title": "PutMetricDataInput",
+  "type": "object",
+  "required": [
+    "Namespace",
+    "MetricData"
+  ],
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "pattern": "[^:].*",
+      "description": "The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+      "example": "example_value"
+    },
+    "MetricData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/MetricDatum"
+      },
+      "description": "The data for the metric. The array can include no more than 1000 metrics per call.",
+      "example": []
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "operationId": "DeleteAnomalyDetector",
+  "method": "POST",
+  "path": "/#DeleteAnomalyDetector",
+  "summary": "Aws Cloudwatch Delete an Anomaly Detection Model",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DeleteanomalydetectorRequestExample",
+      "example": {
+        "Namespace": "example_value",
+        "MetricName": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "Stat": "example_value",
+        "SingleMetricAnomalyDetector": {
+          "AccountId": "500123",
+          "Namespace": "example_value",
+          "MetricName": "example_value",
+          "Dimensions": [
+            {}
+          ],
+          "Stat": "example_value"
+        },
+        "MetricMathAnomalyDetector": {
+          "MetricDataQueries": [
+            {}
+          ]
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Deleteanomalydetector400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

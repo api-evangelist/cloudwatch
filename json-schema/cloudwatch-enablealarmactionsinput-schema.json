@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EnableAlarmActionsInput",
+  "title": "EnableAlarmActionsInput",
+  "type": "object",
+  "required": [
+    "AlarmNames"
+  ],
+  "properties": {
+    "AlarmNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 100,
+      "description": "The names of the alarms.",
+      "example": []
+    }
+  }
+}

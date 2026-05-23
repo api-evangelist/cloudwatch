@@ -1,0 +1,37 @@
+{
+  "operationId": "ListMetricStreams",
+  "method": "POST",
+  "path": "/#ListMetricStreams",
+  "summary": "Aws Cloudwatch List the Metric Streams in Your Account",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "ListmetricstreamsRequestExample",
+      "example": {
+        "NextToken": "example_value",
+        "MaxResults": 10
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Listmetricstreams200Example",
+      "example": {
+        "Entries": [
+          {
+            "Arn": "example_value",
+            "CreationDate": "2026-01-15T10:30:00Z",
+            "LastUpdateDate": "2026-01-15T10:30:00Z",
+            "Name": "Example Title",
+            "FirehoseArn": "example_value",
+            "State": "example_value",
+            "OutputFormat": "json"
+          }
+        ],
+        "NextToken": "example_value"
+      }
+    }
+  ]
+}

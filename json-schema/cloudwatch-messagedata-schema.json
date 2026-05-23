@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MessageData",
+  "title": "MessageData",
+  "type": "object",
+  "description": "A message returned by the GetMetricData API.",
+  "properties": {
+    "Code": {
+      "type": "string",
+      "description": "The error code or status code associated with the message.",
+      "example": "example_value"
+    },
+    "Value": {
+      "type": "string",
+      "description": "The message text.",
+      "example": "example_value"
+    }
+  }
+}

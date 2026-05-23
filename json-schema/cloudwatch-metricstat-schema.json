@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricStat",
+  "title": "MetricStat",
+  "type": "object",
+  "description": "This structure defines the metric to be returned, along with the statistics, period, and units.",
+  "required": [
+    "Metric",
+    "Period",
+    "Stat"
+  ],
+  "properties": {
+    "Metric": {
+      "$ref": "#/components/schemas/Metric"
+    },
+    "Period": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "The granularity, in seconds, of the returned data points.",
+      "example": 10
+    },
+    "Stat": {
+      "type": "string",
+      "description": "The statistic to return. It can include any CloudWatch statistic or extended statistic.",
+      "example": "example_value"
+    },
+    "Unit": {
+      "$ref": "#/components/schemas/StandardUnit"
+    }
+  }
+}

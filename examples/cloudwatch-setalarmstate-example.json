@@ -1,0 +1,33 @@
+{
+  "operationId": "SetAlarmState",
+  "method": "POST",
+  "path": "/#SetAlarmState",
+  "summary": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "SetalarmstateRequestExample",
+      "example": {
+        "AlarmName": "example_value",
+        "StateValue": "OK",
+        "StateReason": "example_value",
+        "StateReasonData": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Setalarmstate400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "operationId": "DeleteDashboards",
+  "method": "POST",
+  "path": "/#DeleteDashboards",
+  "summary": "Aws Cloudwatch Delete Specified Dashboards",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "DeletedashboardsRequestExample",
+      "example": {
+        "DashboardNames": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Deletedashboards400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/xml",
+      "name": "Deletedashboards500Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

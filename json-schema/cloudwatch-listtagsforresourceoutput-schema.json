@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListTagsForResourceOutput",
+  "title": "ListTagsForResourceOutput",
+  "type": "object",
+  "properties": {
+    "Tags": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Tag"
+      },
+      "description": "The list of tag keys and values associated with the resource you specified.",
+      "example": []
+    }
+  }
+}

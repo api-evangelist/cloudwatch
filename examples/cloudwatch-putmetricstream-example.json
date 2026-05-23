@@ -1,0 +1,60 @@
+{
+  "operationId": "PutMetricStream",
+  "method": "POST",
+  "path": "/#PutMetricStream",
+  "summary": "Aws Cloudwatch Create or Update a Metric Stream",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "PutmetricstreamRequestExample",
+      "example": {
+        "Name": "Example Title",
+        "IncludeFilters": [
+          {
+            "Namespace": "example_value",
+            "MetricNames": {}
+          }
+        ],
+        "ExcludeFilters": [
+          {
+            "Namespace": "example_value",
+            "MetricNames": {}
+          }
+        ],
+        "FirehoseArn": "example_value",
+        "RoleArn": "example_value",
+        "OutputFormat": "json",
+        "Tags": [
+          {
+            "Key": "example_value",
+            "Value": "example_value"
+          }
+        ],
+        "IncludeLinkedAccountsMetrics": true
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Putmetricstream200Example",
+      "example": {
+        "Arn": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Putmetricstream400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

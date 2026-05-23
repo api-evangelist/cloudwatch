@@ -1,0 +1,66 @@
+{
+  "operationId": "GetMetricStatistics",
+  "method": "POST",
+  "path": "/#GetMetricStatistics",
+  "summary": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "GetmetricstatisticsRequestExample",
+      "example": {
+        "Namespace": "example_value",
+        "MetricName": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "StartTime": "2026-01-15T10:30:00Z",
+        "EndTime": "2026-01-15T10:30:00Z",
+        "Period": 10,
+        "Statistics": [
+          "SampleCount"
+        ],
+        "ExtendedStatistics": [
+          "example_value"
+        ],
+        "Unit": "Seconds"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Getmetricstatistics200Example",
+      "example": {
+        "Label": "Example Title",
+        "Datapoints": [
+          {
+            "Timestamp": "2026-01-15T10:30:00Z",
+            "SampleCount": 42.5,
+            "Average": 42.5,
+            "Sum": 42.5,
+            "Minimum": 42.5,
+            "Maximum": 42.5,
+            "ExtendedStatistics": "example_value"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Getmetricstatistics400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

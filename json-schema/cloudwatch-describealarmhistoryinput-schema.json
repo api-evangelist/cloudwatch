@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeAlarmHistoryInput",
+  "title": "DescribeAlarmHistoryInput",
+  "type": "object",
+  "properties": {
+    "AlarmName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The name of the alarm.",
+      "example": "example_value"
+    },
+    "AlarmTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CompositeAlarm",
+          "MetricAlarm"
+        ]
+      },
+      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+      "example": []
+    },
+    "HistoryItemType": {
+      "type": "string",
+      "enum": [
+        "ConfigurationUpdate",
+        "StateUpdate",
+        "Action"
+      ],
+      "description": "The type of alarm histories to retrieve.",
+      "example": "ConfigurationUpdate"
+    },
+    "StartDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The starting date to retrieve alarm history.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "EndDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The ending date to retrieve alarm history.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "MaxRecords": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "The maximum number of alarm history records to retrieve.",
+      "example": 10
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call.",
+      "example": "example_value"
+    },
+    "ScanBy": {
+      "type": "string",
+      "enum": [
+        "TimestampDescending",
+        "TimestampAscending"
+      ],
+      "description": "Specified whether to return the newest or oldest alarm history first.",
+      "example": "TimestampDescending"
+    }
+  }
+}

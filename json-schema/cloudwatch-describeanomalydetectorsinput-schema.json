@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DescribeAnomalyDetectorsInput",
+  "title": "DescribeAnomalyDetectorsInput",
+  "type": "object",
+  "properties": {
+    "NextToken": {
+      "type": "string",
+      "description": "Use the token returned by the previous operation to request the next page of results.",
+      "example": "example_value"
+    },
+    "MaxResults": {
+      "type": "integer",
+      "description": "The maximum number of results to return in one operation.",
+      "example": 10
+    },
+    "Namespace": {
+      "type": "string",
+      "description": "Limits the results to only the anomaly detection models that are associated with the specified namespace.",
+      "example": "example_value"
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "Limits the results to only the anomaly detection models that are associated with the specified metric name.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+      "example": []
+    },
+    "AnomalyDetectorTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SINGLE_METRIC",
+          "METRIC_MATH"
+        ]
+      },
+      "description": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+      "example": []
+    }
+  }
+}

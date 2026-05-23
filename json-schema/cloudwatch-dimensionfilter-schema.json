@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DimensionFilter",
+  "title": "DimensionFilter",
+  "type": "object",
+  "description": "Represents filters for a dimension.",
+  "required": [
+    "Name"
+  ],
+  "properties": {
+    "Name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "The dimension name to be matched.",
+      "example": "Example Title"
+    },
+    "Value": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "description": "The value of the dimension to be matched.",
+      "example": "example_value"
+    }
+  }
+}

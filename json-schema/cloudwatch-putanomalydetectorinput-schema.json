@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PutAnomalyDetectorInput",
+  "title": "PutAnomalyDetectorInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "description": "The namespace of the metric to create the anomaly detection model for.",
+      "example": "example_value"
+    },
+    "MetricName": {
+      "type": "string",
+      "description": "The name of the metric to create the anomaly detection model for.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dimension"
+      },
+      "description": "The metric dimensions to create the anomaly detection model for.",
+      "example": []
+    },
+    "Stat": {
+      "type": "string",
+      "description": "The statistic to use for the metric and the anomaly detection model.",
+      "example": "example_value"
+    },
+    "Configuration": {
+      "$ref": "#/components/schemas/AnomalyDetectorConfiguration"
+    },
+    "MetricCharacteristics": {
+      "$ref": "#/components/schemas/MetricCharacteristics"
+    },
+    "SingleMetricAnomalyDetector": {
+      "$ref": "#/components/schemas/SingleMetricAnomalyDetector"
+    },
+    "MetricMathAnomalyDetector": {
+      "$ref": "#/components/schemas/MetricMathAnomalyDetector"
+    }
+  }
+}

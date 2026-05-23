@@ -1,0 +1,60 @@
+{
+  "operationId": "ListDashboards",
+  "method": "POST",
+  "path": "/#ListDashboards",
+  "summary": "Aws Cloudwatch List the Dashboards in Your Account",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "ListdashboardsRequestExample",
+      "example": {
+        "DashboardNamePrefix": "example_value",
+        "NextToken": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Listdashboards200Example",
+      "example": {
+        "DashboardEntries": [
+          {
+            "DashboardName": "example_value",
+            "DashboardArn": "example_value",
+            "LastModified": "2026-01-15T10:30:00Z",
+            "Size": 10
+          }
+        ],
+        "NextToken": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Listdashboards400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/xml",
+      "name": "Listdashboards500Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

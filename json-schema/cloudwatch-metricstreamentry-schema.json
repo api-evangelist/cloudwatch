@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MetricStreamEntry",
+  "title": "MetricStreamEntry",
+  "type": "object",
+  "description": "Contains information about a metric stream.",
+  "properties": {
+    "Arn": {
+      "type": "string",
+      "description": "The ARN of the metric stream.",
+      "example": "example_value"
+    },
+    "CreationDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date when the metric stream was created.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "LastUpdateDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date when the metric stream was last updated.",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "Name": {
+      "type": "string",
+      "description": "The name of the metric stream.",
+      "example": "Example Title"
+    },
+    "FirehoseArn": {
+      "type": "string",
+      "description": "The ARN of the Kinesis Data Firehose delivery stream used by this metric stream.",
+      "example": "example_value"
+    },
+    "State": {
+      "type": "string",
+      "description": "The current state of the metric stream.",
+      "example": "example_value"
+    },
+    "OutputFormat": {
+      "type": "string",
+      "enum": [
+        "json",
+        "opentelemetry0.7",
+        "opentelemetry1.0"
+      ],
+      "description": "The output format of the metric stream.",
+      "example": "json"
+    }
+  }
+}

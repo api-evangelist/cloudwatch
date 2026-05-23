@@ -1,0 +1,76 @@
+{
+  "operationId": "PutMetricAlarm",
+  "method": "POST",
+  "path": "/#PutMetricAlarm",
+  "summary": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "PutmetricalarmRequestExample",
+      "example": {
+        "AlarmName": "example_value",
+        "AlarmDescription": "example_value",
+        "ActionsEnabled": true,
+        "OKActions": [
+          "example_value"
+        ],
+        "AlarmActions": [
+          "example_value"
+        ],
+        "InsufficientDataActions": [
+          "example_value"
+        ],
+        "MetricName": "example_value",
+        "Namespace": "example_value",
+        "Statistic": "SampleCount",
+        "ExtendedStatistic": "example_value",
+        "Dimensions": [
+          {
+            "Name": "Example Title",
+            "Value": "example_value"
+          }
+        ],
+        "Period": 10,
+        "Unit": "Seconds",
+        "EvaluationPeriods": 10,
+        "DatapointsToAlarm": 10,
+        "Threshold": 42.5,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "example_value",
+        "EvaluateLowSampleCountPercentile": "example_value",
+        "Metrics": [
+          {
+            "Id": "abc123",
+            "Expression": "example_value",
+            "Label": "Example Title",
+            "ReturnData": true,
+            "Period": 10,
+            "AccountId": "500123"
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "example_value",
+            "Value": "example_value"
+          }
+        ],
+        "ThresholdMetricId": "500123"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Putmetricalarm400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

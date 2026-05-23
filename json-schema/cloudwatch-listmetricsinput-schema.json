@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ListMetricsInput",
+  "title": "ListMetricsInput",
+  "type": "object",
+  "properties": {
+    "Namespace": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Filters the results to only those metrics in the specified namespace.",
+      "example": "example_value"
+    },
+    "MetricName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Filters the results to only the specified metric name.",
+      "example": "example_value"
+    },
+    "Dimensions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DimensionFilter"
+      },
+      "maxItems": 30,
+      "description": "Filters the results to only those metrics that match the specified dimensions.",
+      "example": []
+    },
+    "NextToken": {
+      "type": "string",
+      "description": "The token returned by a previous call to indicate there is more data available.",
+      "example": "example_value"
+    },
+    "RecentlyActive": {
+      "type": "string",
+      "enum": [
+        "PT3H"
+      ],
+      "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+      "example": "PT3H"
+    },
+    "IncludeLinkedAccounts": {
+      "type": "boolean",
+      "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+      "example": true
+    },
+    "OwningAccount": {
+      "type": "string",
+      "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "operationId": "GetDashboard",
+  "method": "POST",
+  "path": "/#GetDashboard",
+  "summary": "Aws Cloudwatch Retrieve Details for a Specified Dashboard",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "GetdashboardRequestExample",
+      "example": {
+        "DashboardName": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Getdashboard200Example",
+      "example": {
+        "DashboardArn": "example_value",
+        "DashboardBody": "example_value",
+        "DashboardName": "example_value"
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Getdashboard400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/xml",
+      "name": "Getdashboard500Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

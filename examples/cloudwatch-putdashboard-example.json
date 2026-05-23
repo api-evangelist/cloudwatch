@@ -1,0 +1,57 @@
+{
+  "operationId": "PutDashboard",
+  "method": "POST",
+  "path": "/#PutDashboard",
+  "summary": "Aws Cloudwatch Create or Update a Cloudwatch Dashboard",
+  "requestExamples": [
+    {
+      "contentType": "application/x-www-form-urlencoded",
+      "name": "PutdashboardRequestExample",
+      "example": {
+        "DashboardName": "example_value",
+        "DashboardBody": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/xml",
+      "name": "Putdashboard200Example",
+      "example": {
+        "DashboardValidationMessages": [
+          {
+            "DataPath": "example_value",
+            "Message": "example_value"
+          }
+        ]
+      }
+    },
+    {
+      "status": "400",
+      "contentType": "application/xml",
+      "name": "Putdashboard400Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    },
+    {
+      "status": "500",
+      "contentType": "application/xml",
+      "name": "Putdashboard500Example",
+      "example": {
+        "Error": {
+          "Type": "example_value",
+          "Code": "example_value",
+          "Message": "example_value"
+        },
+        "RequestId": "500123"
+      }
+    }
+  ]
+}

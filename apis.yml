@@ -38,7 +38,7 @@ apis:
         url: https://aws.amazon.com/cloudwatch/pricing/
       - type: GettingStarted
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingStarted.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
       - type: APIReference
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/
@@ -64,7 +64,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/logs/2014-03-28/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Insights
@@ -84,7 +84,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/events/2015-10-07/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/eventbridge/latest/APIReference/
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Event-Bus
@@ -104,7 +104,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/application-insights/2018-11-25/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/cloudwatch/latest/APIReference/
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Anomaly-Detection
@@ -122,7 +122,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/synthetics/2017-10-11/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Canaries
@@ -141,7 +141,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/internetmonitor/2021-06-03/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/internet-monitor/latest/api/Welcome.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Availability
@@ -162,7 +162,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/rum/2018-05-10/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/Welcome.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Client-Side
@@ -181,7 +181,7 @@ apis:
         url: https://api.apis.guru/v2/specs/amazonaws.com/oam/2022-06-10/openapi.yaml
       - type: APIReference
         url: https://docs.aws.amazon.com/OAM/latest/APIReference/Welcome.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Cross-Account
@@ -198,7 +198,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html
       - type: APIReference
         url: https://docs.aws.amazon.com/applicationsignals/latest/APIReference/Welcome.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Apm
@@ -217,7 +217,7 @@ apis:
         url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/what-is-network-monitor.html
       - type: APIReference
         url: https://docs.aws.amazon.com/networkmonitor/latest/APIReference/Welcome.html
-      - type: SDK
+      - type: SDKs
         url: https://aws.amazon.com/tools/
     tags:
       - Direct-Connect
@@ -243,7 +243,7 @@ common:
     url: https://aws.amazon.com/cloudwatch/features/
   - type: Console
     url: https://console.aws.amazon.com/cloudwatch/
-  - type: SDK
+  - type: SDKs
     url: https://aws.amazon.com/tools/
   - type: Documentation
     url: https://docs.aws.amazon.com/cloudwatch/

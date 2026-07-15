@@ -225,6 +225,8 @@ apis:
       - Network-Monitor
       - Network-Performance
 common:
+  - type: AgenticAccess
+    url: agentic-access/cloudwatch-agentic-access.yml
   - type: TrustCenter
     url: security/cloudwatch-trust-center.yml
   - type: VulnerabilityDisclosure

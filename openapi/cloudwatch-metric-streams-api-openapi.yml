@@ -1,0 +1,373 @@
+openapi: 3.1.0
+info:
+  title: AWS CloudWatch Amazon CloudWatch Alarms Metric Streams API
+  description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
+security:
+- aws_sigv4: []
+tags:
+- name: Metric Streams
+  description: Operations for managing metric streams
+paths:
+  /#PutMetricStream:
+    post:
+      operationId: PutMetricStream
+      summary: Aws Cloudwatch Create or Update a Metric Stream
+      description: Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery stream, or to Amazon S3 via a Kinesis Data Firehose delivery stream. The output includes metric data in one of two formats, JSON or the OpenTelemetry 0.7.0 protobuf format.
+      tags:
+      - Metric Streams
+      parameters:
+      - $ref: '#/components/parameters/Action_PutMetricStream'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutMetricStreamInput'
+            examples:
+              PutmetricstreamRequestExample:
+                summary: Default PutMetricStream request
+                x-microcks-default: true
+                value:
+                  Name: Example Title
+                  IncludeFilters:
+                  - Namespace: example_value
+                    MetricNames: {}
+                  ExcludeFilters:
+                  - Namespace: example_value
+                    MetricNames: {}
+                  FirehoseArn: example_value
+                  RoleArn: example_value
+                  OutputFormat: json
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  IncludeLinkedAccountsMetrics: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PutMetricStreamOutput'
+              examples:
+                Putmetricstream200Example:
+                  summary: Default PutMetricStream 200 response
+                  x-microcks-default: true
+                  value:
+                    Arn: example_value
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putmetricstream400Example:
+                  summary: Default PutMetricStream 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListMetricStreams:
+    post:
+      operationId: ListMetricStreams
+      summary: Aws Cloudwatch List the Metric Streams in Your Account
+      description: Returns a list of metric streams in this account.
+      tags:
+      - Metric Streams
+      parameters:
+      - $ref: '#/components/parameters/Action_ListMetricStreams'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListMetricStreamsInput'
+            examples:
+              ListmetricstreamsRequestExample:
+                summary: Default ListMetricStreams request
+                x-microcks-default: true
+                value:
+                  NextToken: example_value
+                  MaxResults: 10
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListMetricStreamsOutput'
+              examples:
+                Listmetricstreams200Example:
+                  summary: Default ListMetricStreams 200 response
+                  x-microcks-default: true
+                  value:
+                    Entries:
+                    - Arn: example_value
+                      CreationDate: '2026-01-15T10:30:00Z'
+                      LastUpdateDate: '2026-01-15T10:30:00Z'
+                      Name: Example Title
+                      FirehoseArn: example_value
+                      State: example_value
+                      OutputFormat: json
+                    NextToken: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListMetricStreamsOutput:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamEntry'
+          description: The array of metric stream information.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    PutMetricStreamInput:
+      type: object
+      required:
+      - Name
+      - FirehoseArn
+      - RoleArn
+      - OutputFormat
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric stream.
+          example: Example Title
+        IncludeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamFilter'
+          description: If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.
+          example: []
+        ExcludeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamFilter'
+          description: If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.
+          example: []
+        FirehoseArn:
+          type: string
+          description: The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.
+          example: example_value
+        RoleArn:
+          type: string
+          description: The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.
+          example: example_value
+        OutputFormat:
+          type: string
+          enum:
+          - json
+          - opentelemetry0.7
+          - opentelemetry1.0
+          description: The output format for the stream.
+          example: json
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the metric stream.
+          example: []
+        IncludeLinkedAccountsMetrics:
+          type: boolean
+          description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.
+          example: true
+    MetricStreamFilter:
+      type: object
+      description: Contains the configuration for a metric stream filter.
+      properties:
+        Namespace:
+          type: string
+          description: The name of the metric namespace in the filter.
+          example: example_value
+        MetricNames:
+          type: array
+          items:
+            type: string
+          description: The names of the metrics to either include or exclude from the metric stream.
+          example: []
+    MetricStreamEntry:
+      type: object
+      description: Contains information about a metric stream.
+      properties:
+        Arn:
+          type: string
+          description: The ARN of the metric stream.
+          example: example_value
+        CreationDate:
+          type: string
+          format: date-time
+          description: The date when the metric stream was created.
+          example: '2026-01-15T10:30:00Z'
+        LastUpdateDate:
+          type: string
+          format: date-time
+          description: The date when the metric stream was last updated.
+          example: '2026-01-15T10:30:00Z'
+        Name:
+          type: string
+          description: The name of the metric stream.
+          example: Example Title
+        FirehoseArn:
+          type: string
+          description: The ARN of the Kinesis Data Firehose delivery stream used by this metric stream.
+          example: example_value
+        State:
+          type: string
+          description: The current state of the metric stream.
+          example: example_value
+        OutputFormat:
+          type: string
+          enum:
+          - json
+          - opentelemetry0.7
+          - opentelemetry1.0
+          description: The output format of the metric stream.
+          example: json
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
+    ListMetricStreamsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Include this value to get the next set of metric streams.
+          example: example_value
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+          example: 10
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
+    PutMetricStreamOutput:
+      type: object
+      properties:
+        Arn:
+          type: string
+          description: The ARN of the metric stream.
+          example: example_value
+  parameters:
+    Action_ListMetricStreams:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - ListMetricStreams
+    Action_PutMetricStream:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutMetricStream
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/

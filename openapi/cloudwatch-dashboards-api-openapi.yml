@@ -1,0 +1,518 @@
+openapi: 3.1.0
+info:
+  title: AWS CloudWatch Amazon CloudWatch Alarms Dashboards API
+  description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
+security:
+- aws_sigv4: []
+tags:
+- name: Dashboards
+  description: Operations for creating and managing CloudWatch dashboards
+paths:
+  /#PutDashboard:
+    post:
+      operationId: PutDashboard
+      summary: Aws Cloudwatch Create or Update a Cloudwatch Dashboard
+      description: Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard, the entire contents are replaced with what you specify here. There is no limit to the number of dashboards in your account.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/Action_PutDashboard'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutDashboardInput'
+            examples:
+              PutdashboardRequestExample:
+                summary: Default PutDashboard request
+                x-microcks-default: true
+                value:
+                  DashboardName: example_value
+                  DashboardBody: example_value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PutDashboardOutput'
+              examples:
+                Putdashboard200Example:
+                  summary: Default PutDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardValidationMessages:
+                    - DataPath: example_value
+                      Message: example_value
+        '400':
+          description: Dashboard invalid input error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putdashboard400Example:
+                  summary: Default PutDashboard 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putdashboard500Example:
+                  summary: Default PutDashboard 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#GetDashboard:
+    post:
+      operationId: GetDashboard
+      summary: Aws Cloudwatch Retrieve Details for a Specified Dashboard
+      description: Displays the details of the dashboard that you specify. To copy an existing dashboard, use GetDashboard, and then use the data returned within DashboardBody as the template for the new dashboard when you call PutDashboard to create the copy.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/Action_GetDashboard'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetDashboardInput'
+            examples:
+              GetdashboardRequestExample:
+                summary: Default GetDashboard request
+                x-microcks-default: true
+                value:
+                  DashboardName: example_value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/GetDashboardOutput'
+              examples:
+                Getdashboard200Example:
+                  summary: Default GetDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardArn: example_value
+                    DashboardBody: example_value
+                    DashboardName: example_value
+        '400':
+          description: Dashboard not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard400Example:
+                  summary: Default GetDashboard 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard500Example:
+                  summary: Default GetDashboard 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#ListDashboards:
+    post:
+      operationId: ListDashboards
+      summary: Aws Cloudwatch List the Dashboards in Your Account
+      description: Returns a list of the dashboards for your account. If you include DashboardNamePrefix, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed. ListDashboards returns up to 1000 results on one page.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/Action_ListDashboards'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListDashboardsInput'
+            examples:
+              ListdashboardsRequestExample:
+                summary: Default ListDashboards request
+                x-microcks-default: true
+                value:
+                  DashboardNamePrefix: example_value
+                  NextToken: example_value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ListDashboardsOutput'
+              examples:
+                Listdashboards200Example:
+                  summary: Default ListDashboards 200 response
+                  x-microcks-default: true
+                  value:
+                    DashboardEntries:
+                    - DashboardName: example_value
+                      DashboardArn: example_value
+                      LastModified: '2026-01-15T10:30:00Z'
+                      Size: 10
+                    NextToken: example_value
+        '400':
+          description: Invalid parameter value
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Listdashboards400Example:
+                  summary: Default ListDashboards 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Listdashboards500Example:
+                  summary: Default ListDashboards 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DeleteDashboards:
+    post:
+      operationId: DeleteDashboards
+      summary: Aws Cloudwatch Delete Specified Dashboards
+      description: Deletes all dashboards that you specify. You can specify up to 100 dashboards to delete. If there is an error during this call, no dashboards are deleted.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/Action_DeleteDashboards'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteDashboardsInput'
+            examples:
+              DeletedashboardsRequestExample:
+                summary: Default DeleteDashboards request
+                x-microcks-default: true
+                value:
+                  DashboardNames:
+                  - example_value
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Dashboard not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletedashboards400Example:
+                  summary: Default DeleteDashboards 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+        '500':
+          description: Internal service error
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletedashboards500Example:
+                  summary: Default DeleteDashboards 500 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DashboardValidationMessage:
+      type: object
+      description: An error or warning for the PutDashboard operation.
+      properties:
+        DataPath:
+          type: string
+          description: The data path related to the message.
+          example: example_value
+        Message:
+          type: string
+          description: A message describing the error or warning.
+          example: example_value
+    DeleteDashboardsInput:
+      type: object
+      required:
+      - DashboardNames
+      properties:
+        DashboardNames:
+          type: array
+          items:
+            type: string
+          description: The dashboards to be deleted. This parameter is required.
+          example: []
+    ListDashboardsOutput:
+      type: object
+      properties:
+        DashboardEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardEntry'
+          description: The list of matching dashboards.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    GetDashboardOutput:
+      type: object
+      properties:
+        DashboardArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the dashboard.
+          example: example_value
+        DashboardBody:
+          type: string
+          description: The detailed information about the dashboard, including what widgets are included and their location.
+          example: example_value
+        DashboardName:
+          type: string
+          description: The name of the dashboard.
+          example: example_value
+    PutDashboardInput:
+      type: object
+      required:
+      - DashboardName
+      - DashboardBody
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.
+          example: example_value
+        DashboardBody:
+          type: string
+          description: The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.
+          example: example_value
+    DashboardEntry:
+      type: object
+      description: Represents a specific dashboard.
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard.
+          example: example_value
+        DashboardArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the dashboard.
+          example: example_value
+        LastModified:
+          type: string
+          format: date-time
+          description: The time stamp of when the dashboard was last modified.
+          example: '2026-01-15T10:30:00Z'
+        Size:
+          type: integer
+          description: The size of the dashboard, in bytes.
+          example: 10
+    GetDashboardInput:
+      type: object
+      required:
+      - DashboardName
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard to be described.
+          example: example_value
+    ListDashboardsInput:
+      type: object
+      properties:
+        DashboardNamePrefix:
+          type: string
+          description: If you specify this parameter, only the dashboards with names starting with the specified string are listed.
+          example: example_value
+        NextToken:
+          type: string
+          description: The token returned by a previous call to indicate there is more data available.
+          example: example_value
+    PutDashboardOutput:
+      type: object
+      properties:
+        DashboardValidationMessages:
+          type: array
+          items:
+            $ref: '#/components/schemas/DashboardValidationMessage'
+          description: If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array.
+          example: []
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
+  parameters:
+    Action_GetDashboard:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - GetDashboard
+    Action_PutDashboard:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutDashboard
+    Action_DeleteDashboards:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DeleteDashboards
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+    Action_ListDashboards:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - ListDashboards
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/

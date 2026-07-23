@@ -1,0 +1,639 @@
+openapi: 3.1.0
+info:
+  title: AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API
+  description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
+security:
+- aws_sigv4: []
+tags:
+- name: Anomaly Detection
+  description: Operations for CloudWatch anomaly detection models
+paths:
+  /#PutAnomalyDetector:
+    post:
+      operationId: PutAnomalyDetector
+      summary: Aws Cloudwatch Create an Anomaly Detection Model for a Metric
+      description: Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed. If you have enabled unified cross-account observability, and this account is a monitoring account, the metric can be in the same account or a source account.
+      tags:
+      - Anomaly Detection
+      parameters:
+      - $ref: '#/components/parameters/Action_PutAnomalyDetector'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutAnomalyDetectorInput'
+            examples:
+              PutanomalydetectorRequestExample:
+                summary: Default PutAnomalyDetector request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Stat: example_value
+                  Configuration:
+                    ExcludedTimeRanges:
+                    - {}
+                    MetricTimezone: example_value
+                  MetricCharacteristics:
+                    PeriodicSpikes: true
+                  SingleMetricAnomalyDetector:
+                    AccountId: '500123'
+                    Namespace: example_value
+                    MetricName: example_value
+                    Dimensions:
+                    - {}
+                    Stat: example_value
+                  MetricMathAnomalyDetector:
+                    MetricDataQueries:
+                    - {}
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putanomalydetector400Example:
+                  summary: Default PutAnomalyDetector 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeAnomalyDetectors:
+    post:
+      operationId: DescribeAnomalyDetectors
+      summary: Aws Cloudwatch List Anomaly Detection Models
+      description: Lists the anomaly detection models that you have created in your account. For each model, the response includes configuration information for the model. If you filter the response, only the models matching the filter are returned.
+      tags:
+      - Anomaly Detection
+      parameters:
+      - $ref: '#/components/parameters/Action_DescribeAnomalyDetectors'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAnomalyDetectorsInput'
+            examples:
+              DescribeanomalydetectorsRequestExample:
+                summary: Default DescribeAnomalyDetectors request
+                x-microcks-default: true
+                value:
+                  NextToken: example_value
+                  MaxResults: 10
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  AnomalyDetectorTypes:
+                  - SINGLE_METRIC
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAnomalyDetectorsOutput'
+              examples:
+                Describeanomalydetectors200Example:
+                  summary: Default DescribeAnomalyDetectors 200 response
+                  x-microcks-default: true
+                  value:
+                    AnomalyDetectors:
+                    - Namespace: example_value
+                      MetricName: example_value
+                      Dimensions: {}
+                      Stat: example_value
+                      StateValue: PENDING_TRAINING
+                    NextToken: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DeleteAnomalyDetector:
+    post:
+      operationId: DeleteAnomalyDetector
+      summary: Aws Cloudwatch Delete an Anomaly Detection Model
+      description: Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see Deleting an Anomaly Detection Model in the CloudWatch User Guide.
+      tags:
+      - Anomaly Detection
+      parameters:
+      - $ref: '#/components/parameters/Action_DeleteAnomalyDetector'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteAnomalyDetectorInput'
+            examples:
+              DeleteanomalydetectorRequestExample:
+                summary: Default DeleteAnomalyDetector request
+                x-microcks-default: true
+                value:
+                  Namespace: example_value
+                  MetricName: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Stat: example_value
+                  SingleMetricAnomalyDetector:
+                    AccountId: '500123'
+                    Namespace: example_value
+                    MetricName: example_value
+                    Dimensions:
+                    - {}
+                    Stat: example_value
+                  MetricMathAnomalyDetector:
+                    MetricDataQueries:
+                    - {}
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Resource not found or missing required fields
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deleteanomalydetector400Example:
+                  summary: Default DeleteAnomalyDetector 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    MetricCharacteristics:
+      type: object
+      description: This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.
+      properties:
+        PeriodicSpikes:
+          type: boolean
+          description: Set this parameter to true if values for this metric consistently include spikes that should not be considered to be anomalies.
+          example: true
+    DeleteAnomalyDetectorInput:
+      type: object
+      properties:
+        Namespace:
+          type: string
+          description: The namespace associated with the anomaly detection model to delete.
+          example: example_value
+        MetricName:
+          type: string
+          description: The metric name associated with the anomaly detection model to delete.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions associated with the anomaly detection model to delete.
+          example: []
+        Stat:
+          type: string
+          description: The statistic associated with the anomaly detection model to delete.
+          example: example_value
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+    MetricDataQuery:
+      type: object
+      description: This structure is used in both GetMetricData and PutMetricAlarm. The supported use of this structure is different for those two operations.
+      required:
+      - Id
+      properties:
+        Id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[a-z][a-zA-Z0-9_]*'
+          description: A short name used to tie this object to the results in the response.
+          example: abc123
+        MetricStat:
+          $ref: '#/components/schemas/MetricStat'
+        Expression:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          description: This field can contain a Metrics Insights query, or a metric math expression.
+          example: example_value
+        Label:
+          type: string
+          description: A human-readable label for this metric or expression.
+          example: Example Title
+        ReturnData:
+          type: boolean
+          description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
+          example: true
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        AccountId:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The ID of the account where the metrics are located.
+          example: '500123'
+    StandardUnit:
+      type: string
+      description: The unit of the metric.
+      enum:
+      - Seconds
+      - Microseconds
+      - Milliseconds
+      - Bytes
+      - Kilobytes
+      - Megabytes
+      - Gigabytes
+      - Terabytes
+      - Bits
+      - Kilobits
+      - Megabits
+      - Gigabits
+      - Terabits
+      - Percent
+      - Count
+      - Bytes/Second
+      - Kilobytes/Second
+      - Megabytes/Second
+      - Gigabytes/Second
+      - Terabytes/Second
+      - Bits/Second
+      - Kilobits/Second
+      - Megabits/Second
+      - Gigabits/Second
+      - Terabits/Second
+      - Count/Second
+      - None
+    MetricStat:
+      type: object
+      description: This structure defines the metric to be returned, along with the statistics, period, and units.
+      required:
+      - Metric
+      - Period
+      - Stat
+      properties:
+        Metric:
+          $ref: '#/components/schemas/Metric'
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        Stat:
+          type: string
+          description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+          example: example_value
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+    Range:
+      type: object
+      description: Specifies one range of days or times to exclude from use for training an anomaly detection model.
+      required:
+      - StartTime
+      - EndTime
+      properties:
+        StartTime:
+          type: string
+          format: date-time
+          description: The start time of the range to exclude.
+          example: '2026-01-15T10:30:00Z'
+        EndTime:
+          type: string
+          format: date-time
+          description: The end time of the range to exclude.
+          example: '2026-01-15T10:30:00Z'
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
+    DescribeAnomalyDetectorsOutput:
+      type: object
+      properties:
+        AnomalyDetectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnomalyDetector'
+          description: The list of anomaly detection models returned by the operation.
+          example: []
+        NextToken:
+          type: string
+          description: A token that you can use in a subsequent operation to retrieve the next set of results.
+          example: example_value
+    MetricMathAnomalyDetector:
+      type: object
+      description: Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.
+      properties:
+        MetricDataQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of metric data query structures that enables you to create an anomaly detector based on the result of a metric math expression.
+          example: []
+    Metric:
+      type: object
+      description: Represents a specific metric.
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[^:].*'
+          description: The namespace of the metric.
+          example: example_value
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric.
+          example: []
+    DescribeAnomalyDetectorsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Use the token returned by the previous operation to request the next page of results.
+          example: example_value
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+          example: 10
+        Namespace:
+          type: string
+          description: Limits the results to only the anomaly detection models that are associated with the specified namespace.
+          example: example_value
+        MetricName:
+          type: string
+          description: Limits the results to only the anomaly detection models that are associated with the specified metric name.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.
+          example: []
+        AnomalyDetectorTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - SINGLE_METRIC
+            - METRIC_MATH
+          description: The anomaly detector types to request when using DescribeAnomalyDetectors.
+          example: []
+    PutAnomalyDetectorInput:
+      type: object
+      properties:
+        Namespace:
+          type: string
+          description: The namespace of the metric to create the anomaly detection model for.
+          example: example_value
+        MetricName:
+          type: string
+          description: The name of the metric to create the anomaly detection model for.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions to create the anomaly detection model for.
+          example: []
+        Stat:
+          type: string
+          description: The statistic to use for the metric and the anomaly detection model.
+          example: example_value
+        Configuration:
+          $ref: '#/components/schemas/AnomalyDetectorConfiguration'
+        MetricCharacteristics:
+          $ref: '#/components/schemas/MetricCharacteristics'
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+    Dimension:
+      type: object
+      description: A dimension is a name/value pair that is part of the identity of a metric.
+      required:
+      - Name
+      - Value
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+          example: Example Title
+        Value:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
+          example: example_value
+    AnomalyDetector:
+      type: object
+      description: An anomaly detection model associated with a particular CloudWatch metric.
+      properties:
+        Namespace:
+          type: string
+          description: The namespace of the metric associated with the anomaly detection model.
+          example: example_value
+        MetricName:
+          type: string
+          description: The name of the metric associated with the anomaly detection model.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions associated with the anomaly detection model.
+          example: []
+        Stat:
+          type: string
+          description: The statistic associated with the anomaly detection model.
+          example: example_value
+        Configuration:
+          $ref: '#/components/schemas/AnomalyDetectorConfiguration'
+        StateValue:
+          type: string
+          enum:
+          - PENDING_TRAINING
+          - TRAINED_INSUFFICIENT_DATA
+          - TRAINED
+          description: The current status of the anomaly detector model.
+          example: PENDING_TRAINING
+        MetricCharacteristics:
+          $ref: '#/components/schemas/MetricCharacteristics'
+        SingleMetricAnomalyDetector:
+          $ref: '#/components/schemas/SingleMetricAnomalyDetector'
+        MetricMathAnomalyDetector:
+          $ref: '#/components/schemas/MetricMathAnomalyDetector'
+    AnomalyDetectorConfiguration:
+      type: object
+      description: The configuration specifies details about how the anomaly detection model is to be trained.
+      properties:
+        ExcludedTimeRanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/Range'
+          description: An array of time ranges to exclude from use when the anomaly detection model is trained.
+          example: []
+        MetricTimezone:
+          type: string
+          maxLength: 50
+          description: The time zone to use for the metric.
+          example: example_value
+    SingleMetricAnomalyDetector:
+      type: object
+      description: Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.
+      properties:
+        AccountId:
+          type: string
+          description: If the CloudWatch metric that provides the time series is in another account, use this to specify that account ID.
+          example: '500123'
+        Namespace:
+          type: string
+          description: The namespace of the metric to create the anomaly detection model for.
+          example: example_value
+        MetricName:
+          type: string
+          description: The name of the metric to create the anomaly detection model for.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          description: The metric dimensions to create the anomaly detection model for.
+          example: []
+        Stat:
+          type: string
+          description: The statistic to use for the metric and anomaly detection model.
+          example: example_value
+  parameters:
+    Action_DescribeAnomalyDetectors:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAnomalyDetectors
+    Action_PutAnomalyDetector:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutAnomalyDetector
+    Action_DeleteAnomalyDetector:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DeleteAnomalyDetector
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/

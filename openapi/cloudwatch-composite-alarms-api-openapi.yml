@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: AWS CloudWatch Amazon CloudWatch Alarms Composite Alarms API
+  description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
+security:
+- aws_sigv4: []
+tags:
+- name: Composite Alarms
+  description: Operations for composite alarms that aggregate multiple alarm states
+paths:
+  /#PutCompositeAlarm:
+    post:
+      operationId: PutCompositeAlarm
+      summary: Aws Cloudwatch Create or Update a Composite Alarm
+      description: Creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
+      tags:
+      - Composite Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_PutCompositeAlarm'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutCompositeAlarmInput'
+            examples:
+              PutcompositealarmRequestExample:
+                summary: Default PutCompositeAlarm request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmDescription: example_value
+                  ActionsEnabled: true
+                  AlarmActions:
+                  - example_value
+                  AlarmRule: example_value
+                  InsufficientDataActions:
+                  - example_value
+                  OKActions:
+                  - example_value
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  ActionsSuppressor: example_value
+                  ActionsSuppressorWaitPeriod: 10
+                  ActionsSuppressorExtensionPeriod: 10
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request - limit exceeded
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putcompositealarm400Example:
+                  summary: Default PutCompositeAlarm 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PutCompositeAlarmInput:
+      type: object
+      required:
+      - AlarmName
+      - AlarmRule
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the composite alarm.
+          example: example_value
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description for the composite alarm.
+          example: example_value
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
+        AlarmRule:
+          type: string
+          minLength: 1
+          maxLength: 10240
+          description: An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.
+          example: example_value
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+          example: []
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the composite alarm.
+          example: []
+        ActionsSuppressor:
+          type: string
+          description: Actions will be suppressed if the suppressor alarm is in the ALARM state.
+          example: example_value
+        ActionsSuppressorWaitPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.
+          example: 10
+        ActionsSuppressorExtensionPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.
+          example: 10
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
+  parameters:
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+    Action_PutCompositeAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutCompositeAlarm
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/

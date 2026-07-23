@@ -1,0 +1,1445 @@
+openapi: 3.1.0
+info:
+  title: AWS CloudWatch Amazon CloudWatch Alarms API
+  description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
+  version: '2010-08-01'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/cloudwatch/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+servers:
+- url: https://monitoring.{region}.amazonaws.com
+  description: CloudWatch regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-north-1
+      - ap-east-1
+      - ap-south-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - sa-east-1
+      - ca-central-1
+      - me-south-1
+      - af-south-1
+security:
+- aws_sigv4: []
+tags:
+- name: Alarms
+  description: Operations for creating, managing, and querying CloudWatch alarms
+paths:
+  /#PutMetricAlarm:
+    post:
+      operationId: PutMetricAlarm
+      summary: Aws Cloudwatch Create or Update a Cloudwatch Alarm
+      description: Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. When the alarm state changes, the alarm invokes the specified actions. An alarm can watch only one metric at a time, but it can take actions based on other alarms. If you are using a composite alarm, the alarm watches the states of other alarms.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_PutMetricAlarm'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PutMetricAlarmInput'
+            examples:
+              PutmetricalarmRequestExample:
+                summary: Default PutMetricAlarm request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmDescription: example_value
+                  ActionsEnabled: true
+                  OKActions:
+                  - example_value
+                  AlarmActions:
+                  - example_value
+                  InsufficientDataActions:
+                  - example_value
+                  MetricName: example_value
+                  Namespace: example_value
+                  Statistic: SampleCount
+                  ExtendedStatistic: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Period: 10
+                  Unit: Seconds
+                  EvaluationPeriods: 10
+                  DatapointsToAlarm: 10
+                  Threshold: 42.5
+                  ComparisonOperator: GreaterThanOrEqualToThreshold
+                  TreatMissingData: example_value
+                  EvaluateLowSampleCountPercentile: example_value
+                  Metrics:
+                  - Id: abc123
+                    Expression: example_value
+                    Label: Example Title
+                    ReturnData: true
+                    Period: 10
+                    AccountId: '500123'
+                  Tags:
+                  - Key: example_value
+                    Value: example_value
+                  ThresholdMetricId: '500123'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request - limit exceeded
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Putmetricalarm400Example:
+                  summary: Default PutMetricAlarm 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeAlarms:
+    post:
+      operationId: DescribeAlarms
+      summary: Aws Cloudwatch Retrieve Information About Specified Alarms
+      description: Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action. To use this operation and return information about composite alarms, you must be signed on with the cloudwatch:DescribeAlarms permission.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_DescribeAlarms'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmsInput'
+            examples:
+              DescribealarmsRequestExample:
+                summary: Default DescribeAlarms request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
+                  AlarmNamePrefix: example_value
+                  AlarmTypes:
+                  - CompositeAlarm
+                  ChildrenOfAlarmName: example_value
+                  ParentsOfAlarmName: example_value
+                  StateValue: OK
+                  ActionPrefix: example_value
+                  MaxRecords: 10
+                  NextToken: example_value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmsOutput'
+              examples:
+                Describealarms200Example:
+                  summary: Default DescribeAlarms 200 response
+                  x-microcks-default: true
+                  value:
+                    MetricAlarms:
+                    - AlarmName: example_value
+                      AlarmArn: example_value
+                      AlarmDescription: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsEnabled: true
+                      OKActions: {}
+                      AlarmActions: {}
+                      InsufficientDataActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      MetricName: example_value
+                      Namespace: example_value
+                      ExtendedStatistic: example_value
+                      Dimensions: {}
+                      Period: 10
+                      EvaluationPeriods: 10
+                      DatapointsToAlarm: 10
+                      Threshold: 42.5
+                      TreatMissingData: breaching
+                      EvaluateLowSampleCountPercentile: example_value
+                      Metrics: {}
+                      ThresholdMetricId: '500123'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+                    CompositeAlarms:
+                    - ActionsEnabled: true
+                      AlarmActions: {}
+                      AlarmArn: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      AlarmDescription: example_value
+                      AlarmName: example_value
+                      AlarmRule: example_value
+                      InsufficientDataActions: {}
+                      OKActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsSuppressedBy: WaitPeriod
+                      ActionsSuppressedReason: example_value
+                      ActionsSuppressor: example_value
+                      ActionsSuppressorWaitPeriod: 10
+                      ActionsSuppressorExtensionPeriod: 10
+                    NextToken: example_value
+        '400':
+          description: Invalid next token
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Describealarms400Example:
+                  summary: Default DescribeAlarms 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeAlarmsForMetric:
+    post:
+      operationId: DescribeAlarmsForMetric
+      summary: Aws Cloudwatch Retrieve Alarms for a Specified Metric
+      description: Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_DescribeAlarmsForMetric'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmsForMetricInput'
+            examples:
+              DescribealarmsformetricRequestExample:
+                summary: Default DescribeAlarmsForMetric request
+                x-microcks-default: true
+                value:
+                  MetricName: example_value
+                  Namespace: example_value
+                  Statistic: SampleCount
+                  ExtendedStatistic: example_value
+                  Dimensions:
+                  - Name: Example Title
+                    Value: example_value
+                  Period: 10
+                  Unit: Seconds
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmsForMetricOutput'
+              examples:
+                Describealarmsformetric200Example:
+                  summary: Default DescribeAlarmsForMetric 200 response
+                  x-microcks-default: true
+                  value:
+                    MetricAlarms:
+                    - AlarmName: example_value
+                      AlarmArn: example_value
+                      AlarmDescription: example_value
+                      AlarmConfigurationUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      ActionsEnabled: true
+                      OKActions: {}
+                      AlarmActions: {}
+                      InsufficientDataActions: {}
+                      StateReason: example_value
+                      StateReasonData: example_value
+                      StateUpdatedTimestamp: '2026-01-15T10:30:00Z'
+                      MetricName: example_value
+                      Namespace: example_value
+                      ExtendedStatistic: example_value
+                      Dimensions: {}
+                      Period: 10
+                      EvaluationPeriods: 10
+                      DatapointsToAlarm: 10
+                      Threshold: 42.5
+                      TreatMissingData: breaching
+                      EvaluateLowSampleCountPercentile: example_value
+                      Metrics: {}
+                      ThresholdMetricId: '500123'
+                      StateTransitionedTimestamp: '2026-01-15T10:30:00Z'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DescribeAlarmHistory:
+    post:
+      operationId: DescribeAlarmHistory
+      summary: Aws Cloudwatch Retrieve the History for a Specified Alarm
+      description: Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned. CloudWatch retains the history of an alarm even if you delete the alarm.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_DescribeAlarmHistory'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DescribeAlarmHistoryInput'
+            examples:
+              DescribealarmhistoryRequestExample:
+                summary: Default DescribeAlarmHistory request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  AlarmTypes:
+                  - CompositeAlarm
+                  HistoryItemType: ConfigurationUpdate
+                  StartDate: '2026-01-15T10:30:00Z'
+                  EndDate: '2026-01-15T10:30:00Z'
+                  MaxRecords: 10
+                  NextToken: example_value
+                  ScanBy: TimestampDescending
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/DescribeAlarmHistoryOutput'
+              examples:
+                Describealarmhistory200Example:
+                  summary: Default DescribeAlarmHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    AlarmHistoryItems:
+                    - AlarmName: example_value
+                      AlarmType: CompositeAlarm
+                      Timestamp: '2026-01-15T10:30:00Z'
+                      HistoryItemType: ConfigurationUpdate
+                      HistorySummary: example_value
+                      HistoryData: example_value
+                    NextToken: example_value
+        '400':
+          description: Invalid next token
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Describealarmhistory400Example:
+                  summary: Default DescribeAlarmHistory 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DeleteAlarms:
+    post:
+      operationId: DeleteAlarms
+      summary: Aws Cloudwatch Delete Specified Alarms
+      description: Deletes the specified alarms. You can delete up to 100 alarms in one operation. In the event of an error, no alarms are deleted. To get information about your current alarms, use DescribeAlarms. If a specified alarm does not exist, no error is returned.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_DeleteAlarms'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeleteAlarmsInput'
+            examples:
+              DeletealarmsRequestExample:
+                summary: Default DeleteAlarms request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Resource not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletealarms400Example:
+                  summary: Default DeleteAlarms 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#SetAlarmState:
+    post:
+      operationId: SetAlarmState
+      summary: Aws Cloudwatch Temporarily Set the State of an Alarm
+      description: Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to ALARM sends an SNS message.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_SetAlarmState'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetAlarmStateInput'
+            examples:
+              SetalarmstateRequestExample:
+                summary: Default SetAlarmState request
+                x-microcks-default: true
+                value:
+                  AlarmName: example_value
+                  StateValue: OK
+                  StateReason: example_value
+                  StateReasonData: example_value
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Invalid format or resource not found
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Setalarmstate400Example:
+                  summary: Default SetAlarmState 400 response
+                  x-microcks-default: true
+                  value:
+                    Error:
+                      Type: example_value
+                      Code: example_value
+                      Message: example_value
+                    RequestId: '500123'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#EnableAlarmActions:
+    post:
+      operationId: EnableAlarmActions
+      summary: Aws Cloudwatch Enable Actions for Specified Alarms
+      description: Enables the actions for the specified alarms.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_EnableAlarmActions'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EnableAlarmActionsInput'
+            examples:
+              EnablealarmactionsRequestExample:
+                summary: Default EnableAlarmActions request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
+      responses:
+        '200':
+          description: Successful response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /#DisableAlarmActions:
+    post:
+      operationId: DisableAlarmActions
+      summary: Aws Cloudwatch Disable Actions for Specified Alarms
+      description: Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.
+      tags:
+      - Alarms
+      parameters:
+      - $ref: '#/components/parameters/Action_DisableAlarmActions'
+      - $ref: '#/components/parameters/Version'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DisableAlarmActionsInput'
+            examples:
+              DisablealarmactionsRequestExample:
+                summary: Default DisableAlarmActions request
+                x-microcks-default: true
+                value:
+                  AlarmNames:
+                  - example_value
+      responses:
+        '200':
+          description: Successful response
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Action_SetAlarmState:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - SetAlarmState
+    Action_DescribeAlarmHistory:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAlarmHistory
+    Action_DeleteAlarms:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DeleteAlarms
+    Action_DescribeAlarms:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAlarms
+    Action_DisableAlarmActions:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DisableAlarmActions
+    Action_EnableAlarmActions:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - EnableAlarmActions
+    Action_DescribeAlarmsForMetric:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAlarmsForMetric
+    Action_PutMetricAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutMetricAlarm
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+  schemas:
+    Statistic:
+      type: string
+      description: The statistic for the metric.
+      enum:
+      - SampleCount
+      - Average
+      - Sum
+      - Minimum
+      - Maximum
+    SetAlarmStateInput:
+      type: object
+      required:
+      - AlarmName
+      - StateValue
+      - StateReason
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+          example: example_value
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateReason:
+          type: string
+          maxLength: 1023
+          description: The reason that this alarm is set to this specific state, in text format.
+          example: example_value
+        StateReasonData:
+          type: string
+          maxLength: 4000
+          description: The reason that this alarm is set to this specific state, in JSON format.
+          example: example_value
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
+    ComparisonOperator:
+      type: string
+      description: The arithmetic operation to use when comparing the specified statistic and threshold.
+      enum:
+      - GreaterThanOrEqualToThreshold
+      - GreaterThanThreshold
+      - LessThanThreshold
+      - LessThanOrEqualToThreshold
+      - LessThanLowerOrGreaterThanUpperThreshold
+      - LessThanLowerThreshold
+      - GreaterThanUpperThreshold
+    AlarmHistoryItem:
+      type: object
+      description: Represents the history of a specific alarm.
+      properties:
+        AlarmName:
+          type: string
+          description: The descriptive name for the alarm.
+          example: example_value
+        AlarmType:
+          type: string
+          enum:
+          - CompositeAlarm
+          - MetricAlarm
+          description: The type of alarm, either metric alarm or composite alarm.
+          example: CompositeAlarm
+        Timestamp:
+          type: string
+          format: date-time
+          description: The time stamp for the alarm history item.
+          example: '2026-01-15T10:30:00Z'
+        HistoryItemType:
+          type: string
+          enum:
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
+          description: The type of alarm history item.
+          example: ConfigurationUpdate
+        HistorySummary:
+          type: string
+          description: A summary of the alarm history, in text format.
+          example: example_value
+        HistoryData:
+          type: string
+          description: Data about the alarm, in JSON format.
+          example: example_value
+    MetricDataQuery:
+      type: object
+      description: This structure is used in both GetMetricData and PutMetricAlarm. The supported use of this structure is different for those two operations.
+      required:
+      - Id
+      properties:
+        Id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[a-z][a-zA-Z0-9_]*'
+          description: A short name used to tie this object to the results in the response.
+          example: abc123
+        MetricStat:
+          $ref: '#/components/schemas/MetricStat'
+        Expression:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          description: This field can contain a Metrics Insights query, or a metric math expression.
+          example: example_value
+        Label:
+          type: string
+          description: A human-readable label for this metric or expression.
+          example: Example Title
+        ReturnData:
+          type: boolean
+          description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
+          example: true
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        AccountId:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The ID of the account where the metrics are located.
+          example: '500123'
+    DisableAlarmActionsInput:
+      type: object
+      required:
+      - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
+          example: []
+    StateValue:
+      type: string
+      description: The state value for the alarm.
+      enum:
+      - OK
+      - ALARM
+      - INSUFFICIENT_DATA
+    CompositeAlarm:
+      type: object
+      description: The details about a composite alarm.
+      properties:
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during changes to the alarm state.
+          example: true
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
+        AlarmArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the alarm.
+          example: example_value
+        AlarmConfigurationUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the alarm configuration.
+          example: '2026-01-15T10:30:00Z'
+        AlarmDescription:
+          type: string
+          description: The description of the alarm.
+          example: example_value
+        AlarmName:
+          type: string
+          description: The name of the alarm.
+          example: example_value
+        AlarmRule:
+          type: string
+          minLength: 1
+          maxLength: 10240
+          description: The rule that this alarm uses to evaluate its alarm state.
+          example: example_value
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+          example: []
+        StateReason:
+          type: string
+          description: An explanation for the alarm state, in text format.
+          example: example_value
+        StateReasonData:
+          type: string
+          description: An explanation for the alarm state, in JSON format.
+          example: example_value
+        StateUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the last change to the alarm's StateValue.
+          example: '2026-01-15T10:30:00Z'
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateTransitionedTimestamp:
+          type: string
+          format: date-time
+          description: The timestamp of the last state transition.
+          example: '2026-01-15T10:30:00Z'
+        ActionsSuppressedBy:
+          type: string
+          enum:
+          - WaitPeriod
+          - ExtensionPeriod
+          - Alarm
+          description: When the value is ALARM, it means that the actions are suppressed.
+          example: WaitPeriod
+        ActionsSuppressedReason:
+          type: string
+          description: Describes why the actions are suppressed.
+          example: example_value
+        ActionsSuppressor:
+          type: string
+          description: The ARN of the alarm used as the actions suppressor.
+          example: example_value
+        ActionsSuppressorWaitPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes into ALARM state.
+          example: 10
+        ActionsSuppressorExtensionPeriod:
+          type: integer
+          description: The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of ALARM state.
+          example: 10
+    StandardUnit:
+      type: string
+      description: The unit of the metric.
+      enum:
+      - Seconds
+      - Microseconds
+      - Milliseconds
+      - Bytes
+      - Kilobytes
+      - Megabytes
+      - Gigabytes
+      - Terabytes
+      - Bits
+      - Kilobits
+      - Megabits
+      - Gigabits
+      - Terabits
+      - Percent
+      - Count
+      - Bytes/Second
+      - Kilobytes/Second
+      - Megabytes/Second
+      - Gigabytes/Second
+      - Terabytes/Second
+      - Bits/Second
+      - Kilobits/Second
+      - Megabits/Second
+      - Gigabits/Second
+      - Terabits/Second
+      - Count/Second
+      - None
+    MetricStat:
+      type: object
+      description: This structure defines the metric to be returned, along with the statistics, period, and units.
+      required:
+      - Metric
+      - Period
+      - Stat
+      properties:
+        Metric:
+          $ref: '#/components/schemas/Metric'
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        Stat:
+          type: string
+          description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+          example: example_value
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+    DescribeAlarmsForMetricInput:
+      type: object
+      required:
+      - MetricName
+      - Namespace
+      properties:
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+          example: example_value
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric.
+          example: example_value
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions associated with the metric.
+          example: []
+        Period:
+          type: integer
+          minimum: 1
+          description: The period, in seconds, over which the statistic is applied.
+          example: 10
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+    DescribeAlarmHistoryInput:
+      type: object
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+          example: example_value
+        AlarmTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - CompositeAlarm
+            - MetricAlarm
+          description: Specify this parameter to receive information only about alarms of the specified types.
+          example: []
+        HistoryItemType:
+          type: string
+          enum:
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
+          description: The type of alarm histories to retrieve.
+          example: ConfigurationUpdate
+        StartDate:
+          type: string
+          format: date-time
+          description: The starting date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
+        EndDate:
+          type: string
+          format: date-time
+          description: The ending date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
+        MaxRecords:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: The maximum number of alarm history records to retrieve.
+          example: 10
+        NextToken:
+          type: string
+          description: The token returned by a previous call.
+          example: example_value
+        ScanBy:
+          type: string
+          enum:
+          - TimestampDescending
+          - TimestampAscending
+          description: Specified whether to return the newest or oldest alarm history first.
+          example: TimestampDescending
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
+    DescribeAlarmHistoryOutput:
+      type: object
+      properties:
+        AlarmHistoryItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlarmHistoryItem'
+          description: The alarm histories, in JSON format.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    DeleteAlarmsInput:
+      type: object
+      required:
+      - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The alarms to be deleted. You can delete up to 100 alarms in one operation.
+          example: []
+    Metric:
+      type: object
+      description: Represents a specific metric.
+      properties:
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[^:].*'
+          description: The namespace of the metric.
+          example: example_value
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric.
+          example: []
+    MetricAlarm:
+      type: object
+      description: The details about a metric alarm.
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+          example: example_value
+        AlarmArn:
+          type: string
+          minLength: 1
+          maxLength: 1600
+          description: The Amazon Resource Name (ARN) of the alarm.
+          example: example_value
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description of the alarm.
+          example: example_value
+        AlarmConfigurationUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the alarm configuration.
+          example: '2026-01-15T10:30:00Z'
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the OK state.
+          example: []
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateReason:
+          type: string
+          maxLength: 1023
+          description: An explanation for the alarm state, in text format.
+          example: example_value
+        StateReasonData:
+          type: string
+          maxLength: 4000
+          description: An explanation for the alarm state, in JSON format.
+          example: example_value
+        StateUpdatedTimestamp:
+          type: string
+          format: date-time
+          description: The time stamp of the last update to the value of either the StateValue or StateReasonData.
+          example: '2026-01-15T10:30:00Z'
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric associated with the alarm.
+          example: example_value
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric associated with the alarm.
+          example: example_value
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric associated with the alarm.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric associated with the alarm.
+          example: []
+        Period:
+          type: integer
+          minimum: 1
+          description: The period, in seconds, over which the statistic is applied.
+          example: 10
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        EvaluationPeriods:
+          type: integer
+          minimum: 1
+          description: The number of periods over which data is compared to the specified threshold.
+          example: 10
+        DatapointsToAlarm:
+          type: integer
+          minimum: 1
+          description: The number of data points that must be breaching to trigger the alarm.
+          example: 10
+        Threshold:
+          type: number
+          format: double
+          description: The value to compare with the specified statistic.
+          example: 42.5
+        ComparisonOperator:
+          $ref: '#/components/schemas/ComparisonOperator'
+        TreatMissingData:
+          type: string
+          enum:
+          - breaching
+          - notBreaching
+          - ignore
+          - missing
+          description: Sets how this alarm is to handle missing data points.
+          example: breaching
+        EvaluateLowSampleCountPercentile:
+          type: string
+          description: Used only for alarms based on percentiles.
+          example: example_value
+        Metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of MetricDataQuery structures for metric math expressions.
+          example: []
+        ThresholdMetricId:
+          type: string
+          description: If the value of this field is set to an alarm metric ID, the alarm is based on an anomaly detection model.
+          example: '500123'
+        StateTransitionedTimestamp:
+          type: string
+          format: date-time
+          description: The date and time that the alarm's StateValue most recently changed.
+          example: '2026-01-15T10:30:00Z'
+    PutMetricAlarmInput:
+      type: object
+      required:
+      - AlarmName
+      - EvaluationPeriods
+      - ComparisonOperator
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the alarm.
+          example: example_value
+        AlarmDescription:
+          type: string
+          maxLength: 1024
+          description: The description for the alarm.
+          example: example_value
+        ActionsEnabled:
+          type: boolean
+          description: Indicates whether actions should be executed during any changes to the alarm state.
+          example: true
+        OKActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to an OK state.
+          example: []
+        AlarmActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the ALARM state.
+          example: []
+        InsufficientDataActions:
+          type: array
+          items:
+            type: string
+          maxItems: 5
+          description: The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.
+          example: []
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name for the metric associated with the alarm.
+          example: example_value
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace for the metric associated with the alarm.
+          example: example_value
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric specified in MetricName.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions for the metric specified in MetricName.
+          example: []
+        Period:
+          type: integer
+          minimum: 1
+          description: The length, in seconds, used each time the metric specified in MetricName is evaluated.
+          example: 10
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+        EvaluationPeriods:
+          type: integer
+          minimum: 1
+          description: The number of periods over which data is compared to the specified threshold.
+          example: 10
+        DatapointsToAlarm:
+          type: integer
+          minimum: 1
+          description: The number of data points that must be breaching to trigger the alarm.
+          example: 10
+        Threshold:
+          type: number
+          format: double
+          description: The value against which the specified statistic is compared.
+          example: 42.5
+        ComparisonOperator:
+          $ref: '#/components/schemas/ComparisonOperator'
+        TreatMissingData:
+          type: string
+          description: Sets how this alarm is to handle missing data points.
+          example: example_value
+        EvaluateLowSampleCountPercentile:
+          type: string
+          description: Used only for alarms based on percentiles.
+          example: example_value
+        Metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataQuery'
+          description: An array of MetricDataQuery structures for metric math expression alarms.
+          example: []
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+          description: A list of key-value pairs to associate with the alarm.
+          example: []
+        ThresholdMetricId:
+          type: string
+          description: If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
+          example: '500123'
+    Dimension:
+      type: object
+      description: A dimension is a name/value pair that is part of the identity of a metric.
+      required:
+      - Name
+      - Value
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+          example: Example Title
+        Value:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
+          example: example_value
+    EnableAlarmActionsInput:
+      type: object
+      required:
+      - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
+          example: []
+    DescribeAlarmsOutput:
+      type: object
+      properties:
+        MetricAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricAlarm'
+          description: The information about any metric alarms returned by the operation.
+          example: []
+        CompositeAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompositeAlarm'
+          description: The information about any composite alarms returned by the operation.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    DescribeAlarmsInput:
+      type: object
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms to retrieve information about.
+          example: []
+        AlarmNamePrefix:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.
+          example: example_value
+        AlarmTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - CompositeAlarm
+            - MetricAlarm
+          description: Specify this parameter to receive information only about alarms of the specified types.
+          example: []
+        ChildrenOfAlarmName:
+          type: string
+          description: If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.
+          example: example_value
+        ParentsOfAlarmName:
+          type: string
+          description: If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.
+          example: example_value
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        ActionPrefix:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: Use this parameter to filter the results to only those alarms that use a certain alarm action.
+          example: example_value
+        MaxRecords:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: The maximum number of alarm descriptions to retrieve.
+          example: 10
+        NextToken:
+          type: string
+          description: The token returned by a previous call to indicate there is more data available.
+          example: example_value
+    DescribeAlarmsForMetricOutput:
+      type: object
+      properties:
+        MetricAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricAlarm'
+          description: The information for each alarm with the specified metric.
+          example: []
+  securitySchemes:
+    aws_sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon CloudWatch API Reference
+  url: https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/

@@ -1,0 +1,1191 @@
+{
+  "info": {
+    "_postman_id": "b0ea40e1-bebc-4486-9303-6c0d4835e6a4",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Dashboards API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:30.000Z",
+    "updatedAt": "2026-07-28T01:22:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b0ea40e1-bebc-4486-9303-6c0d4835e6a4"
+  },
+  "item": [
+    {
+      "name": "#PutDashboard",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Create or Update a Cloudwatch Dashboard",
+          "id": "85be5aab-5806-4da9-9f9c-4b0579e63906",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.",
+                  "key": "DashboardName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.",
+                  "key": "DashboardBody",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutDashboard&Version=2010-08-01#PutDashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutDashboard"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "PutDashboard"
+            },
+            "description": "Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard, the entire contents are replaced with what you specify here. There is no limit to the number of dashboards in your account."
+          },
+          "response": [
+            {
+              "id": "65f35462-aa22-41ec-9236-ff26b5d0ff2d",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.",
+                      "key": "DashboardBody",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutDashboard&Version=2010-08-01#PutDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutDashboard"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <DashboardValidationMessages>\n    <DataPath>(string)</DataPath>\n    <Message>(string)</Message>\n  </DashboardValidationMessages>\n  <DashboardValidationMessages>\n    <DataPath>(string)</DataPath>\n    <Message>(string)</Message>\n  </DashboardValidationMessages>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-65f35462-aa22-41ec-9236-ff26b5d0ff2d"
+            },
+            {
+              "id": "afb3aecf-3a86-46f4-84b6-4ea74d990513",
+              "name": "Dashboard invalid input error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.",
+                      "key": "DashboardBody",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutDashboard&Version=2010-08-01#PutDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutDashboard"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-afb3aecf-3a86-46f4-84b6-4ea74d990513"
+            },
+            {
+              "id": "a84af8e1-ca99-4d22-88f6-553b0dc7a3be",
+              "name": "Internal service error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.",
+                      "key": "DashboardBody",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutDashboard&Version=2010-08-01#PutDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutDashboard"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-a84af8e1-ca99-4d22-88f6-553b0dc7a3be"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:30.000Z",
+          "updatedAt": "2026-07-28T01:22:30.000Z",
+          "uid": "35240-85be5aab-5806-4da9-9f9c-4b0579e63906"
+        }
+      ],
+      "id": "6819c1bd-d928-42a7-8ac7-d1ebc4a03086",
+      "createdAt": "2026-07-28T01:22:30.000Z",
+      "updatedAt": "2026-07-28T01:22:30.000Z",
+      "uid": "35240-6819c1bd-d928-42a7-8ac7-d1ebc4a03086"
+    },
+    {
+      "name": "#GetDashboard",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve Details for a Specified Dashboard",
+          "id": "86dd9348-fdeb-4e8e-a9ba-1e5be3ab868e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name of the dashboard to be described.",
+                  "key": "DashboardName",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=GetDashboard&Version=2010-08-01#GetDashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "GetDashboard"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "GetDashboard"
+            },
+            "description": "Displays the details of the dashboard that you specify. To copy an existing dashboard, use GetDashboard, and then use the data returned within DashboardBody as the template for the new dashboard when you call PutDashboard to create the copy."
+          },
+          "response": [
+            {
+              "id": "24ac2555-a8af-4c9e-bf5e-8cc3ab1e479a",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard to be described.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetDashboard&Version=2010-08-01#GetDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetDashboard"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <DashboardArn>(string)</DashboardArn>\n  <DashboardBody>(string)</DashboardBody>\n  <DashboardName>(string)</DashboardName>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-24ac2555-a8af-4c9e-bf5e-8cc3ab1e479a"
+            },
+            {
+              "id": "454e0262-5a45-4fe0-8fad-2a51d669727e",
+              "name": "Dashboard not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard to be described.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetDashboard&Version=2010-08-01#GetDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetDashboard"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-454e0262-5a45-4fe0-8fad-2a51d669727e"
+            },
+            {
+              "id": "c799746d-d6b9-4aaf-8325-22bbb515d489",
+              "name": "Internal service error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the dashboard to be described.",
+                      "key": "DashboardName",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetDashboard&Version=2010-08-01#GetDashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetDashboard"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetDashboard"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-c799746d-d6b9-4aaf-8325-22bbb515d489"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:30.000Z",
+          "updatedAt": "2026-07-28T01:22:30.000Z",
+          "uid": "35240-86dd9348-fdeb-4e8e-a9ba-1e5be3ab868e"
+        }
+      ],
+      "id": "898eecc9-83d0-49ea-9b4c-7a0c02e70e91",
+      "createdAt": "2026-07-28T01:22:30.000Z",
+      "updatedAt": "2026-07-28T01:22:30.000Z",
+      "uid": "35240-898eecc9-83d0-49ea-9b4c-7a0c02e70e91"
+    },
+    {
+      "name": "#ListDashboards",
+      "item": [
+        {
+          "name": "Aws Cloudwatch List the Dashboards in Your Account",
+          "id": "a11302ce-9134-4d95-8bfc-271028dfe1df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "If you specify this parameter, only the dashboards with names starting with the specified string are listed.",
+                  "key": "DashboardNamePrefix",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The token returned by a previous call to indicate there is more data available.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=ListDashboards&Version=2010-08-01#ListDashboards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "ListDashboards"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "ListDashboards"
+            },
+            "description": "Returns a list of the dashboards for your account. If you include DashboardNamePrefix, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed. ListDashboards returns up to 1000 results on one page."
+          },
+          "response": [
+            {
+              "id": "899c0f38-7f79-42e5-b845-cd3a57f17f27",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "If you specify this parameter, only the dashboards with names starting with the specified string are listed.",
+                      "key": "DashboardNamePrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListDashboards&Version=2010-08-01#ListDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListDashboards"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <DashboardEntries>\n    <DashboardName>(string)</DashboardName>\n    <DashboardArn>(string)</DashboardArn>\n    <LastModified>(string)</LastModified>\n    <Size>(integer)</Size>\n  </DashboardEntries>\n  <DashboardEntries>\n    <DashboardName>(string)</DashboardName>\n    <DashboardArn>(string)</DashboardArn>\n    <LastModified>(string)</LastModified>\n    <Size>(integer)</Size>\n  </DashboardEntries>\n  <NextToken>(string)</NextToken>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-899c0f38-7f79-42e5-b845-cd3a57f17f27"
+            },
+            {
+              "id": "959b0802-b641-4cf8-8337-0886b953705e",
+              "name": "Invalid parameter value",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "If you specify this parameter, only the dashboards with names starting with the specified string are listed.",
+                      "key": "DashboardNamePrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListDashboards&Version=2010-08-01#ListDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListDashboards"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-959b0802-b641-4cf8-8337-0886b953705e"
+            },
+            {
+              "id": "676248c2-19a3-4f21-b187-bc5b3909c6f5",
+              "name": "Internal service error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "If you specify this parameter, only the dashboards with names starting with the specified string are listed.",
+                      "key": "DashboardNamePrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListDashboards&Version=2010-08-01#ListDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListDashboards"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-676248c2-19a3-4f21-b187-bc5b3909c6f5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:30.000Z",
+          "updatedAt": "2026-07-28T01:22:30.000Z",
+          "uid": "35240-a11302ce-9134-4d95-8bfc-271028dfe1df"
+        }
+      ],
+      "id": "468bdab6-31e7-4eb5-b33f-b728326bc3bf",
+      "createdAt": "2026-07-28T01:22:30.000Z",
+      "updatedAt": "2026-07-28T01:22:30.000Z",
+      "uid": "35240-468bdab6-31e7-4eb5-b33f-b728326bc3bf"
+    },
+    {
+      "name": "#DeleteDashboards",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Delete Specified Dashboards",
+          "id": "8202b267-bff2-48b3-a2bb-6302a5933bd1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                  "key": "DashboardNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                  "key": "DashboardNames",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DeleteDashboards&Version=2010-08-01#DeleteDashboards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DeleteDashboards"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DeleteDashboards"
+            },
+            "description": "Deletes all dashboards that you specify. You can specify up to 100 dashboards to delete. If there is an error during this call, no dashboards are deleted."
+          },
+          "response": [
+            {
+              "id": "3b6490f6-8a19-468b-8933-9ced992ff93c",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteDashboards&Version=2010-08-01#DeleteDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteDashboards"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-3b6490f6-8a19-468b-8933-9ced992ff93c"
+            },
+            {
+              "id": "9d730806-b493-48d4-8c5f-16e88ab2eba6",
+              "name": "Dashboard not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteDashboards&Version=2010-08-01#DeleteDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteDashboards"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-9d730806-b493-48d4-8c5f-16e88ab2eba6"
+            },
+            {
+              "id": "a4769db1-13aa-4589-9651-c30878bbc10e",
+              "name": "Internal service error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dashboards to be deleted. This parameter is required.",
+                      "key": "DashboardNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteDashboards&Version=2010-08-01#DeleteDashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteDashboards"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteDashboards"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-a4769db1-13aa-4589-9651-c30878bbc10e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:30.000Z",
+          "updatedAt": "2026-07-28T01:22:30.000Z",
+          "uid": "35240-8202b267-bff2-48b3-a2bb-6302a5933bd1"
+        }
+      ],
+      "id": "cb5bc70e-a82a-4ecd-a5a1-527d7f9a4b2b",
+      "createdAt": "2026-07-28T01:22:30.000Z",
+      "updatedAt": "2026-07-28T01:22:30.000Z",
+      "uid": "35240-cb5bc70e-a82a-4ecd-a5a1-527d7f9a4b2b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

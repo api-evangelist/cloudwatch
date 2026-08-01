@@ -1,0 +1,987 @@
+{
+  "info": {
+    "_postman_id": "421071d2-f134-4f83-a38c-76af6cbf9135",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:28.000Z",
+    "updatedAt": "2026-07-28T01:22:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-421071d2-f134-4f83-a38c-76af6cbf9135"
+  },
+  "item": [
+    {
+      "name": "#PutAnomalyDetector",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Create an Anomaly Detection Model for a Metric",
+          "id": "1e47dc26-a7c4-4c13-85b5-53d17369915c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "The namespace of the metric to create the anomaly detection model for.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The name of the metric to create the anomaly detection model for.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The metric dimensions to create the anomaly detection model for.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The metric dimensions to create the anomaly detection model for.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The statistic to use for the metric and the anomaly detection model.",
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                  "key": "ExcludedTimeRanges",
+                  "value": "[object Object],[object Object]"
+                },
+                {
+                  "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                  "key": "MetricTimezone",
+                  "value": "<string>"
+                },
+                {
+                  "description": "This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.",
+                  "key": "PeriodicSpikes",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "AccountId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Dimensions",
+                  "value": "[object Object],[object Object]"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                  "key": "MetricDataQueries",
+                  "value": "[object Object],[object Object]"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutAnomalyDetector&Version=2010-08-01#PutAnomalyDetector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutAnomalyDetector"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "PutAnomalyDetector"
+            },
+            "description": "Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed. If you have enabled unified cross-account observability, and this account is a monitoring account, the metric can be in the same account or a source account."
+          },
+          "response": [
+            {
+              "id": "d2301777-2a69-4ae2-bcb3-e72f5a0a6d36",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The namespace of the metric to create the anomaly detection model for.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the metric to create the anomaly detection model for.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric dimensions to create the anomaly detection model for.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric dimensions to create the anomaly detection model for.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The statistic to use for the metric and the anomaly detection model.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                      "key": "ExcludedTimeRanges",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                      "key": "MetricTimezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.",
+                      "key": "PeriodicSpikes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "AccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Dimensions",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object],[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutAnomalyDetector&Version=2010-08-01#PutAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutAnomalyDetector"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutAnomalyDetector"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:29.000Z",
+              "updatedAt": "2026-07-28T01:22:29.000Z",
+              "uid": "35240-d2301777-2a69-4ae2-bcb3-e72f5a0a6d36"
+            },
+            {
+              "id": "ffa9a31e-8377-4fa8-9ed3-aa58df3fe04d",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The namespace of the metric to create the anomaly detection model for.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the metric to create the anomaly detection model for.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric dimensions to create the anomaly detection model for.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric dimensions to create the anomaly detection model for.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The statistic to use for the metric and the anomaly detection model.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                      "key": "ExcludedTimeRanges",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "The configuration specifies details about how the anomaly detection model is to be trained.",
+                      "key": "MetricTimezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "This object includes parameters that you can use to provide information to CloudWatch to help it build more accurate anomaly detection models.",
+                      "key": "PeriodicSpikes",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "AccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Dimensions",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object],[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutAnomalyDetector&Version=2010-08-01#PutAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutAnomalyDetector"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutAnomalyDetector"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:29.000Z",
+              "updatedAt": "2026-07-28T01:22:29.000Z",
+              "uid": "35240-ffa9a31e-8377-4fa8-9ed3-aa58df3fe04d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:29.000Z",
+          "updatedAt": "2026-07-28T01:22:29.000Z",
+          "uid": "35240-1e47dc26-a7c4-4c13-85b5-53d17369915c"
+        }
+      ],
+      "id": "00370a4c-5a29-46bb-8bd4-5a747cedf4ae",
+      "createdAt": "2026-07-28T01:22:29.000Z",
+      "updatedAt": "2026-07-28T01:22:29.000Z",
+      "uid": "35240-00370a4c-5a29-46bb-8bd4-5a747cedf4ae"
+    },
+    {
+      "name": "#DescribeAnomalyDetectors",
+      "item": [
+        {
+          "name": "Aws Cloudwatch List Anomaly Detection Models",
+          "id": "10edc8af-b0c1-4a84-b451-b566a82afe73",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "Use the token returned by the previous operation to request the next page of results.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return in one operation.",
+                  "key": "MaxResults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified namespace.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric name.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+                  "key": "AnomalyDetectorTypes",
+                  "value": "METRIC_MATH"
+                },
+                {
+                  "description": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+                  "key": "AnomalyDetectorTypes",
+                  "value": "SINGLE_METRIC"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DescribeAnomalyDetectors&Version=2010-08-01#DescribeAnomalyDetectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DescribeAnomalyDetectors"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DescribeAnomalyDetectors"
+            },
+            "description": "Lists the anomaly detection models that you have created in your account. For each model, the response includes configuration information for the model. If you filter the response, only the models matching the filter are returned."
+          },
+          "response": [
+            {
+              "id": "d0f5b665-08ee-4675-bd32-b8eb6e7faa9a",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Use the token returned by the previous operation to request the next page of results.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return in one operation.",
+                      "key": "MaxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Limits the results to only the anomaly detection models that are associated with the specified namespace.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Limits the results to only the anomaly detection models that are associated with the specified metric name.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+                      "key": "AnomalyDetectorTypes",
+                      "value": "METRIC_MATH"
+                    },
+                    {
+                      "description": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+                      "key": "AnomalyDetectorTypes",
+                      "value": "SINGLE_METRIC"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAnomalyDetectors&Version=2010-08-01#DescribeAnomalyDetectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAnomalyDetectors"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAnomalyDetectors"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <AnomalyDetectors>\n    <Namespace>(string)</Namespace>\n    <MetricName>(string)</MetricName>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Stat>(string)</Stat>\n    <Configuration>\n      <ExcludedTimeRanges>\n        <StartTime>(string)</StartTime>\n        <EndTime>(string)</EndTime>\n      </ExcludedTimeRanges>\n      <ExcludedTimeRanges>\n        <StartTime>(string)</StartTime>\n        <EndTime>(string)</EndTime>\n      </ExcludedTimeRanges>\n      <MetricTimezone>(string)</MetricTimezone>\n    </Configuration>\n    <StateValue>(string)</StateValue>\n    <MetricCharacteristics>\n      <PeriodicSpikes>(boolean)</PeriodicSpikes>\n    </MetricCharacteristics>\n    <SingleMetricAnomalyDetector>\n      <AccountId>(string)</AccountId>\n      <Namespace>(string)</Namespace>\n      <MetricName>(string)</MetricName>\n      <Dimensions>\n        <Name>(string)</Name>\n        <Value>(string)</Value>\n      </Dimensions>\n      <Dimensions>\n        <Name>(string)</Name>\n        <Value>(string)</Value>\n      </Dimensions>\n      <Stat>(string)</Stat>\n    </SingleMetricAnomalyDetector>\n    <MetricMathAnomalyDetector>\n      <MetricDataQueries>\n        <Id>(string)</Id>\n        <MetricStat>\n          <Metric>\n            <Namespace>(string)</Namespace>\n            <MetricName>(string)</MetricName>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n          </Metric>\n          <Period>(integer)</Period>\n          <Stat>(string)</Stat>\n          <Unit>(string)</Unit>\n        </MetricStat>\n        <Expression>(string)</Expression>\n        <Label>(string)</Label>\n        <ReturnData>(boolean)</ReturnData>\n        <Period>(integer)</Period>\n        <AccountId>(string)</AccountId>\n      </MetricDataQueries>\n      <MetricDataQueries>\n        <Id>(string)</Id>\n        <MetricStat>\n          <Metric>\n            <Namespace>(string)</Namespace>\n            <MetricName>(string)</MetricName>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n          </Metric>\n          <Period>(integer)</Period>\n          <Stat>(string)</Stat>\n          <Unit>(string)</Unit>\n        </MetricStat>\n        <Expression>(string)</Expression>\n        <Label>(string)</Label>\n        <ReturnData>(boolean)</ReturnData>\n        <Period>(integer)</Period>\n        <AccountId>(string)</AccountId>\n      </MetricDataQueries>\n    </MetricMathAnomalyDetector>\n  </AnomalyDetectors>\n  <AnomalyDetectors>\n    <Namespace>(string)</Namespace>\n    <MetricName>(string)</MetricName>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Stat>(string)</Stat>\n    <Configuration>\n      <ExcludedTimeRanges>\n        <StartTime>(string)</StartTime>\n        <EndTime>(string)</EndTime>\n      </ExcludedTimeRanges>\n      <ExcludedTimeRanges>\n        <StartTime>(string)</StartTime>\n        <EndTime>(string)</EndTime>\n      </ExcludedTimeRanges>\n      <MetricTimezone>(string)</MetricTimezone>\n    </Configuration>\n    <StateValue>(string)</StateValue>\n    <MetricCharacteristics>\n      <PeriodicSpikes>(boolean)</PeriodicSpikes>\n    </MetricCharacteristics>\n    <SingleMetricAnomalyDetector>\n      <AccountId>(string)</AccountId>\n      <Namespace>(string)</Namespace>\n      <MetricName>(string)</MetricName>\n      <Dimensions>\n        <Name>(string)</Name>\n        <Value>(string)</Value>\n      </Dimensions>\n      <Dimensions>\n        <Name>(string)</Name>\n        <Value>(string)</Value>\n      </Dimensions>\n      <Stat>(string)</Stat>\n    </SingleMetricAnomalyDetector>\n    <MetricMathAnomalyDetector>\n      <MetricDataQueries>\n        <Id>(string)</Id>\n        <MetricStat>\n          <Metric>\n            <Namespace>(string)</Namespace>\n            <MetricName>(string)</MetricName>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n          </Metric>\n          <Period>(integer)</Period>\n          <Stat>(string)</Stat>\n          <Unit>(string)</Unit>\n        </MetricStat>\n        <Expression>(string)</Expression>\n        <Label>(string)</Label>\n        <ReturnData>(boolean)</ReturnData>\n        <Period>(integer)</Period>\n        <AccountId>(string)</AccountId>\n      </MetricDataQueries>\n      <MetricDataQueries>\n        <Id>(string)</Id>\n        <MetricStat>\n          <Metric>\n            <Namespace>(string)</Namespace>\n            <MetricName>(string)</MetricName>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n            <Dimensions>\n              <Name>(string)</Name>\n              <Value>(string)</Value>\n            </Dimensions>\n          </Metric>\n          <Period>(integer)</Period>\n          <Stat>(string)</Stat>\n          <Unit>(string)</Unit>\n        </MetricStat>\n        <Expression>(string)</Expression>\n        <Label>(string)</Label>\n        <ReturnData>(boolean)</ReturnData>\n        <Period>(integer)</Period>\n        <AccountId>(string)</AccountId>\n      </MetricDataQueries>\n    </MetricMathAnomalyDetector>\n  </AnomalyDetectors>\n  <NextToken>(string)</NextToken>\n</element>",
+              "createdAt": "2026-07-28T01:22:29.000Z",
+              "updatedAt": "2026-07-28T01:22:29.000Z",
+              "uid": "35240-d0f5b665-08ee-4675-bd32-b8eb6e7faa9a"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:29.000Z",
+          "updatedAt": "2026-07-28T01:22:29.000Z",
+          "uid": "35240-10edc8af-b0c1-4a84-b451-b566a82afe73"
+        }
+      ],
+      "id": "b20d213e-3270-4216-8168-03bf1ecf7b08",
+      "createdAt": "2026-07-28T01:22:29.000Z",
+      "updatedAt": "2026-07-28T01:22:29.000Z",
+      "uid": "35240-b20d213e-3270-4216-8168-03bf1ecf7b08"
+    },
+    {
+      "name": "#DeleteAnomalyDetector",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Delete an Anomaly Detection Model",
+          "id": "e2648b34-3a5e-4c34-b38c-b3e9e818b4ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "The namespace associated with the anomaly detection model to delete.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The metric name associated with the anomaly detection model to delete.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The statistic associated with the anomaly detection model to delete.",
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "AccountId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Dimensions",
+                  "value": "[object Object],[object Object]"
+                },
+                {
+                  "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                  "key": "MetricDataQueries",
+                  "value": "[object Object],[object Object]"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DeleteAnomalyDetector&Version=2010-08-01#DeleteAnomalyDetector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DeleteAnomalyDetector"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DeleteAnomalyDetector"
+            },
+            "description": "Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see Deleting an Anomaly Detection Model in the CloudWatch User Guide."
+          },
+          "response": [
+            {
+              "id": "7c8cc36b-9384-4d3c-9542-36383f693d58",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The namespace associated with the anomaly detection model to delete.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric name associated with the anomaly detection model to delete.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The statistic associated with the anomaly detection model to delete.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "AccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Dimensions",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object],[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteAnomalyDetector&Version=2010-08-01#DeleteAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteAnomalyDetector"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteAnomalyDetector"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:29.000Z",
+              "updatedAt": "2026-07-28T01:22:29.000Z",
+              "uid": "35240-7c8cc36b-9384-4d3c-9542-36383f693d58"
+            },
+            {
+              "id": "d5ffd5be-4c20-4757-815b-a2e43dfe63be",
+              "name": "Resource not found or missing required fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The namespace associated with the anomaly detection model to delete.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric name associated with the anomaly detection model to delete.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric dimensions associated with the anomaly detection model to delete.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The statistic associated with the anomaly detection model to delete.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "AccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Dimensions",
+                      "value": "[object Object],[object Object]"
+                    },
+                    {
+                      "description": "Designates the CloudWatch metric and statistic that provides the time series the anomaly detector uses as input.",
+                      "key": "Stat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates the CloudWatch math expression that provides the time series the anomaly detector uses as input.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object],[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteAnomalyDetector&Version=2010-08-01#DeleteAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteAnomalyDetector"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteAnomalyDetector"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:29.000Z",
+              "updatedAt": "2026-07-28T01:22:29.000Z",
+              "uid": "35240-d5ffd5be-4c20-4757-815b-a2e43dfe63be"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:29.000Z",
+          "updatedAt": "2026-07-28T01:22:29.000Z",
+          "uid": "35240-e2648b34-3a5e-4c34-b38c-b3e9e818b4ed"
+        }
+      ],
+      "id": "cfc9b288-53dd-417d-b9ef-732907b974d9",
+      "createdAt": "2026-07-28T01:22:29.000Z",
+      "updatedAt": "2026-07-28T01:22:29.000Z",
+      "uid": "35240-cfc9b288-53dd-417d-b9ef-732907b974d9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

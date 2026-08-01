@@ -1,0 +1,450 @@
+{
+  "info": {
+    "_postman_id": "833b6a0e-0ed8-44e3-ad86-a379dc88a647",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Composite Alarms API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:29.000Z",
+    "updatedAt": "2026-07-28T01:22:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-833b6a0e-0ed8-44e3-ad86-a379dc88a647"
+  },
+  "item": [
+    {
+      "name": "#PutCompositeAlarm",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Create or Update a Composite Alarm",
+          "id": "306290e8-9496-43fc-b29b-3a22ed6db115",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name for the composite alarm.",
+                  "key": "AlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.",
+                  "key": "AlarmRule",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The description for the composite alarm.",
+                  "key": "AlarmDescription",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                  "key": "ActionsEnabled",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                  "key": "AlarmActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                  "key": "AlarmActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                  "key": "InsufficientDataActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                  "key": "InsufficientDataActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the OK state.",
+                  "key": "OKActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the OK state.",
+                  "key": "OKActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the composite alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the composite alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "Actions will be suppressed if the suppressor alarm is in the ALARM state.",
+                  "key": "ActionsSuppressor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.",
+                  "key": "ActionsSuppressorWaitPeriod",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.",
+                  "key": "ActionsSuppressorExtensionPeriod",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutCompositeAlarm&Version=2010-08-01#PutCompositeAlarm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutCompositeAlarm"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "PutCompositeAlarm"
+            },
+            "description": "Creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met."
+          },
+          "response": [
+            {
+              "id": "5aced955-2640-453a-a78c-30fab229abdd",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name for the composite alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.",
+                      "key": "AlarmRule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The description for the composite alarm.",
+                      "key": "AlarmDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                      "key": "ActionsEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the composite alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the composite alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "Actions will be suppressed if the suppressor alarm is in the ALARM state.",
+                      "key": "ActionsSuppressor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.",
+                      "key": "ActionsSuppressorWaitPeriod",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.",
+                      "key": "ActionsSuppressorExtensionPeriod",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutCompositeAlarm&Version=2010-08-01#PutCompositeAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutCompositeAlarm"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutCompositeAlarm"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-5aced955-2640-453a-a78c-30fab229abdd"
+            },
+            {
+              "id": "a21282df-110d-429b-a6ca-5e1842d56c1e",
+              "name": "Bad request - limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name for the composite alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) An expression that specifies which other alarms are to be evaluated to determine this composite alarm's state.",
+                      "key": "AlarmRule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The description for the composite alarm.",
+                      "key": "AlarmDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                      "key": "ActionsEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the composite alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the composite alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "Actions will be suppressed if the suppressor alarm is in the ALARM state.",
+                      "key": "ActionsSuppressor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum time in seconds that the composite alarm waits for the suppressor to go into ALARM state.",
+                      "key": "ActionsSuppressorWaitPeriod",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.",
+                      "key": "ActionsSuppressorExtensionPeriod",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutCompositeAlarm&Version=2010-08-01#PutCompositeAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutCompositeAlarm"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutCompositeAlarm"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:30.000Z",
+              "updatedAt": "2026-07-28T01:22:30.000Z",
+              "uid": "35240-a21282df-110d-429b-a6ca-5e1842d56c1e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:30.000Z",
+          "updatedAt": "2026-07-28T01:22:30.000Z",
+          "uid": "35240-306290e8-9496-43fc-b29b-3a22ed6db115"
+        }
+      ],
+      "id": "7adfa4e3-8bea-4a58-8057-d388bc15c227",
+      "createdAt": "2026-07-28T01:22:30.000Z",
+      "updatedAt": "2026-07-28T01:22:30.000Z",
+      "uid": "35240-7adfa4e3-8bea-4a58-8057-d388bc15c227"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

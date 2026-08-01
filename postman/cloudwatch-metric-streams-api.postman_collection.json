@@ -1,0 +1,545 @@
+{
+  "info": {
+    "_postman_id": "a849d926-8e08-4ab1-b9ad-321f5ddfd477",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Metric Streams API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:31.000Z",
+    "updatedAt": "2026-07-28T01:22:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a849d926-8e08-4ab1-b9ad-321f5ddfd477"
+  },
+  "item": [
+    {
+      "name": "#PutMetricStream",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Create or Update a Metric Stream",
+          "id": "f31845cb-0862-4109-9466-726ee04ae6f3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name of the metric stream.",
+                  "key": "Name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.",
+                  "key": "FirehoseArn",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.",
+                  "key": "RoleArn",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The output format for the stream.",
+                  "key": "OutputFormat",
+                  "value": "json"
+                },
+                {
+                  "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                  "key": "IncludeFilters",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                  "key": "IncludeFilters",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                  "key": "ExcludeFilters",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                  "key": "ExcludeFilters",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the metric stream.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the metric stream.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.",
+                  "key": "IncludeLinkedAccountsMetrics",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutMetricStream&Version=2010-08-01#PutMetricStream",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutMetricStream"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "PutMetricStream"
+            },
+            "description": "Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery stream, or to Amazon S3 via a Kinesis Data Firehose delivery stream. The output includes metric data in one of two formats, JSON or the OpenTelemetry 0.7.0 protobuf format."
+          },
+          "response": [
+            {
+              "id": "7d186cab-8b35-4434-99bf-d2320c0d7342",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the metric stream.",
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.",
+                      "key": "FirehoseArn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.",
+                      "key": "RoleArn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format for the stream.",
+                      "key": "OutputFormat",
+                      "value": "json"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                      "key": "IncludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                      "key": "IncludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                      "key": "ExcludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                      "key": "ExcludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the metric stream.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the metric stream.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.",
+                      "key": "IncludeLinkedAccountsMetrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricStream&Version=2010-08-01#PutMetricStream",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricStream"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutMetricStream"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Arn>(string)</Arn>\n</element>",
+              "createdAt": "2026-07-28T01:22:31.000Z",
+              "updatedAt": "2026-07-28T01:22:31.000Z",
+              "uid": "35240-7d186cab-8b35-4434-99bf-d2320c0d7342"
+            },
+            {
+              "id": "049776f4-295e-40b8-9a4c-096c556c932f",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the metric stream.",
+                      "key": "Name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.",
+                      "key": "FirehoseArn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.",
+                      "key": "RoleArn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format for the stream.",
+                      "key": "OutputFormat",
+                      "value": "json"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                      "key": "IncludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                      "key": "IncludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                      "key": "ExcludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                      "key": "ExcludeFilters",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the metric stream.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the metric stream.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.",
+                      "key": "IncludeLinkedAccountsMetrics",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricStream&Version=2010-08-01#PutMetricStream",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricStream"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutMetricStream"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:31.000Z",
+              "updatedAt": "2026-07-28T01:22:31.000Z",
+              "uid": "35240-049776f4-295e-40b8-9a4c-096c556c932f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:31.000Z",
+          "updatedAt": "2026-07-28T01:22:31.000Z",
+          "uid": "35240-f31845cb-0862-4109-9466-726ee04ae6f3"
+        }
+      ],
+      "id": "3fa0b689-cd93-48d7-9a88-3f8ef3a27421",
+      "createdAt": "2026-07-28T01:22:31.000Z",
+      "updatedAt": "2026-07-28T01:22:31.000Z",
+      "uid": "35240-3fa0b689-cd93-48d7-9a88-3f8ef3a27421"
+    },
+    {
+      "name": "#ListMetricStreams",
+      "item": [
+        {
+          "name": "Aws Cloudwatch List the Metric Streams in Your Account",
+          "id": "9730067b-2eb5-4b9e-8bb3-6b1ab6c70882",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "Include this value to get the next set of metric streams.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return in one operation.",
+                  "key": "MaxResults",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=ListMetricStreams&Version=2010-08-01#ListMetricStreams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "ListMetricStreams"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "ListMetricStreams"
+            },
+            "description": "Returns a list of metric streams in this account."
+          },
+          "response": [
+            {
+              "id": "9be595fd-ea90-4833-b92b-35a92b1aab28",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Include this value to get the next set of metric streams.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return in one operation.",
+                      "key": "MaxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListMetricStreams&Version=2010-08-01#ListMetricStreams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListMetricStreams"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListMetricStreams"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Entries>\n    <Arn>(string)</Arn>\n    <CreationDate>(string)</CreationDate>\n    <LastUpdateDate>(string)</LastUpdateDate>\n    <Name>(string)</Name>\n    <FirehoseArn>(string)</FirehoseArn>\n    <State>(string)</State>\n    <OutputFormat>(string)</OutputFormat>\n  </Entries>\n  <Entries>\n    <Arn>(string)</Arn>\n    <CreationDate>(string)</CreationDate>\n    <LastUpdateDate>(string)</LastUpdateDate>\n    <Name>(string)</Name>\n    <FirehoseArn>(string)</FirehoseArn>\n    <State>(string)</State>\n    <OutputFormat>(string)</OutputFormat>\n  </Entries>\n  <NextToken>(string)</NextToken>\n</element>",
+              "createdAt": "2026-07-28T01:22:31.000Z",
+              "updatedAt": "2026-07-28T01:22:31.000Z",
+              "uid": "35240-9be595fd-ea90-4833-b92b-35a92b1aab28"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:31.000Z",
+          "updatedAt": "2026-07-28T01:22:31.000Z",
+          "uid": "35240-9730067b-2eb5-4b9e-8bb3-6b1ab6c70882"
+        }
+      ],
+      "id": "bdaab20b-e7a3-413b-ab02-3baf8b5be17f",
+      "createdAt": "2026-07-28T01:22:31.000Z",
+      "updatedAt": "2026-07-28T01:22:31.000Z",
+      "uid": "35240-bdaab20b-e7a3-413b-ab02-3baf8b5be17f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,2249 @@
+{
+  "info": {
+    "_postman_id": "ba95ac71-757a-4edf-81b1-dc0b21004798",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:27.000Z",
+    "updatedAt": "2026-07-28T01:22:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ba95ac71-757a-4edf-81b1-dc0b21004798"
+  },
+  "item": [
+    {
+      "name": "#PutMetricAlarm",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+          "id": "3ed861a2-c31b-4c33-bf46-e22766cec8a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name for the alarm.",
+                  "key": "AlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The number of periods over which data is compared to the specified threshold.",
+                  "key": "EvaluationPeriods",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The arithmetic operation to use when comparing the specified statistic and threshold.",
+                  "key": "ComparisonOperator",
+                  "value": "GreaterThanUpperThreshold"
+                },
+                {
+                  "description": "The description for the alarm.",
+                  "key": "AlarmDescription",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                  "key": "ActionsEnabled",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to an OK state.",
+                  "key": "OKActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to an OK state.",
+                  "key": "OKActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                  "key": "AlarmActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                  "key": "AlarmActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                  "key": "InsufficientDataActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                  "key": "InsufficientDataActions",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The name for the metric associated with the alarm.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The namespace for the metric associated with the alarm.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The statistic for the metric.",
+                  "key": "Statistic",
+                  "value": "SampleCount"
+                },
+                {
+                  "description": "The percentile statistic for the metric specified in MetricName.",
+                  "key": "ExtendedStatistic",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The dimensions for the metric specified in MetricName.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The dimensions for the metric specified in MetricName.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+                  "key": "Period",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unit of the metric.",
+                  "key": "Unit",
+                  "value": "Gigabits"
+                },
+                {
+                  "description": "The number of data points that must be breaching to trigger the alarm.",
+                  "key": "DatapointsToAlarm",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The value against which the specified statistic is compared.",
+                  "key": "Threshold",
+                  "value": "<double>"
+                },
+                {
+                  "description": "Sets how this alarm is to handle missing data points.",
+                  "key": "TreatMissingData",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Used only for alarms based on percentiles.",
+                  "key": "EvaluateLowSampleCountPercentile",
+                  "value": "<string>"
+                },
+                {
+                  "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                  "key": "Metrics",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                  "key": "Metrics",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "A list of key-value pairs to associate with the alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+                  "key": "ThresholdMetricId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutMetricAlarm&Version=2010-08-01#PutMetricAlarm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutMetricAlarm"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "PutMetricAlarm"
+            },
+            "description": "Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. When the alarm state changes, the alarm invokes the specified actions. An alarm can watch only one metric at a time, but it can take actions based on other alarms. If you are using a composite alarm, the alarm watches the states of other alarms."
+          },
+          "response": [
+            {
+              "id": "7658b1a6-00c2-4788-80f5-3068ab46f00f",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name for the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The number of periods over which data is compared to the specified threshold.",
+                      "key": "EvaluationPeriods",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The arithmetic operation to use when comparing the specified statistic and threshold.",
+                      "key": "ComparisonOperator",
+                      "value": "GreaterThanUpperThreshold"
+                    },
+                    {
+                      "description": "The description for the alarm.",
+                      "key": "AlarmDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                      "key": "ActionsEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to an OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to an OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name for the metric associated with the alarm.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The namespace for the metric associated with the alarm.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The statistic for the metric.",
+                      "key": "Statistic",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "description": "The percentile statistic for the metric specified in MetricName.",
+                      "key": "ExtendedStatistic",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The dimensions for the metric specified in MetricName.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The dimensions for the metric specified in MetricName.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+                      "key": "Period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unit of the metric.",
+                      "key": "Unit",
+                      "value": "Gigabits"
+                    },
+                    {
+                      "description": "The number of data points that must be breaching to trigger the alarm.",
+                      "key": "DatapointsToAlarm",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The value against which the specified statistic is compared.",
+                      "key": "Threshold",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "Sets how this alarm is to handle missing data points.",
+                      "key": "TreatMissingData",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Used only for alarms based on percentiles.",
+                      "key": "EvaluateLowSampleCountPercentile",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                      "key": "Metrics",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                      "key": "Metrics",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+                      "key": "ThresholdMetricId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricAlarm&Version=2010-08-01#PutMetricAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricAlarm"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutMetricAlarm"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-7658b1a6-00c2-4788-80f5-3068ab46f00f"
+            },
+            {
+              "id": "5bfaaf34-5493-48ff-97a5-2b5b1770cb66",
+              "name": "Bad request - limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name for the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The number of periods over which data is compared to the specified threshold.",
+                      "key": "EvaluationPeriods",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The arithmetic operation to use when comparing the specified statistic and threshold.",
+                      "key": "ComparisonOperator",
+                      "value": "GreaterThanUpperThreshold"
+                    },
+                    {
+                      "description": "The description for the alarm.",
+                      "key": "AlarmDescription",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Indicates whether actions should be executed during any changes to the alarm state.",
+                      "key": "ActionsEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to an OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to an OK state.",
+                      "key": "OKActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the ALARM state.",
+                      "key": "AlarmActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                      "key": "InsufficientDataActions",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name for the metric associated with the alarm.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The namespace for the metric associated with the alarm.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The statistic for the metric.",
+                      "key": "Statistic",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "description": "The percentile statistic for the metric specified in MetricName.",
+                      "key": "ExtendedStatistic",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The dimensions for the metric specified in MetricName.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The dimensions for the metric specified in MetricName.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+                      "key": "Period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unit of the metric.",
+                      "key": "Unit",
+                      "value": "Gigabits"
+                    },
+                    {
+                      "description": "The number of data points that must be breaching to trigger the alarm.",
+                      "key": "DatapointsToAlarm",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The value against which the specified statistic is compared.",
+                      "key": "Threshold",
+                      "value": "<double>"
+                    },
+                    {
+                      "description": "Sets how this alarm is to handle missing data points.",
+                      "key": "TreatMissingData",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Used only for alarms based on percentiles.",
+                      "key": "EvaluateLowSampleCountPercentile",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                      "key": "Metrics",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "An array of MetricDataQuery structures for metric math expression alarms.",
+                      "key": "Metrics",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "A list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+                      "key": "ThresholdMetricId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricAlarm&Version=2010-08-01#PutMetricAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricAlarm"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "PutMetricAlarm"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-5bfaaf34-5493-48ff-97a5-2b5b1770cb66"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-3ed861a2-c31b-4c33-bf46-e22766cec8a4"
+        }
+      ],
+      "id": "4895582b-5653-4011-a032-01cd0b350d1c",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-4895582b-5653-4011-a032-01cd0b350d1c"
+    },
+    {
+      "name": "#DescribeAlarms",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+          "id": "1420100f-795b-4406-bdb2-3a9f6a7f1084",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "The names of the alarms to retrieve information about.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The names of the alarms to retrieve information about.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+                  "key": "AlarmNamePrefix",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                  "key": "AlarmTypes",
+                  "value": "MetricAlarm"
+                },
+                {
+                  "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                  "key": "AlarmTypes",
+                  "value": "MetricAlarm"
+                },
+                {
+                  "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+                  "key": "ChildrenOfAlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+                  "key": "ParentsOfAlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The state value for the alarm.",
+                  "key": "StateValue",
+                  "value": "INSUFFICIENT_DATA"
+                },
+                {
+                  "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+                  "key": "ActionPrefix",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of alarm descriptions to retrieve.",
+                  "key": "MaxRecords",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The token returned by a previous call to indicate there is more data available.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DescribeAlarms&Version=2010-08-01#DescribeAlarms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DescribeAlarms"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DescribeAlarms"
+            },
+            "description": "Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action. To use this operation and return information about composite alarms, you must be signed on with the cloudwatch:DescribeAlarms permission."
+          },
+          "response": [
+            {
+              "id": "3fd8eb2c-250f-4af9-8507-b4186eddfff8",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The names of the alarms to retrieve information about.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The names of the alarms to retrieve information about.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+                      "key": "AlarmNamePrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+                      "key": "ChildrenOfAlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+                      "key": "ParentsOfAlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state value for the alarm.",
+                      "key": "StateValue",
+                      "value": "INSUFFICIENT_DATA"
+                    },
+                    {
+                      "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+                      "key": "ActionPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of alarm descriptions to retrieve.",
+                      "key": "MaxRecords",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAlarms&Version=2010-08-01#DescribeAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAlarms"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAlarms"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <MetricAlarms>\n    <AlarmName>(string)</AlarmName>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <StateValue>(string)</StateValue>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <MetricName>(string)</MetricName>\n    <Namespace>(string)</Namespace>\n    <Statistic>(string)</Statistic>\n    <ExtendedStatistic>(string)</ExtendedStatistic>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Period>(integer)</Period>\n    <Unit>(string)</Unit>\n    <EvaluationPeriods>(integer)</EvaluationPeriods>\n    <DatapointsToAlarm>(integer)</DatapointsToAlarm>\n    <Threshold>(number)</Threshold>\n    <ComparisonOperator>(string)</ComparisonOperator>\n    <TreatMissingData>(string)</TreatMissingData>\n    <EvaluateLowSampleCountPercentile>(string)</EvaluateLowSampleCountPercentile>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <ThresholdMetricId>(string)</ThresholdMetricId>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n  </MetricAlarms>\n  <MetricAlarms>\n    <AlarmName>(string)</AlarmName>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <StateValue>(string)</StateValue>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <MetricName>(string)</MetricName>\n    <Namespace>(string)</Namespace>\n    <Statistic>(string)</Statistic>\n    <ExtendedStatistic>(string)</ExtendedStatistic>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Period>(integer)</Period>\n    <Unit>(string)</Unit>\n    <EvaluationPeriods>(integer)</EvaluationPeriods>\n    <DatapointsToAlarm>(integer)</DatapointsToAlarm>\n    <Threshold>(number)</Threshold>\n    <ComparisonOperator>(string)</ComparisonOperator>\n    <TreatMissingData>(string)</TreatMissingData>\n    <EvaluateLowSampleCountPercentile>(string)</EvaluateLowSampleCountPercentile>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <ThresholdMetricId>(string)</ThresholdMetricId>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n  </MetricAlarms>\n  <CompositeAlarms>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmName>(string)</AlarmName>\n    <AlarmRule>(string)</AlarmRule>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <StateValue>(string)</StateValue>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n    <ActionsSuppressedBy>(string)</ActionsSuppressedBy>\n    <ActionsSuppressedReason>(string)</ActionsSuppressedReason>\n    <ActionsSuppressor>(string)</ActionsSuppressor>\n    <ActionsSuppressorWaitPeriod>(integer)</ActionsSuppressorWaitPeriod>\n    <ActionsSuppressorExtensionPeriod>(integer)</ActionsSuppressorExtensionPeriod>\n  </CompositeAlarms>\n  <CompositeAlarms>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmName>(string)</AlarmName>\n    <AlarmRule>(string)</AlarmRule>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <StateValue>(string)</StateValue>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n    <ActionsSuppressedBy>(string)</ActionsSuppressedBy>\n    <ActionsSuppressedReason>(string)</ActionsSuppressedReason>\n    <ActionsSuppressor>(string)</ActionsSuppressor>\n    <ActionsSuppressorWaitPeriod>(integer)</ActionsSuppressorWaitPeriod>\n    <ActionsSuppressorExtensionPeriod>(integer)</ActionsSuppressorExtensionPeriod>\n  </CompositeAlarms>\n  <NextToken>(string)</NextToken>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-3fd8eb2c-250f-4af9-8507-b4186eddfff8"
+            },
+            {
+              "id": "4040d4eb-4fe4-4844-9ce4-6a7bec15f240",
+              "name": "Invalid next token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The names of the alarms to retrieve information about.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The names of the alarms to retrieve information about.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+                      "key": "AlarmNamePrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+                      "key": "ChildrenOfAlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+                      "key": "ParentsOfAlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state value for the alarm.",
+                      "key": "StateValue",
+                      "value": "INSUFFICIENT_DATA"
+                    },
+                    {
+                      "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+                      "key": "ActionPrefix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of alarm descriptions to retrieve.",
+                      "key": "MaxRecords",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAlarms&Version=2010-08-01#DescribeAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAlarms"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAlarms"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-4040d4eb-4fe4-4844-9ce4-6a7bec15f240"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-1420100f-795b-4406-bdb2-3a9f6a7f1084"
+        }
+      ],
+      "id": "844f40a5-7eb6-493a-82ed-fa849e0ee172",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-844f40a5-7eb6-493a-82ed-fa849e0ee172"
+    },
+    {
+      "name": "#DescribeAlarmsForMetric",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+          "id": "1752637b-7b41-4a35-a16d-439ea9c41719",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name of the metric.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The namespace of the metric.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The statistic for the metric.",
+                  "key": "Statistic",
+                  "value": "Average"
+                },
+                {
+                  "description": "The percentile statistic for the metric.",
+                  "key": "ExtendedStatistic",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The dimensions associated with the metric.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The dimensions associated with the metric.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The period, in seconds, over which the statistic is applied.",
+                  "key": "Period",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The unit of the metric.",
+                  "key": "Unit",
+                  "value": "Kilobits"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DescribeAlarmsForMetric&Version=2010-08-01#DescribeAlarmsForMetric",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DescribeAlarmsForMetric"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DescribeAlarmsForMetric"
+            },
+            "description": "Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric."
+          },
+          "response": [
+            {
+              "id": "e3c8961f-6061-43b8-85a6-e3fa19d8c817",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the metric.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The namespace of the metric.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The statistic for the metric.",
+                      "key": "Statistic",
+                      "value": "Average"
+                    },
+                    {
+                      "description": "The percentile statistic for the metric.",
+                      "key": "ExtendedStatistic",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The dimensions associated with the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The dimensions associated with the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The period, in seconds, over which the statistic is applied.",
+                      "key": "Period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The unit of the metric.",
+                      "key": "Unit",
+                      "value": "Kilobits"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAlarmsForMetric&Version=2010-08-01#DescribeAlarmsForMetric",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAlarmsForMetric"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAlarmsForMetric"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <MetricAlarms>\n    <AlarmName>(string)</AlarmName>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <StateValue>(string)</StateValue>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <MetricName>(string)</MetricName>\n    <Namespace>(string)</Namespace>\n    <Statistic>(string)</Statistic>\n    <ExtendedStatistic>(string)</ExtendedStatistic>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Period>(integer)</Period>\n    <Unit>(string)</Unit>\n    <EvaluationPeriods>(integer)</EvaluationPeriods>\n    <DatapointsToAlarm>(integer)</DatapointsToAlarm>\n    <Threshold>(number)</Threshold>\n    <ComparisonOperator>(string)</ComparisonOperator>\n    <TreatMissingData>(string)</TreatMissingData>\n    <EvaluateLowSampleCountPercentile>(string)</EvaluateLowSampleCountPercentile>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <ThresholdMetricId>(string)</ThresholdMetricId>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n  </MetricAlarms>\n  <MetricAlarms>\n    <AlarmName>(string)</AlarmName>\n    <AlarmArn>(string)</AlarmArn>\n    <AlarmDescription>(string)</AlarmDescription>\n    <AlarmConfigurationUpdatedTimestamp>(string)</AlarmConfigurationUpdatedTimestamp>\n    <ActionsEnabled>(boolean)</ActionsEnabled>\n    <OKActions>(string)</OKActions>\n    <OKActions>(string)</OKActions>\n    <AlarmActions>(string)</AlarmActions>\n    <AlarmActions>(string)</AlarmActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <InsufficientDataActions>(string)</InsufficientDataActions>\n    <StateValue>(string)</StateValue>\n    <StateReason>(string)</StateReason>\n    <StateReasonData>(string)</StateReasonData>\n    <StateUpdatedTimestamp>(string)</StateUpdatedTimestamp>\n    <MetricName>(string)</MetricName>\n    <Namespace>(string)</Namespace>\n    <Statistic>(string)</Statistic>\n    <ExtendedStatistic>(string)</ExtendedStatistic>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Period>(integer)</Period>\n    <Unit>(string)</Unit>\n    <EvaluationPeriods>(integer)</EvaluationPeriods>\n    <DatapointsToAlarm>(integer)</DatapointsToAlarm>\n    <Threshold>(number)</Threshold>\n    <ComparisonOperator>(string)</ComparisonOperator>\n    <TreatMissingData>(string)</TreatMissingData>\n    <EvaluateLowSampleCountPercentile>(string)</EvaluateLowSampleCountPercentile>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <Metrics>\n      <Id>(string)</Id>\n      <MetricStat>\n        <Metric>\n          <Namespace>(string)</Namespace>\n          <MetricName>(string)</MetricName>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n          <Dimensions>\n            <Name>(string)</Name>\n            <Value>(string)</Value>\n          </Dimensions>\n        </Metric>\n        <Period>(integer)</Period>\n        <Stat>(string)</Stat>\n        <Unit>(string)</Unit>\n      </MetricStat>\n      <Expression>(string)</Expression>\n      <Label>(string)</Label>\n      <ReturnData>(boolean)</ReturnData>\n      <Period>(integer)</Period>\n      <AccountId>(string)</AccountId>\n    </Metrics>\n    <ThresholdMetricId>(string)</ThresholdMetricId>\n    <StateTransitionedTimestamp>(string)</StateTransitionedTimestamp>\n  </MetricAlarms>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-e3c8961f-6061-43b8-85a6-e3fa19d8c817"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-1752637b-7b41-4a35-a16d-439ea9c41719"
+        }
+      ],
+      "id": "b38e04b3-6f3e-42dd-afa3-d31cce24ecfb",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-b38e04b3-6f3e-42dd-afa3-d31cce24ecfb"
+    },
+    {
+      "name": "#DescribeAlarmHistory",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+          "id": "c2e1034a-a394-49b4-8ec1-818a61080990",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "The name of the alarm.",
+                  "key": "AlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                  "key": "AlarmTypes",
+                  "value": "CompositeAlarm"
+                },
+                {
+                  "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                  "key": "AlarmTypes",
+                  "value": "MetricAlarm"
+                },
+                {
+                  "description": "The type of alarm histories to retrieve.",
+                  "key": "HistoryItemType",
+                  "value": "Action"
+                },
+                {
+                  "description": "The starting date to retrieve alarm history.",
+                  "key": "StartDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "The ending date to retrieve alarm history.",
+                  "key": "EndDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "The maximum number of alarm history records to retrieve.",
+                  "key": "MaxRecords",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The token returned by a previous call.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Specified whether to return the newest or oldest alarm history first.",
+                  "key": "ScanBy",
+                  "value": "TimestampDescending"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DescribeAlarmHistory&Version=2010-08-01#DescribeAlarmHistory",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DescribeAlarmHistory"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DescribeAlarmHistory"
+            },
+            "description": "Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned. CloudWatch retains the history of an alarm even if you delete the alarm."
+          },
+          "response": [
+            {
+              "id": "5cd52f5d-596c-4c3d-9543-652aaf9a1454",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The name of the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "The type of alarm histories to retrieve.",
+                      "key": "HistoryItemType",
+                      "value": "Action"
+                    },
+                    {
+                      "description": "The starting date to retrieve alarm history.",
+                      "key": "StartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The ending date to retrieve alarm history.",
+                      "key": "EndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The maximum number of alarm history records to retrieve.",
+                      "key": "MaxRecords",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The token returned by a previous call.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specified whether to return the newest or oldest alarm history first.",
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAlarmHistory&Version=2010-08-01#DescribeAlarmHistory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAlarmHistory"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAlarmHistory"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <AlarmHistoryItems>\n    <AlarmName>(string)</AlarmName>\n    <AlarmType>(string)</AlarmType>\n    <Timestamp>(string)</Timestamp>\n    <HistoryItemType>(string)</HistoryItemType>\n    <HistorySummary>(string)</HistorySummary>\n    <HistoryData>(string)</HistoryData>\n  </AlarmHistoryItems>\n  <AlarmHistoryItems>\n    <AlarmName>(string)</AlarmName>\n    <AlarmType>(string)</AlarmType>\n    <Timestamp>(string)</Timestamp>\n    <HistoryItemType>(string)</HistoryItemType>\n    <HistorySummary>(string)</HistorySummary>\n    <HistoryData>(string)</HistoryData>\n  </AlarmHistoryItems>\n  <NextToken>(string)</NextToken>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-5cd52f5d-596c-4c3d-9543-652aaf9a1454"
+            },
+            {
+              "id": "6682c46e-8168-4e5c-852b-ef5045c6d099",
+              "name": "Invalid next token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The name of the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "description": "Specify this parameter to receive information only about alarms of the specified types.",
+                      "key": "AlarmTypes",
+                      "value": "MetricAlarm"
+                    },
+                    {
+                      "description": "The type of alarm histories to retrieve.",
+                      "key": "HistoryItemType",
+                      "value": "Action"
+                    },
+                    {
+                      "description": "The starting date to retrieve alarm history.",
+                      "key": "StartDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The ending date to retrieve alarm history.",
+                      "key": "EndDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "The maximum number of alarm history records to retrieve.",
+                      "key": "MaxRecords",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The token returned by a previous call.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specified whether to return the newest or oldest alarm history first.",
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DescribeAlarmHistory&Version=2010-08-01#DescribeAlarmHistory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DescribeAlarmHistory"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DescribeAlarmHistory"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-6682c46e-8168-4e5c-852b-ef5045c6d099"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-c2e1034a-a394-49b4-8ec1-818a61080990"
+        }
+      ],
+      "id": "53214517-780e-4fdc-9256-9f1797398e12",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-53214517-780e-4fdc-9256-9f1797398e12"
+    },
+    {
+      "name": "#DeleteAlarms",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Delete Specified Alarms",
+          "id": "6b2a0dda-8fa2-499d-8a29-196a22eb592d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DeleteAlarms&Version=2010-08-01#DeleteAlarms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DeleteAlarms"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DeleteAlarms"
+            },
+            "description": "Deletes the specified alarms. You can delete up to 100 alarms in one operation. In the event of an error, no alarms are deleted. To get information about your current alarms, use DescribeAlarms. If a specified alarm does not exist, no error is returned."
+          },
+          "response": [
+            {
+              "id": "5338e5f1-a820-46ac-8902-a144f639f126",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteAlarms&Version=2010-08-01#DeleteAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteAlarms"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteAlarms"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-5338e5f1-a820-46ac-8902-a144f639f126"
+            },
+            {
+              "id": "821283f9-2855-4dd0-8930-56685b491809",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DeleteAlarms&Version=2010-08-01#DeleteAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DeleteAlarms"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DeleteAlarms"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-821283f9-2855-4dd0-8930-56685b491809"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-6b2a0dda-8fa2-499d-8a29-196a22eb592d"
+        }
+      ],
+      "id": "ccb57ba8-65aa-401c-b10b-3f30482d3428",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-ccb57ba8-65aa-401c-b10b-3f30482d3428"
+    },
+    {
+      "name": "#SetAlarmState",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+          "id": "cb622b77-7c0b-4ac2-a3a8-5687b507db45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The name of the alarm.",
+                  "key": "AlarmName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The state value for the alarm.",
+                  "key": "StateValue",
+                  "value": "OK"
+                },
+                {
+                  "description": "(Required) The reason that this alarm is set to this specific state, in text format.",
+                  "key": "StateReason",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The reason that this alarm is set to this specific state, in JSON format.",
+                  "key": "StateReasonData",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=SetAlarmState&Version=2010-08-01#SetAlarmState",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "SetAlarmState"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "SetAlarmState"
+            },
+            "description": "Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to ALARM sends an SNS message."
+          },
+          "response": [
+            {
+              "id": "818f7375-8c8a-4d85-85ee-19b5a34c5727",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The state value for the alarm.",
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "description": "(Required) The reason that this alarm is set to this specific state, in text format.",
+                      "key": "StateReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reason that this alarm is set to this specific state, in JSON format.",
+                      "key": "StateReasonData",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=SetAlarmState&Version=2010-08-01#SetAlarmState",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "SetAlarmState"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "SetAlarmState"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-818f7375-8c8a-4d85-85ee-19b5a34c5727"
+            },
+            {
+              "id": "21ca3d3f-e932-4c6b-9163-1f0751218576",
+              "name": "Invalid format or resource not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The name of the alarm.",
+                      "key": "AlarmName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The state value for the alarm.",
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "description": "(Required) The reason that this alarm is set to this specific state, in text format.",
+                      "key": "StateReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reason that this alarm is set to this specific state, in JSON format.",
+                      "key": "StateReasonData",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=SetAlarmState&Version=2010-08-01#SetAlarmState",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "SetAlarmState"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "SetAlarmState"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-21ca3d3f-e932-4c6b-9163-1f0751218576"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-cb622b77-7c0b-4ac2-a3a8-5687b507db45"
+        }
+      ],
+      "id": "9aa2e820-c3a1-4567-a2db-a162a30e81ab",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-9aa2e820-c3a1-4567-a2db-a162a30e81ab"
+    },
+    {
+      "name": "#EnableAlarmActions",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Enable Actions for Specified Alarms",
+          "id": "beb2e348-66ec-4b0f-bf75-ea81ed72e8d8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The names of the alarms.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The names of the alarms.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=EnableAlarmActions&Version=2010-08-01#EnableAlarmActions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "EnableAlarmActions"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "EnableAlarmActions"
+            },
+            "description": "Enables the actions for the specified alarms."
+          },
+          "response": [
+            {
+              "id": "8d3ebf7f-88b2-4474-bf6f-7e8c3fe92489",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The names of the alarms.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The names of the alarms.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=EnableAlarmActions&Version=2010-08-01#EnableAlarmActions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "EnableAlarmActions"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "EnableAlarmActions"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-8d3ebf7f-88b2-4474-bf6f-7e8c3fe92489"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-beb2e348-66ec-4b0f-bf75-ea81ed72e8d8"
+        }
+      ],
+      "id": "822c9b4d-67e5-4708-b7ef-13e5dfac483d",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-822c9b4d-67e5-4708-b7ef-13e5dfac483d"
+    },
+    {
+      "name": "#DisableAlarmActions",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Disable Actions for Specified Alarms",
+          "id": "2beef21e-b91b-4df6-aaf6-43c1cc1b722b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The names of the alarms.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The names of the alarms.",
+                  "key": "AlarmNames",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=DisableAlarmActions&Version=2010-08-01#DisableAlarmActions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "DisableAlarmActions"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "DisableAlarmActions"
+            },
+            "description": "Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes."
+          },
+          "response": [
+            {
+              "id": "34f7363a-0ab2-403b-9988-4e59f347f5a9",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The names of the alarms.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The names of the alarms.",
+                      "key": "AlarmNames",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=DisableAlarmActions&Version=2010-08-01#DisableAlarmActions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "DisableAlarmActions"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "DisableAlarmActions"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:28.000Z",
+              "updatedAt": "2026-07-28T01:22:28.000Z",
+              "uid": "35240-34f7363a-0ab2-403b-9988-4e59f347f5a9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:28.000Z",
+          "updatedAt": "2026-07-28T01:22:28.000Z",
+          "uid": "35240-2beef21e-b91b-4df6-aaf6-43c1cc1b722b"
+        }
+      ],
+      "id": "c3a1dba0-1fea-43bb-91f8-e2f6d7ed1a68",
+      "createdAt": "2026-07-28T01:22:27.000Z",
+      "updatedAt": "2026-07-28T01:22:27.000Z",
+      "uid": "35240-c3a1dba0-1fea-43bb-91f8-e2f6d7ed1a68"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,1724 @@
+{
+  "info": {
+    "_postman_id": "ea8e17b4-7cb3-400a-83db-39165067bf17",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Metrics API",
+    "description": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:22:32.000Z",
+    "updatedAt": "2026-07-28T01:22:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ea8e17b4-7cb3-400a-83db-39165067bf17"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+          "id": "cd8b1d6a-4114-4a99-83ac-87c684714e2b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                  "key": "Namespace",
+                  "value": "N!WxZp{Sd:@"
+                },
+                {
+                  "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                  "key": "MetricData",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                  "key": "MetricData",
+                  "value": "[object Object]"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=PutMetricData&Version=2010-08-01",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "PutMetricData"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ]
+            },
+            "description": "Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics. Each PutMetricData request is limited to 1 MB in size for HTTP POST requests and is limited to 40 KB for HTTP GET requests. The maximum number of metric datum items per PutMetricData request is 1,000."
+          },
+          "response": [
+            {
+              "id": "2d51d2e7-4c03-4790-9e7f-8f0125b1a0f0",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                      "key": "Namespace",
+                      "value": "N!WxZp{Sd:@"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricData&Version=2010-08-01",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricData"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-2d51d2e7-4c03-4790-9e7f-8f0125b1a0f0"
+            },
+            {
+              "id": "65603444-2053-4291-873b-9fd33199cc3d",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                      "key": "Namespace",
+                      "value": "N!WxZp{Sd:@"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricData&Version=2010-08-01",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricData"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-65603444-2053-4291-873b-9fd33199cc3d"
+            },
+            {
+              "id": "0f874f04-2de9-4b81-a874-931bb71f338d",
+              "name": "Internal failure",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                      "key": "Namespace",
+                      "value": "N!WxZp{Sd:@"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                      "key": "MetricData",
+                      "value": "[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=PutMetricData&Version=2010-08-01",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "PutMetricData"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-0f874f04-2de9-4b81-a874-931bb71f338d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-cd8b1d6a-4114-4a99-83ac-87c684714e2b"
+        }
+      ],
+      "id": "62d3298a-ec08-4b59-b755-b3738ec4f6ae",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-62d3298a-ec08-4b59-b755-b3738ec4f6ae"
+    },
+    {
+      "name": "#GetMetricData",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+          "id": "39063d07-59d4-4595-86f2-282e34057049",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                  "key": "MetricDataQueries",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                  "key": "MetricDataQueries",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "(Required) The time stamp indicating the earliest data to be returned.",
+                  "key": "StartTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) The time stamp indicating the latest data to be returned.",
+                  "key": "EndTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Include this value if it was returned by the previous GetMetricData operation.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The order in which data points should be returned.",
+                  "key": "ScanBy",
+                  "value": "TimestampAscending"
+                },
+                {
+                  "description": "The maximum number of data points the request should return before paginating.",
+                  "key": "MaxDatapoints",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "Timezone",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=GetMetricData&Version=2010-08-01#GetMetricData",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "GetMetricData"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "GetMetricData"
+            },
+            "description": "Retrieves CloudWatch metric values. You can use GetMetricData to retrieve as many as 500 different metrics in a single request, with a total of as many as 100,800 data points per request. You can also optionally perform metric math expressions on the values of the returned statistics. CloudWatch returns aggregated data points based on the statistical values requested."
+          },
+          "response": [
+            {
+              "id": "1573f4e8-44df-43a0-8d4d-c11ef9c92584",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The time stamp indicating the earliest data to be returned.",
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The time stamp indicating the latest data to be returned.",
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Include this value if it was returned by the previous GetMetricData operation.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The order in which data points should be returned.",
+                      "key": "ScanBy",
+                      "value": "TimestampAscending"
+                    },
+                    {
+                      "description": "The maximum number of data points the request should return before paginating.",
+                      "key": "MaxDatapoints",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Timezone",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetMetricData&Version=2010-08-01#GetMetricData",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetMetricData"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetMetricData"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <MetricDataResults>\n    <Id>(string)</Id>\n    <Label>(string)</Label>\n    <Timestamps>(string)</Timestamps>\n    <Timestamps>(string)</Timestamps>\n    <Values>(number)</Values>\n    <Values>(number)</Values>\n    <StatusCode>(string)</StatusCode>\n    <Messages>\n      <Code>(string)</Code>\n      <Value>(string)</Value>\n    </Messages>\n    <Messages>\n      <Code>(string)</Code>\n      <Value>(string)</Value>\n    </Messages>\n  </MetricDataResults>\n  <MetricDataResults>\n    <Id>(string)</Id>\n    <Label>(string)</Label>\n    <Timestamps>(string)</Timestamps>\n    <Timestamps>(string)</Timestamps>\n    <Values>(number)</Values>\n    <Values>(number)</Values>\n    <StatusCode>(string)</StatusCode>\n    <Messages>\n      <Code>(string)</Code>\n      <Value>(string)</Value>\n    </Messages>\n    <Messages>\n      <Code>(string)</Code>\n      <Value>(string)</Value>\n    </Messages>\n  </MetricDataResults>\n  <NextToken>(string)</NextToken>\n  <Messages>\n    <Code>(string)</Code>\n    <Value>(string)</Value>\n  </Messages>\n  <Messages>\n    <Code>(string)</Code>\n    <Value>(string)</Value>\n  </Messages>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-1573f4e8-44df-43a0-8d4d-c11ef9c92584"
+            },
+            {
+              "id": "d46b6a28-e8b1-491a-8ea8-e3f4d39ad9a2",
+              "name": "Invalid parameter value or combination",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                      "key": "MetricDataQueries",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The time stamp indicating the earliest data to be returned.",
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The time stamp indicating the latest data to be returned.",
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Include this value if it was returned by the previous GetMetricData operation.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The order in which data points should be returned.",
+                      "key": "ScanBy",
+                      "value": "TimestampAscending"
+                    },
+                    {
+                      "description": "The maximum number of data points the request should return before paginating.",
+                      "key": "MaxDatapoints",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "Timezone",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetMetricData&Version=2010-08-01#GetMetricData",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetMetricData"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetMetricData"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-d46b6a28-e8b1-491a-8ea8-e3f4d39ad9a2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-39063d07-59d4-4595-86f2-282e34057049"
+        }
+      ],
+      "id": "bfca0d3f-6afe-4139-8657-d59c44f6d390",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-bfca0d3f-6afe-4139-8657-d59c44f6d390"
+    },
+    {
+      "name": "#GetMetricStatistics",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+          "id": "f3e80f1a-a3a8-4692-b854-e8ce86d21174",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The namespace of the metric.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The name of the metric.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The time stamp that determines the first data point to return.",
+                  "key": "StartTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) The time stamp that determines the last data point to return.",
+                  "key": "EndTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) The granularity, in seconds, of the returned data points.",
+                  "key": "Period",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The dimensions to filter the metric.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The dimensions to filter the metric.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The metric statistics.",
+                  "key": "Statistics",
+                  "value": "Sum"
+                },
+                {
+                  "description": "The percentile statistics.",
+                  "key": "ExtendedStatistics",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The unit of the metric.",
+                  "key": "Unit",
+                  "value": "None"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=GetMetricStatistics&Version=2010-08-01#GetMetricStatistics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "GetMetricStatistics"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "GetMetricStatistics"
+            },
+            "description": "Gets statistics for the specified metric. The maximum number of data points returned from a single call is 1,440. If you request more than 1,440 data points, CloudWatch returns an error. CloudWatch retains metric data as follows - data points with a period of less than 60 seconds are available for 3 hours, data points with a period of 60 seconds are available for 15 days, data points with a period of 300 seconds are available for 63 days, and data points with a period of 3600 seconds are available for 455 days."
+          },
+          "response": [
+            {
+              "id": "1eb99869-d131-45a7-b73b-e7ffedb9c7a4",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The namespace of the metric.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The name of the metric.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The time stamp that determines the first data point to return.",
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The time stamp that determines the last data point to return.",
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The granularity, in seconds, of the returned data points.",
+                      "key": "Period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The dimensions to filter the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The dimensions to filter the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric statistics.",
+                      "key": "Statistics",
+                      "value": "Sum"
+                    },
+                    {
+                      "description": "The percentile statistics.",
+                      "key": "ExtendedStatistics",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unit of the metric.",
+                      "key": "Unit",
+                      "value": "None"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetMetricStatistics&Version=2010-08-01#GetMetricStatistics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetMetricStatistics"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetMetricStatistics"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Label>(string)</Label>\n  <Datapoints>\n    <Timestamp>(string)</Timestamp>\n    <SampleCount>(number)</SampleCount>\n    <Average>(number)</Average>\n    <Sum>(number)</Sum>\n    <Minimum>(number)</Minimum>\n    <Maximum>(number)</Maximum>\n    <Unit>(string)</Unit>\n    <ExtendedStatistics>\n    </ExtendedStatistics>\n  </Datapoints>\n  <Datapoints>\n    <Timestamp>(string)</Timestamp>\n    <SampleCount>(number)</SampleCount>\n    <Average>(number)</Average>\n    <Sum>(number)</Sum>\n    <Minimum>(number)</Minimum>\n    <Maximum>(number)</Maximum>\n    <Unit>(string)</Unit>\n    <ExtendedStatistics>\n    </ExtendedStatistics>\n  </Datapoints>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-1eb99869-d131-45a7-b73b-e7ffedb9c7a4"
+            },
+            {
+              "id": "9ed7ffa5-8120-4e4e-b077-bc6e4f5cbb1a",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The namespace of the metric.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The name of the metric.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The time stamp that determines the first data point to return.",
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The time stamp that determines the last data point to return.",
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) The granularity, in seconds, of the returned data points.",
+                      "key": "Period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The dimensions to filter the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The dimensions to filter the metric.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The metric statistics.",
+                      "key": "Statistics",
+                      "value": "Sum"
+                    },
+                    {
+                      "description": "The percentile statistics.",
+                      "key": "ExtendedStatistics",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The unit of the metric.",
+                      "key": "Unit",
+                      "value": "None"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=GetMetricStatistics&Version=2010-08-01#GetMetricStatistics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "GetMetricStatistics"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "GetMetricStatistics"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-9ed7ffa5-8120-4e4e-b077-bc6e4f5cbb1a"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-f3e80f1a-a3a8-4692-b854-e8ce86d21174"
+        }
+      ],
+      "id": "a502ddfc-6967-4bca-a617-605f1f7097c8",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-a502ddfc-6967-4bca-a617-605f1f7097c8"
+    },
+    {
+      "name": "#ListMetrics",
+      "item": [
+        {
+          "name": "Aws Cloudwatch List the Specified Metrics",
+          "id": "5b8c09a7-1b90-4883-8e7a-6a805603a9af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "Filters the results to only those metrics in the specified namespace.",
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filters the results to only the specified metric name.",
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filters the results to only those metrics that match the specified dimensions.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "Filters the results to only those metrics that match the specified dimensions.",
+                  "key": "Dimensions",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "The token returned by a previous call to indicate there is more data available.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+                  "key": "RecentlyActive",
+                  "value": "PT3H"
+                },
+                {
+                  "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+                  "key": "IncludeLinkedAccounts",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+                  "key": "OwningAccount",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=ListMetrics&Version=2010-08-01#ListMetrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "ListMetrics"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "ListMetrics"
+            },
+            "description": "List the specified metrics. You can use the returned metrics with GetMetricData or GetMetricStatistics to get statistical data. Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with subsequent calls. CloudWatch retains metric data for 15 months."
+          },
+          "response": [
+            {
+              "id": "282778a2-c345-461f-aab0-eea7bbbb9dd5",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Filters the results to only those metrics in the specified namespace.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filters the results to only the specified metric name.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filters the results to only those metrics that match the specified dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "Filters the results to only those metrics that match the specified dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+                      "key": "RecentlyActive",
+                      "value": "PT3H"
+                    },
+                    {
+                      "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+                      "key": "IncludeLinkedAccounts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+                      "key": "OwningAccount",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListMetrics&Version=2010-08-01#ListMetrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListMetrics"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListMetrics"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Metrics>\n    <Namespace>(string)</Namespace>\n    <MetricName>(string)</MetricName>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n  </Metrics>\n  <Metrics>\n    <Namespace>(string)</Namespace>\n    <MetricName>(string)</MetricName>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n    <Dimensions>\n      <Name>(string)</Name>\n      <Value>(string)</Value>\n    </Dimensions>\n  </Metrics>\n  <NextToken>(string)</NextToken>\n  <OwningAccounts>(string)</OwningAccounts>\n  <OwningAccounts>(string)</OwningAccounts>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-282778a2-c345-461f-aab0-eea7bbbb9dd5"
+            },
+            {
+              "id": "e4e6c631-d57a-419c-ad2c-a33a54d2f130",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "Filters the results to only those metrics in the specified namespace.",
+                      "key": "Namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filters the results to only the specified metric name.",
+                      "key": "MetricName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filters the results to only those metrics that match the specified dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "Filters the results to only those metrics that match the specified dimensions.",
+                      "key": "Dimensions",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "The token returned by a previous call to indicate there is more data available.",
+                      "key": "NextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+                      "key": "RecentlyActive",
+                      "value": "PT3H"
+                    },
+                    {
+                      "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+                      "key": "IncludeLinkedAccounts",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+                      "key": "OwningAccount",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListMetrics&Version=2010-08-01#ListMetrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListMetrics"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListMetrics"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Error>\n    <Type>(string)</Type>\n    <Code>(string)</Code>\n    <Message>(string)</Message>\n  </Error>\n  <RequestId>(string)</RequestId>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-e4e6c631-d57a-419c-ad2c-a33a54d2f130"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-5b8c09a7-1b90-4883-8e7a-6a805603a9af"
+        }
+      ],
+      "id": "8279e3dc-5a2e-4430-9c93-f85e21a10594",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-8279e3dc-5a2e-4430-9c93-f85e21a10594"
+    },
+    {
+      "name": "#TagResource",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+          "id": "02134032-ef11-47b9-8539-6d849111a247",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The ARN of the CloudWatch resource that you're adding tags to.",
+                  "key": "ResourceARN",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The list of key-value pairs to associate with the alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                },
+                {
+                  "description": "(Required) The list of key-value pairs to associate with the alarm.",
+                  "key": "Tags",
+                  "value": "[object Object]"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=TagResource&Version=2010-08-01#TagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "TagResource"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "TagResource"
+            },
+            "description": "Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules. Tags can help you organize and categorize your resources."
+          },
+          "response": [
+            {
+              "id": "5f96131e-cc7b-4efb-a180-3c0b048ddff1",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The ARN of the CloudWatch resource that you're adding tags to.",
+                      "key": "ResourceARN",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "description": "(Required) The list of key-value pairs to associate with the alarm.",
+                      "key": "Tags",
+                      "value": "[object Object]"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=TagResource&Version=2010-08-01#TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "TagResource"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "TagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-5f96131e-cc7b-4efb-a180-3c0b048ddff1"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-02134032-ef11-47b9-8539-6d849111a247"
+        }
+      ],
+      "id": "1b74c8de-b92c-498d-82d3-a937cc526921",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-1b74c8de-b92c-498d-82d3-a937cc526921"
+    },
+    {
+      "name": "#UntagResource",
+      "item": [
+        {
+          "name": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+          "id": "ee79d27a-82ef-4aaa-8dce-6fe3ebab4d8c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The ARN of the CloudWatch resource that you're removing tags from.",
+                  "key": "ResourceARN",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The list of tag keys to remove from the resource.",
+                  "key": "TagKeys",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The list of tag keys to remove from the resource.",
+                  "key": "TagKeys",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=UntagResource&Version=2010-08-01#UntagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "UntagResource"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "UntagResource"
+            },
+            "description": "Removes one or more tags from the specified resource."
+          },
+          "response": [
+            {
+              "id": "536ecc7f-8296-41af-87e0-61c3db64e1f9",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The ARN of the CloudWatch resource that you're removing tags from.",
+                      "key": "ResourceARN",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The list of tag keys to remove from the resource.",
+                      "key": "TagKeys",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The list of tag keys to remove from the resource.",
+                      "key": "TagKeys",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=UntagResource&Version=2010-08-01#UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "UntagResource"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "UntagResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-536ecc7f-8296-41af-87e0-61c3db64e1f9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-ee79d27a-82ef-4aaa-8dce-6fe3ebab4d8c"
+        }
+      ],
+      "id": "d527f98e-8f6b-4ed8-a59c-37c18fa13013",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-d527f98e-8f6b-4ed8-a59c-37c18fa13013"
+    },
+    {
+      "name": "#ListTagsForResource",
+      "item": [
+        {
+          "name": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+          "id": "fb38e00a-05e2-49c4-976b-ee9a448efcf5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) The ARN of the CloudWatch resource that you want to view tags for.",
+                  "key": "ResourceARN",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/?Action=ListTagsForResource&Version=2010-08-01#ListTagsForResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "Action",
+                  "value": "ListTagsForResource"
+                },
+                {
+                  "description": "(Required) The API version (2010-08-01)",
+                  "key": "Version",
+                  "value": "2010-08-01"
+                }
+              ],
+              "hash": "ListTagsForResource"
+            },
+            "description": "Displays the tags associated with a CloudWatch resource. Currently, alarms and Contributor Insights rules support tagging."
+          },
+          "response": [
+            {
+              "id": "cd5405e0-5246-43c1-854c-51c0da9e71d0",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The ARN of the CloudWatch resource that you want to view tags for.",
+                      "key": "ResourceARN",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/?Action=ListTagsForResource&Version=2010-08-01#ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "Action",
+                      "value": "ListTagsForResource"
+                    },
+                    {
+                      "description": "(Required) The API version (2010-08-01)",
+                      "key": "Version",
+                      "value": "2010-08-01"
+                    }
+                  ],
+                  "hash": "ListTagsForResource"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>\n  <Tags>\n    <Key>(string)</Key>\n    <Value>(string)</Value>\n  </Tags>\n  <Tags>\n    <Key>(string)</Key>\n    <Value>(string)</Value>\n  </Tags>\n</element>",
+              "createdAt": "2026-07-28T01:22:32.000Z",
+              "updatedAt": "2026-07-28T01:22:32.000Z",
+              "uid": "35240-cd5405e0-5246-43c1-854c-51c0da9e71d0"
+            }
+          ],
+          "createdAt": "2026-07-28T01:22:32.000Z",
+          "updatedAt": "2026-07-28T01:22:32.000Z",
+          "uid": "35240-fb38e00a-05e2-49c4-976b-ee9a448efcf5"
+        }
+      ],
+      "id": "9553f81c-116c-434e-9e29-e753ae89530c",
+      "createdAt": "2026-07-28T01:22:32.000Z",
+      "updatedAt": "2026-07-28T01:22:32.000Z",
+      "uid": "35240-9553f81c-116c-434e-9e29-e753ae89530c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://monitoring.{{region}}.amazonaws.com"
+    }
+  ]
+}

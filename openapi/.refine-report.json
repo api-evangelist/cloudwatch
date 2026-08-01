@@ -1,0 +1,24 @@
+{
+  "provider": "cloudwatch",
+  "sources": [
+    "cloudwatch-alarms-api-openapi.yml",
+    "cloudwatch-anomaly-detection-api-openapi.yml",
+    "cloudwatch-composite-alarms-api-openapi.yml",
+    "cloudwatch-dashboards-api-openapi.yml",
+    "cloudwatch-metric-streams-api-openapi.yml",
+    "cloudwatch-metrics-api-openapi.yml"
+  ],
+  "outputs": [
+    "cloudwatch-alarms-api-openapi.yml",
+    "cloudwatch-anomaly-detection-api-openapi.yml",
+    "cloudwatch-composite-alarms-api-openapi.yml",
+    "cloudwatch-dashboards-api-openapi.yml",
+    "cloudwatch-metric-streams-api-openapi.yml",
+    "cloudwatch-metrics-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -476,7 +476,7 @@ common:
   - type: Documentation
     url: https://docs.aws.amazon.com/cloudwatch/
   - type: OpenAPI
-    url: openapi/cloudwatch-openapi.yml
+    url: openapi/_original/cloudwatch-openapi.yml
   - type: JSONSchema
     url: json-schema/cloudwatch-alarm-schema.json
   - type: JSONLD

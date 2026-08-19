@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Composite Alarms API",
+    "version": "2010-08-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Composite Alarms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aws Cloudwatch Create or Update a Composite Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#PutCompositeAlarm",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates or updates a composite alarm. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

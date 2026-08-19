@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Metrics API",
+    "version": "2010-08-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics. Each PutMetricData request is limited to 1 MB in size for HTTP POST requests and is limited to 40 KB for HTTP GET requests. The maximum number of metric datum items per PutMetricData request is 1"
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#GetMetricData",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieves CloudWatch metric values. You can use GetMetricData to retrieve as many as 500 different metrics in a single request, with a total of as many as 100,800 data points per request. You can also optionally perform metric math expressions on the values of the returned statistics. CloudWatch returns aggregated data points based on the statistical values requested."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#GetMetricStatistics",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Gets statistics for the specified metric. The maximum number of data points returned from a single call is 1,440. If you request more than 1,440 data points, CloudWatch returns an error. CloudWatch retains metric data as follows - data points with a period of less than 60 seconds are available for 3 hours, data points with a period of 60 seconds are available for 15 days, data points with a period of 300 seconds are available for 63 days, and data points with a period of 3600 seconds are availab"
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch List the Specified Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#ListMetrics",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "List the specified metrics. You can use the returned metrics with GetMetricData or GetMetricStatistics to get statistical data. Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with subsequent calls. CloudWatch retains metric data for 15 months."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#TagResource",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules. Tags can help you organize and categorize your resources."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#UntagResource",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Removes one or more tags from the specified resource."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#ListTagsForResource",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Displays the tags associated with a CloudWatch resource. Currently, alarms and Contributor Insights rules support tagging."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

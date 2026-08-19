@@ -1,0 +1,620 @@
+{
+  "item": [
+    {
+      "id": "d6d6ddec-5f2b-41ca-9a10-407b6c535d9d",
+      "name": "Metric Streams",
+      "description": {
+        "content": "Operations for managing metric streams",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48017ab6-b6a9-4dd1-b86f-7484001ef4d7",
+          "name": "Aws Cloudwatch Create or Update a Metric Stream",
+          "request": {
+            "name": "Aws Cloudwatch Create or Update a Metric Stream",
+            "description": {
+              "content": "Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to a Amazon Kinesis Data Firehose delivery stream, or to Amazon S3 via a Kinesis Data Firehose delivery stream. The output includes metric data in one of two formats, JSON or the OpenTelemetry 0.7.0 protobuf format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "PutMetricStream",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Name",
+                  "value": "<string>",
+                  "description": "(Required) The name of the metric stream."
+                },
+                {
+                  "disabled": false,
+                  "key": "FirehoseArn",
+                  "value": "<string>",
+                  "description": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream."
+                },
+                {
+                  "disabled": false,
+                  "key": "RoleArn",
+                  "value": "<string>",
+                  "description": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources."
+                },
+                {
+                  "disabled": false,
+                  "key": "OutputFormat",
+                  "value": "<string>",
+                  "description": "(Required) The output format for the stream."
+                },
+                {
+                  "disabled": false,
+                  "key": "IncludeFilters",
+                  "value": "{\"Namespace\":\"<string>\",\"MetricNames\":[\"<string>\",\"<string>\"]}",
+                  "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here."
+                },
+                {
+                  "disabled": false,
+                  "key": "IncludeFilters",
+                  "value": "{\"Namespace\":\"<string>\",\"MetricNames\":[\"<string>\",\"<string>\"]}",
+                  "description": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExcludeFilters",
+                  "value": "{\"Namespace\":\"<string>\",\"MetricNames\":[\"<string>\",\"<string>\"]}",
+                  "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExcludeFilters",
+                  "value": "{\"Namespace\":\"<string>\",\"MetricNames\":[\"<string>\",\"<string>\"]}",
+                  "description": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "A list of key-value pairs to associate with the metric stream."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "A list of key-value pairs to associate with the metric stream."
+                },
+                {
+                  "disabled": false,
+                  "key": "IncludeLinkedAccountsMetrics",
+                  "value": "<boolean>",
+                  "description": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "953721ea-7802-4ad4-a93f-21d935604db4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutMetricStream",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "Name",
+                      "value": "Example Title"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeFilters",
+                      "value": "{\"Namespace\":\"example_value\",\"MetricNames\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExcludeFilters",
+                      "value": "{\"Namespace\":\"example_value\",\"MetricNames\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "FirehoseArn",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.",
+                        "type": "text/plain"
+                      },
+                      "key": "RoleArn",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The output format for the stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "OutputFormat",
+                      "value": "json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A list of key-value pairs to associate with the metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "Tags",
+                      "value": "{\"Key\":\"example_value\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeLinkedAccountsMetrics",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "d687528b-de54-453c-a5d5-1610d1ce6bed",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutMetricStream",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "Name",
+                      "value": "Example Title"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you specify this parameter, the stream sends only the metrics from the metric namespaces that you specify here.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeFilters",
+                      "value": "{\"Namespace\":\"example_value\",\"MetricNames\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you specify this parameter, the stream sends metrics from all metric namespaces except for the namespaces that you specify here.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExcludeFilters",
+                      "value": "{\"Namespace\":\"example_value\",\"MetricNames\":{}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of the Amazon Kinesis Data Firehose delivery stream to use for this metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "FirehoseArn",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of an IAM role that this metric stream will use to access Amazon Kinesis Data Firehose resources.",
+                        "type": "text/plain"
+                      },
+                      "key": "RoleArn",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The output format for the stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "OutputFormat",
+                      "value": "json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A list of key-value pairs to associate with the metric stream.",
+                        "type": "text/plain"
+                      },
+                      "key": "Tags",
+                      "value": "{\"Key\":\"example_value\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeLinkedAccountsMetrics",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cf99a21-5a30-450e-9b03-1d1099369f9d",
+          "name": "Aws Cloudwatch List the Metric Streams in Your Account",
+          "request": {
+            "name": "Aws Cloudwatch List the Metric Streams in Your Account",
+            "description": {
+              "content": "Returns a list of metric streams in this account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListMetricStreams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "Include this value to get the next set of metric streams."
+                },
+                {
+                  "disabled": false,
+                  "key": "MaxResults",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return in one operation."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a064061-2d5f-4b00-9161-a7843cc3f687",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListMetricStreams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Include this value to get the next set of metric streams.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of results to return in one operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxResults",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://monitoring.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5374087f-0d10-4d21-bbed-ad1a9574f933",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Metric Streams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}

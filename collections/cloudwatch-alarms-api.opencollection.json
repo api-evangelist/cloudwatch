@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms API",
+    "version": "2010-08-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alarms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#PutMetricAlarm",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. When the alarm state changes, the alarm invokes the specified actions. An alarm can watch only one metric at a time, but it can take actions based on other alarms. If you are using a composite alarm, the alarm watches the states of other alarms."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DescribeAlarms",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action. To use this operation and return information about composite alarms, you must be signed on with the cloudwatch:DescribeAlarms permission."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DescribeAlarmsForMetric",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DescribeAlarmHistory",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned. CloudWatch retains the history of an alarm even if you delete the alarm."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Delete Specified Alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DeleteAlarms",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Deletes the specified alarms. You can delete up to 100 alarms in one operation. In the event of an error, no alarms are deleted. To get information about your current alarms, use DescribeAlarms. If a specified alarm does not exist, no error is returned."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#SetAlarmState",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to ALARM sends an SNS message."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Enable Actions for Specified Alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#EnableAlarmActions",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Enables the actions for the specified alarms."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Disable Actions for Specified Alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DisableAlarmActions",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

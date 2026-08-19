@@ -1,0 +1,1096 @@
+{
+  "item": [
+    {
+      "id": "cac144fc-ea3c-4faa-af7e-ef7f6701223c",
+      "name": "Anomaly Detection",
+      "description": {
+        "content": "Operations for CloudWatch anomaly detection models",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11b8db67-0fd0-4b02-9d71-72f5a610078e",
+          "name": "Aws Cloudwatch Create an Anomaly Detection Model for a Metric",
+          "request": {
+            "name": "Aws Cloudwatch Create an Anomaly Detection Model for a Metric",
+            "description": {
+              "content": "Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed. If you have enabled unified cross-account observability, and this account is a monitoring account, the metric can be in the same account or a source account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "PutAnomalyDetector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "The namespace of the metric to create the anomaly detection model for."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "The name of the metric to create the anomaly detection model for."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The metric dimensions to create the anomaly detection model for."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The metric dimensions to create the anomaly detection model for."
+                },
+                {
+                  "disabled": false,
+                  "key": "Stat",
+                  "value": "<string>",
+                  "description": "The statistic to use for the metric and the anomaly detection model."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExcludedTimeRanges",
+                  "value": "[{\"StartTime\":\"<dateTime>\",\"EndTime\":\"<dateTime>\"},{\"StartTime\":\"<dateTime>\",\"EndTime\":\"<dateTime>\"}]"
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricTimezone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PeriodicSpikes",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "AccountId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "[{\"Name\":\"<string>\",\"Value\":\"<string>\"},{\"Name\":\"<string>\",\"Value\":\"<string>\"}]"
+                },
+                {
+                  "disabled": false,
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricDataQueries",
+                  "value": "[{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"MetricName\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Dimensions\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"},{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"MetricName\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Dimensions\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}]"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "590d9f3e-b9e2-43e4-8241-ff147b668e90",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace of the metric to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the metric to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric dimensions to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The statistic to use for the metric and the anomaly detection model.",
+                        "type": "text/plain"
+                      },
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ExcludedTimeRanges",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricTimezone",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PeriodicSpikes",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AccountId",
+                      "value": "500123"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Dimensions",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricDataQueries",
+                      "value": "[{}]"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4721789a-0fc7-48fd-a88d-081ca6ed2989",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace of the metric to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the metric to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric dimensions to create the anomaly detection model for.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The statistic to use for the metric and the anomaly detection model.",
+                        "type": "text/plain"
+                      },
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ExcludedTimeRanges",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricTimezone",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PeriodicSpikes",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AccountId",
+                      "value": "500123"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Dimensions",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricDataQueries",
+                      "value": "[{}]"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc6914c2-18c6-47c7-9c77-02fd83a3f6f9",
+          "name": "Aws Cloudwatch List Anomaly Detection Models",
+          "request": {
+            "name": "Aws Cloudwatch List Anomaly Detection Models",
+            "description": {
+              "content": "Lists the anomaly detection models that you have created in your account. For each model, the response includes configuration information for the model. If you filter the response, only the models matching the filter are returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeAnomalyDetectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "Use the token returned by the previous operation to request the next page of results."
+                },
+                {
+                  "disabled": false,
+                  "key": "MaxResults",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return in one operation."
+                },
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified namespace."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric name."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "AnomalyDetectorTypes",
+                  "value": "<string>",
+                  "description": "The anomaly detector types to request when using DescribeAnomalyDetectors."
+                },
+                {
+                  "disabled": false,
+                  "key": "AnomalyDetectorTypes",
+                  "value": "<string>",
+                  "description": "The anomaly detector types to request when using DescribeAnomalyDetectors."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eab9a37e-feab-4ca4-aa1a-472dbfe72e32",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAnomalyDetectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Use the token returned by the previous operation to request the next page of results.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of results to return in one operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxResults",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limits the results to only the anomaly detection models that are associated with the specified namespace.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limits the results to only the anomaly detection models that are associated with the specified metric name.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Limits the results to only the anomaly detection models that are associated with the specified metric dimensions.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The anomaly detector types to request when using DescribeAnomalyDetectors.",
+                        "type": "text/plain"
+                      },
+                      "key": "AnomalyDetectorTypes",
+                      "value": "SINGLE_METRIC"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bebd4db-86bd-4a0d-8a32-47e62d46f14b",
+          "name": "Aws Cloudwatch Delete an Anomaly Detection Model",
+          "request": {
+            "name": "Aws Cloudwatch Delete an Anomaly Detection Model",
+            "description": {
+              "content": "Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see Deleting an Anomaly Detection Model in the CloudWatch User Guide.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteAnomalyDetector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "The namespace associated with the anomaly detection model to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "The metric name associated with the anomaly detection model to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The metric dimensions associated with the anomaly detection model to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The metric dimensions associated with the anomaly detection model to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "Stat",
+                  "value": "<string>",
+                  "description": "The statistic associated with the anomaly detection model to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "AccountId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "[{\"Name\":\"<string>\",\"Value\":\"<string>\"},{\"Name\":\"<string>\",\"Value\":\"<string>\"}]"
+                },
+                {
+                  "disabled": false,
+                  "key": "Stat",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricDataQueries",
+                  "value": "[{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"MetricName\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Dimensions\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"},{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"MetricName\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Dimensions\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}]"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3a427e4-6112-48e7-85d2-8836e2c6709a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric name associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric dimensions associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The statistic associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AccountId",
+                      "value": "500123"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Dimensions",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricDataQueries",
+                      "value": "[{}]"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6a692263-b6e1-4400-bbba-d9a72e05f4f8",
+              "name": "Resource not found or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteAnomalyDetector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric name associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric dimensions associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The statistic associated with the anomaly detection model to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AccountId",
+                      "value": "500123"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Dimensions",
+                      "value": "[{}]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Stat",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "MetricDataQueries",
+                      "value": "[{}]"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://monitoring.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "55db055d-4c3a-42bd-8d25-5d8d005eb693",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}

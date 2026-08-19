@@ -1,0 +1,2614 @@
+{
+  "item": [
+    {
+      "id": "8706ec7f-95ee-4ffb-8a82-a6953e5aad53",
+      "name": "Alarms",
+      "description": {
+        "content": "Operations for creating, managing, and querying CloudWatch alarms",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddc71b67-78f2-4457-9ff9-13f335f79cad",
+          "name": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+          "request": {
+            "name": "Aws Cloudwatch Create or Update a Cloudwatch Alarm",
+            "description": {
+              "content": "Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. When the alarm state changes, the alarm invokes the specified actions. An alarm can watch only one metric at a time, but it can take actions based on other alarms. If you are using a composite alarm, the alarm watches the states of other alarms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "PutMetricAlarm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmName",
+                  "value": "<string>",
+                  "description": "(Required) The name for the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "EvaluationPeriods",
+                  "value": "<integer>",
+                  "description": "(Required) The number of periods over which data is compared to the specified threshold."
+                },
+                {
+                  "disabled": false,
+                  "key": "ComparisonOperator",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmDescription",
+                  "value": "<string>",
+                  "description": "The description for the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "ActionsEnabled",
+                  "value": "<boolean>",
+                  "description": "Indicates whether actions should be executed during any changes to the alarm state."
+                },
+                {
+                  "disabled": false,
+                  "key": "OKActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to an OK state."
+                },
+                {
+                  "disabled": false,
+                  "key": "OKActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to an OK state."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to the ALARM state."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to the ALARM state."
+                },
+                {
+                  "disabled": false,
+                  "key": "InsufficientDataActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state."
+                },
+                {
+                  "disabled": false,
+                  "key": "InsufficientDataActions",
+                  "value": "<string>",
+                  "description": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "The name for the metric associated with the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "The namespace for the metric associated with the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "Statistic",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ExtendedStatistic",
+                  "value": "<string>",
+                  "description": "The percentile statistic for the metric specified in MetricName."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions for the metric specified in MetricName."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions for the metric specified in MetricName."
+                },
+                {
+                  "disabled": false,
+                  "key": "Period",
+                  "value": "<integer>",
+                  "description": "The length, in seconds, used each time the metric specified in MetricName is evaluated."
+                },
+                {
+                  "disabled": false,
+                  "key": "Unit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "DatapointsToAlarm",
+                  "value": "<integer>",
+                  "description": "The number of data points that must be breaching to trigger the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "Threshold",
+                  "value": "<double>",
+                  "description": "The value against which the specified statistic is compared."
+                },
+                {
+                  "disabled": false,
+                  "key": "TreatMissingData",
+                  "value": "<string>",
+                  "description": "Sets how this alarm is to handle missing data points."
+                },
+                {
+                  "disabled": false,
+                  "key": "EvaluateLowSampleCountPercentile",
+                  "value": "<string>",
+                  "description": "Used only for alarms based on percentiles."
+                },
+                {
+                  "disabled": false,
+                  "key": "Metrics",
+                  "value": "{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":\"<string>\",\"MetricName\":\"<string>\",\"Dimensions\":[{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}]},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}",
+                  "description": "An array of MetricDataQuery structures for metric math expression alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "Metrics",
+                  "value": "{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":\"<string>\",\"MetricName\":\"<string>\",\"Dimensions\":[{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}]},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}",
+                  "description": "An array of MetricDataQuery structures for metric math expression alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "A list of key-value pairs to associate with the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "A list of key-value pairs to associate with the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "ThresholdMetricId",
+                  "value": "<string>",
+                  "description": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "528b5508-20fd-44fb-aaa4-1c51ccac9730",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutMetricAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name for the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The description for the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmDescription",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether actions should be executed during any changes to the alarm state.",
+                        "type": "text/plain"
+                      },
+                      "key": "ActionsEnabled",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to an OK state.",
+                        "type": "text/plain"
+                      },
+                      "key": "OKActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to the ALARM state.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                        "type": "text/plain"
+                      },
+                      "key": "InsufficientDataActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name for the metric associated with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace for the metric associated with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Statistic",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The percentile statistic for the metric specified in MetricName.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExtendedStatistic",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dimensions for the metric specified in MetricName.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+                        "type": "text/plain"
+                      },
+                      "key": "Period",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Unit",
+                      "value": "Seconds"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The number of periods over which data is compared to the specified threshold.",
+                        "type": "text/plain"
+                      },
+                      "key": "EvaluationPeriods",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of data points that must be breaching to trigger the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "DatapointsToAlarm",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The value against which the specified statistic is compared.",
+                        "type": "text/plain"
+                      },
+                      "key": "Threshold",
+                      "value": "42.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ComparisonOperator",
+                      "value": "GreaterThanOrEqualToThreshold"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sets how this alarm is to handle missing data points.",
+                        "type": "text/plain"
+                      },
+                      "key": "TreatMissingData",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Used only for alarms based on percentiles.",
+                        "type": "text/plain"
+                      },
+                      "key": "EvaluateLowSampleCountPercentile",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "An array of MetricDataQuery structures for metric math expression alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "Metrics",
+                      "value": "{\"Id\":\"abc123\",\"Expression\":\"example_value\",\"Label\":\"Example Title\",\"ReturnData\":true,\"Period\":10,\"AccountId\":\"500123\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A list of key-value pairs to associate with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "Tags",
+                      "value": "{\"Key\":\"example_value\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+                        "type": "text/plain"
+                      },
+                      "key": "ThresholdMetricId",
+                      "value": "500123"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f75a00a4-15f0-4a5b-8809-c8bbda2be0ec",
+              "name": "Bad request - limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "PutMetricAlarm",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name for the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The description for the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmDescription",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether actions should be executed during any changes to the alarm state.",
+                        "type": "text/plain"
+                      },
+                      "key": "ActionsEnabled",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to an OK state.",
+                        "type": "text/plain"
+                      },
+                      "key": "OKActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to the ALARM state.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state.",
+                        "type": "text/plain"
+                      },
+                      "key": "InsufficientDataActions",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name for the metric associated with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The namespace for the metric associated with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Statistic",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The percentile statistic for the metric specified in MetricName.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExtendedStatistic",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dimensions for the metric specified in MetricName.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The length, in seconds, used each time the metric specified in MetricName is evaluated.",
+                        "type": "text/plain"
+                      },
+                      "key": "Period",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Unit",
+                      "value": "Seconds"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The number of periods over which data is compared to the specified threshold.",
+                        "type": "text/plain"
+                      },
+                      "key": "EvaluationPeriods",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The number of data points that must be breaching to trigger the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "DatapointsToAlarm",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The value against which the specified statistic is compared.",
+                        "type": "text/plain"
+                      },
+                      "key": "Threshold",
+                      "value": "42.5"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "ComparisonOperator",
+                      "value": "GreaterThanOrEqualToThreshold"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sets how this alarm is to handle missing data points.",
+                        "type": "text/plain"
+                      },
+                      "key": "TreatMissingData",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Used only for alarms based on percentiles.",
+                        "type": "text/plain"
+                      },
+                      "key": "EvaluateLowSampleCountPercentile",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "An array of MetricDataQuery structures for metric math expression alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "Metrics",
+                      "value": "{\"Id\":\"abc123\",\"Expression\":\"example_value\",\"Label\":\"Example Title\",\"ReturnData\":true,\"Period\":10,\"AccountId\":\"500123\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "A list of key-value pairs to associate with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "Tags",
+                      "value": "{\"Key\":\"example_value\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.",
+                        "type": "text/plain"
+                      },
+                      "key": "ThresholdMetricId",
+                      "value": "500123"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05c0e7a3-ac14-4663-80f6-58f6c591c5ca",
+          "name": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+          "request": {
+            "name": "Aws Cloudwatch Retrieve Information About Specified Alarms",
+            "description": {
+              "content": "Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action. To use this operation and return information about composite alarms, you must be signed on with the cloudwatch:DescribeAlarms permission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeAlarms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "The names of the alarms to retrieve information about."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "The names of the alarms to retrieve information about."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmNamePrefix",
+                  "value": "<string>",
+                  "description": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmTypes",
+                  "value": "<string>",
+                  "description": "Specify this parameter to receive information only about alarms of the specified types."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmTypes",
+                  "value": "<string>",
+                  "description": "Specify this parameter to receive information only about alarms of the specified types."
+                },
+                {
+                  "disabled": false,
+                  "key": "ChildrenOfAlarmName",
+                  "value": "<string>",
+                  "description": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "ParentsOfAlarmName",
+                  "value": "<string>",
+                  "description": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it."
+                },
+                {
+                  "disabled": false,
+                  "key": "StateValue",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ActionPrefix",
+                  "value": "<string>",
+                  "description": "Use this parameter to filter the results to only those alarms that use a certain alarm action."
+                },
+                {
+                  "disabled": false,
+                  "key": "MaxRecords",
+                  "value": "<integer>",
+                  "description": "The maximum number of alarm descriptions to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "The token returned by a previous call to indicate there is more data available."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "31eb7edd-afd8-4a5f-a74a-8ed1aae2016d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The names of the alarms to retrieve information about.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNamePrefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify this parameter to receive information only about alarms of the specified types.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "ChildrenOfAlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+                        "type": "text/plain"
+                      },
+                      "key": "ParentsOfAlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+                        "type": "text/plain"
+                      },
+                      "key": "ActionPrefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of alarm descriptions to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxRecords",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call to indicate there is more data available.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "eec4350f-5dfd-4eca-b462-aa568496ac90",
+              "name": "Invalid next token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The names of the alarms to retrieve information about.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "An alarm name prefix. If specified, only alarms with names that start with this prefix are returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNamePrefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify this parameter to receive information only about alarms of the specified types.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you use this parameter and specify the name of a composite alarm, the operation returns information about the child alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "ChildrenOfAlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you use this parameter and specify the name of a metric alarm, the operation returns information about the composite alarms that reference it.",
+                        "type": "text/plain"
+                      },
+                      "key": "ParentsOfAlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Use this parameter to filter the results to only those alarms that use a certain alarm action.",
+                        "type": "text/plain"
+                      },
+                      "key": "ActionPrefix",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of alarm descriptions to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxRecords",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call to indicate there is more data available.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da35d699-573d-42a4-a16f-cf383a2334a6",
+          "name": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+          "request": {
+            "name": "Aws Cloudwatch Retrieve Alarms for a Specified Metric",
+            "description": {
+              "content": "Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit. This operation retrieves only standard alarms that are based on the specified metric.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeAlarmsForMetric",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "(Required) The name of the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "(Required) The namespace of the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Statistic",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ExtendedStatistic",
+                  "value": "<string>",
+                  "description": "The percentile statistic for the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions associated with the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions associated with the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Period",
+                  "value": "<integer>",
+                  "description": "The period, in seconds, over which the statistic is applied."
+                },
+                {
+                  "disabled": false,
+                  "key": "Unit",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d65c7b8-962e-42ce-8007-fa80ab5fa51b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAlarmsForMetric",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Statistic",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The percentile statistic for the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExtendedStatistic",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dimensions associated with the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The period, in seconds, over which the statistic is applied.",
+                        "type": "text/plain"
+                      },
+                      "key": "Period",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Unit",
+                      "value": "Seconds"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eee3be3d-636e-4988-a9f2-617550349902",
+          "name": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+          "request": {
+            "name": "Aws Cloudwatch Retrieve the History for a Specified Alarm",
+            "description": {
+              "content": "Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned. CloudWatch retains the history of an alarm even if you delete the alarm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DescribeAlarmHistory",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmName",
+                  "value": "<string>",
+                  "description": "The name of the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmTypes",
+                  "value": "<string>",
+                  "description": "Specify this parameter to receive information only about alarms of the specified types."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmTypes",
+                  "value": "<string>",
+                  "description": "Specify this parameter to receive information only about alarms of the specified types."
+                },
+                {
+                  "disabled": false,
+                  "key": "HistoryItemType",
+                  "value": "<string>",
+                  "description": "The type of alarm histories to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartDate",
+                  "value": "<dateTime>",
+                  "description": "The starting date to retrieve alarm history."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndDate",
+                  "value": "<dateTime>",
+                  "description": "The ending date to retrieve alarm history."
+                },
+                {
+                  "disabled": false,
+                  "key": "MaxRecords",
+                  "value": "<integer>",
+                  "description": "The maximum number of alarm history records to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "The token returned by a previous call."
+                },
+                {
+                  "disabled": false,
+                  "key": "ScanBy",
+                  "value": "<string>",
+                  "description": "Specified whether to return the newest or oldest alarm history first."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bcc81fa6-ddb8-4b24-a19d-4d809a88e600",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAlarmHistory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify this parameter to receive information only about alarms of the specified types.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The type of alarm histories to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "HistoryItemType",
+                      "value": "ConfigurationUpdate"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The starting date to retrieve alarm history.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartDate",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The ending date to retrieve alarm history.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndDate",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of alarm history records to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxRecords",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specified whether to return the newest or oldest alarm history first.",
+                        "type": "text/plain"
+                      },
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "25cfb705-d891-4b55-bf82-5d7502978c74",
+              "name": "Invalid next token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DescribeAlarmHistory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify this parameter to receive information only about alarms of the specified types.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmTypes",
+                      "value": "CompositeAlarm"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The type of alarm histories to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "HistoryItemType",
+                      "value": "ConfigurationUpdate"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The starting date to retrieve alarm history.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartDate",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The ending date to retrieve alarm history.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndDate",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of alarm history records to retrieve.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxRecords",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specified whether to return the newest or oldest alarm history first.",
+                        "type": "text/plain"
+                      },
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89738e60-7ba8-4eeb-a237-1f00b27c2144",
+          "name": "Aws Cloudwatch Delete Specified Alarms",
+          "request": {
+            "name": "Aws Cloudwatch Delete Specified Alarms",
+            "description": {
+              "content": "Deletes the specified alarms. You can delete up to 100 alarms in one operation. In the event of an error, no alarms are deleted. To get information about your current alarms, use DescribeAlarms. If a specified alarm does not exist, no error is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DeleteAlarms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7cff67bc-6b4c-4f3c-ae1b-4730d33115d8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20f34d11-b891-415e-9e9a-4df121505ea6",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DeleteAlarms",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The alarms to be deleted. You can delete up to 100 alarms in one operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b85901c-d8fe-409b-8eb0-d5d94699581d",
+          "name": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+          "request": {
+            "name": "Aws Cloudwatch Temporarily Set the State of an Alarm",
+            "description": {
+              "content": "Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to ALARM sends an SNS message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "SetAlarmState",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmName",
+                  "value": "<string>",
+                  "description": "(Required) The name of the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "StateValue",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "StateReason",
+                  "value": "<string>",
+                  "description": "(Required) The reason that this alarm is set to this specific state, in text format."
+                },
+                {
+                  "disabled": false,
+                  "key": "StateReasonData",
+                  "value": "<string>",
+                  "description": "The reason that this alarm is set to this specific state, in JSON format."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "75fc5ee7-4f87-42f5-a070-fb0b027c66ac",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "SetAlarmState",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The reason that this alarm is set to this specific state, in text format.",
+                        "type": "text/plain"
+                      },
+                      "key": "StateReason",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The reason that this alarm is set to this specific state, in JSON format.",
+                        "type": "text/plain"
+                      },
+                      "key": "StateReasonData",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc6aa557-dbd8-4bd8-af68-58ded27d688f",
+              "name": "Invalid format or resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "SetAlarmState",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "StateValue",
+                      "value": "OK"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The reason that this alarm is set to this specific state, in text format.",
+                        "type": "text/plain"
+                      },
+                      "key": "StateReason",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The reason that this alarm is set to this specific state, in JSON format.",
+                        "type": "text/plain"
+                      },
+                      "key": "StateReasonData",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b5f5c5c-a3a0-4005-971e-d3a2fbc45493",
+          "name": "Aws Cloudwatch Enable Actions for Specified Alarms",
+          "request": {
+            "name": "Aws Cloudwatch Enable Actions for Specified Alarms",
+            "description": {
+              "content": "Enables the actions for the specified alarms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "EnableAlarmActions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The names of the alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The names of the alarms."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7706646d-8989-4895-8837-ede762ef2410",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "EnableAlarmActions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The names of the alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "108933ce-963c-4b77-8f65-8c448e7e6d62",
+          "name": "Aws Cloudwatch Disable Actions for Specified Alarms",
+          "request": {
+            "name": "Aws Cloudwatch Disable Actions for Specified Alarms",
+            "description": {
+              "content": "Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "DisableAlarmActions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The names of the alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "AlarmNames",
+                  "value": "<string>",
+                  "description": "(Required) The names of the alarms."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc1f4718-8668-4da9-8eef-74cfc2c0ec26",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "DisableAlarmActions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The names of the alarms.",
+                        "type": "text/plain"
+                      },
+                      "key": "AlarmNames",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://monitoring.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "67029c9b-2b08-46a9-98e8-79dacd17605a",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}

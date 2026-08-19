@@ -1,0 +1,1986 @@
+{
+  "item": [
+    {
+      "id": "ee2cd1a8-a036-4b71-a5f1-7ddb9fcb1877",
+      "name": "Metrics",
+      "description": {
+        "content": "Operations for working with CloudWatch metrics and metric data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c91e9a1e-6dbd-4c4c-8294-c5f1259b2b71",
+          "name": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+          "request": {
+            "name": "Aws Cloudwatch Publish Metric Data Points to Cloudwatch",
+            "description": {
+              "content": "Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to ListMetrics. Each PutMetricData request is limited to 1 MB in size for HTTP POST requests and is limited to 40 KB for HTTP GET requests. The maximum number of metric datum items per PutMetricData request is 1,000.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricData",
+                  "value": "{\"MetricName\":\"<string>\",\"Dimensions\":[{\"Name\":\"<string>\",\"Value\":\"<string>\"},{\"Name\":\"<string>\",\"Value\":\"<string>\"}],\"Timestamp\":\"<dateTime>\",\"Value\":\"<double>\",\"StatisticValues\":{\"SampleCount\":\"<double>\",\"Sum\":\"<double>\",\"Minimum\":\"<double>\",\"Maximum\":\"<double>\"},\"Values\":[\"<double>\",\"<double>\"],\"Counts\":[\"<double>\",\"<double>\"],\"Unit\":\"<string>\",\"StorageResolution\":\"<integer>\"}",
+                  "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricData",
+                  "value": "{\"MetricName\":\"<string>\",\"Dimensions\":[{\"Name\":\"<string>\",\"Value\":\"<string>\"},{\"Name\":\"<string>\",\"Value\":\"<string>\"}],\"Timestamp\":\"<dateTime>\",\"Value\":\"<double>\",\"StatisticValues\":{\"SampleCount\":\"<double>\",\"Sum\":\"<double>\",\"Minimum\":\"<double>\",\"Maximum\":\"<double>\"},\"Values\":[\"<double>\",\"<double>\"],\"Counts\":[\"<double>\",\"<double>\"],\"Unit\":\"<string>\",\"StorageResolution\":\"<integer>\"}",
+                  "description": "(Required) The data for the metric. The array can include no more than 1000 metrics per call."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b893f39-b007-4f54-ba7d-f1d6e5066005",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricData",
+                      "value": "{\"MetricName\":\"example_value\",\"Dimensions\":{},\"Timestamp\":\"2026-01-15T10:30:00Z\",\"Value\":42.5,\"Values\":{},\"Counts\":{},\"StorageResolution\":10}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53928dac-0262-4eb0-85de-457279b5baa2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricData",
+                      "value": "{\"MetricName\":\"example_value\",\"Dimensions\":{},\"Timestamp\":\"2026-01-15T10:30:00Z\",\"Value\":42.5,\"Values\":{},\"Counts\":{},\"StorageResolution\":10}"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "0360cec8-47e9-4a26-be58-00062b6c8391",
+              "name": "Internal failure",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with AWS/.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The data for the metric. The array can include no more than 1000 metrics per call.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricData",
+                      "value": "{\"MetricName\":\"example_value\",\"Dimensions\":{},\"Timestamp\":\"2026-01-15T10:30:00Z\",\"Value\":42.5,\"Values\":{},\"Counts\":{},\"StorageResolution\":10}"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be0eb369-1a60-4bb2-8e24-76537206bac6",
+          "name": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+          "request": {
+            "name": "Aws Cloudwatch Retrieve Metric Data From Cloudwatch",
+            "description": {
+              "content": "Retrieves CloudWatch metric values. You can use GetMetricData to retrieve as many as 500 different metrics in a single request, with a total of as many as 100,800 data points per request. You can also optionally perform metric math expressions on the values of the returned statistics. CloudWatch returns aggregated data points based on the statistical values requested.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "GetMetricData",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "MetricDataQueries",
+                  "value": "{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":\"<string>\",\"MetricName\":\"<string>\",\"Dimensions\":[{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}]},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}",
+                  "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricDataQueries",
+                  "value": "{\"Id\":\"<string>\",\"MetricStat\":{\"Metric\":{\"Namespace\":\"<string>\",\"MetricName\":\"<string>\",\"Dimensions\":[{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}]},\"Period\":\"<integer>\",\"Stat\":\"<string>\",\"Unit\":\"<string>\"},\"Expression\":\"<string>\",\"Label\":\"<string>\",\"ReturnData\":\"<boolean>\",\"Period\":\"<integer>\",\"AccountId\":\"<string>\"}",
+                  "description": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The time stamp indicating the earliest data to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The time stamp indicating the latest data to be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "Include this value if it was returned by the previous GetMetricData operation."
+                },
+                {
+                  "disabled": false,
+                  "key": "ScanBy",
+                  "value": "<string>",
+                  "description": "The order in which data points should be returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "MaxDatapoints",
+                  "value": "<integer>",
+                  "description": "The maximum number of data points the request should return before paginating."
+                },
+                {
+                  "disabled": false,
+                  "key": "Timezone",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f8e63b22-97ef-4e91-a0ae-8886c32d7d03",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "GetMetricData",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricDataQueries",
+                      "value": "{\"Id\":\"abc123\",\"Expression\":\"example_value\",\"Label\":\"Example Title\",\"ReturnData\":true,\"Period\":10,\"AccountId\":\"500123\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp indicating the earliest data to be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp indicating the latest data to be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Include this value if it was returned by the previous GetMetricData operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The order in which data points should be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of data points the request should return before paginating.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxDatapoints",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Timezone",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "d5796088-938a-451b-b319-ffe233e96601",
+              "name": "Invalid parameter value or combination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "GetMetricData",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The metric queries to be returned. A single GetMetricData call can include as many as 500 MetricDataQuery structures.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricDataQueries",
+                      "value": "{\"Id\":\"abc123\",\"Expression\":\"example_value\",\"Label\":\"Example Title\",\"ReturnData\":true,\"Period\":10,\"AccountId\":\"500123\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp indicating the earliest data to be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp indicating the latest data to be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Include this value if it was returned by the previous GetMetricData operation.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The order in which data points should be returned.",
+                        "type": "text/plain"
+                      },
+                      "key": "ScanBy",
+                      "value": "TimestampDescending"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The maximum number of data points the request should return before paginating.",
+                        "type": "text/plain"
+                      },
+                      "key": "MaxDatapoints",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Timezone",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48b27467-bd77-4013-8861-f5696a9b5a00",
+          "name": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+          "request": {
+            "name": "Aws Cloudwatch Retrieve Statistics for a Specified Metric",
+            "description": {
+              "content": "Gets statistics for the specified metric. The maximum number of data points returned from a single call is 1,440. If you request more than 1,440 data points, CloudWatch returns an error. CloudWatch retains metric data as follows - data points with a period of less than 60 seconds are available for 3 hours, data points with a period of 60 seconds are available for 15 days, data points with a period of 300 seconds are available for 63 days, and data points with a period of 3600 seconds are available for 455 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "GetMetricStatistics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "(Required) The namespace of the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "(Required) The name of the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The time stamp that determines the first data point to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) The time stamp that determines the last data point to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "Period",
+                  "value": "<integer>",
+                  "description": "(Required) The granularity, in seconds, of the returned data points."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions to filter the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "The dimensions to filter the metric."
+                },
+                {
+                  "disabled": false,
+                  "key": "Statistics",
+                  "value": "<string>",
+                  "description": "The metric statistics."
+                },
+                {
+                  "disabled": false,
+                  "key": "ExtendedStatistics",
+                  "value": "<string>",
+                  "description": "The percentile statistics."
+                },
+                {
+                  "disabled": false,
+                  "key": "Unit",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "485919b7-573c-4a5b-967e-5b0889bf9b31",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "GetMetricStatistics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dimensions to filter the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp that determines the first data point to return.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp that determines the last data point to return.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The granularity, in seconds, of the returned data points.",
+                        "type": "text/plain"
+                      },
+                      "key": "Period",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric statistics.",
+                        "type": "text/plain"
+                      },
+                      "key": "Statistics",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The percentile statistics.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExtendedStatistics",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Unit",
+                      "value": "Seconds"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "64530dea-464a-4576-b5f7-3c2ae160ab43",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "GetMetricStatistics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The namespace of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The name of the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The dimensions to filter the metric.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp that determines the first data point to return.",
+                        "type": "text/plain"
+                      },
+                      "key": "StartTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The time stamp that determines the last data point to return.",
+                        "type": "text/plain"
+                      },
+                      "key": "EndTime",
+                      "value": "2026-01-15T10:30:00Z"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The granularity, in seconds, of the returned data points.",
+                        "type": "text/plain"
+                      },
+                      "key": "Period",
+                      "value": "10"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The metric statistics.",
+                        "type": "text/plain"
+                      },
+                      "key": "Statistics",
+                      "value": "SampleCount"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The percentile statistics.",
+                        "type": "text/plain"
+                      },
+                      "key": "ExtendedStatistics",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Unit",
+                      "value": "Seconds"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca5c87a9-ea9e-442f-aa72-155e8d457f6b",
+          "name": "Aws Cloudwatch List the Specified Metrics",
+          "request": {
+            "name": "Aws Cloudwatch List the Specified Metrics",
+            "description": {
+              "content": "List the specified metrics. You can use the returned metrics with GetMetricData or GetMetricStatistics to get statistical data. Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with subsequent calls. CloudWatch retains metric data for 15 months.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListMetrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "Namespace",
+                  "value": "<string>",
+                  "description": "Filters the results to only those metrics in the specified namespace."
+                },
+                {
+                  "disabled": false,
+                  "key": "MetricName",
+                  "value": "<string>",
+                  "description": "Filters the results to only the specified metric name."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "Filters the results to only those metrics that match the specified dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "Dimensions",
+                  "value": "{\"Name\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "Filters the results to only those metrics that match the specified dimensions."
+                },
+                {
+                  "disabled": false,
+                  "key": "NextToken",
+                  "value": "<string>",
+                  "description": "The token returned by a previous call to indicate there is more data available."
+                },
+                {
+                  "disabled": false,
+                  "key": "RecentlyActive",
+                  "value": "<string>",
+                  "description": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H."
+                },
+                {
+                  "disabled": false,
+                  "key": "IncludeLinkedAccounts",
+                  "value": "<boolean>",
+                  "description": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data."
+                },
+                {
+                  "disabled": false,
+                  "key": "OwningAccount",
+                  "value": "<string>",
+                  "description": "When you use this operation in a monitoring account, use this field to return metrics only from one source account."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b66c7904-351c-47d9-aa65-a387dff39b3d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListMetrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only those metrics in the specified namespace.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only the specified metric name.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only those metrics that match the specified dimensions.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call to indicate there is more data available.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+                        "type": "text/plain"
+                      },
+                      "key": "RecentlyActive",
+                      "value": "PT3H"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeLinkedAccounts",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+                        "type": "text/plain"
+                      },
+                      "key": "OwningAccount",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            },
+            {
+              "id": "b9854b50-3a7f-4bc6-8a8e-580ff4c181dd",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListMetrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only those metrics in the specified namespace.",
+                        "type": "text/plain"
+                      },
+                      "key": "Namespace",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only the specified metric name.",
+                        "type": "text/plain"
+                      },
+                      "key": "MetricName",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Filters the results to only those metrics that match the specified dimensions.",
+                        "type": "text/plain"
+                      },
+                      "key": "Dimensions",
+                      "value": "{\"Name\":\"Example Title\",\"Value\":\"example_value\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The token returned by a previous call to indicate there is more data available.",
+                        "type": "text/plain"
+                      },
+                      "key": "NextToken",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "To filter the results to show only metrics that have had data points published in the past three hours, specify this parameter with a value of PT3H.",
+                        "type": "text/plain"
+                      },
+                      "key": "RecentlyActive",
+                      "value": "PT3H"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "If you are using this operation in a monitoring account, specify true to include metrics from source accounts in the returned data.",
+                        "type": "text/plain"
+                      },
+                      "key": "IncludeLinkedAccounts",
+                      "value": "true"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "When you use this operation in a monitoring account, use this field to return metrics only from one source account.",
+                        "type": "text/plain"
+                      },
+                      "key": "OwningAccount",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85e91b91-8b72-4e8b-940a-33b5bba2bc98",
+          "name": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+          "request": {
+            "name": "Aws Cloudwatch Assign Tags to a Cloudwatch Resource",
+            "description": {
+              "content": "Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules. Tags can help you organize and categorize your resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "TagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ResourceARN",
+                  "value": "<string>",
+                  "description": "(Required) The ARN of the CloudWatch resource that you're adding tags to."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "(Required) The list of key-value pairs to associate with the alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "Tags",
+                  "value": "{\"Key\":\"<string>\",\"Value\":\"<string>\"}",
+                  "description": "(Required) The list of key-value pairs to associate with the alarm."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94d59cd3-2fe1-43ec-9799-e6e5155ce07f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "TagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of the CloudWatch resource that you're adding tags to.",
+                        "type": "text/plain"
+                      },
+                      "key": "ResourceARN",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The list of key-value pairs to associate with the alarm.",
+                        "type": "text/plain"
+                      },
+                      "key": "Tags",
+                      "value": "{\"Key\":\"example_value\",\"Value\":\"example_value\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0622be2e-d6ae-40fd-a6e0-23ac32efdf69",
+          "name": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+          "request": {
+            "name": "Aws Cloudwatch Remove Tags From a Cloudwatch Resource",
+            "description": {
+              "content": "Removes one or more tags from the specified resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "UntagResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ResourceARN",
+                  "value": "<string>",
+                  "description": "(Required) The ARN of the CloudWatch resource that you're removing tags from."
+                },
+                {
+                  "disabled": false,
+                  "key": "TagKeys",
+                  "value": "<string>",
+                  "description": "(Required) The list of tag keys to remove from the resource."
+                },
+                {
+                  "disabled": false,
+                  "key": "TagKeys",
+                  "value": "<string>",
+                  "description": "(Required) The list of tag keys to remove from the resource."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6a53bff-c9bc-427f-beab-79d507e7a1b4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "UntagResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of the CloudWatch resource that you're removing tags from.",
+                        "type": "text/plain"
+                      },
+                      "key": "ResourceARN",
+                      "value": "example_value"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The list of tag keys to remove from the resource.",
+                        "type": "text/plain"
+                      },
+                      "key": "TagKeys",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f132be1e-373c-4872-8f15-a6e7e0cf0393",
+          "name": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+          "request": {
+            "name": "Aws Cloudwatch List Tags for a Cloudwatch Resource",
+            "description": {
+              "content": "Displays the tags associated with a CloudWatch resource. Currently, alarms and Contributor Insights rules support tagging.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "hash": "ListTagsForResource",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Action",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "Version",
+                  "value": "<string>",
+                  "description": "(Required) The API version (2010-08-01)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "ResourceARN",
+                  "value": "<string>",
+                  "description": "(Required) The ARN of the CloudWatch resource that you want to view tags for."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc25db7f-5965-4f27-bcad-80e3b706819e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "hash": "ListTagsForResource",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Action",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Version",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The ARN of the CloudWatch resource that you want to view tags for.",
+                        "type": "text/plain"
+                      },
+                      "key": "ResourceARN",
+                      "value": "example_value"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-west-3,eu-central-1,eu-north-1,ap-east-1,ap-south-1,ap-southeast-1,ap-southeast-2,ap-northeast-1,ap-northeast-2,ap-northeast-3,sa-east-1,ca-central-1,me-south-1,af-south-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://monitoring.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "43461265-60aa-4cf8-b191-e9d5ea0fe818",
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}

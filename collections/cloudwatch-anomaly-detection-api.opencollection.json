@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API",
+    "version": "2010-08-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Anomaly Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Aws Cloudwatch Create an Anomaly Detection Model for a Metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#PutAnomalyDetector",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed. If you have enabled unified cross-account observability, and this account is a monitoring account, the metric can be in the same account or a source account."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch List Anomaly Detection Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DescribeAnomalyDetectors",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Lists the anomaly detection models that you have created in your account. For each model, the response includes configuration information for the model. If you filter the response, only the models matching the filter are returned."
+        },
+        {
+          "info": {
+            "name": "Aws Cloudwatch Delete an Anomaly Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://monitoring.{region}.amazonaws.com/#DeleteAnomalyDetector",
+            "params": [
+              {
+                "name": "Action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Version",
+                "value": "",
+                "type": "query",
+                "description": "The API version (2010-08-01)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see Deleting an Anomaly Detection Model in the CloudWatch User Guide."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

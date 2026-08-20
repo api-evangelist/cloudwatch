@@ -22,6 +22,14 @@ specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/cloudwatch/refs/heads/main/apis.yml
 tags:
   - Alarms
+  - AWS
+  - Dashboards
+  - Logs
+  - Metrics
+  - Monitoring
+  - Observability
+tags_raw:
+  - Alarms
   - Aws
   - Dashboards
   - Logs
@@ -44,6 +52,11 @@ apis:
   - type: SDKs
     url: https://aws.amazon.com/tools/
   tags:
+  - APM
+  - Application-Signals
+  - Service Level Objectives
+  - SLO
+  tags_raw:
   - Apm
   - Application-Signals
   - Service-Level-Objectives
@@ -64,6 +77,11 @@ apis:
   - type: SDKs
     url: https://aws.amazon.com/tools/
   tags:
+  - Direct Connect
+  - Hybrid-Connectivity
+  - Network-Monitor
+  - Network Performance
+  tags_raw:
   - Direct-Connect
   - Hybrid-Connectivity
   - Network-Monitor

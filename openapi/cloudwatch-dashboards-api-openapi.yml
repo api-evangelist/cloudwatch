@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: AWS CloudWatch Amazon CloudWatch Alarms Dashboards API
+  title: AWS CloudWatch Amazon CloudWatch Dashboards API
   description: Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications. CloudWatch alarms watch metrics and automatically send notifications or make changes to the resources you are monitoring when a threshold is breached. CloudWatch dashboards provide a unified view of your AWS resources, custom applications, and services.
   version: '2010-08-01'
   contact:
@@ -328,28 +328,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DashboardValidationMessage:
+    PutDashboardOutput:
       type: object
-      description: An error or warning for the PutDashboard operation.
       properties:
-        DataPath:
-          type: string
-          description: The data path related to the message.
-          example: example_value
-        Message:
-          type: string
-          description: A message describing the error or warning.
-          example: example_value
-    DeleteDashboardsInput:
-      type: object
-      required:
-      - DashboardNames
-      properties:
-        DashboardNames:
+        DashboardValidationMessages:
           type: array
           items:
-            type: string
-          description: The dashboards to be deleted. This parameter is required.
+            $ref: '#/components/schemas/DashboardValidationMessage'
+          description: If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array.
           example: []
     ListDashboardsOutput:
       type: object
@@ -379,49 +365,17 @@ components:
           type: string
           description: The name of the dashboard.
           example: example_value
-    PutDashboardInput:
+    DashboardValidationMessage:
       type: object
-      required:
-      - DashboardName
-      - DashboardBody
+      description: An error or warning for the PutDashboard operation.
       properties:
-        DashboardName:
+        DataPath:
           type: string
-          description: The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.
+          description: The data path related to the message.
           example: example_value
-        DashboardBody:
+        Message:
           type: string
-          description: The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.
-          example: example_value
-    DashboardEntry:
-      type: object
-      description: Represents a specific dashboard.
-      properties:
-        DashboardName:
-          type: string
-          description: The name of the dashboard.
-          example: example_value
-        DashboardArn:
-          type: string
-          description: The Amazon Resource Name (ARN) of the dashboard.
-          example: example_value
-        LastModified:
-          type: string
-          format: date-time
-          description: The time stamp of when the dashboard was last modified.
-          example: '2026-01-15T10:30:00Z'
-        Size:
-          type: integer
-          description: The size of the dashboard, in bytes.
-          example: 10
-    GetDashboardInput:
-      type: object
-      required:
-      - DashboardName
-      properties:
-        DashboardName:
-          type: string
-          description: The name of the dashboard to be described.
+          description: A message describing the error or warning.
           example: example_value
     ListDashboardsInput:
       type: object
@@ -434,15 +388,6 @@ components:
           type: string
           description: The token returned by a previous call to indicate there is more data available.
           example: example_value
-    PutDashboardOutput:
-      type: object
-      properties:
-        DashboardValidationMessages:
-          type: array
-          items:
-            $ref: '#/components/schemas/DashboardValidationMessage'
-          description: If the input for PutDashboard was correct, the output includes an empty DashboardValidationMessages array.
-          example: []
     ErrorResponse:
       type: object
       description: Standard error response from CloudWatch API.
@@ -464,23 +409,70 @@ components:
           type: string
           description: The unique request ID.
           example: '500123'
+    DashboardEntry:
+      type: object
+      description: Represents a specific dashboard.
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard.
+          example: example_value
+        DashboardArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the dashboard.
+          example: example_value
+        LastModified:
+          type: string
+          format: date-time
+          description: The time stamp of when the dashboard was last modified.
+          example: '2026-01-15T10:30:00Z'
+        Size:
+          type: integer
+          description: The size of the dashboard, in bytes.
+          example: 10
+    DeleteDashboardsInput:
+      type: object
+      required:
+      - DashboardNames
+      properties:
+        DashboardNames:
+          type: array
+          items:
+            type: string
+          description: The dashboards to be deleted. This parameter is required.
+          example: []
+    PutDashboardInput:
+      type: object
+      required:
+      - DashboardName
+      - DashboardBody
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard. If a dashboard with this name already exists, this call modifies that dashboard.
+          example: example_value
+        DashboardBody:
+          type: string
+          description: The detailed information about the dashboard in JSON format, including the widgets to include and their location on the dashboard. For more information about the syntax, see Dashboard Body Structure and Syntax.
+          example: example_value
+    GetDashboardInput:
+      type: object
+      required:
+      - DashboardName
+      properties:
+        DashboardName:
+          type: string
+          description: The name of the dashboard to be described.
+          example: example_value
   parameters:
-    Action_GetDashboard:
+    Action_ListDashboards:
       name: Action
       in: query
       required: true
       schema:
         type: string
         enum:
-        - GetDashboard
-    Action_PutDashboard:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - PutDashboard
+        - ListDashboards
     Action_DeleteDashboards:
       name: Action
       in: query
@@ -498,14 +490,22 @@ components:
         enum:
         - '2010-08-01'
       description: The API version (2010-08-01)
-    Action_ListDashboards:
+    Action_PutDashboard:
       name: Action
       in: query
       required: true
       schema:
         type: string
         enum:
-        - ListDashboards
+        - PutDashboard
+    Action_GetDashboard:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - GetDashboard
   securitySchemes:
     aws_sigv4:
       type: apiKey

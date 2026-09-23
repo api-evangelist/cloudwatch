@@ -1,12 +1,7 @@
 {
   "provider": "cloudwatch",
   "sources": [
-    "cloudwatch-alarms-api-openapi.yml",
-    "cloudwatch-anomaly-detection-api-openapi.yml",
-    "cloudwatch-composite-alarms-api-openapi.yml",
-    "cloudwatch-dashboards-api-openapi.yml",
-    "cloudwatch-metric-streams-api-openapi.yml",
-    "cloudwatch-metrics-api-openapi.yml"
+    "_original/cloudwatch-openapi.yml"
   ],
   "outputs": [
     "cloudwatch-alarms-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cloudwatch-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cloudwatch-alarms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudwatch-anomaly-detection-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudwatch-composite-alarms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudwatch-dashboards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudwatch-metric-streams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cloudwatch-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

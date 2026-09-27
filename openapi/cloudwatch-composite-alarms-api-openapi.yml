@@ -105,25 +105,28 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Action_PutCompositeAlarm:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - PutCompositeAlarm
-    Version:
-      name: Version
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - '2010-08-01'
-      description: The API version (2010-08-01)
   schemas:
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
     PutCompositeAlarmInput:
       type: object
       required:
@@ -190,27 +193,6 @@ components:
           type: integer
           description: The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.
           example: 10
-    ErrorResponse:
-      type: object
-      description: Standard error response from CloudWatch API.
-      properties:
-        Error:
-          type: object
-          properties:
-            Type:
-              type: string
-              description: The error type (Sender or Receiver).
-            Code:
-              type: string
-              description: The error code.
-            Message:
-              type: string
-              description: A description of the error.
-          example: example_value
-        RequestId:
-          type: string
-          description: The unique request ID.
-          example: '500123'
     Tag:
       type: object
       description: A key-value pair associated with a CloudWatch resource.
@@ -230,6 +212,24 @@ components:
           maxLength: 256
           description: The value for the specified tag key.
           example: example_value
+  parameters:
+    Action_PutCompositeAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutCompositeAlarm
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
   securitySchemes:
     aws_sigv4:
       type: apiKey

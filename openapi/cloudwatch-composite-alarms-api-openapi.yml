@@ -105,28 +105,44 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    Action_PutCompositeAlarm:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutCompositeAlarm
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
   schemas:
-    ErrorResponse:
+    Tag:
       type: object
-      description: Standard error response from CloudWatch API.
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
       properties:
-        Error:
-          type: object
-          properties:
-            Type:
-              type: string
-              description: The error type (Sender or Receiver).
-            Code:
-              type: string
-              description: The error code.
-            Message:
-              type: string
-              description: A description of the error.
-          example: example_value
-        RequestId:
+        Key:
           type: string
-          description: The unique request ID.
-          example: '500123'
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
     PutCompositeAlarmInput:
       type: object
       required:
@@ -193,43 +209,27 @@ components:
           type: integer
           description: The maximum time in seconds that the composite alarm waits after the suppressor leaves the ALARM state.
           example: 10
-    Tag:
+    ErrorResponse:
       type: object
-      description: A key-value pair associated with a CloudWatch resource.
-      required:
-      - Key
-      - Value
+      description: Standard error response from CloudWatch API.
       properties:
-        Key:
-          type: string
-          minLength: 1
-          maxLength: 128
-          description: A string that you can use to assign a value.
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
           example: example_value
-        Value:
+        RequestId:
           type: string
-          minLength: 0
-          maxLength: 256
-          description: The value for the specified tag key.
-          example: example_value
-  parameters:
-    Action_PutCompositeAlarm:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - PutCompositeAlarm
-    Version:
-      name: Version
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - '2010-08-01'
-      description: The API version (2010-08-01)
+          description: The unique request ID.
+          example: '500123'
   securitySchemes:
     aws_sigv4:
       type: apiKey

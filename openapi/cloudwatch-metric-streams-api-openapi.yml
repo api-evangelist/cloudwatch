@@ -167,6 +167,38 @@ components:
           type: string
           description: The ARN of the metric stream.
           example: example_value
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
+    ListMetricStreamsOutput:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamEntry'
+          description: The array of metric stream information.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
     MetricStreamEntry:
       type: object
       description: Contains information about a metric stream.
@@ -205,6 +237,31 @@ components:
           - opentelemetry1.0
           description: The output format of the metric stream.
           example: json
+    ListMetricStreamsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Include this value to get the next set of metric streams.
+          example: example_value
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+          example: 10
+    MetricStreamFilter:
+      type: object
+      description: Contains the configuration for a metric stream filter.
+      properties:
+        Namespace:
+          type: string
+          description: The name of the metric namespace in the filter.
+          example: example_value
+        MetricNames:
+          type: array
+          items:
+            type: string
+          description: The names of the metrics to either include or exclude from the metric stream.
+          example: []
     ErrorResponse:
       type: object
       description: Standard error response from CloudWatch API.
@@ -278,72 +335,7 @@ components:
           type: boolean
           description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.
           example: true
-    ListMetricStreamsInput:
-      type: object
-      properties:
-        NextToken:
-          type: string
-          description: Include this value to get the next set of metric streams.
-          example: example_value
-        MaxResults:
-          type: integer
-          description: The maximum number of results to return in one operation.
-          example: 10
-    Tag:
-      type: object
-      description: A key-value pair associated with a CloudWatch resource.
-      required:
-      - Key
-      - Value
-      properties:
-        Key:
-          type: string
-          minLength: 1
-          maxLength: 128
-          description: A string that you can use to assign a value.
-          example: example_value
-        Value:
-          type: string
-          minLength: 0
-          maxLength: 256
-          description: The value for the specified tag key.
-          example: example_value
-    ListMetricStreamsOutput:
-      type: object
-      properties:
-        Entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricStreamEntry'
-          description: The array of metric stream information.
-          example: []
-        NextToken:
-          type: string
-          description: The token that marks the start of the next batch of returned results.
-          example: example_value
-    MetricStreamFilter:
-      type: object
-      description: Contains the configuration for a metric stream filter.
-      properties:
-        Namespace:
-          type: string
-          description: The name of the metric namespace in the filter.
-          example: example_value
-        MetricNames:
-          type: array
-          items:
-            type: string
-          description: The names of the metrics to either include or exclude from the metric stream.
-          example: []
   parameters:
-    Action_PutMetricStream:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - PutMetricStream
     Action_ListMetricStreams:
       name: Action
       in: query
@@ -352,6 +344,14 @@ components:
         type: string
         enum:
         - ListMetricStreams
+    Action_PutMetricStream:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutMetricStream
     Version:
       name: Version
       in: query

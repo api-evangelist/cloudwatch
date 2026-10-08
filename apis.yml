@@ -470,6 +470,12 @@ apis:
   - type: APIReference
     url: https://docs.aws.amazon.com/OAM/latest/APIReference/Welcome.html
 common:
+  - type: Plans
+    url: plans/cloudwatch-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/cloudwatch-rate-limits.yml
+  - type: FinOps
+    url: finops/cloudwatch-finops.yml
   - type: CapabilityMap
     url: capabilities/cloudwatch-capability-edges.yml
     name: AWS CloudWatch Business Capability Map

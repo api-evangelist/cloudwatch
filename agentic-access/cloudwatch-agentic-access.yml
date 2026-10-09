@@ -1,101 +1,25 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/cloudwatch-openapi.yml
+source: openapi/cloudwatch-alarms-api-openapi.yml, openapi/cloudwatch-anomaly-detection-api-openapi.yml,
+  openapi/cloudwatch-composite-alarms-api-openapi.yml, openapi/cloudwatch-dashboards-api-openapi.yml,
+  openapi/cloudwatch-metric-streams-api-openapi.yml, openapi/cloudwatch-metrics-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 25
   by_action_class:
-    acting: 25
+    acting: 18
+    connected: 7
   by_consequence:
-    write: 24
+    write: 17
     safety-critical: 1
+    read: 7
   human_in_the_loop_required: 1
 operations:
-- path: /
-  method: post
-  operationId: PutMetricData
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#GetMetricData
-  method: post
-  operationId: GetMetricData
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#GetMetricStatistics
-  method: post
-  operationId: GetMetricStatistics
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#ListMetrics
-  method: post
-  operationId: ListMetrics
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /#PutMetricAlarm
   method: post
   operationId: PutMetricAlarm
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#PutCompositeAlarm
-  method: post
-  operationId: PutCompositeAlarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -221,70 +145,6 @@ operations:
     escalation:
       human-in-the-loop: required
     audit: required
-- path: /#PutDashboard
-  method: post
-  operationId: PutDashboard
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#GetDashboard
-  method: post
-  operationId: GetDashboard
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#ListDashboards
-  method: post
-  operationId: ListDashboards
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /#DeleteDashboards
-  method: post
-  operationId: DeleteDashboards
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /#PutAnomalyDetector
   method: post
   operationId: PutAnomalyDetector
@@ -333,6 +193,74 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /#PutCompositeAlarm
+  method: post
+  operationId: PutCompositeAlarm
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /#PutDashboard
+  method: post
+  operationId: PutDashboard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /#GetDashboard
+  method: post
+  operationId: GetDashboard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /#ListDashboards
+  method: post
+  operationId: ListDashboards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /#DeleteDashboards
+  method: post
+  operationId: DeleteDashboards
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /#PutMetricStream
   method: post
   operationId: PutMetricStream
@@ -353,6 +281,16 @@ operations:
   method: post
   operationId: ListMetricStreams
   x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: post
+  operationId: PutMetricData
+  x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
@@ -365,6 +303,36 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /#GetMetricData
+  method: post
+  operationId: GetMetricData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /#GetMetricStatistics
+  method: post
+  operationId: GetMetricStatistics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /#ListMetrics
+  method: post
+  operationId: ListMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /#TagResource
   method: post
   operationId: TagResource
@@ -401,15 +369,9 @@ operations:
   method: post
   operationId: ListTagsForResource
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none

@@ -293,3 +293,79 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  units:
+  - compute
+  - data
+  - message
+  - negotiated
+  - request
+  plans:
+  - name: AWS Free Tier
+    access: freemium
+    model: free
+    model_how: derived
+    units:
+    - compute
+    - data
+    - other
+    - request
+    periods:
+    - month
+  - name: CloudWatch Metrics
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: CloudWatch API Requests
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - request
+    periods:
+    - per-use
+  - name: CloudWatch Alarms
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: CloudWatch Logs
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    - data
+    periods:
+    - month
+    - per-use
+  - name: Contributor Insights
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - message
+    - other
+    periods:
+    - month
+    - per-use
+  - name: CloudWatch Platform — see pricing calculator
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - negotiated
+    periods:
+    - per-use

@@ -159,32 +159,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Action_PutMetricStream:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - PutMetricStream
-    Action_ListMetricStreams:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - ListMetricStreams
-    Version:
-      name: Version
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - '2010-08-01'
-      description: The API version (2010-08-01)
   schemas:
     MetricStreamFilter:
       type: object
@@ -200,26 +174,6 @@ components:
             type: string
           description: The names of the metrics to either include or exclude from the metric stream.
           example: []
-    ListMetricStreamsOutput:
-      type: object
-      properties:
-        Entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricStreamEntry'
-          description: The array of metric stream information.
-          example: []
-        NextToken:
-          type: string
-          description: The token that marks the start of the next batch of returned results.
-          example: example_value
-    PutMetricStreamOutput:
-      type: object
-      properties:
-        Arn:
-          type: string
-          description: The ARN of the metric stream.
-          example: example_value
     ErrorResponse:
       type: object
       description: Standard error response from CloudWatch API.
@@ -241,6 +195,30 @@ components:
           type: string
           description: The unique request ID.
           example: '500123'
+    ListMetricStreamsOutput:
+      type: object
+      properties:
+        Entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricStreamEntry'
+          description: The array of metric stream information.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    ListMetricStreamsInput:
+      type: object
+      properties:
+        NextToken:
+          type: string
+          description: Include this value to get the next set of metric streams.
+          example: example_value
+        MaxResults:
+          type: integer
+          description: The maximum number of results to return in one operation.
+          example: 10
     Tag:
       type: object
       description: A key-value pair associated with a CloudWatch resource.
@@ -259,6 +237,13 @@ components:
           minLength: 0
           maxLength: 256
           description: The value for the specified tag key.
+          example: example_value
+    PutMetricStreamOutput:
+      type: object
+      properties:
+        Arn:
+          type: string
+          description: The ARN of the metric stream.
           example: example_value
     MetricStreamEntry:
       type: object
@@ -350,17 +335,32 @@ components:
           type: boolean
           description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts.
           example: true
-    ListMetricStreamsInput:
-      type: object
-      properties:
-        NextToken:
-          type: string
-          description: Include this value to get the next set of metric streams.
-          example: example_value
-        MaxResults:
-          type: integer
-          description: The maximum number of results to return in one operation.
-          example: 10
+  parameters:
+    Version:
+      name: Version
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - '2010-08-01'
+      description: The API version (2010-08-01)
+    Action_PutMetricStream:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - PutMetricStream
+    Action_ListMetricStreams:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - ListMetricStreams
   securitySchemes:
     aws_sigv4:
       type: apiKey

@@ -520,59 +520,26 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeAlarmHistoryInput:
-      type: object
-      properties:
-        AlarmName:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The name of the alarm.
-          example: example_value
-        AlarmTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - CompositeAlarm
-            - MetricAlarm
-          description: Specify this parameter to receive information only about alarms of the specified types.
-          example: []
-        HistoryItemType:
-          type: string
-          enum:
-          - ConfigurationUpdate
-          - StateUpdate
-          - Action
-          description: The type of alarm histories to retrieve.
-          example: ConfigurationUpdate
-        StartDate:
-          type: string
-          format: date-time
-          description: The starting date to retrieve alarm history.
-          example: '2026-01-15T10:30:00Z'
-        EndDate:
-          type: string
-          format: date-time
-          description: The ending date to retrieve alarm history.
-          example: '2026-01-15T10:30:00Z'
-        MaxRecords:
-          type: integer
-          minimum: 1
-          maximum: 100
-          description: The maximum number of alarm history records to retrieve.
-          example: 10
-        NextToken:
-          type: string
-          description: The token returned by a previous call.
-          example: example_value
-        ScanBy:
-          type: string
-          enum:
-          - TimestampDescending
-          - TimestampAscending
-          description: Specified whether to return the newest or oldest alarm history first.
-          example: TimestampDescending
+    Statistic:
+      type: string
+      description: The statistic for the metric.
+      enum:
+      - SampleCount
+      - Average
+      - Sum
+      - Minimum
+      - Maximum
+    ComparisonOperator:
+      type: string
+      description: The arithmetic operation to use when comparing the specified statistic and threshold.
+      enum:
+      - GreaterThanOrEqualToThreshold
+      - GreaterThanThreshold
+      - LessThanThreshold
+      - LessThanOrEqualToThreshold
+      - LessThanLowerOrGreaterThanUpperThreshold
+      - LessThanLowerThreshold
+      - GreaterThanUpperThreshold
     StateValue:
       type: string
       description: The state value for the alarm.
@@ -580,6 +547,25 @@ components:
       - OK
       - ALARM
       - INSUFFICIENT_DATA
+    Tag:
+      type: object
+      description: A key-value pair associated with a CloudWatch resource.
+      required:
+      - Key
+      - Value
+      properties:
+        Key:
+          type: string
+          minLength: 1
+          maxLength: 128
+          description: A string that you can use to assign a value.
+          example: example_value
+        Value:
+          type: string
+          minLength: 0
+          maxLength: 256
+          description: The value for the specified tag key.
+          example: example_value
     CompositeAlarm:
       type: object
       description: The details about a composite alarm.
@@ -707,19 +693,18 @@ components:
       - Terabits/Second
       - Count/Second
       - None
-    DescribeAlarmHistoryOutput:
+    EnableAlarmActionsInput:
       type: object
+      required:
+      - AlarmNames
       properties:
-        AlarmHistoryItems:
+        AlarmNames:
           type: array
           items:
-            $ref: '#/components/schemas/AlarmHistoryItem'
-          description: The alarm histories, in JSON format.
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
           example: []
-        NextToken:
-          type: string
-          description: The token that marks the start of the next batch of returned results.
-          example: example_value
     PutMetricAlarmInput:
       type: object
       required:
@@ -836,18 +821,40 @@ components:
           type: string
           description: If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
           example: '500123'
-    EnableAlarmActionsInput:
+    DescribeAlarmHistoryOutput:
       type: object
-      required:
-      - AlarmNames
       properties:
-        AlarmNames:
+        AlarmHistoryItems:
           type: array
           items:
-            type: string
-          maxItems: 100
-          description: The names of the alarms.
+            $ref: '#/components/schemas/AlarmHistoryItem'
+          description: The alarm histories, in JSON format.
           example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Standard error response from CloudWatch API.
+      properties:
+        Error:
+          type: object
+          properties:
+            Type:
+              type: string
+              description: The error type (Sender or Receiver).
+            Code:
+              type: string
+              description: The error code.
+            Message:
+              type: string
+              description: A description of the error.
+          example: example_value
+        RequestId:
+          type: string
+          description: The unique request ID.
+          example: '500123'
     Metric:
       type: object
       description: Represents a specific metric.
@@ -872,163 +879,6 @@ components:
           maxItems: 30
           description: The dimensions for the metric.
           example: []
-    MetricStat:
-      type: object
-      description: This structure defines the metric to be returned, along with the statistics, period, and units.
-      required:
-      - Metric
-      - Period
-      - Stat
-      properties:
-        Metric:
-          $ref: '#/components/schemas/Metric'
-        Period:
-          type: integer
-          minimum: 1
-          description: The granularity, in seconds, of the returned data points.
-          example: 10
-        Stat:
-          type: string
-          description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
-          example: example_value
-        Unit:
-          $ref: '#/components/schemas/StandardUnit'
-    SetAlarmStateInput:
-      type: object
-      required:
-      - AlarmName
-      - StateValue
-      - StateReason
-      properties:
-        AlarmName:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The name of the alarm.
-          example: example_value
-        StateValue:
-          $ref: '#/components/schemas/StateValue'
-        StateReason:
-          type: string
-          maxLength: 1023
-          description: The reason that this alarm is set to this specific state, in text format.
-          example: example_value
-        StateReasonData:
-          type: string
-          maxLength: 4000
-          description: The reason that this alarm is set to this specific state, in JSON format.
-          example: example_value
-    ErrorResponse:
-      type: object
-      description: Standard error response from CloudWatch API.
-      properties:
-        Error:
-          type: object
-          properties:
-            Type:
-              type: string
-              description: The error type (Sender or Receiver).
-            Code:
-              type: string
-              description: The error code.
-            Message:
-              type: string
-              description: A description of the error.
-          example: example_value
-        RequestId:
-          type: string
-          description: The unique request ID.
-          example: '500123'
-    MetricDataQuery:
-      type: object
-      description: This structure is used in both GetMetricData and PutMetricAlarm. The supported use of this structure is different for those two operations.
-      required:
-      - Id
-      properties:
-        Id:
-          type: string
-          minLength: 1
-          maxLength: 255
-          pattern: '[a-z][a-zA-Z0-9_]*'
-          description: A short name used to tie this object to the results in the response.
-          example: abc123
-        MetricStat:
-          $ref: '#/components/schemas/MetricStat'
-        Expression:
-          type: string
-          minLength: 1
-          maxLength: 2048
-          description: This field can contain a Metrics Insights query, or a metric math expression.
-          example: example_value
-        Label:
-          type: string
-          description: A human-readable label for this metric or expression.
-          example: Example Title
-        ReturnData:
-          type: boolean
-          description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
-          example: true
-        Period:
-          type: integer
-          minimum: 1
-          description: The granularity, in seconds, of the returned data points.
-          example: 10
-        AccountId:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The ID of the account where the metrics are located.
-          example: '500123'
-    DisableAlarmActionsInput:
-      type: object
-      required:
-      - AlarmNames
-      properties:
-        AlarmNames:
-          type: array
-          items:
-            type: string
-          maxItems: 100
-          description: The names of the alarms.
-          example: []
-    DescribeAlarmsForMetricInput:
-      type: object
-      required:
-      - MetricName
-      - Namespace
-      properties:
-        MetricName:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The name of the metric.
-          example: example_value
-        Namespace:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The namespace of the metric.
-          example: example_value
-        Statistic:
-          $ref: '#/components/schemas/Statistic'
-        ExtendedStatistic:
-          type: string
-          description: The percentile statistic for the metric.
-          example: example_value
-        Dimensions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dimension'
-          maxItems: 30
-          description: The dimensions associated with the metric.
-          example: []
-        Period:
-          type: integer
-          minimum: 1
-          description: The period, in seconds, over which the statistic is applied.
-          example: 10
-        Unit:
-          $ref: '#/components/schemas/StandardUnit'
     DescribeAlarmsInput:
       type: object
       properties:
@@ -1080,72 +930,6 @@ components:
           type: string
           description: The token returned by a previous call to indicate there is more data available.
           example: example_value
-    ComparisonOperator:
-      type: string
-      description: The arithmetic operation to use when comparing the specified statistic and threshold.
-      enum:
-      - GreaterThanOrEqualToThreshold
-      - GreaterThanThreshold
-      - LessThanThreshold
-      - LessThanOrEqualToThreshold
-      - LessThanLowerOrGreaterThanUpperThreshold
-      - LessThanLowerThreshold
-      - GreaterThanUpperThreshold
-    AlarmHistoryItem:
-      type: object
-      description: Represents the history of a specific alarm.
-      properties:
-        AlarmName:
-          type: string
-          description: The descriptive name for the alarm.
-          example: example_value
-        AlarmType:
-          type: string
-          enum:
-          - CompositeAlarm
-          - MetricAlarm
-          description: The type of alarm, either metric alarm or composite alarm.
-          example: CompositeAlarm
-        Timestamp:
-          type: string
-          format: date-time
-          description: The time stamp for the alarm history item.
-          example: '2026-01-15T10:30:00Z'
-        HistoryItemType:
-          type: string
-          enum:
-          - ConfigurationUpdate
-          - StateUpdate
-          - Action
-          description: The type of alarm history item.
-          example: ConfigurationUpdate
-        HistorySummary:
-          type: string
-          description: A summary of the alarm history, in text format.
-          example: example_value
-        HistoryData:
-          type: string
-          description: Data about the alarm, in JSON format.
-          example: example_value
-    Dimension:
-      type: object
-      description: A dimension is a name/value pair that is part of the identity of a metric.
-      required:
-      - Name
-      - Value
-      properties:
-        Name:
-          type: string
-          minLength: 1
-          maxLength: 255
-          description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-          example: Example Title
-        Value:
-          type: string
-          minLength: 1
-          maxLength: 1024
-          description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
-          example: example_value
     DeleteAlarmsInput:
       type: object
       required:
@@ -1158,34 +942,6 @@ components:
           maxItems: 100
           description: The alarms to be deleted. You can delete up to 100 alarms in one operation.
           example: []
-    Statistic:
-      type: string
-      description: The statistic for the metric.
-      enum:
-      - SampleCount
-      - Average
-      - Sum
-      - Minimum
-      - Maximum
-    DescribeAlarmsOutput:
-      type: object
-      properties:
-        MetricAlarms:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricAlarm'
-          description: The information about any metric alarms returned by the operation.
-          example: []
-        CompositeAlarms:
-          type: array
-          items:
-            $ref: '#/components/schemas/CompositeAlarm'
-          description: The information about any composite alarms returned by the operation.
-          example: []
-        NextToken:
-          type: string
-          description: The token that marks the start of the next batch of returned results.
-          example: example_value
     MetricAlarm:
       type: object
       description: The details about a metric alarm.
@@ -1331,6 +1087,185 @@ components:
           format: date-time
           description: The date and time that the alarm's StateValue most recently changed.
           example: '2026-01-15T10:30:00Z'
+    MetricDataQuery:
+      type: object
+      description: This structure is used in both GetMetricData and PutMetricAlarm. The supported use of this structure is different for those two operations.
+      required:
+      - Id
+      properties:
+        Id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          pattern: '[a-z][a-zA-Z0-9_]*'
+          description: A short name used to tie this object to the results in the response.
+          example: abc123
+        MetricStat:
+          $ref: '#/components/schemas/MetricStat'
+        Expression:
+          type: string
+          minLength: 1
+          maxLength: 2048
+          description: This field can contain a Metrics Insights query, or a metric math expression.
+          example: example_value
+        Label:
+          type: string
+          description: A human-readable label for this metric or expression.
+          example: Example Title
+        ReturnData:
+          type: boolean
+          description: When used in GetMetricData, this option indicates whether to return the timestamps and raw data values of this metric.
+          example: true
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        AccountId:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The ID of the account where the metrics are located.
+          example: '500123'
+    DescribeAlarmHistoryInput:
+      type: object
+      properties:
+        AlarmName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the alarm.
+          example: example_value
+        AlarmTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - CompositeAlarm
+            - MetricAlarm
+          description: Specify this parameter to receive information only about alarms of the specified types.
+          example: []
+        HistoryItemType:
+          type: string
+          enum:
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
+          description: The type of alarm histories to retrieve.
+          example: ConfigurationUpdate
+        StartDate:
+          type: string
+          format: date-time
+          description: The starting date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
+        EndDate:
+          type: string
+          format: date-time
+          description: The ending date to retrieve alarm history.
+          example: '2026-01-15T10:30:00Z'
+        MaxRecords:
+          type: integer
+          minimum: 1
+          maximum: 100
+          description: The maximum number of alarm history records to retrieve.
+          example: 10
+        NextToken:
+          type: string
+          description: The token returned by a previous call.
+          example: example_value
+        ScanBy:
+          type: string
+          enum:
+          - TimestampDescending
+          - TimestampAscending
+          description: Specified whether to return the newest or oldest alarm history first.
+          example: TimestampDescending
+    Dimension:
+      type: object
+      description: A dimension is a name/value pair that is part of the identity of a metric.
+      required:
+      - Name
+      - Value
+      properties:
+        Name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the dimension. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+          example: Example Title
+        Value:
+          type: string
+          minLength: 1
+          maxLength: 1024
+          description: The value of the dimension. Dimension values must contain only ASCII characters and must include at least one non-whitespace character.
+          example: example_value
+    DescribeAlarmsOutput:
+      type: object
+      properties:
+        MetricAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricAlarm'
+          description: The information about any metric alarms returned by the operation.
+          example: []
+        CompositeAlarms:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompositeAlarm'
+          description: The information about any composite alarms returned by the operation.
+          example: []
+        NextToken:
+          type: string
+          description: The token that marks the start of the next batch of returned results.
+          example: example_value
+    AlarmHistoryItem:
+      type: object
+      description: Represents the history of a specific alarm.
+      properties:
+        AlarmName:
+          type: string
+          description: The descriptive name for the alarm.
+          example: example_value
+        AlarmType:
+          type: string
+          enum:
+          - CompositeAlarm
+          - MetricAlarm
+          description: The type of alarm, either metric alarm or composite alarm.
+          example: CompositeAlarm
+        Timestamp:
+          type: string
+          format: date-time
+          description: The time stamp for the alarm history item.
+          example: '2026-01-15T10:30:00Z'
+        HistoryItemType:
+          type: string
+          enum:
+          - ConfigurationUpdate
+          - StateUpdate
+          - Action
+          description: The type of alarm history item.
+          example: ConfigurationUpdate
+        HistorySummary:
+          type: string
+          description: A summary of the alarm history, in text format.
+          example: example_value
+        HistoryData:
+          type: string
+          description: Data about the alarm, in JSON format.
+          example: example_value
+    DisableAlarmActionsInput:
+      type: object
+      required:
+      - AlarmNames
+      properties:
+        AlarmNames:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          description: The names of the alarms.
+          example: []
     DescribeAlarmsForMetricOutput:
       type: object
       properties:
@@ -1340,42 +1275,91 @@ components:
             $ref: '#/components/schemas/MetricAlarm'
           description: The information for each alarm with the specified metric.
           example: []
-    Tag:
+    SetAlarmStateInput:
       type: object
-      description: A key-value pair associated with a CloudWatch resource.
       required:
-      - Key
-      - Value
+      - AlarmName
+      - StateValue
+      - StateReason
       properties:
-        Key:
+        AlarmName:
           type: string
           minLength: 1
-          maxLength: 128
-          description: A string that you can use to assign a value.
+          maxLength: 255
+          description: The name of the alarm.
           example: example_value
-        Value:
+        StateValue:
+          $ref: '#/components/schemas/StateValue'
+        StateReason:
           type: string
-          minLength: 0
-          maxLength: 256
-          description: The value for the specified tag key.
+          maxLength: 1023
+          description: The reason that this alarm is set to this specific state, in text format.
           example: example_value
+        StateReasonData:
+          type: string
+          maxLength: 4000
+          description: The reason that this alarm is set to this specific state, in JSON format.
+          example: example_value
+    DescribeAlarmsForMetricInput:
+      type: object
+      required:
+      - MetricName
+      - Namespace
+      properties:
+        MetricName:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the metric.
+          example: example_value
+        Namespace:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The namespace of the metric.
+          example: example_value
+        Statistic:
+          $ref: '#/components/schemas/Statistic'
+        ExtendedStatistic:
+          type: string
+          description: The percentile statistic for the metric.
+          example: example_value
+        Dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+          maxItems: 30
+          description: The dimensions associated with the metric.
+          example: []
+        Period:
+          type: integer
+          minimum: 1
+          description: The period, in seconds, over which the statistic is applied.
+          example: 10
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
+    MetricStat:
+      type: object
+      description: This structure defines the metric to be returned, along with the statistics, period, and units.
+      required:
+      - Metric
+      - Period
+      - Stat
+      properties:
+        Metric:
+          $ref: '#/components/schemas/Metric'
+        Period:
+          type: integer
+          minimum: 1
+          description: The granularity, in seconds, of the returned data points.
+          example: 10
+        Stat:
+          type: string
+          description: The statistic to return. It can include any CloudWatch statistic or extended statistic.
+          example: example_value
+        Unit:
+          $ref: '#/components/schemas/StandardUnit'
   parameters:
-    Action_DescribeAlarmHistory:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - DescribeAlarmHistory
-    Action_DisableAlarmActions:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - DisableAlarmActions
     Action_EnableAlarmActions:
       name: Action
       in: query
@@ -1392,14 +1376,6 @@ components:
         type: string
         enum:
         - PutMetricAlarm
-    Action_DeleteAlarms:
-      name: Action
-      in: query
-      required: true
-      schema:
-        type: string
-        enum:
-        - DeleteAlarms
     Action_DescribeAlarmsForMetric:
       name: Action
       in: query
@@ -1408,6 +1384,22 @@ components:
         type: string
         enum:
         - DescribeAlarmsForMetric
+    Action_DescribeAlarmHistory:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAlarmHistory
+    Action_DisableAlarmActions:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DisableAlarmActions
     Action_SetAlarmState:
       name: Action
       in: query
@@ -1416,14 +1408,14 @@ components:
         type: string
         enum:
         - SetAlarmState
-    Action_DescribeAlarms:
+    Action_DeleteAlarms:
       name: Action
       in: query
       required: true
       schema:
         type: string
         enum:
-        - DescribeAlarms
+        - DeleteAlarms
     Version:
       name: Version
       in: query
@@ -1433,6 +1425,14 @@ components:
         enum:
         - '2010-08-01'
       description: The API version (2010-08-01)
+    Action_DescribeAlarms:
+      name: Action
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+        - DescribeAlarms
   securitySchemes:
     aws_sigv4:
       type: apiKey

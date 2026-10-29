@@ -1,4 +1,4 @@
-# AWS CloudWatch (cloudwatch)
+# AWS CloudWatch
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,287 +66,216 @@
 
 Amazon CloudWatch is a monitoring and observability service that provides data and actionable insights for AWS, hybrid, and on-premises applications and infrastructure resources.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cloudwatch/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cloudwatch/refs/heads/main/apis.yml)
+**Areas:** Alarms · AWS · Dashboards · Logs · Metrics · Monitoring · Observability
 
-## Tags
+## AWS CloudWatch on APIs.io
 
-- Alarms
-- Aws
-- Dashboards
-- Logs
-- Metrics
-- Monitoring
-- Observability
+Everything profiled for AWS CloudWatch is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cloudwatch/](https://apis.io/providers/cloudwatch/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+- [Amazon CloudWatch Application Signals API](https://apis.io/apis/cloudwatch/amazon-cloudwatch-application-signals-api/) — API for automatic instrumentation and monitoring of application services with service level objectives.
+- [Amazon CloudWatch Network Monitor API](https://apis.io/apis/cloudwatch/amazon-cloudwatch-network-monitor-api/) — API for active network monitoring to identify network issues within AWS or company networks using synthetic probes.
+- [AWS CloudWatch Alarms API](https://apis.io/apis/cloudwatch/cloudwatch-alarms-api/) — Operations for creating, managing, and querying CloudWatch alarms
+- [AWS CloudWatch Anomaly Detection API](https://apis.io/apis/cloudwatch/cloudwatch-anomaly-detection-api/) — Operations for CloudWatch anomaly detection models
+- [AWS CloudWatch Composite Alarms API](https://apis.io/apis/cloudwatch/cloudwatch-composite-alarms-api/) — Operations for composite alarms that aggregate multiple alarm states
+- [AWS CloudWatch Dashboards API](https://apis.io/apis/cloudwatch/cloudwatch-dashboards-api/) — Operations for creating and managing CloudWatch dashboards
+- [AWS CloudWatch Metric Streams API](https://apis.io/apis/cloudwatch/cloudwatch-metric-streams-api/) — Operations for managing metric streams
+- [AWS CloudWatch Metrics API](https://apis.io/apis/cloudwatch/cloudwatch-metrics-api/) — Operations for working with CloudWatch metrics and metric data
 
-## APIs
+### Published properties
 
-### Amazon CloudWatch API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Core CloudWatch API for metrics, alarms, and dashboards.
+#### Agentic access (1)
 
-- **Human URL:** [https://aws.amazon.com/cloudwatch/](https://aws.amazon.com/cloudwatch/)
-- **Base URL:** `https://monitoring.amazonaws.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Cloudwatch Agentic Access](https://apis.io/agentic-access/cloudwatch/cloudwatch-agentic-access/)
 
-- Alarms
-- Dashboards
-- Metric-Streams
-- Metrics
-- Statistics
+#### JSON Schema (133)
 
-#### Properties
+The data models the API reads and writes.
+
+- [Amazon CloudWatch Alarm](https://apis.io/schemas/cloudwatch/cloudwatch-alarm/)
+- [AlarmHistoryItem](https://apis.io/schemas/cloudwatch/cloudwatch-alarm-history-item/)
+- [AlarmHistoryItem](https://apis.io/schemas/cloudwatch/cloudwatch-alarmhistoryitem/)
+- [AnomalyDetector](https://apis.io/schemas/cloudwatch/cloudwatch-anomaly-detector/)
+- [AnomalyDetectorConfiguration](https://apis.io/schemas/cloudwatch/cloudwatch-anomaly-detector-configuration/)
+- [AnomalyDetector](https://apis.io/schemas/cloudwatch/cloudwatch-anomalydetector/)
+- [AnomalyDetectorConfiguration](https://apis.io/schemas/cloudwatch/cloudwatch-anomalydetectorconfiguration/)
+- [ComparisonOperator](https://apis.io/schemas/cloudwatch/cloudwatch-comparison-operator/)
+- [ComparisonOperator](https://apis.io/schemas/cloudwatch/cloudwatch-comparisonoperator/)
+- [CompositeAlarm](https://apis.io/schemas/cloudwatch/cloudwatch-composite-alarm/)
+- [CompositeAlarm](https://apis.io/schemas/cloudwatch/cloudwatch-compositealarm/)
+- [DashboardBody](https://apis.io/schemas/cloudwatch/cloudwatch-dashboard-body/)
+- [DashboardEntry](https://apis.io/schemas/cloudwatch/cloudwatch-dashboard-entry/)
+- [DashboardValidationMessage](https://apis.io/schemas/cloudwatch/cloudwatch-dashboard-validation-message/)
+- [DashboardWidget](https://apis.io/schemas/cloudwatch/cloudwatch-dashboard-widget/)
+- [DashboardBody](https://apis.io/schemas/cloudwatch/cloudwatch-dashboardbody/)
+- [DashboardEntry](https://apis.io/schemas/cloudwatch/cloudwatch-dashboardentry/)
+- [DashboardValidationMessage](https://apis.io/schemas/cloudwatch/cloudwatch-dashboardvalidationmessage/)
+- [DashboardWidget](https://apis.io/schemas/cloudwatch/cloudwatch-dashboardwidget/)
+- [Datapoint](https://apis.io/schemas/cloudwatch/cloudwatch-datapoint/)
+- [DeleteAlarmsInput](https://apis.io/schemas/cloudwatch/cloudwatch-delete-alarms-input/)
+- [DeleteAnomalyDetectorInput](https://apis.io/schemas/cloudwatch/cloudwatch-delete-anomaly-detector-input/)
+- [DeleteDashboardsInput](https://apis.io/schemas/cloudwatch/cloudwatch-delete-dashboards-input/)
+- [DeleteAlarmsInput](https://apis.io/schemas/cloudwatch/cloudwatch-deletealarmsinput/)
+- [DeleteAnomalyDetectorInput](https://apis.io/schemas/cloudwatch/cloudwatch-deleteanomalydetectorinput/)
+- …and 108 more published on APIs.io
+
+#### JSON Structure (70)
+
+Data models expressed in JSON Structure.
+
+- [Cloudwatch Alarm History Item Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-alarm-history-item-structure/)
+- [Cloudwatch Anomaly Detector Configuration Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-anomaly-detector-configuration-structure/)
+- [Cloudwatch Anomaly Detector Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-anomaly-detector-structure/)
+- [Cloudwatch Comparison Operator Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-comparison-operator-structure/)
+- [Cloudwatch Composite Alarm Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-composite-alarm-structure/)
+- [Cloudwatch Dashboard Body Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dashboard-body-structure/)
+- [Cloudwatch Dashboard Entry Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dashboard-entry-structure/)
+- [Cloudwatch Dashboard Validation Message Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dashboard-validation-message-structure/)
+- [Cloudwatch Dashboard Widget Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dashboard-widget-structure/)
+- [Cloudwatch Datapoint Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-datapoint-structure/)
+- [Cloudwatch Delete Alarms Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-delete-alarms-input-structure/)
+- [Cloudwatch Delete Anomaly Detector Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-delete-anomaly-detector-input-structure/)
+- [Cloudwatch Delete Dashboards Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-delete-dashboards-input-structure/)
+- [Cloudwatch Describe Alarm History Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarm-history-input-structure/)
+- [Cloudwatch Describe Alarm History Output Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarm-history-output-structure/)
+- [Cloudwatch Describe Alarms For Metric Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarms-for-metric-input-structure/)
+- [Cloudwatch Describe Alarms For Metric Output Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarms-for-metric-output-structure/)
+- [Cloudwatch Describe Alarms Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarms-input-structure/)
+- [Cloudwatch Describe Alarms Output Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-alarms-output-structure/)
+- [Cloudwatch Describe Anomaly Detectors Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-anomaly-detectors-input-structure/)
+- [Cloudwatch Describe Anomaly Detectors Output Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-describe-anomaly-detectors-output-structure/)
+- [Cloudwatch Dimension Filter Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dimension-filter-structure/)
+- [Cloudwatch Dimension Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-dimension-structure/)
+- [Cloudwatch Disable Alarm Actions Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-disable-alarm-actions-input-structure/)
+- [Cloudwatch Enable Alarm Actions Input Structure](https://apis.io/json-structure/cloudwatch/cloudwatch-enable-alarm-actions-input-structure/)
+- …and 45 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Cloudwatch Context](https://apis.io/jsonld/cloudwatch/cloudwatch-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [AWS CloudWatch Domain Vocabulary](https://apis.io/vocabularies/cloudwatch/cloudwatch-vocabulary/)
+
+#### Examples (94)
+
+Example requests and responses.
+
+- [Cloudwatch Alarm History Item Example](https://apis.io/examples/cloudwatch/cloudwatch-alarm-history-item-example/)
+- [Cloudwatch Anomaly Detector Configuration Example](https://apis.io/examples/cloudwatch/cloudwatch-anomaly-detector-configuration-example/)
+- [Cloudwatch Anomaly Detector Example](https://apis.io/examples/cloudwatch/cloudwatch-anomaly-detector-example/)
+- [Cloudwatch Comparison Operator Example](https://apis.io/examples/cloudwatch/cloudwatch-comparison-operator-example/)
+- [Cloudwatch Composite Alarm Example](https://apis.io/examples/cloudwatch/cloudwatch-composite-alarm-example/)
+- [Cloudwatch Dashboard Body Example](https://apis.io/examples/cloudwatch/cloudwatch-dashboard-body-example/)
+- [Cloudwatch Dashboard Entry Example](https://apis.io/examples/cloudwatch/cloudwatch-dashboard-entry-example/)
+- [Cloudwatch Dashboard Validation Message Example](https://apis.io/examples/cloudwatch/cloudwatch-dashboard-validation-message-example/)
+- [Cloudwatch Dashboard Widget Example](https://apis.io/examples/cloudwatch/cloudwatch-dashboard-widget-example/)
+- [Cloudwatch Datapoint Example](https://apis.io/examples/cloudwatch/cloudwatch-datapoint-example/)
+- [Cloudwatch Delete Alarms Input Example](https://apis.io/examples/cloudwatch/cloudwatch-delete-alarms-input-example/)
+- [Cloudwatch Delete Anomaly Detector Input Example](https://apis.io/examples/cloudwatch/cloudwatch-delete-anomaly-detector-input-example/)
+- [Cloudwatch Delete Dashboards Input Example](https://apis.io/examples/cloudwatch/cloudwatch-delete-dashboards-input-example/)
+- [Cloudwatch Deletealarms Example](https://apis.io/examples/cloudwatch/cloudwatch-deletealarms-example/)
+- [Cloudwatch Deleteanomalydetector Example](https://apis.io/examples/cloudwatch/cloudwatch-deleteanomalydetector-example/)
+- [Cloudwatch Deletedashboards Example](https://apis.io/examples/cloudwatch/cloudwatch-deletedashboards-example/)
+- [Cloudwatch Describe Alarm History Input Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarm-history-input-example/)
+- [Cloudwatch Describe Alarm History Output Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarm-history-output-example/)
+- [Cloudwatch Describe Alarms For Metric Input Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarms-for-metric-input-example/)
+- [Cloudwatch Describe Alarms For Metric Output Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarms-for-metric-output-example/)
+- [Cloudwatch Describe Alarms Input Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarms-input-example/)
+- [Cloudwatch Describe Alarms Output Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-alarms-output-example/)
+- [Cloudwatch Describe Anomaly Detectors Input Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-anomaly-detectors-input-example/)
+- [Cloudwatch Describe Anomaly Detectors Output Example](https://apis.io/examples/cloudwatch/cloudwatch-describe-anomaly-detectors-output-example/)
+- [Cloudwatch Describealarmhistory Example](https://apis.io/examples/cloudwatch/cloudwatch-describealarmhistory-example/)
+- …and 69 more published on APIs.io
+
+#### Collections (13)
+
+Postman and Open Collection request collections.
+
+- [AWS CloudWatch Amazon CloudWatch API](https://apis.io/collections/cloudwatch/open-cloudwatch/)
+- [AWS CloudWatch Amazon CloudWatch Alarms API](https://apis.io/collections/cloudwatch/open-cloudwatch-alarms-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API](https://apis.io/collections/cloudwatch/open-cloudwatch-anomaly-detection-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Composite Alarms API](https://apis.io/collections/cloudwatch/open-cloudwatch-composite-alarms-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Dashboards API](https://apis.io/collections/cloudwatch/open-cloudwatch-dashboards-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Metric Streams API](https://apis.io/collections/cloudwatch/open-cloudwatch-metric-streams-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Metrics API](https://apis.io/collections/cloudwatch/open-cloudwatch-metrics-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms API](https://apis.io/collections/cloudwatch/postman-cloudwatch-alarms-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Anomaly Detection API](https://apis.io/collections/cloudwatch/postman-cloudwatch-anomaly-detection-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Composite Alarms API](https://apis.io/collections/cloudwatch/postman-cloudwatch-composite-alarms-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Dashboards API](https://apis.io/collections/cloudwatch/postman-cloudwatch-dashboards-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Metric Streams API](https://apis.io/collections/cloudwatch/postman-cloudwatch-metric-streams-api/)
+- [AWS CloudWatch Amazon CloudWatch Alarms Metrics API](https://apis.io/collections/cloudwatch/postman-cloudwatch-metrics-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [AWS CloudWatch — jsonschema rules](https://apis.io/rules/cloudwatch/cloudwatch-jsonschema-spectral-rules/)
+- [AWS CloudWatch API Rules](https://apis.io/rules/cloudwatch/cloudwatch-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Cloudwatch Authentication](https://apis.io/security/cloudwatch/cloudwatch-authentication/)
+- [Cloudwatch Domain Security](https://apis.io/security/cloudwatch/cloudwatch-domain-security/)
+- [Cloudwatch Trust Center](https://apis.io/security/cloudwatch/cloudwatch-trust-center/)
+- [Cloudwatch Vulnerability Disclosure](https://apis.io/security/cloudwatch/cloudwatch-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Cloudwatch Plans Pricing](https://apis.io/plans/cloudwatch/cloudwatch-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Cloudwatch Rate Limits](https://apis.io/rate-limits/cloudwatch/cloudwatch-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Cloudwatch Finops](https://apis.io/finops/cloudwatch/cloudwatch-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Documentation](https://docs.aws.amazon.com/cloudwatch/)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/monitoring/2010-08-01/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/cloudwatch-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/cloudwatch-alarm-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/cloudwatch-metric-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/cloudwatch-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
 - [Pricing](https://aws.amazon.com/cloudwatch/pricing/)
-- [Getting Started](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GettingStarted.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [API Reference](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/)
-- [Console](https://console.aws.amazon.com/cloudwatch/)
-- [Features](https://aws.amazon.com/cloudwatch/features/)
-
-### Amazon CloudWatch Logs API
-
-API for ingesting, storing, and analyzing log data.
-
-- **Human URL:** [https://aws.amazon.com/cloudwatch/features/](https://aws.amazon.com/cloudwatch/features/)
-- **Base URL:** `https://logs.amazonaws.com`
-
-#### Tags
-
-- Insights
-- Log-Analytics
-- Log-Groups
-- Log-Streams
-- Logs
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/logs/2014-03-28/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Events API
-
-Event-driven architecture for responding to state changes in AWS resources.
-
-- **Human URL:** [https://aws.amazon.com/eventbridge/](https://aws.amazon.com/eventbridge/)
-- **Base URL:** `https://events.amazonaws.com`
-
-#### Tags
-
-- Event-Bus
-- Eventbridge
-- Events
-- Rules
-- Targets
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/eventbridge/)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/events/2015-10-07/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/eventbridge/latest/APIReference/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Application Insights API
-
-Automated monitoring for applications with anomaly detection.
-
-- **Human URL:** [https://aws.amazon.com/cloudwatch/features/](https://aws.amazon.com/cloudwatch/features/)
-- **Base URL:** `https://applicationinsights.amazonaws.com`
-
-#### Tags
-
-- Anomaly-Detection
-- Application-Insights
-- Observability
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-application-insights.html)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/application-insights/2018-11-25/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/cloudwatch/latest/APIReference/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Synthetics API
-
-API for creating and managing canaries that continuously monitor endpoints and APIs using synthetic traffic.
-
-- **Human URL:** [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html)
-- **Base URL:** `https://synthetics.amazonaws.com`
-
-#### Tags
-
-- Canaries
-- Endpoint-Monitoring
-- Monitoring
-- Synthetics
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries.html)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/synthetics/2017-10-11/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Internet Monitor API
-
-API for monitoring internet performance and availability between applications hosted on AWS and end users.
-
-- **Human URL:** [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html)
-- **Base URL:** `https://internetmonitor.amazonaws.com`
-
-#### Tags
-
-- Availability
-- Internet-Monitor
-- Latency
-- Network-Performance
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/internetmonitor/2021-06-03/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/internet-monitor/latest/api/Welcome.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch RUM API
-
-API for real user monitoring to collect client-side data about web and mobile application performance from actual user sessions.
-
-- **Human URL:** [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html)
-- **Base URL:** `https://rum.amazonaws.com`
-
-#### Tags
-
-- Client-Side
-- Real-User-Monitoring
-- Rum
-- Web-Performance
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM.html)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/rum/2018-05-10/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/Welcome.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Observability Access Manager API
-
-API for creating and managing cross-account observability links between source accounts and monitoring accounts.
-
-- **Human URL:** [https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html)
-- **Base URL:** `https://oam.amazonaws.com`
-
-#### Tags
-
-- Cross-Account
-- Monitoring-Account
-- Oam
-- Observability
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/oam/2022-06-10/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://docs.aws.amazon.com/OAM/latest/APIReference/Welcome.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Application Signals API
-
-API for automatic instrumentation and monitoring of application services with service level objectives.
-
-- **Human URL:** [https://aws.amazon.com/cloudwatch/features/application-observability-apm/](https://aws.amazon.com/cloudwatch/features/application-observability-apm/)
-- **Base URL:** `https://application-signals.amazonaws.com`
-
-#### Tags
-
-- Apm
-- Application-Signals
-- Service-Level-Objectives
-- Slo
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html)
-- [API Reference](https://docs.aws.amazon.com/applicationsignals/latest/APIReference/Welcome.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Amazon CloudWatch Network Monitor API
-
-API for active network monitoring to identify network issues within AWS or company networks using synthetic probes.
-
-- **Human URL:** [https://aws.amazon.com/cloudwatch/features/network-monitoring/](https://aws.amazon.com/cloudwatch/features/network-monitoring/)
-- **Base URL:** `https://networkmonitor.amazonaws.com`
-
-#### Tags
-
-- Direct-Connect
-- Hybrid-Connectivity
-- Network-Monitor
-- Network-Performance
-
-#### Properties
-
-- [Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/what-is-network-monitor.html)
-- [API Reference](https://docs.aws.amazon.com/networkmonitor/latest/APIReference/Welcome.html)
-- [SDK](https://aws.amazon.com/tools/)
-- [Postman Collection](collections/cloudwatch.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cloudwatch.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Blog](https://aws.amazon.com/blogs/aws/category/management-tools/amazon-cloudwatch/)
-- [F A Q](https://aws.amazon.com/cloudwatch/faqs/)
 - [Support](https://aws.amazon.com/premiumsupport/)
-- [Status Page](https://status.aws.amazon.com/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
 - [Changelog](https://aws.amazon.com/releasenotes/)
-- [Pricing](https://aws.amazon.com/cloudwatch/pricing/)
-- [Features](https://aws.amazon.com/cloudwatch/features/)
-- [Console](https://console.aws.amazon.com/cloudwatch/)
-- [SDK](https://aws.amazon.com/tools/)
-- [Documentation](https://docs.aws.amazon.com/cloudwatch/)
-- [OpenAPI](openapi/cloudwatch-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/cloudwatch-alarm-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/cloudwatch-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/cloudwatch-spectral-rules.yml)
-- [Vocabulary](vocabulary/cloudwatch-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Blog](https://aws.amazon.com/blogs/aws/category/management-tools/amazon-cloudwatch/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Status](https://status.aws.amazon.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Unrated** — no public website could be reached for this company, so there was almost nothing to measure and nothing a reader could check.
+
+This is not a score of zero. No rating is published for this company. If that is wrong because something public exists that we missed, say so on this repository or email [info@apievangelist.com](mailto:info@apievangelist.com) and it will be re-run — free, and no justification needed.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AWS CloudWatch: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cloudwatch/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
